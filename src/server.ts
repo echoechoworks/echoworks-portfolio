@@ -63,4 +63,4 @@ createServer(async (req, res) => {
     res.writeHead(200, { 'Content-Type': /\.(ts|js)$/.test(file) ? 'text/javascript; charset=utf-8' : file.endsWith('.css') ? 'text/css; charset=utf-8' : mimeTypes[extension] || 'text/html; charset=utf-8' });
     res.end(body);
   } catch { res.writeHead(500).end('Unable to load page'); }
-}).listen(port, '127.0.0.1', () => console.log(`Portfolio ready at http://localhost:${port}`));
+}).listen(port, '0.0.0.0', () => console.log(`Portfolio ready at http://localhost:${port}`));
