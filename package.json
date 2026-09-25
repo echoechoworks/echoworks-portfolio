@@ -1,0 +1,7 @@
+{
+  "name": "valdemar-lov-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "node --watch src/server.ts", "start": "node src/server.ts" },
+  "engines": { "node": ">=24" }
+}

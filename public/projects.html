@@ -1,0 +1,575 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Manrope:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="/tailwind.js"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-tertiary": "#ffffff",
+          "on-background": "#1b1c19",
+          "on-secondary-container": "#651500",
+          "inverse-primary": "#cac6c4",
+          "on-secondary-fixed-variant": "#882000",
+          "on-primary-container": "#868381",
+          "on-primary": "#ffffff",
+          "on-secondary": "#ffffff",
+          "on-tertiary-fixed": "#1e1b16",
+          "secondary-fixed": "#ffdbd1",
+          "surface-container-low": "#f6f3ee",
+          "on-error-container": "#93000a",
+          "surface-container-highest": "#e4e2dd",
+          "primary-fixed-dim": "#cac6c4",
+          "surface-variant": "#e4e2dd",
+          "surface-dim": "#dcdad5",
+          "primary": "#000000",
+          "on-secondary-fixed": "#3b0900",
+          "on-error": "#ffffff",
+          "secondary": "#ad330f",
+          "on-surface-variant": "#4a4640",
+          "tertiary-fixed-dim": "#cdc5bc",
+          "background": "#fbf9f4",
+          "primary-fixed": "#e6e1df",
+          "surface": "#fbf9f4",
+          "on-primary-fixed-variant": "#484645",
+          "outline-variant": "#cdc5bd",
+          "on-tertiary-container": "#89837b",
+          "surface-bright": "#fbf9f4",
+          "tertiary": "#000000",
+          "inverse-on-surface": "#f3f0eb",
+          "surface-tint": "#605e5c",
+          "tertiary-fixed": "#e9e1d8",
+          "on-primary-fixed": "#1c1b1a",
+          "error": "#ba1a1a",
+          "outline": "#7c766f",
+          "surface-container-high": "#eae8e3",
+          "surface-container": "#f0eee9",
+          "on-surface": "#1b1c19",
+          "secondary-fixed-dim": "#ffb5a1",
+          "primary-container": "#1c1b1a",
+          "secondary-container": "#ff6e46",
+          "inverse-surface": "#30312d",
+          "on-tertiary-fixed-variant": "#4b463f",
+          "tertiary-container": "#1e1b16",
+          "surface-container-lowest": "#ffffff",
+          "error-container": "#ffdad6"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "margin-mobile": "1.25rem",
+          "unit-3xl": "10rem",
+          "unit-xl": "4rem",
+          "unit-2xs": "0.25rem",
+          "unit-lg": "2.5rem",
+          "unit-2xl": "6.5rem",
+          "unit-md": "1.5rem",
+          "gutter-desktop": "2rem",
+          "unit-xs": "0.5rem",
+          "margin-desktop": "4rem",
+          "unit-sm": "1rem",
+          "gutter-mobile": "1rem"
+        },
+        "fontFamily": {
+          "body-md": [
+            "Manrope"
+          ],
+          "display-hero-mobile": [
+            "Bodoni Moda"
+          ],
+          "label-caps": [
+            "Space Grotesk"
+          ],
+          "body-sm": [
+            "Manrope"
+          ],
+          "headline-md": [
+            "Bodoni Moda"
+          ],
+          "headline-sm": [
+            "Manrope"
+          ],
+          "headline-lg-mobile": [
+            "Bodoni Moda"
+          ],
+          "meta-technical": [
+            "Space Grotesk"
+          ],
+          "body-lg": [
+            "Manrope"
+          ],
+          "headline-lg": [
+            "Bodoni Moda"
+          ],
+          "display-hero": [
+            "Bodoni Moda"
+          ]
+        },
+        "fontSize": {
+          "body-md": [
+            "15px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "400"
+            }
+          ],
+          "display-hero-mobile": [
+            "44px",
+            {
+              "lineHeight": "50px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "400"
+            }
+          ],
+          "label-caps": [
+            "10px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.12em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-sm": [
+            "13px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-md": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-sm": [
+            "22px",
+            {
+              "lineHeight": "30px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "500"
+            }
+          ],
+          "headline-lg-mobile": [
+            "32px",
+            {
+              "lineHeight": "38px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "meta-technical": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.08em",
+              "fontWeight": "500"
+            }
+          ],
+          "body-lg": [
+            "18px",
+            {
+              "lineHeight": "28px",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg": [
+            "48px",
+            {
+              "lineHeight": "56px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "400"
+            }
+          ],
+          "display-hero": [
+            "84px",
+            {
+              "lineHeight": "92px",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      },
+    },
+  }</script><link rel="stylesheet" href="/styles.css"><script type="module" src="/app.js"></script></head><body class="bg-surface text-on-surface font-body-md text-body-md"><!-- GLOBAL_HEADER --><main class="w-full pt-24 bg-primary min-h-screen"><div class="flex flex-col w-full bg-primary text-surface selection:bg-secondary selection:text-on-secondary">
+<!-- GALLERY CURATORIAL HEADER -->
+<section class="w-full px-margin-mobile md:px-margin-desktop pt-unit-xl pb-unit-lg flex flex-col justify-start">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-unit-md pb-unit-lg">
+<div class="flex flex-col max-w-4xl">
+<div class="flex items-center gap-unit-xs mb-unit-sm">
+<span class="w-2 h-2 bg-secondary inline-block"></span>
+<span class="font-meta-technical text-meta-technical text-outline uppercase tracking-widest">
+            INDEX // 01 — ARCHIVE OF SELECTED WORKS
+          </span>
+</div>
+<h1 class="font-headline-lg md:font-display-hero text-headline-lg md:text-display-hero text-surface-container-lowest tracking-tight">
+          Selected Works &amp; Creations
+        </h1>
+<p class="font-body-lg text-body-lg text-outline-variant max-w-2xl mt-unit-sm">
+          An archive spanning spatial audio installations, commercial scores, interactive game environments, stage scenography, and performance direction.
+        </p>
+</div>
+<!-- Controls: View Toggle -->
+<div class="flex items-center gap-unit-xs self-start md:self-end bg-surface-container-highest/10 p-unit-2xs rounded">
+<button class="flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase" id="view-grid-btn" onclick="setViewMode('grid')">
+<span class="material-symbols-outlined text-[16px]">grid_view</span>
+<span class="">Grid</span>
+</button>
+<button class="flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase" id="view-list-btn" onclick="setViewMode('list')">
+<span class="material-symbols-outlined text-[16px]">view_agenda</span>
+<span class="">List</span>
+</button>
+</div>
+</div>
+</section>
+<!-- GALLERY REPOSITORY -->
+<section class="w-full px-margin-mobile md:px-margin-desktop pb-unit-3xl">
+<!-- GRID CONTAINER -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter-desktop transition-opacity duration-300" id="projects-grid">
+<!-- PROJECT 01 -->
+<article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="spatial">
+<div class="flex items-center justify-between pb-unit-sm">
+<span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">01 // SPATIAL AUDIO JOURNEY</span>
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Spatial Audio</span>
+</div>
+<div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs">
+<img class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" data-alt="Dark dramatic interior of Naturama underground acoustic concrete dome with visitors seated in a wide circle beneath an overhead suspended ring of audio transducers and focused warm amber spotlights casting geometric beams through atmospheric haze." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLGUjBfxXG1zG84bF-4Ajv64yTC6RTlNp7dQx8Cxji-8R8s3dyKLpG-VhPtC1jXk1KGTjimgIRRStvogwIpxmPEO_-_UrVHfdhmow9eXG959rIF5Ux8mw9-PJrxawWbfQLDqMs-eI9aOf0sVz7y9MHGP-e1dtyT8j8W7dQKExLoULeVQjHatIfjuklHfaqRkaf5jeDnsPGkmVRqQ_yayQb-uDMCzEXAWkYzsGi9Z6QYHZ-liFVyYssObjeh_7rRR_iXQ">
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+<div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">
+            8-SPEAKER // SPATIAL AUDIO
+          </div>
+</div>
+<div class="pt-unit-md flex flex-col flex-grow justify-between">
+<div>
+<div class="flex flex-col mb-unit-xs">
+<h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">
+                Taste of Sound
+              </h2>
+<p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">
+                Spatial audio installation for Naturama
+              </p>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">
+              2024 / Naturama / Sound Designer, Composer &amp; Spatial Audio Mixer
+            </p>
+<p class="font-body-sm text-body-sm text-outline-variant max-w-xl">
+              A 20-minute, 360° audio journey that used sound, music and taste to carry thirty listeners from space to an unfamiliar tropical world.
+            </p>
+</div>
+<div class="pt-unit-md flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Spatial Audio &amp; Sound Design</span>
+<span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">
+              View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</article>
+<!-- PROJECT 02 -->
+<article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="music">
+<div class="flex items-center justify-between pb-unit-sm">
+<span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">02 // ORCHESTRAL SUITE</span>
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Music Composition</span>
+</div>
+<div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs">
+<img alt="Arla Commercial Music Composition" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvcmULTdz3Q1tAyFOzat4vclTWEbqkabPZQc0lBW8npCKEoAEpWg35zFAheJl8tiYFMyf_GcrbOeXdfTvpwSTTydpOXPJGXevDr1BVpaItWli5CABpiRKAcZN3l-Z5CwWc-85-6YD1S6VYfMZ0vqUzHDijNwSuYo-9k1fsWzDUi8tbvyieStwuPAThtOen3_IDdgTtKX8iyZOWjkUNqAWw7i5lmHrpd__WD8lFxqiwI1iHwRBSOopLYn4lPNUmhT0uPg">
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+<div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">
+            STEREO // ORIGINAL SCORE
+          </div>
+</div>
+<div class="pt-unit-md flex flex-col flex-grow justify-between">
+<div>
+<div class="flex flex-col mb-unit-xs">
+<h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">
+                From Farm To Fridge
+              </h2>
+<p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">
+                Arla Brand Film
+              </p>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">
+              2024 / Arla Foods / Composer &amp; Producer / GotFat Productions
+            </p>
+<p class="font-body-sm text-body-sm text-outline-variant max-w-xl">
+              A music composition that follows Arla’s journey from farm to family table through one evolving, recognisable melodic identity.
+            </p>
+</div>
+<div class="pt-unit-md flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Commercial Score</span>
+<span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">
+              View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</article>
+<!-- PROJECT 03 -->
+<article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="game">
+<div class="flex items-center justify-between pb-unit-sm">
+<span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">03 // VIDEO GAME PRODUCTION</span>
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Game Worlds</span>
+</div>
+<div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs">
+<img alt="Screenshot of Copenhell interactive game production" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeQSYKbhWjL1O_4KggJssGJNeRnzvCw5xo9lZAqPxb_wBUagafW25mMU3TRcabl635w2SsJlYv_kIQnyknym-O5_6sVdqx_u211HzT-ctghhv4IOdb7e43a_wBkEdb5zh0-VEwJmXjd2_p65sASVbrRmYwFKmGY1vPkNLIvOs1Cklv-NIm_ghyV5wkxUIwA9TdAb03HorcHTV4cmK3fpGKqf9jUDTrGomcTCX0vq6WzEcyqJolBOe3Vo3iK1WZK2obbw">
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+<div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">CREATIVE DIRECTION // LEAD GAME DESIGN</div>
+</div>
+<div class="pt-unit-md flex flex-col flex-grow justify-between">
+<div>
+<div class="flex flex-col mb-unit-xs">
+<h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">Chopper Runs To Hell</h2>
+<p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">New Blood — Interactive Music Game for Chopper × Copenhell</p>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">2026 / Copenhell × Chopper / Creative Director, Lead Game Designer &amp; Programmer</p>
+<p class="font-body-sm text-body-sm text-outline-variant max-w-xl">A music-synchronised PC game built around Chopper’s “New Blood”, where speed, risk and visual spectacle follow the track’s dramatic arc.</p>
+</div>
+<div class="pt-unit-md flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Interactive Game</span>
+<span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
+</div>
+</div>
+</article>
+<!-- PROJECT 04 -->
+<article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="stage">
+<div class="flex items-center justify-between pb-unit-sm">
+<span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">04 // THEATRE &amp; PERFORMANCE</span>
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Theatre &amp; Performance</span>
+</div>
+<div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs">
+<img alt="Uskyldig? — an autofictional theatre performance at uKirke" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt5tKjbNNpqeSZ32Si8nPlauYonzyEFJObbuT453zWjjpqMp5QBR_I57Imh5CDvlEWOskhKB1ot16XjeytOknkK50dcoS0bqnDATtwbnNCsLQvzQUkkB5bp8FZ4K-C5K35j64Fy8qf9V7nStDIXNIwgSFFF_rwYOAxJyBfTVC66kbkLn6YnDZ-k3e2Y98EshpYo5e44wVlx1EHUc0fa2Md_6A88EEoQkcGUnI7gge3VTsd3KVs_aCrThquFS3GpP6j5g">
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+<div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">THEATRE // PROCESS</div>
+</div>
+<div class="pt-unit-md flex flex-col flex-grow justify-between">
+<div>
+<div class="flex flex-col mb-unit-xs">
+<h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">Uskyldig?</h2>
+<p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">An autofictional sex musical in uKirke</p>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">2025 / uKirke / Co-director &amp; Theatre Process Lead</p>
+<p class="font-body-sm text-body-sm text-outline-variant max-w-xl">An ensemble-made performance about desire, consent and the stories bodies carry — shaped through improvisation, dance and live acting.</p>
+</div>
+<div class="pt-unit-md flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Theatre &amp; Performance</span>
+<span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
+</div>
+</div>
+</article>
+<!-- PROJECT 05 -->
+<article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="film">
+<div class="flex items-center justify-between pb-unit-sm">
+<span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">05 // MUSIC VIDEO PRODUCTION</span>
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Film &amp; Direction</span>
+</div>
+<div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs">
+<img alt="Music Video Production auteur direction" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgjWTPMUrpK9bbZ6v0ViqgZZcoe3wpDir2-oTlDm5o8swiT_jNkHBeHY7Xa2_oOjphocndVZk9yCtBCE7fvF2tSwN9fYL8PuTsPS_ih6xaF1izEpFYnuZCWXc0dHTtQ0OkWV2KVrgNkaJhNGjCHjGRPVxw9IgdcebTwfKO6xH6d-yAXgiirsKlWde-Q-0pFGevXXBYzeqsexp5l8mfSoPLJnZG-H_bhKsJKapqKJ10AZHN_gyoPPfXrYxxboPi0Mfl2Q">
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+<div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">DEIRDRE // ONLY YOU</div>
+</div>
+<div class="pt-unit-md flex flex-col flex-grow justify-between">
+<div>
+<div class="flex flex-col mb-unit-xs">
+<h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">Only You</h2>
+<p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">Music video for Deirdre</p>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">2023 / Co-directed with <a class="line21-link" href="https://www.line21.dk/da" target="_blank" rel="noreferrer">Line21</a> (Brian Raaby)</p>
+<p class="font-body-sm text-body-sm text-outline-variant max-w-xl">A quiet portrait of isolation and longing, following Deirdre through a muted Copenhagen day.</p>
+</div>
+<div class="pt-unit-md flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Music Video &amp; Direction</span>
+<span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
+</div>
+</div>
+</article>
+<article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="film"><div class="flex items-center justify-between pb-unit-sm"><span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">06 // MUSIC VIDEO PRODUCTION</span><span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Film &amp; Direction</span></div><div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs"><img alt="Music Video Production - Reflections in Shadow" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDakML0SlLpfSvzUQ0A6q_UEiArbGCtWinllnaFmWtjdnppvIlK4-CnOiBirx65zXhJtVW1aypAG_K0XWENgvsJ0sJxgwi48ODa0zEQPYgFwO7ifYKwfhKlJUFifUkZm412NlT1y27cjFhgaRyEa24le1TKUQb_rDL9zFsIGO5RhQWneetJpWKyvjKaPcCLXrmeKOeve1MaQCWhgsgvls_gh96rjocphy9RQMEu67dhwgFRyTY0JcLwIE21IzaQoZNNLw"><div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div><div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">CINEMATIC // DIRECTION</div></div><div class="pt-unit-md flex flex-col flex-grow justify-between"><div><div class="flex flex-col mb-unit-xs"><h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">I&#8217;m a Dinosaur</h2><p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">Music video for Late Runner</p></div><p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">2023 / Co-directed with <a class="line21-link" href="https://www.line21.dk/da" target="_blank" rel="noreferrer">Line21</a> (Brian Raaby) / Editor</p><p class="font-body-sm text-body-sm text-outline-variant max-w-xl">A performance-led music video that gives Late Runner room to relax, play and take up space in front of the camera.</p></div><div class="pt-unit-md flex items-center justify-between"><span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Music Video &amp; Direction</span><span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span></div></div></article><article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="film"><div class="flex items-center justify-between pb-unit-sm"><span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">07 // DOCUMENTARY SOUND</span><span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Documentary</span></div><div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs"><img alt="Designed To Be Kept — Royal Danish Academy graduation documentary still" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcmg7RFGq_DGh7tZW62IJht57yLLNWQA7-plWbMPokIkxel9vkc2nKRCJCzhTAALI1Q3RT7zZx-Z7TK3XumEbmyAkWxvRCMJLG3DvRbmLVg_DcXT-_eWCHH6uc1voVkj25eBc-GwuqZu7NIjGv0VTagyYh1INO_sJAIELynB-UJ3blkRE_Oov68FViFERMVsQyjXw9YMmYFsCZ2in-9MV3byHyf0NfEjp7zIXruG8_YWjhKWFpvFU_BxHxVRmOw4EwWQ"><div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div><div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">DOCUMENTARY // SOUND</div></div><div class="pt-unit-md flex flex-col flex-grow justify-between"><div><div class="flex flex-col mb-unit-xs"><h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">Designed To Be Kept</h2><p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">Royal Danish Academy — Graduation Documentary</p></div><p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">2025 / Royal Danish Academy / Sound &amp; Music Identity, Re-recording Mixer &amp; Interviewer</p><p class="font-body-sm text-body-sm text-outline-variant max-w-xl">A documentary sound world that connects twelve fashion and textile designers’ memories, cultural references and emerging collections.</p></div><div class="pt-unit-md flex items-center justify-between"><span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Sound &amp; Music Identity</span><span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span></div></div></article><article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="music"><div class="flex items-center justify-between pb-unit-sm"><span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">08 // INDEPENDENT MUSIC PROJECT</span><span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Music Composition</span></div><div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs"><img alt="MOTHLAND - The Copenhagen Windowsills artwork" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU5hQzqE6WWOfPUOo66HWwpu0qbn_7WgwETGvsdZt0Hu7IpCGidYC57txKlVjXUrQr9yvJFDW71lyZfD_LijL8Lmyaj1ejHj9CHr_nASqdbIoT1CqutWF3Q6I1aD0jn9MBntbmT3tLE7ClCkS_YKXOhvGIxy3HzvssdlTRDBw90CvvO2tz_DnV_97A0uiSc00HsemRp_tzQ5JpXzbeC0MOZoMmWUvStbTeUjgoZwwPvYKLZ5kMLK3iua9Il2dxW6AMAQ"><div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div><div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">24-BIT // ALBUM SCORE</div></div><div class="pt-unit-md flex flex-col flex-grow justify-between"><div><div class="flex flex-col mb-unit-xs"><h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">What Is Mothland</h2><p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">Independent Music Project</p></div><p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">2026 / What Is Mothland / Rasmus Jon</p><p class="font-body-sm text-body-sm text-outline-variant max-w-xl">An ambient rock album where post-rock, jazz, 1980s pop, minimalism and electronic sound design drift through a dark dream world.</p></div><div class="pt-unit-md flex items-center justify-between"><span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Independent Album &amp; Sound</span><span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span></div></div></article><article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="music"><div class="flex items-center justify-between pb-unit-sm"><span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">09 // INDEPENDENT MUSIC PROJECT</span><span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Music Composition</span></div><div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs"><img alt="Quiet Sonia — QS artwork" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNOE-y_rqqByUOTxwzZXA4n-0aeEi5lhYvCMA4tQA406oal1luqigg8pFXh738P5oug0cv81PKZyz7wkJcH6tb_wJK6dlFynom0Gyy8kzFdncIcWqKkXsZ_kbbJRtr8m81cYl3CL9jvgDQh2BDq_fdRM5WgPMZ5NhgaMHTz0g-W44-ab8bSOqzv_OTEE985lRf71xmbAb7nVR1FeOpivSJeUNR2dkPSMYFYf-4gVlHYVJpQATaPod3_VvW3W0wnWhmfw"><div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div><div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">VINYL // RELEASE</div></div><div class="pt-unit-md flex flex-col flex-grow justify-between"><div><div class="flex flex-col mb-unit-xs"><h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">QS</h2><p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">Gaffa Nominated Music Album</p></div><p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">2023 / Quiet Sonia / Live album</p><p class="font-body-sm text-body-sm text-outline-variant max-w-xl">A candle-lit, live-to-tape seven-piece record: raw chamber-rock, folk and post-rock shaped by attentive listening and group interplay.</p></div><div class="pt-unit-md flex items-center justify-between"><span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Independent Album &amp; Sound</span><span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span></div></div></article></div>
+<!-- LIST CONTAINER (HIDDEN INITIALLY) -->
+<div class="hidden flex-col gap-unit-xs w-full transition-opacity duration-300" id="projects-list">
+<!-- List Item 01 -->
+<div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="spatial">
+<div class="flex items-center gap-unit-md">
+<span class="font-meta-technical text-meta-technical text-secondary font-semibold">01</span>
+<div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs">
+<h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">Taste of Sound</h3>
+<span class="font-headline-sm italic text-secondary text-base">// Spatial audio installation for Naturama</span>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline">2024 / Naturama / Sound Designer, Composer &amp; Spatial Audio Mixer</p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0">
+<span class="font-label-caps text-label-caps uppercase text-outline-variant">Spatial Audio &amp; Architecture</span>
+<span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span>
+</div>
+</div>
+<!-- List Item 02 -->
+<div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="music">
+<div class="flex items-center gap-unit-md">
+<span class="font-meta-technical text-meta-technical text-secondary font-semibold">02</span>
+<div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs">
+<h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">From Farm To Fridge</h3>
+<span class="font-headline-sm italic text-secondary text-base">// Arla Brand Film</span>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline">2024 / Arla Foods / Composer &amp; Producer / GotFat Productions</p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0">
+<span class="font-label-caps text-label-caps uppercase text-outline-variant">Music Composition &amp; Commercial Score</span>
+<span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span>
+</div>
+</div>
+<!-- List Item 03 -->
+<div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="game">
+<div class="flex items-center gap-unit-md">
+<span class="font-meta-technical text-meta-technical text-secondary font-semibold">03</span>
+<div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs">
+<h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">Chopper Runs To Hell</h3>
+<span class="font-headline-sm italic text-secondary text-base">// New Blood — Interactive Music Game for Chopper × Copenhell</span>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline">2026 / Copenhell × Chopper / Creative Director, Lead Game Designer &amp; Programmer</p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0">
+<span class="font-label-caps text-label-caps uppercase text-outline-variant">Interactive Music Game</span>
+<span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span>
+</div>
+</div>
+<!-- List Item 04 -->
+<div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="stage">
+<div class="flex items-center gap-unit-md">
+<span class="font-meta-technical text-meta-technical text-secondary font-semibold">04</span>
+<div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs">
+<h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">Uskyldig?</h3>
+<span class="font-headline-sm italic text-secondary text-base">// An autofictional sex musical in uKirke</span>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline">2025 / uKirke / Co-director &amp; Theatre Process Lead</p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0">
+<span class="font-label-caps text-label-caps uppercase text-outline-variant">Co-direction &amp; Process Design</span>
+<span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span>
+</div>
+</div>
+<!-- List Item 05 -->
+<div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="film">
+<div class="flex items-center gap-unit-md">
+<span class="font-meta-technical text-meta-technical text-secondary font-semibold">05</span>
+<div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs">
+<h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">Only You</h3>
+<span class="font-headline-sm italic text-secondary text-base">// Music video for Deirdre</span>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline">2023 / Co-directed with <a class="line21-link" href="https://www.line21.dk/da" target="_blank" rel="noreferrer">Line21</a> (Brian Raaby)</p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0">
+<span class="font-label-caps text-label-caps uppercase text-outline-variant">Music Video &amp; Direction</span>
+<span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span>
+</div>
+</div>
+<div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="film"><div class="flex items-center gap-unit-md"><span class="font-meta-technical text-meta-technical text-secondary font-semibold">06</span><div><div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs"><h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">I&#8217;m a Dinosaur</h3><span class="font-headline-sm italic text-secondary text-base">// Music video for Late Runner</span></div><p class="font-meta-technical text-meta-technical text-outline">2023 / Co-directed with <a class="line21-link" href="https://www.line21.dk/da" target="_blank" rel="noreferrer">Line21</a> (Brian Raaby) / Editor</p></div></div><div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0"><span class="font-label-caps text-label-caps uppercase text-outline-variant">Music Video &amp; Direction</span><span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span></div></div><div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="film"><div class="flex items-center gap-unit-md"><span class="font-meta-technical text-meta-technical text-secondary font-semibold">07</span><div><div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs"><h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">Designed To Be Kept</h3><span class="font-headline-sm italic text-secondary text-base">// Royal Danish Academy — Graduation Documentary</span></div><p class="font-meta-technical text-meta-technical text-outline">2025 / Royal Danish Academy / Sound &amp; Music Identity, Re-recording Mixer &amp; Interviewer</p></div></div><div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0"><span class="font-label-caps text-label-caps uppercase text-outline-variant">Sound &amp; Music Identity</span><span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span></div></div><div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="music"><div class="flex items-center gap-unit-md"><span class="font-meta-technical text-meta-technical text-secondary font-semibold">08</span><div><div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs"><h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">What Is Mothland</h3><span class="font-headline-sm italic text-secondary text-base">// Independent Music Project</span></div><p class="font-meta-technical text-meta-technical text-outline">2026 / What Is Mothland / Rasmus Jon</p></div></div><div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0"><span class="font-label-caps text-label-caps uppercase text-outline-variant">Independent Album &amp; Sound</span><span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span></div></div><div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="music"><div class="flex items-center gap-unit-md"><span class="font-meta-technical text-meta-technical text-secondary font-semibold">09</span><div><div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs"><h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">QS</h3><span class="font-headline-sm italic text-secondary text-base">// Gaffa Nominated Music Album</span></div><p class="font-meta-technical text-meta-technical text-outline">2023 / Quiet Sonia / Live album</p></div></div><div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0"><span class="font-label-caps text-label-caps uppercase text-outline-variant">Independent Album &amp; Sound</span><span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span></div></div></div>
+</section>
+<!-- REFINED TECHNICAL METRICS / ARCHIVE LEDGER STRIP -->
+<section class="w-full bg-surface-container-highest/5 py-unit-xl px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter-desktop">
+<div class="flex flex-col">
+<span class="font-meta-technical text-meta-technical text-secondary uppercase tracking-widest mb-unit-2xs">Acoustic Standards</span>
+<span class="font-headline-sm text-headline-sm text-surface">64 Ambisonics</span>
+<span class="font-body-sm text-body-sm text-outline mt-unit-2xs">Subterranean &amp; Dome Integration</span>
+</div>
+<div class="flex flex-col">
+<span class="font-meta-technical text-meta-technical text-secondary uppercase tracking-widest mb-unit-2xs">Scenography Scale</span>
+<span class="font-headline-sm text-headline-sm text-surface">1,400 m²</span>
+<span class="font-body-sm text-body-sm text-outline mt-unit-2xs">Modular Volumetric Rigging</span>
+</div>
+<div class="flex flex-col">
+<span class="font-meta-technical text-meta-technical text-secondary uppercase tracking-widest mb-unit-2xs">Commission Index</span>
+<span class="font-headline-sm text-headline-sm text-surface">Nordic Biennial</span>
+<span class="font-body-sm text-body-sm text-outline mt-unit-2xs">Institutional &amp; Private Staging</span>
+</div>
+<div class="flex flex-col">
+<span class="font-meta-technical text-meta-technical text-secondary uppercase tracking-widest mb-unit-2xs">Auteur Mediums</span>
+<span class="font-headline-sm text-headline-sm text-surface">Spatial &amp; 35mm</span>
+<span class="font-body-sm text-body-sm text-outline mt-unit-2xs">Acoustic, Kinetic, Theatrical</span>
+</div>
+</div>
+</section>
+<!-- MINIMALIST STUDIO DIALOGUE BANNER -->
+<section class="w-full px-margin-mobile md:px-margin-desktop py-unit-3xl flex flex-col items-center justify-center text-center relative overflow-hidden">
+<div class="max-w-3xl flex flex-col items-center">
+<div class="flex items-center gap-unit-xs mb-unit-sm">
+<span class="w-2 h-2 bg-secondary inline-block"></span>
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">COMMISSIONS // 2025-2026</span>
+</div>
+<h2 class="font-headline-lg md:font-display-hero text-headline-lg md:text-display-hero text-surface tracking-tight mb-unit-md">
+        Have a project or biennial staging in mind?
+      </h2>
+<p class="font-body-lg text-body-lg text-outline-variant max-w-xl mb-unit-xl">
+        I accept select auteur spatial commissions, acoustic dome consultations, and scenographic direction worldwide.
+      </p>
+<a class="inline-flex items-center gap-unit-sm px-unit-lg py-unit-md bg-secondary hover:bg-secondary-container text-on-secondary font-label-caps text-label-caps uppercase tracking-widest transition-colors" data-path="contact" href="#">
+<span class="">Inquire About Collaboration</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- CLIENT-SIDE INTERACTIVITY FOR FILTERING AND VIEW TOGGLE -->
+<script>
+    function setViewMode(mode) {
+      const gridContainer = document.getElementById('projects-grid');
+      const listContainer = document.getElementById('projects-list');
+      const gridBtn = document.getElementById('view-grid-btn');
+      const listBtn = document.getElementById('view-list-btn');
+
+      if (mode === 'grid') {
+        gridContainer.classList.remove('hidden');
+        listContainer.classList.add('hidden');
+        gridBtn.className = 'flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase';
+        listBtn.className = 'flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase';
+      } else {
+        gridContainer.classList.add('hidden');
+        listContainer.classList.remove('hidden');
+        listBtn.className = 'flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase';
+        gridBtn.className = 'flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase';
+      }
+    }
+
+    function filterWorks(category) {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      filterButtons.forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.className = 'filter-btn active-filter px-unit-sm py-unit-xs font-label-caps text-label-caps uppercase tracking-wider bg-surface text-primary rounded transition-colors';
+        } else {
+          btn.className = 'filter-btn px-unit-sm py-unit-xs font-label-caps text-label-caps uppercase tracking-wider bg-surface-container-highest/10 text-outline-variant hover:text-surface rounded transition-colors';
+        }
+      });
+
+      const gridItems = document.querySelectorAll('.project-item');
+      const listItems = document.querySelectorAll('.list-item');
+
+      gridItems.forEach(item => {
+        if (category === 'all' || item.dataset.category.split(' ').includes(category)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      listItems.forEach(item => {
+        if (category === 'all' || item.dataset.category.split(' ').includes(category)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</div></main><!-- GLOBAL_FOOTER -->
+</body></html>

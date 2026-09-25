@@ -1,0 +1,2293 @@
+html { scroll-behavior: smooth; }
+button, a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid #d14d28; outline-offset: 5px; }
+.mock-section { position: relative; z-index: 20; background: #121110; color: #fbf9f4; padding: 100px max(6vw, 24px); border-top: 1px solid #ffffff24; }
+.mock-section h2 { font-family: 'Bodoni Moda', Georgia, serif; font-size: clamp(38px, 5vw, 72px); margin-bottom: 24px; }
+.mock-section p { max-width: 680px; line-height: 1.8; color: #cdc5bd; }
+.mock-section a { display: inline-block; margin-top: 24px; border-bottom: 1px solid; padding-bottom: 6px; }
+.about-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr); align-items: center; gap: clamp(40px, 8vw, 140px); }
+.about-copy { max-width: 680px; }
+.about-portrait { margin: 0; width: 100%; }
+.about-portrait img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: center; }
+.about-page { margin: 0; background: #060709; color: #f4f4f6; font-family: 'Manrope', sans-serif; }
+.about-main { padding: 170px max(6vw, 24px) 100px; }
+.about-intro, .about-statement, .about-disciplines, .about-contact { max-width: 1280px; margin-inline: auto; }
+.about-intro { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(300px, .8fr); align-items: end; gap: clamp(48px, 10vw, 180px); }
+.about-kicker, .about-statement-label { margin: 0 0 24px; color: #6f7f68; font: 500 11px/1.2 'Space Grotesk', monospace; letter-spacing: .16em; text-transform: uppercase; }
+.about-intro h1 { margin: 0; font: 400 clamp(58px, 8vw, 124px)/.88 'Bodoni Moda', Georgia, serif; letter-spacing: -.04em; }
+.about-intro h1 em { color: #6f7f68; font-weight: 400; }
+.about-lead { max-width: 520px; margin: 42px 0 0; color: rgba(244,244,246,.72); font-size: clamp(18px, 2vw, 25px); font-weight: 300; line-height: 1.45; }
+.about-hero-portrait { margin: 0; border: 1px solid rgba(255,255,255,.15); }
+.about-hero-portrait img { display: block; width: 100%; aspect-ratio: .92 / 1; object-fit: cover; object-position: center; }
+.about-statement { display: grid; grid-template-columns: minmax(180px, .38fr) minmax(0, 1fr); gap: clamp(32px, 7vw, 120px); border-top: 1px solid rgba(255,255,255,.14); margin-top: clamp(80px, 12vw, 180px); padding-top: 28px; }
+.about-statement-copy { max-width: 810px; }
+.about-statement-copy p { margin: 0 0 28px; color: rgba(244,244,246,.82); font-size: clamp(20px, 2.25vw, 31px); font-weight: 300; line-height: 1.36; letter-spacing: -.02em; }
+.about-statement-copy p + p { color: rgba(244,244,246,.6); font-size: clamp(16px, 1.5vw, 20px); line-height: 1.65; letter-spacing: 0; }
+.about-disciplines { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: clamp(80px, 11vw, 150px); border-top: 1px solid rgba(255,255,255,.14); border-bottom: 1px solid rgba(255,255,255,.14); }
+.about-disciplines span { padding: 28px 0; color: #f4f4f6; font: 400 clamp(18px, 2vw, 28px)/1.1 'Bodoni Moda', Georgia, serif; }
+.about-disciplines span + span { border-left: 1px solid rgba(255,255,255,.14); padding-left: 28px; }
+.about-statement-last { margin-top: clamp(80px, 11vw, 150px); }
+.about-contact { margin-top: clamp(80px, 12vw, 180px); padding-top: 26px; border-top: 1px solid rgba(255,255,255,.14); }
+.about-contact p { margin: 0 0 16px; color: rgba(244,244,246,.55); font: 500 11px 'Space Grotesk', monospace; letter-spacing: .15em; text-transform: uppercase; }
+.about-contact a { color: #f4f4f6; font: 400 clamp(32px, 5vw, 70px)/1 'Bodoni Moda', Georgia, serif; text-decoration: none; }
+.about-contact a:hover { color: #6f7f68; }
+.global-footer { background: #060709; border-top: 1px solid rgba(255,255,255,.14); color: #f4f4f6; padding: clamp(56px, 8vw, 110px) max(6vw, 24px); font-family: 'Manrope', sans-serif; }
+.global-footer-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(250px, .9fr) minmax(170px, .45fr); gap: clamp(42px, 8vw, 140px); max-width: 1280px; margin: auto; }
+.global-footer-name { color: #f4f4f6; font: 400 clamp(28px, 3vw, 42px)/1 'Bodoni Moda', Georgia, serif; text-decoration: none; }
+.global-footer-name:hover, .global-footer a:hover { color: #6f7f68; }
+.global-footer-intro p { max-width: 430px; margin: 18px 0 0; color: rgba(244,244,246,.62); font-size: 16px; line-height: 1.55; }
+.global-footer-contact, .global-footer-nav { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.global-footer-contact > span, .global-footer-nav > span { margin-bottom: 10px; color: #f4f4f6; font: 500 11px/1.2 'Space Grotesk', monospace; letter-spacing: .14em; text-transform: uppercase; }
+.global-footer a { color: rgba(244,244,246,.76); font: 400 14px/1.4 'Space Grotesk', monospace; letter-spacing: .04em; text-decoration: none; }
+.global-footer small { margin-top: 8px; color: #6f7f68; font: 500 10px/1.3 'Space Grotesk', monospace; letter-spacing: .1em; text-transform: uppercase; }
+dialog { background: #161514; color: #fbf9f4; border: 1px solid #ffffff33; padding: 32px; width: min(700px, 90vw); max-height: 85dvh; }
+dialog::backdrop { background: #000b; backdrop-filter: blur(8px); }
+dialog h2 { font: 32px Georgia, serif; margin: 20px 0; }
+dialog p { line-height: 1.7; color: #cdc5bd; }
+dialog img { width: 100%; max-height: 40vh; object-fit: cover; }
+dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; margin-bottom: 15px; }
+@media(max-width:700px) { .about-main { padding-top: 130px; } .about-intro, .about-statement { grid-template-columns: 1fr; gap: 28px; } .about-hero-portrait { max-width: 460px; } .about-disciplines { grid-template-columns: 1fr; } .about-disciplines span + span { border-left: 0; border-top: 1px solid rgba(255,255,255,.14); padding-left: 0; } .global-footer-grid { grid-template-columns: 1fr; gap: 44px; } }
+@media(max-width:600px) { header nav { gap: 14px !important; } header nav a { font-size: 10px !important; } header > div { padding-left: 18px !important; padding-right: 18px !important; } [data-purpose=brand-logo] { font-size: 10px; letter-spacing: .12em; } [data-purpose=brand-logo] > span:first-child { display:none; } .about-section { grid-template-columns: 1fr; gap: 40px; } }
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *, *::before, *::after { transition:none !important; animation:none !important; } }
+
+/* Square and portrait cover art should retain its full composition. */
+.project-item[data-project="mothland-copenhagen-windowsills"] img,
+.project-item[data-project="o-and-s-solitary-resonance"] img,
+.full-artwork {
+  object-fit: contain !important;
+}
+
+.project-item[data-project="mothland-copenhagen-windowsills"] .relative,
+.project-item[data-project="o-and-s-solitary-resonance"] .relative {
+  background-color: #000 !important;
+}
+
+/* Album artwork uses its natural square canvas on its case page. */
+.full-artwork-frame {
+  width: min(100%, 720px) !important;
+  margin-inline: auto;
+  background: transparent !important;
+}
+
+.full-artwork-frame > div {
+  aspect-ratio: 1 / 1 !important;
+  max-height: none !important;
+  background: transparent !important;
+}
+
+/* Project imagery is shown exactly as supplied, without a site-level grade. */
+.project-item img,
+#main-viewport-image {
+  filter: none !important;
+}
+
+.project-item img + div.absolute.inset-0 {
+  opacity: 0 !important;
+}
+
+/* Keep the shared dark navigation identical across pages. */
+[data-purpose="site-navigation-header"] .font-mono {
+  font-family: 'Space Grotesk', monospace !important;
+}
+
+[data-purpose="site-navigation-header"] .tracking-ultra {
+  letter-spacing: 0.28em !important;
+}
+
+/* The shared header gains contrast only after the page begins to scroll. */
+[data-purpose="site-navigation-header"] {
+  background-color: transparent;
+  transition: background-color 280ms ease, backdrop-filter 280ms ease;
+}
+
+[data-purpose="site-navigation-header"].is-scrolled {
+  background-color: rgba(6, 7, 9, 0.92);
+  backdrop-filter: blur(14px);
+}
+
+.carousel-perspective-container {
+  cursor: default;
+  touch-action: pan-y;
+}
+
+.carousel-card img {
+  transform: none !important;
+  transition: none !important;
+}
+
+.carousel-visual-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 40;
+  display: grid;
+  width: 132px;
+  height: 132px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, .22);
+  background: rgba(7, 8, 10, .12);
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+.carousel-visual-arrow svg { width: 64px; height: 64px; }
+.carousel-visual-arrow-left { left: clamp(8px, 4vw, 48px); }
+.carousel-visual-arrow-right { right: clamp(8px, 4vw, 48px); }
+@media (max-width: 600px) {
+  .carousel-visual-arrow { width: 100px; height: 100px; }
+  .carousel-visual-arrow svg { width: 50px; height: 50px; }
+}
+
+/* Live game player on the Chopper Runs To Hell project page. */
+.game-embed-viewport {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 1280px);
+  height: clamp(420px, 46vw, 640px);
+  margin-inline: auto;
+  aspect-ratio: auto !important;
+  max-height: none !important;
+  min-height: 0;
+  background: #080808;
+}
+.game-embed-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 18px;
+  color: #f2e9d8;
+  background: #302e2e;
+  border-bottom: 1px solid rgba(255, 255, 255, .18);
+  font: 500 11px/1.2 'Space Grotesk', monospace;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.game-embed-heading a { color: #f2e9d8; text-decoration: none; }
+.game-embed-heading button { padding: 0; border: 0; color: #f2e9d8; background: transparent; font: inherit; letter-spacing: inherit; text-transform: inherit; cursor: pointer; }
+.game-embed-heading a:hover, .game-embed-heading button:hover { color: #6f7f68; }
+.game-embed-viewport:fullscreen { width: 100%; height: 100%; max-width: none; background: #080808; }
+.game-embed-loader {
+  position: absolute;
+  inset: 45px 0 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  color: #ffe7d0;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(111, 127, 104, .24), transparent 30%),
+    linear-gradient(180deg, rgba(29, 18, 14, .98), rgba(3, 3, 3, .98));
+  transition: opacity 360ms ease, visibility 360ms ease;
+}
+.game-embed-loader.is-ready { opacity: 0; visibility: hidden; pointer-events: none; }
+.game-embed-loader-content { display: grid; justify-items: center; gap: 13px; text-align: center; }
+.game-embed-loader strong { font: 400 clamp(34px, 5vw, 68px)/.9 'Bodoni Moda', Georgia, serif; letter-spacing: -.03em; }
+.game-embed-loader-content > span:not(.game-embed-spinner):not(.game-embed-progress) { color: rgba(255, 231, 208, .75); font: 500 11px/1.3 'Space Grotesk', monospace; letter-spacing: .16em; text-transform: uppercase; }
+.game-embed-spinner { width: 36px; height: 36px; border: 3px solid rgba(255, 255, 255, .18); border-top-color: #6f7f68; border-radius: 999px; animation: game-loader-spin 850ms linear infinite; }
+.game-embed-progress { display: block; width: min(340px, 70vw); height: 4px; overflow: hidden; border-radius: 999px; background: rgba(255, 255, 255, .16); }
+.game-embed-progress i { display: block; width: 8%; height: 100%; border-radius: inherit; background: #6f7f68; transition: width 180ms ease; }
+@keyframes game-loader-spin { to { transform: rotate(360deg); } }
+.game-embed {
+  display: block;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  border: 0;
+  background: #080808;
+}
+@media (max-width: 700px) {
+  .game-embed-viewport { height: min(68svh, 560px); }
+  .game-embed-heading { padding: 12px 14px; font-size: 9px; }
+}
+
+/* EchoWorks palette - drawn from the warm paper, charcoal and brass tones in Rasmus Jon's CV. */
+:root {
+  --echoworks-charcoal: #302e2e;
+  --echoworks-ink: #211f20;
+  --echoworks-paper: #eeece6;
+  --echoworks-cream: #f2e9d8;
+  --echoworks-brass: #6f7f68;
+  --echoworks-mist: #cbd9d9;
+}
+
+:focus-visible { outline-color: var(--echoworks-brass); }
+
+/* The light editorial blocks echo the CV's paper stock while leaving all project media untouched. */
+.mock-section {
+  background: var(--echoworks-paper);
+  border-color: rgba(48, 46, 46, .18);
+  color: var(--echoworks-ink);
+}
+
+.mock-section p { color: #5b5552; }
+.mock-section a { color: var(--echoworks-ink); }
+.mock-section#contact {
+  background: var(--echoworks-charcoal);
+  border-color: rgba(242, 233, 216, .18);
+  color: var(--echoworks-cream);
+}
+.mock-section#contact p { color: rgba(242, 233, 216, .7); }
+.mock-section#contact a { color: var(--echoworks-cream); }
+
+/* Keep the immersive pages dark, but soften the blue-black towards the CV's charcoal. */
+.about-page {
+  background: var(--echoworks-charcoal);
+  color: var(--echoworks-cream);
+}
+.about-kicker, .about-statement-label,
+.about-intro h1 em,
+.about-contact a:hover { color: var(--echoworks-brass); }
+.about-lead { color: rgba(242, 233, 216, .74); }
+.about-statement, .about-disciplines, .about-contact { border-color: rgba(242, 233, 216, .2); }
+.about-statement-copy p { color: rgba(242, 233, 216, .84); }
+.about-statement-copy p + p { color: rgba(242, 233, 216, .66); }
+.about-disciplines span, .about-contact a { color: var(--echoworks-cream); }
+.about-disciplines span + span { border-color: rgba(242, 233, 216, .2); }
+.about-contact p { color: rgba(242, 233, 216, .6); }
+.about-hero-portrait { border-color: rgba(242, 233, 216, .22); }
+.about-hero-portrait {
+  padding: 10px;
+  border: 1px solid #ffffff;
+}
+
+.global-footer {
+  position: relative;
+  z-index: 20;
+  background: var(--echoworks-charcoal);
+  border-color: rgba(242, 233, 216, .2);
+  color: var(--echoworks-cream);
+}
+.global-footer-name,
+.global-footer-contact > span,
+.global-footer-nav > span { color: var(--echoworks-cream); }
+.global-footer-name:hover,
+.global-footer a:hover { color: var(--echoworks-brass); }
+.global-footer-intro p { color: rgba(242, 233, 216, .68); }
+.global-footer a { color: rgba(242, 233, 216, .82); }
+.global-footer small { color: var(--echoworks-brass); }
+
+/* Project gallery surfaces use the same restrained charcoal instead of pure black. */
+body:has(.project-item) main.bg-primary,
+body:has(.project-item) main.bg-primary > div.bg-primary { background-color: var(--echoworks-ink) !important; }
+body:has(.project-item) .bg-secondary,
+body:has(.project-item) .text-secondary { color: var(--echoworks-brass); }
+body:has(.project-item) .bg-secondary { background-color: var(--echoworks-brass); }
+
+/* Naturama listening model: controls use a fluid layout at every breakpoint. */
+.naturama-speaker-stage {
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.naturama-speaker-stage__circle {
+  width: min(100%, 380px);
+  aspect-ratio: 1;
+}
+
+@media (max-width: 1180px) {
+  .naturama-transport {
+    min-height: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .naturama-transport .naturama-transport-actions {
+    position: static;
+    transform: none;
+    flex: 0 0 auto;
+  }
+  .naturama-transport .naturama-timeline {
+    position: static;
+    transform: none;
+    width: auto;
+    max-width: none;
+    flex: 1 1 18rem;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 980px) {
+  .naturama-speaker-stage {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    align-items: start;
+  }
+  .naturama-speaker-stage__circle {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+  }
+  .naturama-speaker-stage .naturama-pair-controls,
+  .naturama-speaker-stage .naturama-level-controls {
+    position: static;
+    transform: none !important;
+    width: 100%;
+    justify-self: stretch;
+  }
+  .naturama-speaker-stage .naturama-pair-controls { grid-column: 1; grid-row: 2; }
+  .naturama-speaker-stage .naturama-level-controls { grid-column: 2; grid-row: 2; }
+}
+
+@media (max-width: 700px) {
+  .naturama-transport {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .naturama-transport .naturama-transport-actions {
+    flex-direction: row;
+    justify-content: stretch;
+  }
+  .naturama-transport .naturama-transport-actions button { flex: 1 1 0; }
+}
+
+@media (max-width: 560px) {
+  .naturama-speaker-stage { grid-template-columns: 1fr; }
+  .naturama-speaker-stage .naturama-pair-controls,
+  .naturama-speaker-stage .naturama-level-controls {
+    grid-column: 1;
+    width: min(100%, 26rem);
+    justify-self: center;
+  }
+  .naturama-speaker-stage .naturama-pair-controls { grid-row: 2; }
+  .naturama-speaker-stage .naturama-level-controls { grid-row: 3; }
+}
+
+@media (min-width: 1181px) {
+  .naturama-speaker-stage .naturama-pair-controls { transform: translate(-2.25rem, -50%) !important; }
+  .naturama-speaker-stage .naturama-level-controls { transform: translate(4rem, -50%) !important; }
+  .naturama-transport .naturama-transport-actions { left: -2.25rem !important; }
+}
+/* Keep the journey controls inside the player at tablet and mobile widths. */
+@media (max-width: 1180px) {
+  .naturama-transport {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .naturama-transport .naturama-timeline {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0;
+  }
+  #naturama-chapters {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  #naturama-chapters .naturama-chapter {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 700px) {
+  .naturama-transport .naturama-transport-actions {
+    flex-direction: row !important;
+    width: 100%;
+  }
+  .naturama-transport .naturama-transport-actions button {
+    min-width: 0;
+  }
+}
+/* Chapter segments use duration only; label width cannot affect their timeline position. */
+#naturama-chapters .naturama-chapter {
+  flex-basis: 0 !important;
+  flex-shrink: 1;
+}
+
+.naturama-speaker:hover,
+.naturama-speaker:focus-visible {
+  border-color: #6f7f68;
+  box-shadow: 0 0 0 1px rgba(111, 127, 104, .38), 0 0 18px rgba(111, 127, 104, .22);
+  outline: none;
+}
+
+@media (max-width: 700px) {
+  .naturama-transport .naturama-stop-journey {
+    position: static !important;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1181px) {
+  .naturama-transport .naturama-stop-journey { right: -4rem !important; }
+}
+
+@media (min-width: 1181px) {
+  .naturama-speaker-stage .naturama-pair-controls { transform: translate(-4rem, -50%) !important; }
+  .naturama-transport .naturama-transport-actions { left: -4rem !important; }
+}
+
+
+
+@media (min-width: 1181px) {
+  .naturama-speaker-stage .naturama-pair-controls {
+    transform: translate(-4rem, calc(-50% - 1.5cm)) !important;
+  }
+}
+
+@media (min-width: 1181px) {
+  .naturama-speaker-stage__circle {
+    transform: translateY(-1cm) !important;
+  }
+}
+
+/* Chapter-driven atmosphere behind the eight-speaker map. */
+.naturama-speaker-atmosphere {
+  position: absolute;
+  inset: -4rem -5rem;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .28;
+  filter: saturate(.28) brightness(.58) contrast(.86);
+  transition: background 1.2s ease, opacity 1.2s ease;
+  background: radial-gradient(circle at 50% 56%, rgba(185, 204, 226, .22), transparent 58%);
+}
+.naturama-speaker-stage__circle { position: relative; z-index: 1; }
+#naturama-emulator[data-active-chapter="0"] .naturama-speaker-atmosphere { background: radial-gradient(ellipse at 50% 54%, rgba(190, 211, 230, .22), rgba(76, 96, 120, .10) 35%, transparent 68%); }
+#naturama-emulator[data-active-chapter="1"] .naturama-speaker-atmosphere { background: radial-gradient(ellipse at 50% 72%, rgba(111, 127, 104, .28), rgba(255, 183, 94, .11) 38%, transparent 70%); }
+#naturama-emulator[data-active-chapter="2"] .naturama-speaker-atmosphere { background: radial-gradient(ellipse at 50% 46%, rgba(101, 115, 218, .25), rgba(52, 69, 129, .11) 42%, transparent 72%); }
+#naturama-emulator[data-active-chapter="3"] .naturama-speaker-atmosphere { background: radial-gradient(ellipse at 42% 60%, rgba(208, 65, 47, .28), rgba(121, 34, 35, .12) 42%, transparent 72%); }
+#naturama-emulator[data-active-chapter="4"] .naturama-speaker-atmosphere { background: radial-gradient(ellipse at 50% 62%, rgba(61, 178, 200, .27), rgba(27, 95, 136, .13) 42%, transparent 72%); }
+#naturama-emulator[data-active-chapter="5"] .naturama-speaker-atmosphere { background: radial-gradient(ellipse at 50% 48%, rgba(235, 197, 126, .19), rgba(124, 103, 70, .10) 42%, transparent 72%); }
+#naturama-emulator[data-active-chapter="6"] .naturama-speaker-atmosphere { background: radial-gradient(ellipse at 50% 62%, rgba(73, 160, 99, .26), rgba(28, 89, 55, .13) 42%, transparent 72%); }
+#naturama-emulator[data-active-chapter="7"] .naturama-speaker-atmosphere { background: radial-gradient(ellipse at 48% 60%, rgba(143, 48, 52, .27), rgba(71, 18, 27, .15) 42%, transparent 72%); }
+#naturama-emulator[data-active-chapter="8"] .naturama-speaker-atmosphere { background: radial-gradient(ellipse at 50% 38%, rgba(115, 152, 222, .23), rgba(83, 191, 210, .16) 38%, transparent 72%); }
+#naturama-emulator[data-active-chapter="9"] .naturama-speaker-atmosphere { background: radial-gradient(ellipse at 50% 44%, rgba(230, 173, 99, .22), rgba(129, 154, 201, .14) 42%, transparent 72%); }
+
+/* Naturama starts with the installation image and Chapter 01 as one editorial unit. */
+@media (min-width: 1024px) {
+  .naturama-hero-section {
+    display: grid;
+    grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+    align-items: start;
+    gap: clamp(2rem, 4vw, 5rem);
+  }
+  .naturama-hero-section .naturama-hero-media { width: 100%; }
+  .naturama-hero-section .naturama-hero-media > div {
+    aspect-ratio: 4 / 3 !important;
+    max-height: 430px !important;
+  }
+  .naturama-hero-chapter {
+    padding-top: clamp(.25rem, 2vw, 2.5rem);
+  }
+}
+@media (max-width: 1023px) {
+  .naturama-hero-section { display: block; }
+  .naturama-hero-chapter { margin-top: 2rem; }
+}
+
+/* Supplied chapter images sit softly behind the speaker map. */
+.naturama-speaker-atmosphere {
+  background-size: cover !important;
+  background-position: center !important;
+  opacity: .16;
+}
+#naturama-emulator[data-active-chapter="0"] .naturama-speaker-atmosphere { background-image: url('/assets/naturama/chapters/capsule.webp'); }
+#naturama-emulator[data-active-chapter="1"] .naturama-speaker-atmosphere { background-image: url('/assets/naturama/chapters/liftoff.png'); }
+#naturama-emulator[data-active-chapter="2"] .naturama-speaker-atmosphere { background-image: url('/assets/naturama/chapters/space.jpg'); }
+#naturama-emulator[data-active-chapter="3"] .naturama-speaker-atmosphere { background-image: url('/assets/naturama/chapters/crash.avif'); }
+#naturama-emulator[data-active-chapter="4"] .naturama-speaker-atmosphere { background-image: url('/assets/naturama/chapters/water.avif'); }
+#naturama-emulator[data-active-chapter="5"] .naturama-speaker-atmosphere { background-image: url('/assets/naturama/chapters/outside.jpg'); }
+#naturama-emulator[data-active-chapter="6"] .naturama-speaker-atmosphere,
+#naturama-emulator[data-active-chapter="7"] .naturama-speaker-atmosphere { background-image: url('/assets/naturama/chapters/jungle.webp'); }
+#naturama-emulator[data-active-chapter="8"] .naturama-speaker-atmosphere { background-image: url('/assets/naturama/chapters/cloudburst.jpg'); }
+#naturama-emulator[data-active-chapter="9"] .naturama-speaker-atmosphere { background-image: url('/assets/naturama/chapters/rescue.jpg'); }
+
+/* Keep the supplied chapter imagery legible while framing the speaker map. */
+.naturama-speaker-atmosphere::before,
+.naturama-speaker-atmosphere::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.naturama-speaker-atmosphere::before {
+  background: radial-gradient(ellipse at center, transparent 18%, rgba(4, 7, 10, .98) 100%);
+}
+.naturama-speaker-atmosphere::after {
+  inset: 11% 16%;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, .98) 0%, rgba(0, 0, 0, .90) 22%, rgba(0, 0, 0, .58) 43%, rgba(0, 0, 0, .16) 64%, transparent 78%);
+  box-shadow: none;
+}
+/* The centre vignette remains circular at every screen size. */
+.naturama-speaker-atmosphere::after {
+  inset: auto;
+  width: min(50%, 25rem);
+  aspect-ratio: 1;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(2rem);
+}
+/* A full-strength centre vignette stays above the translucent chapter image. */
+.naturama-speaker-atmosphere::after { display: none; }
+@media (min-width: 981px) {
+  .naturama-speaker-stage { position: relative; isolation: isolate; }
+  .naturama-speaker-stage::after {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    width: 64%;
+    max-width: none;
+    aspect-ratio: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(.9rem);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.10'/%3E%3C/svg%3E"), radial-gradient(circle at center, rgba(15, 16, 20, 1) 0 38%, rgba(15, 16, 20, 0) 100%);
+    background-size: 128px 128px, 100% 100%;
+    background-repeat: repeat, no-repeat;
+    background-blend-mode: soft-light, normal;
+  }
+}
+/* Chapter artwork fills the player frame proportionally and is clipped at its edges. */
+#naturama-emulator {
+  overflow: hidden;
+}
+#naturama-emulator .naturama-speaker-atmosphere {
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+/* Use a single blurred layer instead of stepped radial gradients to avoid banding. */
+.naturama-speaker-atmosphere::before {
+  background: linear-gradient(to bottom, rgba(4, 7, 10, .88) 0%, transparent 29%, transparent 70%, rgba(4, 7, 10, .96) 100%), linear-gradient(to right, rgba(4, 7, 10, .88) 0%, transparent 25%, transparent 75%, rgba(4, 7, 10, .88) 100%);
+}
+@media (min-width: 981px) {
+  .naturama-speaker-stage::after {
+    width: 31%;
+    max-width: none;
+    background: rgb(15, 16, 20);
+    background-image: none;
+    background-blend-mode: normal;
+    filter: blur(3.25rem);
+  }
+}
+/* Preserve an opaque core beneath the soft vignette edge. */
+@media (min-width: 981px) {
+  .naturama-speaker-stage::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    width: 19%;
+    aspect-ratio: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: rgb(15, 16, 20);
+    pointer-events: none;
+  }
+}
+/* The speaker-map field itself is fully opaque, not just its vignette. */
+.naturama-speaker-stage__circle > div:first-child {
+  background-color: rgb(15, 16, 20) !important;
+}
+/* Fade outward from the opaque speaker-map circle without adding additional rings. */
+@media (min-width: 981px) {
+  .naturama-speaker-stage::before { display: none; }
+  .naturama-speaker-stage::after {
+    inset: -8rem;
+    width: auto;
+    max-width: none;
+    height: auto;
+    aspect-ratio: auto;
+    transform: none;
+    border-radius: 0;
+    filter: none;
+    background: radial-gradient(circle at center, rgba(15, 16, 20, .96) 0 190px, rgba(15, 16, 20, 0) 370px);
+  }
+}
+/* Chapter artwork uses two stacked layers for a stable two-second crossfade. */
+#naturama-emulator .naturama-speaker-atmosphere {
+  opacity: 0 !important;
+  transition: opacity 2s ease !important;
+  transition-property: opacity !important;
+}
+#naturama-emulator .naturama-speaker-atmosphere.naturama-speaker-atmosphere--visible {
+  opacity: .16 !important;
+}
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="0"] { background-image: url('/assets/naturama/chapters/capsule.webp') !important; }
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="1"] { background-image: url('/assets/naturama/chapters/liftoff.png') !important; }
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="2"] { background-image: url('/assets/naturama/chapters/space.jpg') !important; }
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="3"] { background-image: url('/assets/naturama/chapters/crash.avif') !important; }
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="4"] { background-image: url('/assets/naturama/chapters/water.avif') !important; }
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="5"] { background-image: url('/assets/naturama/chapters/outside.jpg') !important; }
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="6"],
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="7"] { background-image: url('/assets/naturama/chapters/jungle.webp') !important; }
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="8"] { background-image: url('/assets/naturama/chapters/cloudburst.jpg') !important; }
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="9"] { background-image: url('/assets/naturama/chapters/rescue.jpg') !important; }
+
+/* Bring controls forward without changing their layout or positioning rules. */
+#naturama-emulator .naturama-speaker-stage__circle,
+#naturama-emulator .naturama-speaker-stage .naturama-pair-controls,
+#naturama-emulator .naturama-speaker-stage .naturama-level-controls {
+  z-index: 3;
+}
+#naturama-emulator .naturama-transport,
+#naturama-emulator .naturama-transport-actions,
+#naturama-emulator .naturama-timeline {
+  z-index: 4;
+}
+/* Water carries a slightly brighter, richer grade than the other chapter images. */
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="4"] {
+  opacity: .19 !important;
+  filter: saturate(.52) brightness(.76) contrast(.9);
+}
+/* Crash uses the same lifted chapter-image grade as Water. */
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="3"] {
+  opacity: .19 !important;
+  filter: saturate(.52) brightness(.76) contrast(.9);
+}
+/* Push the crash scene's red energy forward without affecting other chapters. */
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="3"] {
+  background-color: rgba(180, 48, 28, .34);
+  background-blend-mode: screen;
+  filter: saturate(.95) brightness(.78) contrast(.94);
+}
+/* Lift the Cloudburst rain so its detail remains visible behind the interface. */
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="8"] {
+  opacity: .31 !important;
+  filter: saturate(.7) brightness(1.12) contrast(1.08);
+}
+/* Give the rescue scene a little more warmth and move the water framing downward. */
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="9"] {
+  opacity: .31 !important;
+  filter: saturate(.52) brightness(.76) contrast(.9);
+}
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="4"] {
+  background-position: center 60% !important;
+}
+/* A hidden crossfade layer must always finish at zero opacity, even with chapter-specific grading. */
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter]:not(.naturama-speaker-atmosphere--visible) {
+  opacity: 0 !important;
+}
+/* Shift the Rescue artwork slightly left within its cover crop. */
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="9"] {
+  background-position: 12% 82% !important;
+}
+/* Use Cloudburst's brighter, clearer grade consistently across all chapter artwork. */
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter] {
+  opacity: .31 !important;
+  filter: saturate(.7) brightness(1.12) contrast(1.08);
+}
+/* Chapter-specific framing and tonal adjustments. */
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="9"] {
+  background-position: 12% 62% !important;
+}
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="4"] {
+  background-position: center top !important;
+}
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="6"],
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="7"] {
+  opacity: .26 !important;
+  filter: saturate(.62) brightness(.88) contrast(1.04);
+}
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="5"] {
+  opacity: .27 !important;
+  filter: saturate(.65) brightness(.93) contrast(1.05);
+}
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="0"],
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="2"] {
+  opacity: .26 !important;
+  filter: saturate(.62) brightness(.89) contrast(1.04);
+}
+/* Bring Water closer to Cloudburst's darker rain atmosphere. */
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="4"] {
+  opacity: .27 !important;
+  filter: saturate(.66) brightness(.98) contrast(1.06);
+}
+/* Cool and subdue Outside so the bright island belongs to Cloudburst's rain-world. */
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="5"] {
+  opacity: .29 !important;
+  background-color: rgba(12, 31, 37, .32);
+  background-blend-mode: multiply;
+  filter: saturate(.62) brightness(.92) contrast(1.22) hue-rotate(8deg);
+}
+/* Deepen Crash shadows while keeping the red scene energy. */
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="3"] {
+  filter: saturate(.76) brightness(.84) contrast(1.28);
+}
+/* Add a little more definition to Crash, Space and Outside. */
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="3"] {
+  filter: saturate(.76) brightness(.84) contrast(1.38);
+}
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="2"] {
+  filter: saturate(.62) brightness(.89) contrast(1.16);
+}
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter="5"] {
+  filter: saturate(.62) brightness(.92) contrast(1.32) hue-rotate(8deg);
+}
+/* Chapter artwork belongs to the full player frame, independent of the speaker layout. */
+#naturama-emulator {
+  position: relative;
+}
+#naturama-emulator > .naturama-speaker-atmosphere {
+  inset: 0;
+  border-radius: inherit;
+}#naturama-emulator > :not(.naturama-speaker-atmosphere) {
+  position: relative;
+  z-index: 1;
+}
+/* Stop Journey is desktop-only so it never overlaps the speaker map on compact layouts. */
+@media (max-width: 1180px) {
+  #naturama-emulator .naturama-stop-journey {
+    display: none !important;
+  }
+}
+/* Keep the three Naturama story chapters aligned on one desktop row. */
+@media (min-width: 1024px) {
+  .naturama-intro-grid > .naturama-intro-chapter,
+  .naturama-intro-grid > .naturama-chapter-three {
+    grid-column: span 4 / span 4;
+  }
+
+  .naturama-intro-grid > .naturama-chapter-three {
+    display: block;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+}
+
+/* Let the final two Naturama chapters share the full row beneath the emulator. */
+@media (min-width: 1024px) {
+  .naturama-intro-grid > .naturama-intro-chapter--two,
+  .naturama-intro-grid > .naturama-chapter-three {
+    grid-column: span 6 / span 6;
+    margin-top: 1.5rem;
+  }
+}
+
+/* Project details take their visual direction directly from the Projects gallery. */
+body:has(#project-breadcrumb) {
+  background: #060709 !important;
+  color: #f4f4f6;
+}
+
+body:has(#project-breadcrumb) main {
+  background:
+    radial-gradient(58rem 32rem at 88% 0%, rgba(111, 127, 104, .09), transparent 64%),
+    linear-gradient(180deg, #090a0d 0%, #060709 38%, #0a0b0f 100%) !important;
+}
+
+body:has(#project-breadcrumb) main > .cinematic-glow { opacity: .62; }
+
+body:has(#project-breadcrumb) main > section:first-of-type {
+  border-color: rgba(255, 255, 255, .12) !important;
+  background: rgba(6, 7, 9, .68) !important;
+}
+
+body:has(#project-breadcrumb) #project-breadcrumb {
+  color: rgba(255, 255, 255, .72);
+}
+
+body:has(#project-breadcrumb) #project-kicker,
+body:has(#project-breadcrumb) [class*="text-[#6f7f68]"] {
+  color: #6f7f68 !important;
+}
+
+body:has(#project-breadcrumb) h1,
+body:has(#project-breadcrumb) h3,
+body:has(#project-breadcrumb) #detail-spec-value-1,
+body:has(#project-breadcrumb) #detail-spec-value-2,
+body:has(#project-breadcrumb) #detail-spec-value-3,
+body:has(#project-breadcrumb) #detail-spec-value-4 {
+  color: #f4f4f6 !important;
+}
+
+body:has(#project-breadcrumb) h2,
+body:has(#project-breadcrumb) #project-role-meta,
+body:has(#project-breadcrumb) .text-brand-muted {
+  color: rgba(255, 255, 255, .54) !important;
+}
+
+body:has(#project-breadcrumb) section:has(#main-viewport-image) > div {
+  border-color: rgba(255, 255, 255, .16) !important;
+  background: #0e0f12 !important;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .52) !important;
+}
+
+body:has(#project-breadcrumb) #main-viewport-image {
+  filter: saturate(.9) contrast(1.04) brightness(.9) !important;
+  transition: filter 400ms ease !important;
+}
+
+body:has(#project-breadcrumb) #main-viewport-image:hover {
+  filter: saturate(1) contrast(1.04) brightness(.98) !important;
+}
+
+body:has(#project-breadcrumb) #project-generic-case-study,
+body:has(#project-breadcrumb) #game-case-study {
+  padding-top: clamp(5rem, 8vw, 8rem) !important;
+  padding-bottom: clamp(5rem, 8vw, 8rem) !important;
+}
+
+body:has(#project-breadcrumb) #project-generic-case-study > .grid,
+body:has(#project-breadcrumb) #game-case-study > .grid {
+  border-top: 1px solid rgba(255, 255, 255, .11);
+  padding-top: 1.5rem;
+}
+
+body:has(#project-breadcrumb) #project-generic-case-study p,
+body:has(#project-breadcrumb) #game-case-study p {
+  color: rgba(255, 255, 255, .68) !important;
+}
+
+body:has(#project-breadcrumb) #project-generic-case-study .rounded-xl,
+body:has(#project-breadcrumb) #project-generic-case-study .rounded-2xl,
+body:has(#project-breadcrumb) #game-case-study .rounded-xl,
+body:has(#project-breadcrumb) #game-case-study .rounded-2xl {
+  border-color: rgba(255, 255, 255, .13) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .015)) !important;
+  box-shadow: 0 16px 46px rgba(0, 0, 0, .2) !important;
+}
+
+body:has(#project-breadcrumb) #project-commission-section > div {
+  border-color: rgba(255, 255, 255, .16) !important;
+  background: linear-gradient(115deg, #111216 0%, #17171b 54%, #201816 100%) !important;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, .44) !important;
+}
+
+body:has(#project-breadcrumb) #project-commission-section a {
+  background: #6f7f68 !important;
+  color: #fff !important;
+  box-shadow: 0 0 24px rgba(111, 127, 104, .25) !important;
+}
+
+body:has(#project-breadcrumb) #project-commission-section a:hover {
+  background: #879580 !important;
+}
+
+@media (max-width: 700px) {
+  body:has(#project-breadcrumb) #project-generic-case-study,
+  body:has(#project-breadcrumb) #game-case-study {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+}
+
+/* Project detail palette mirrors the Projects gallery exactly. */
+body:has(#project-breadcrumb) {
+  background: var(--echoworks-ink) !important;
+  color: var(--echoworks-cream);
+}
+
+body:has(#project-breadcrumb) main {
+  background:
+    radial-gradient(58rem 32rem at 88% 0%, rgba(111, 127, 104, .12), transparent 64%),
+    radial-gradient(46rem 28rem at 2% 36%, rgba(203, 217, 217, .06), transparent 72%),
+    var(--echoworks-ink) !important;
+}
+
+body:has(#project-breadcrumb) main > .cinematic-glow { opacity: .42; }
+
+body:has(#project-breadcrumb) main > section:first-of-type {
+  border-color: rgba(242, 233, 216, .18) !important;
+  background: rgba(33, 31, 32, .78) !important;
+}
+
+body:has(#project-breadcrumb) #project-breadcrumb,
+body:has(#project-breadcrumb) h1,
+body:has(#project-breadcrumb) h3,
+body:has(#project-breadcrumb) #detail-spec-value-1,
+body:has(#project-breadcrumb) #detail-spec-value-2,
+body:has(#project-breadcrumb) #detail-spec-value-3,
+body:has(#project-breadcrumb) #detail-spec-value-4 {
+  color: var(--echoworks-cream) !important;
+}
+
+body:has(#project-breadcrumb) #project-kicker,
+body:has(#project-breadcrumb) h2,
+body:has(#project-breadcrumb) [class*="text-[#6f7f68]"] {
+  color: var(--echoworks-brass) !important;
+}
+
+body:has(#project-breadcrumb) #project-role-meta,
+body:has(#project-breadcrumb) .text-brand-muted {
+  color: rgba(242, 233, 216, .58) !important;
+}
+
+body:has(#project-breadcrumb) section:has(#main-viewport-image) > div {
+  border-color: rgba(242, 233, 216, .2) !important;
+  background: var(--echoworks-charcoal) !important;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .42) !important;
+}
+
+body:has(#project-breadcrumb) #main-viewport-image {
+  filter: saturate(.88) contrast(1.04) brightness(.9) !important;
+  transition: filter 400ms ease !important;
+}
+
+body:has(#project-breadcrumb) #main-viewport-image:hover {
+  filter: saturate(.98) contrast(1.04) brightness(.98) !important;
+}
+
+body:has(#project-breadcrumb) #project-generic-case-study,
+body:has(#project-breadcrumb) #game-case-study {
+  padding-top: clamp(5rem, 8vw, 8rem) !important;
+  padding-bottom: clamp(5rem, 8vw, 8rem) !important;
+}
+
+body:has(#project-breadcrumb) #project-generic-case-study > .grid,
+body:has(#project-breadcrumb) #game-case-study > .grid {
+  border-top: 1px solid rgba(242, 233, 216, .18);
+  padding-top: 1.5rem;
+}
+
+body:has(#project-breadcrumb) #project-generic-case-study p,
+body:has(#project-breadcrumb) #game-case-study p {
+  color: rgba(242, 233, 216, .7) !important;
+}
+
+body:has(#project-breadcrumb) #project-generic-case-study .rounded-xl,
+body:has(#project-breadcrumb) #project-generic-case-study .rounded-2xl,
+body:has(#project-breadcrumb) #game-case-study .rounded-xl,
+body:has(#project-breadcrumb) #game-case-study .rounded-2xl {
+  border-color: rgba(242, 233, 216, .2) !important;
+  background: linear-gradient(135deg, rgba(242, 233, 216, .06), rgba(48, 46, 46, .52)) !important;
+  box-shadow: 0 16px 46px rgba(0, 0, 0, .18) !important;
+}
+
+body:has(#project-breadcrumb) #project-commission-section > div {
+  border-color: rgba(111, 127, 104, .55) !important;
+  background: linear-gradient(115deg, var(--echoworks-ink) 0%, var(--echoworks-charcoal) 56%, #44382e 100%) !important;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, .34) !important;
+}
+
+body:has(#project-breadcrumb) #project-commission-section a {
+  background: var(--echoworks-brass) !important;
+  color: var(--echoworks-ink) !important;
+  box-shadow: none !important;
+}
+
+body:has(#project-breadcrumb) #project-commission-section a:hover {
+  background: var(--echoworks-cream) !important;
+}
+
+@media (max-width: 700px) {
+  body:has(#project-breadcrumb) #project-generic-case-study,
+  body:has(#project-breadcrumb) #game-case-study {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+}
+
+/* The Naturama introduction stays open on the page; only its pull quote is a card. */
+body:has(#project-breadcrumb) .naturama-hero-chapter,
+body:has(#project-breadcrumb) .naturama-hero-chapter > div {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* The shared media frame must not colour the adjacent Naturama text panel. */
+body:has(#project-breadcrumb) section:has(#main-viewport-image) > .naturama-hero-chapter {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+@media (min-width: 1024px) {
+  .naturama-hero-section .naturama-hero-chapter {
+    padding-top: 0;
+  }
+}
+
+/* Match Chapter 3's title-to-copy rhythm with Chapter 2. */
+.naturama-chapter-three > .space-y-5 {
+  margin-top: 1.5rem;
+}
+
+/* Site-wide editorial typography system. */
+:root {
+  --type-editorial: "PP Editorial New", "Signifier", "Bodoni Moda", Georgia, serif;
+  --type-sans: "Neue Montreal", "Untitled Sans", "Manrope", Arial, sans-serif;
+}
+
+html,
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--type-sans) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-bodoni,
+.font-serif,
+.font-hero-serif,
+[class*="font-headline"],
+.font-display-hero,
+.font-display-hero-mobile {
+  font-family: var(--type-editorial) !important;
+}
+
+.font-manrope,
+.font-hero-sans,
+.font-body-md,
+.font-body-sm,
+[class*="font-body"],
+.font-mono,
+.font-label-caps,
+.font-meta-technical,
+[class*="font-meta"] {
+  font-family: var(--type-sans) !important;
+}
+
+/* Metadata remains quiet and precise without a techno/monospace treatment. */
+.font-meta-technical,
+.font-label-caps,
+.font-mono,
+[class*="font-meta"] {
+  letter-spacing: .075em !important;
+}
+
+/* Navigation uses a direct, mixed-case sans voice. */
+[data-purpose="site-navigation-header"],
+[data-purpose="site-navigation-header"] *,
+header nav,
+header nav a,
+[data-purpose="brand-logo"] {
+  font-family: var(--type-sans) !important;
+  font-style: normal !important;
+  letter-spacing: .01em !important;
+  text-transform: none !important;
+}
+
+[data-purpose="site-navigation-header"] .tracking-ultra {
+  letter-spacing: .08em !important;
+}
+
+/* Site-wide artistic typography system: intimate editorial display, clear human sans, quiet technical notes. */
+:root {
+  --type-editorial: "Instrument Serif", Georgia, serif;
+  --type-sans: "Instrument Sans", Arial, sans-serif;
+  --type-meta: "IBM Plex Mono", "Courier New", monospace;
+}
+
+html,
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--type-sans) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-bodoni,
+.font-serif,
+.font-hero-serif,
+[class*="font-headline"],
+.font-display-hero,
+.font-display-hero-mobile {
+  font-family: var(--type-editorial) !important;
+  font-weight: 400;
+}
+
+.font-manrope,
+.font-hero-sans,
+.font-body-md,
+.font-body-sm,
+[class*="font-body"] {
+  font-family: var(--type-sans) !important;
+}
+
+.font-mono,
+.font-label-caps,
+.font-meta-technical,
+[class*="font-meta"] {
+  font-family: var(--type-meta) !important;
+  letter-spacing: .035em !important;
+}
+
+/* Navigation remains immediate and human: a simple mixed-case sans with no techno spacing. */
+[data-purpose="site-navigation-header"],
+[data-purpose="site-navigation-header"] *,
+header nav,
+header nav a,
+[data-purpose="brand-logo"] {
+  font-family: var(--type-sans) !important;
+  font-style: normal !important;
+  letter-spacing: .01em !important;
+  text-transform: none !important;
+}
+
+[data-purpose="site-navigation-header"] .tracking-ultra {
+  letter-spacing: .06em !important;
+}
+
+/* Chapter labels use the same restrained typewriter voice throughout the portfolio. */
+#project-generic-case-study .font-mono,
+#game-case-study .font-mono,
+.naturama-hero-chapter .font-mono,
+.naturama-chapter-three .font-mono {
+  font-family: var(--type-meta) !important;
+}
+
+/* Stereo-pair and level controls use the requested warm off-white surface. */
+#naturama-emulator .naturama-pair-controls .naturama-pair,
+#naturama-emulator .naturama-level-controls {
+  background: #ebebe7 !important;
+  border-color: rgba(33, 31, 32, .22) !important;
+}
+
+#naturama-emulator .naturama-pair-controls .naturama-pair span,
+#naturama-emulator .naturama-level-controls .font-mono {
+  color: #211f20 !important;
+}
+
+#naturama-emulator .naturama-pair-controls .naturama-pair:hover {
+  border-color: #6f7f68 !important;
+}
+
+/* Naturama controls now share the warm paper tone from the listening-model heading. */
+#naturama-emulator .naturama-pair-controls .naturama-pair,
+#naturama-emulator .naturama-level-controls {
+  background: #f2e9d8 !important;
+  border-color: rgba(33, 31, 32, .2) !important;
+}
+
+/* A soft paper-coloured vignette replaces the former charcoal cast. */
+@media (min-width: 981px) {
+  #naturama-emulator .naturama-speaker-stage::after {
+    background: radial-gradient(circle at center, rgba(242, 233, 216, .34) 0 190px, rgba(242, 233, 216, 0) 370px) !important;
+  }
+}
+
+/* Speaker selectors share the listening-model heading's warm paper colour. */
+#naturama-emulator .naturama-speaker {
+  background: #f2e9d8 !important;
+  border-color: rgba(33, 31, 32, .28) !important;
+  color: #211f20 !important;
+}
+
+#naturama-emulator .naturama-speaker:hover,
+#naturama-emulator .naturama-speaker.is-selected {
+  border-color: #6f7f68 !important;
+  box-shadow: 0 0 0 2px rgba(111, 127, 104, .18) !important;
+}
+
+/* The listening-map rings use the same warm paper surface as the speaker selectors. */
+#naturama-emulator .naturama-speaker-stage__circle > div:first-child,
+#naturama-emulator .naturama-speaker-stage__circle > div:nth-child(2) {
+  background-color: #f2e9d8 !important;
+  border-color: rgba(33, 31, 32, .28) !important;
+}
+
+#naturama-emulator .naturama-speaker-stage__circle > div:nth-child(2) {
+  border-color: #6f7f68 !important;
+  color: #211f20 !important;
+}
+
+#naturama-emulator .naturama-speaker-stage__circle > div:nth-child(2) span {
+  color: #211f20 !important;
+}
+
+/* Tape-machine palette: forest ink, oxidised teal, warm mechanism metal and restrained signals. */
+:root {
+  --echoworks-ink: #111714;
+  --echoworks-charcoal: #263b3b;
+  --echoworks-paper: #a7afa4;
+  --echoworks-cream: #d8d1ba;
+  --echoworks-brass: #a24e44;
+  --echoworks-mist: #a7afa4;
+  --tape-metal: #31484a;
+  --tape-signal: #d7ce2d;
+  --tape-oxide: #5d2c2c;
+}
+
+body {
+  background-color: var(--echoworks-ink) !important;
+  color: var(--echoworks-cream);
+}
+
+/* The small yellow signal is reserved for tiny status and playback details. */
+#naturama-emulator input[type="range"]::-webkit-slider-thumb {
+  background: var(--tape-signal);
+}
+
+#naturama-emulator input[type="range"]::-moz-range-thumb {
+  background: var(--tape-signal);
+}
+
+@media (min-width: 981px) {
+  #naturama-emulator .naturama-speaker-stage::after {
+    background: radial-gradient(circle at center, rgba(216, 209, 186, .34) 0 190px, rgba(216, 209, 186, 0) 370px) !important;
+  }
+}
+
+/* Tape palette refinement: daylight sage dominates; sand, brown and black give the page its material structure. */
+:root {
+  --tape-sage: #b8baaa;
+  --tape-sand: #cbbca4;
+  --tape-brown: #442d28;
+  --tape-black: #12110f;
+  --tape-red: #b4574b;
+  --tape-yellow: #ded128;
+  --tape-grey: #7d827a;
+  --tape-deep-green: #244345;
+  --echoworks-ink: var(--tape-sage);
+  --echoworks-charcoal: var(--tape-deep-green);
+  --echoworks-paper: var(--tape-sand);
+  --echoworks-cream: var(--tape-brown);
+  --echoworks-brass: var(--tape-red);
+  --echoworks-mist: var(--tape-grey);
+}
+
+body,
+body:has(.project-item),
+body:has(#project-breadcrumb) {
+  background: var(--tape-sage) !important;
+  color: var(--tape-brown) !important;
+}
+
+body:has(.project-item) main.bg-primary,
+body:has(.project-item) main.bg-primary > div.bg-primary,
+body:has(#project-breadcrumb) main,
+.about-page {
+  background: var(--tape-sage) !important;
+  color: var(--tape-brown) !important;
+}
+
+/* A dark frame lets the site retain depth without returning to a dark-green interface. */
+[data-purpose="site-navigation-header"],
+body:has(#project-breadcrumb) main > section:first-of-type {
+  background: var(--tape-black) !important;
+  border-color: var(--tape-brown) !important;
+}
+
+[data-purpose="site-navigation-header"] a,
+[data-purpose="site-navigation-header"] .font-mono,
+body:has(#project-breadcrumb) #project-breadcrumb {
+  color: var(--tape-sand) !important;
+}
+
+/* The sand panels are the primary reading surface. */
+.project-item,
+.list-item,
+.mock-section,
+body:has(#project-breadcrumb) #project-generic-case-study .rounded-xl,
+body:has(#project-breadcrumb) #project-generic-case-study .rounded-2xl,
+body:has(#project-breadcrumb) #game-case-study .rounded-xl,
+body:has(#project-breadcrumb) #game-case-study .rounded-2xl,
+body:has(#project-breadcrumb) #project-commission-section > div {
+  background: var(--tape-sand) !important;
+  border-color: var(--tape-brown) !important;
+  color: var(--tape-brown) !important;
+  box-shadow: none !important;
+}
+
+.project-item *,
+.list-item *,
+.mock-section *,
+body:has(#project-breadcrumb) #project-generic-case-study *,
+body:has(#project-breadcrumb) #game-case-study *,
+body:has(#project-breadcrumb) #project-commission-section > div * {
+  border-color: rgba(68, 45, 40, .45) !important;
+}
+
+.project-item h2,
+.project-item h3,
+.list-item h2,
+.list-item h3,
+.mock-section h2,
+body:has(#project-breadcrumb) h1,
+body:has(#project-breadcrumb) h2,
+body:has(#project-breadcrumb) h3,
+body:has(#project-breadcrumb) #project-generic-case-study p,
+body:has(#project-breadcrumb) #game-case-study p,
+body:has(#project-breadcrumb) #project-commission-section p {
+  color: var(--tape-brown) !important;
+}
+
+/* Metadata echoes the black J37 label with sand-coloured lettering. */
+#detail-spec-row-4,
+body:has(#project-breadcrumb) [id^="detail-spec"],
+.project-item .font-meta-technical,
+.list-item .font-meta-technical {
+  color: var(--tape-sand) !important;
+}
+
+body:has(#project-breadcrumb) [id^="detail-spec"]:not(span) {
+  background: var(--tape-black) !important;
+  border-color: var(--tape-brown) !important;
+}
+
+body:has(#project-breadcrumb) #detail-spec-value-1,
+body:has(#project-breadcrumb) #detail-spec-value-2,
+body:has(#project-breadcrumb) #detail-spec-value-3,
+body:has(#project-breadcrumb) #detail-spec-value-4 {
+  color: var(--tape-sand) !important;
+}
+
+/* Sparse signal colours only for actions and tiny playback/status details. */
+body:has(#project-breadcrumb) #project-kicker,
+body:has(#project-breadcrumb) [class*="text-[#a24e44]"],
+body:has(#project-breadcrumb) [class*="text-[#b4574b]"] {
+  color: var(--tape-red) !important;
+}
+
+body:has(#project-breadcrumb) #project-commission-section a,
+body .bg-secondary,
+body [class*="bg-[#a24e44]"] {
+  background: var(--tape-red) !important;
+  color: var(--tape-sand) !important;
+}
+
+#naturama-emulator .naturama-pair-controls .naturama-pair,
+#naturama-emulator .naturama-level-controls,
+#naturama-emulator .naturama-speaker,
+#naturama-emulator .naturama-speaker-stage__circle > div:first-child,
+#naturama-emulator .naturama-speaker-stage__circle > div:nth-child(2) {
+  background: var(--tape-sand) !important;
+  border-color: var(--tape-brown) !important;
+  color: var(--tape-brown) !important;
+}
+
+#naturama-emulator .naturama-pair-controls .naturama-pair span,
+#naturama-emulator .naturama-level-controls .font-mono,
+#naturama-emulator .naturama-speaker-stage__circle > div:nth-child(2) span {
+  color: var(--tape-brown) !important;
+}
+
+#naturama-emulator .naturama-speaker:hover,
+#naturama-emulator .naturama-speaker.is-selected {
+  border-color: var(--tape-red) !important;
+  box-shadow: 0 0 0 2px rgba(180, 87, 75, .18) !important;
+}
+
+@media (min-width: 981px) {
+  #naturama-emulator .naturama-speaker-stage::after {
+    background: radial-gradient(circle at center, rgba(184, 186, 170, .48) 0 190px, rgba(184, 186, 170, 0) 370px) !important;
+  }
+}
+
+#naturama-emulator input[type="range"]::-webkit-slider-thumb,
+#naturama-emulator input[type="range"]::-moz-range-thumb {
+  background: var(--tape-yellow) !important;
+}
+
+/* Main site backdrop sampled from the supplied reference. */
+:root {
+  --site-backdrop: #2f2c27;
+  --echoworks-ink: var(--site-backdrop);
+}
+
+body,
+body:has(.project-item),
+body:has(#project-breadcrumb),
+body:has(.about-page),
+body:has(.project-item) main.bg-primary,
+body:has(.project-item) main.bg-primary > div.bg-primary,
+body:has(#project-breadcrumb) main,
+.about-page {
+  background: var(--site-backdrop) !important;
+}
+
+/* Projects gallery: weathered pale-sage cards from the supplied reference. */
+:root { --gallery-card-sage: #c4c5b3; }
+body:has(.project-item) .project-item {
+  background: var(--gallery-card-sage) !important;
+  border-color: var(--tape-brown) !important;
+}
+body:has(.project-item) .project-item h2,
+body:has(.project-item) .project-item h3,
+body:has(.project-item) .project-item p,
+body:has(.project-item) .project-item .font-mono {
+  color: var(--tape-brown) !important;
+}
+
+/* Gallery index: compact tape-label treatment in the top-left of every project card. */
+body:has(.project-item) .project-item > div:first-child > .font-meta-technical:first-child {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.9rem;
+  padding: .34rem .58rem;
+  background: var(--tape-black) !important;
+  color: var(--tape-sand) !important;
+  border: 1px solid var(--tape-brown) !important;
+  border-radius: 999px;
+  line-height: 1;
+}
+
+/* Gallery index labels use the supplied deep blue-green enamel. */
+:root { --gallery-meta-enamel: #364D4F; }
+body:has(.project-item) .project-item > div:first-child > .font-meta-technical:first-child {
+  background: var(--gallery-meta-enamel) !important;
+}
+
+/* Project-gallery frames use the supplied dark umber tone. */
+:root { --gallery-frame-umber: #362523; }
+body:has(.project-item) .project-item,
+body:has(.project-item) .list-item {
+  border: 1px solid var(--gallery-frame-umber) !important;
+}
+
+body:has(.project-item) .project-item,
+body:has(.project-item) .list-item {
+  border-width: 2px !important;
+}
+
+body:has(.project-item) .project-item,
+body:has(.project-item) .list-item {
+  border-width: 3px !important;
+}
+
+body:has(.project-item) .project-item,
+body:has(.project-item) .list-item {
+  border-width: 5px !important;
+}
+
+body:has(.project-item) .project-item,
+body:has(.project-item) .list-item {
+  border-width: 10px !important;
+}
+
+body:has(.project-item) .project-item,
+body:has(.project-item) .list-item {
+  border-width: 5px !important;
+}
+
+body:has(.project-item) .project-item,
+body:has(.project-item) .list-item {
+  border-width: 4px !important;
+}
+
+/* The gallery's invitation uses the small yellow signal sampled from the LEVEL label. */
+:root { --gallery-view-signal: #DBCB26; }
+body:has(.project-item) .project-item .pt-unit-md > span:last-child,
+body:has(.project-item) .project-item .pt-unit-md > span:last-child * {
+  color: var(--gallery-view-signal) !important;
+}
+
+/* A compact umber field makes the gallery's yellow project link read as a small control. */
+:root { --gallery-view-box: #362523; }
+body:has(.project-item) .project-item .pt-unit-md > span:last-child {
+  padding: .42rem .58rem;
+  background: var(--gallery-view-box) !important;
+  border: 1px solid var(--gallery-frame-umber) !important;
+  border-radius: 2px;
+}
+
+/* Project cards use the supplied weathered blue-grey surface. */
+:root { --gallery-card-surface: #84918A; }
+body:has(.project-item) .project-item,
+body:has(.project-item) .list-item {
+  background: var(--gallery-card-surface) !important;
+}
+
+/* Project titles sit in a pale sage, sampled from the supplied paper reference. */
+:root { --gallery-title-sage: #C4C5B3; }
+body:has(.project-item) .project-item .pt-unit-md h2 {
+  color: var(--gallery-title-sage) !important;
+}
+
+/* In the gallery's reading area, swap the title and supporting-text colours. */
+body:has(.project-item) .project-item .pt-unit-md h2 {
+  color: var(--tape-brown) !important;
+}
+body:has(.project-item) .project-item .pt-unit-md p {
+  color: var(--gallery-title-sage) !important;
+}
+
+/* Grid/list selector: tactile tape-machine push buttons. */
+body:has(.project-item) #view-grid-btn,
+body:has(.project-item) #view-list-btn {
+  min-height: 2.55rem;
+  padding: .36rem .68rem !important;
+  background: var(--tape-sand) !important;
+  color: var(--tape-brown) !important;
+  border: 2px solid var(--gallery-frame-umber) !important;
+  border-radius: 2px !important;
+  box-shadow: inset 0 0 0 2px rgba(54, 37, 35, .32), 0 2px 0 rgba(54, 37, 35, .42) !important;
+}
+body:has(.project-item) #view-grid-btn.bg-surface,
+body:has(.project-item) #view-list-btn.bg-surface {
+  background: var(--tape-red) !important;
+  color: var(--tape-black) !important;
+  box-shadow: inset 0 0 0 2px rgba(54, 37, 35, .45), 0 2px 0 rgba(54, 37, 35, .52) !important;
+}
+body:has(.project-item) #view-grid-btn .material-symbols-outlined,
+body:has(.project-item) #view-list-btn .material-symbols-outlined {
+  color: currentColor !important;
+}
+
+/* Move the view-control container as one unit. */
+body:has(.project-item) div:has(> #view-grid-btn):has(> #view-list-btn) {
+  transform: translateY(38px);
+}
+
+/* Project cards use the supplied pale sage surface. */
+:root { --gallery-card-surface: #B8BAAA; }
+body:has(.project-item) .project-item,
+body:has(.project-item) .list-item {
+  background: var(--gallery-card-surface) !important;
+}
+
+body:has(.project-item) .project-item .pt-unit-md p.font-body-sm {
+  color: #171917 !important;
+}
+
+body:has(.project-item) .project-item > div:first-child > .font-meta-technical:first-child {
+  display: none !important;
+}
+
+body:has(.project-item) .project-item .pt-unit-md > span:last-child {
+  background: var(--gallery-meta-enamel) !important;
+}
+
+body:has(.project-item) .project-item .pt-unit-md > span:last-child {
+  background: #171917 !important;
+}
+
+/* Site-wide tape-machine language — derived from the Projects gallery. */
+:root {
+  --site-backdrop: #2f2c27;
+  --site-ink: #171917;
+  --site-umber: #362523;
+  --site-enamel: #364d4f;
+  --site-sage: #b8baaa;
+  --site-pale-sage: #c4c5b3;
+  --site-sand: #d1c3a9;
+  --site-oxide: #b4574b;
+  --site-signal: #dbcb26;
+}
+
+/* Shared shell */
+body,
+main,
+.about-page,
+.global-footer {
+  background-color: var(--site-backdrop) !important;
+  color: var(--site-pale-sage) !important;
+}
+[data-purpose="site-navigation-header"],
+.global-footer {
+  border-color: var(--site-umber) !important;
+}
+[data-purpose="site-navigation-header"] {
+  background: var(--site-ink) !important;
+}
+[data-purpose="site-navigation-header"] a,
+.global-footer-name,
+.global-footer-contact > span,
+.global-footer-nav > span {
+  color: var(--site-pale-sage) !important;
+}
+.global-footer-intro p,
+.global-footer a { color: var(--site-sand) !important; }
+.global-footer small,
+.global-footer a:hover { color: var(--site-signal) !important; }
+
+/* Landing page: the carousel adopts the same framed project-object treatment. */
+body:has([data-purpose="hero-container"]) [data-purpose="project-carousel-section"] {
+  background: var(--site-backdrop) !important;
+}
+body:has([data-purpose="hero-container"]) [data-purpose="statement-display"] h1,
+body:has([data-purpose="hero-container"]) [data-purpose="statement-display"] span,
+body:has([data-purpose="hero-container"]) [data-purpose="project-carousel-section"] h2 {
+  color: var(--site-pale-sage) !important;
+}
+body:has([data-purpose="hero-container"]) .carousel-card {
+  background: var(--site-sage) !important;
+  border: 4px solid var(--site-umber) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+body:has([data-purpose="hero-container"]) .carousel-card > div:last-child {
+  background: var(--site-sage) !important;
+}
+body:has([data-purpose="hero-container"]) .carousel-card h3 {
+  color: var(--site-umber) !important;
+}
+body:has([data-purpose="hero-container"]) .carousel-card > div:last-child > span:first-child {
+  color: var(--site-ink) !important;
+}
+body:has([data-purpose="hero-container"]) .carousel-card > div:last-child > span:last-child {
+  background: var(--site-ink) !important;
+  border: 1px solid var(--site-umber) !important;
+  border-radius: 2px !important;
+  color: var(--site-signal) !important;
+  padding: .4rem .55rem;
+}
+body:has([data-purpose="hero-container"]) .carousel-dot { background: var(--site-sand) !important; }
+body:has([data-purpose="hero-container"]) .carousel-dot.scale-125 { background: var(--site-oxide) !important; }
+body:has([data-purpose="hero-container"]) #carousel-prev,
+body:has([data-purpose="hero-container"]) #carousel-next {
+  background: var(--site-enamel) !important;
+  border-color: var(--site-umber) !important;
+  color: var(--site-sand) !important;
+}
+
+/* About: editorial text lives directly on the dark umber ground. */
+.about-page .about-kicker,
+.about-page .about-statement-label,
+.about-page .about-contact p { color: var(--site-signal) !important; }
+.about-page .about-intro h1,
+.about-page .about-disciplines span,
+.about-page .about-contact a { color: var(--site-pale-sage) !important; }
+.about-page .about-intro h1 em { color: var(--site-oxide) !important; }
+.about-page .about-lead,
+.about-page .about-statement-copy p,
+.about-page .about-statement-copy p + p { color: var(--site-sand) !important; }
+.about-page .about-statement,
+.about-page .about-disciplines,
+.about-page .about-contact,
+.about-page .about-disciplines span + span { border-color: var(--site-umber) !important; }
+.about-page .about-hero-portrait {
+  padding: 0 !important;
+  border: 0 !important;
+}
+.about-page .about-contact a {
+  display: inline-block;
+  padding: .65rem .8rem;
+  background: var(--site-ink);
+  border: 1px solid var(--site-umber);
+  color: var(--site-signal) !important;
+}
+
+/* Detail pages: light reading surfaces and physical, dark metadata labels. */
+body:has(#project-breadcrumb) #project-breadcrumb,
+body:has(#project-breadcrumb) #project-role-meta { color: var(--site-sand) !important; }
+body:has(#project-breadcrumb) #project-kicker { color: var(--site-oxide) !important; }
+body:has(#project-breadcrumb) main > section > div > h1,
+body:has(#project-breadcrumb) main > section > div > h2,
+body:has(#project-breadcrumb) #project-generic-case-study > div > h3,
+body:has(#project-breadcrumb) #game-case-study > div > h3 {
+  color: var(--site-pale-sage) !important;
+}
+body:has(#project-breadcrumb) main > section > div > p,
+body:has(#project-breadcrumb) #project-generic-case-study > div > p,
+body:has(#project-breadcrumb) #game-case-study > div > p { color: var(--site-sand) !important; }
+body:has(#project-breadcrumb) div:has(> #detail-spec-label-1):has(#detail-spec-label-3) {
+  background: var(--site-ink) !important;
+  border: 2px solid var(--site-umber) !important;
+  border-radius: 2px !important;
+}
+body:has(#project-breadcrumb) [id^="detail-spec"] { color: var(--site-sand) !important; }
+body:has(#project-breadcrumb) #project-generic-case-study .rounded-xl,
+body:has(#project-breadcrumb) #project-generic-case-study .rounded-2xl,
+body:has(#project-breadcrumb) #game-case-study .rounded-xl,
+body:has(#project-breadcrumb) #game-case-study .rounded-2xl {
+  background: var(--site-sage) !important;
+  border: 4px solid var(--site-umber) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+body:has(#project-breadcrumb) #project-generic-case-study .rounded-xl h3,
+body:has(#project-breadcrumb) #project-generic-case-study .rounded-2xl h3,
+body:has(#project-breadcrumb) #game-case-study .rounded-xl h3,
+body:has(#project-breadcrumb) #game-case-study .rounded-2xl h3,
+body:has(#project-breadcrumb) #project-generic-case-study .rounded-xl p,
+body:has(#project-breadcrumb) #project-generic-case-study .rounded-2xl p,
+body:has(#project-breadcrumb) #game-case-study .rounded-xl p,
+body:has(#project-breadcrumb) #game-case-study .rounded-2xl p {
+  color: var(--site-ink) !important;
+}
+body:has(#project-breadcrumb) #project-commission-section > div {
+  background: var(--site-ink) !important;
+  border: 4px solid var(--site-umber) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+body:has(#project-breadcrumb) #project-commission-section h3 { color: var(--site-pale-sage) !important; }
+body:has(#project-breadcrumb) #project-commission-section p { color: var(--site-sand) !important; }
+body:has(#project-breadcrumb) #project-commission-section a {
+  background: var(--site-enamel) !important;
+  border: 1px solid var(--site-umber) !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+  color: var(--site-signal) !important;
+}
+
+/* Landing carousel: all card copy uses the gallery's dark umber ink. */
+body:has([data-purpose="hero-container"]) .carousel-card span,
+body:has([data-purpose="hero-container"]) .carousel-card p,
+body:has([data-purpose="hero-container"]) .carousel-card h3 {
+  color: var(--site-umber) !important;
+}
+body:has([data-purpose="hero-container"]) .carousel-card > div:last-child > span:last-child,
+body:has([data-purpose="hero-container"]) .carousel-card > div:last-child > span:last-child * {
+  color: var(--site-signal) !important;
+}
+
+/* Landing wheel image labels echo the tape-machine's warm sand markings. */
+body:has([data-purpose="hero-container"]) .carousel-card > div:first-child > div.absolute.top-4.left-4 > span {
+  color: var(--site-sand) !important;
+  border-color: var(--site-sand) !important;
+}
+
+/* Project-detail metadata: simple black tape labels with sand-coloured type. */
+body:has(#project-breadcrumb) div:has(> #detail-spec-label-1):has(#detail-spec-label-3) {
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+body:has(#project-breadcrumb) div:has(> #detail-spec-label-1),
+body:has(#project-breadcrumb) div:has(> #detail-spec-label-2),
+body:has(#project-breadcrumb) div:has(> #detail-spec-label-3),
+body:has(#project-breadcrumb) #detail-spec-row-4 {
+  margin: 0 0 .35rem !important;
+  padding: .58rem .75rem !important;
+  background: var(--site-ink) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+body:has(#project-breadcrumb) #detail-spec-label-1,
+body:has(#project-breadcrumb) #detail-spec-label-2,
+body:has(#project-breadcrumb) #detail-spec-label-3,
+body:has(#project-breadcrumb) #detail-spec-label-4,
+body:has(#project-breadcrumb) #detail-spec-value-1,
+body:has(#project-breadcrumb) #detail-spec-value-2,
+body:has(#project-breadcrumb) #detail-spec-value-3,
+body:has(#project-breadcrumb) #detail-spec-value-4 {
+  color: var(--site-sand) !important;
+}
+
+body:has(#project-breadcrumb) #detail-spec-label-1,
+body:has(#project-breadcrumb) #detail-spec-label-2,
+body:has(#project-breadcrumb) #detail-spec-label-3,
+body:has(#project-breadcrumb) #detail-spec-label-4,
+body:has(#project-breadcrumb) #detail-spec-value-1,
+body:has(#project-breadcrumb) #detail-spec-value-2,
+body:has(#project-breadcrumb) #detail-spec-value-3,
+body:has(#project-breadcrumb) #detail-spec-value-4 {
+  color: var(--site-signal) !important;
+}
+
+body:has(#project-breadcrumb) [id^="detail-spec-label"] {
+  flex: 0 0 auto;
+}
+
+body:has(#project-breadcrumb) [id^="detail-spec-value"] {
+  max-width: 68%;
+  margin-left: auto;
+  text-align: right;
+}
+
+body:has(#project-breadcrumb) #detail-spec-value-1.designed-role-value {
+  max-width: 85%;
+}
+
+body:has(#project-breadcrumb) .role-phrase {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  text-align: right;
+}
+
+body:has(#project-breadcrumb) [id^="detail-spec-value"] a {
+  color: inherit !important;
+  text-decoration: underline;
+  text-decoration-color: var(--site-sand);
+  text-underline-offset: .2em;
+}
+
+body:has(#project-breadcrumb) [id^="detail-spec-value"] a:hover {
+  color: var(--site-sand) !important;
+}
+
+.line21-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--site-signal);
+  text-underline-offset: .2em;
+}
+
+.line21-link:hover {
+  color: var(--site-signal) !important;
+}
+
+body:has(#project-breadcrumb) h1,
+body:has(#project-breadcrumb) h2,
+body:has(#project-breadcrumb) h3 {
+  color: var(--site-sand) !important;
+}
+
+/* Chapter copy on the dark detail-page ground. */
+:root { --chapter-copy: #c7c4bf; }
+body:has(#project-breadcrumb) #project-generic-case-study p,
+body:has(#project-breadcrumb) #game-case-study p {
+  color: var(--chapter-copy) !important;
+  font-family: var(--type-sans) !important;
+}
+body:has(#project-breadcrumb) #project-generic-case-study .rounded-xl p,
+body:has(#project-breadcrumb) #project-generic-case-study .rounded-2xl p,
+body:has(#project-breadcrumb) #game-case-study .rounded-xl p,
+body:has(#project-breadcrumb) #game-case-study .rounded-2xl p {
+  color: var(--site-ink) !important;
+}
+
+/* The listening model's main frame is transparent so its chapter image is unobscured. */
+#naturama-emulator {
+  background: transparent !important;
+}
+
+/* A dark image-only veil: placed above chapter art and below every control. */
+#naturama-emulator {
+  isolation: isolate;
+}
+#naturama-emulator::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: rgba(23, 25, 23, .72);
+}
+#naturama-emulator > .naturama-speaker-atmosphere { z-index: 0; }
+#naturama-emulator > :not(.naturama-speaker-atmosphere) { z-index: 2; }
+
+#naturama-emulator::before {
+  background: rgba(23, 25, 23, .86);
+}
+
+#naturama-emulator::before {
+  background: rgba(23, 25, 23, .78);
+}
+#naturama-emulator .naturama-speaker-atmosphere[data-chapter] {
+  filter: brightness(1.14) contrast(1.2) saturate(1.05) !important;
+}
+
+@media (min-width: 981px) {
+  #naturama-emulator .naturama-speaker-stage::after {
+    width: 26% !important;
+    background: radial-gradient(circle at center, rgba(23, 25, 23, .96) 0%, rgba(23, 25, 23, .74) 42%, rgba(23, 25, 23, 0) 100%) !important;
+    filter: blur(2.4rem) !important;
+  }
+}
+
+@media (min-width: 981px) {
+  #naturama-emulator .naturama-speaker-stage::after {
+    width: 82% !important;
+    background: radial-gradient(circle at center, #171917 0 56%, rgba(23, 25, 23, .92) 66%, rgba(23, 25, 23, .46) 76%, rgba(23, 25, 23, 0) 100%) !important;
+    filter: blur(1.15rem) !important;
+  }
+}
+
+@media (min-width: 981px) {
+  #naturama-emulator .naturama-speaker-stage::after {
+    width: 68% !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+}
+
+@media (min-width: 981px) {
+  #naturama-emulator .naturama-speaker-stage::after {
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    border-radius: 50% !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, calc(-50% - 1cm)) !important;
+  }
+}
+
+@media (min-width: 981px) {
+  #naturama-emulator .naturama-speaker-stage::after {
+    width: 50% !important;
+  }
+}
+
+@media (min-width: 981px) {
+  #naturama-emulator .naturama-speaker-stage::after {
+    width: 40% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+}
+
+/* Listening model transport: tactile tape-machine buttons. */
+#naturama-emulator #naturama-play,
+#naturama-emulator #naturama-reset {
+  min-height: 2.7rem;
+  border: 3px solid var(--site-umber) !important;
+  border-radius: 2px !important;
+  box-shadow: inset 0 0 0 2px rgba(54, 37, 35, .45), 0 2px 0 rgba(54, 37, 35, .5) !important;
+  font-family: var(--type-meta) !important;
+  letter-spacing: .04em !important;
+}
+#naturama-emulator #naturama-play {
+  background: var(--site-oxide) !important;
+  color: var(--site-ink) !important;
+}
+#naturama-emulator #naturama-reset {
+  background: var(--site-sand) !important;
+  color: var(--site-umber) !important;
+}
+
+/* Transport buttons match the Grid/List controls in the Projects gallery. */
+#naturama-emulator #naturama-play,
+#naturama-emulator #naturama-reset {
+  min-height: 2.55rem;
+  padding: .36rem .68rem !important;
+  border: 2px solid var(--gallery-frame-umber) !important;
+  border-radius: 2px !important;
+  box-shadow: inset 0 0 0 2px rgba(54, 37, 35, .32), 0 2px 0 rgba(54, 37, 35, .42) !important;
+}
+#naturama-emulator #naturama-play {
+  background: var(--tape-red) !important;
+  color: var(--tape-black) !important;
+}
+#naturama-emulator #naturama-reset {
+  background: var(--tape-sand) !important;
+  color: var(--tape-brown) !important;
+}
+
+/* Exact visual counterparts of the Projects gallery's Grid (active) and List controls. */
+#naturama-emulator #naturama-play,
+#naturama-emulator #naturama-reset {
+  appearance: none;
+  flex: 0 0 auto !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.55rem !important;
+  padding: .36rem .68rem !important;
+  background-image: none !important;
+  border: 2px solid var(--gallery-frame-umber) !important;
+  border-radius: 2px !important;
+  font-family: var(--type-meta) !important;
+  letter-spacing: .035em !important;
+}
+#naturama-emulator #naturama-play {
+  background-color: var(--tape-red) !important;
+  color: var(--tape-black) !important;
+  box-shadow: inset 0 0 0 2px rgba(54, 37, 35, .45), 0 2px 0 rgba(54, 37, 35, .52) !important;
+}
+#naturama-emulator #naturama-reset {
+  background-color: var(--tape-sand) !important;
+  color: var(--tape-brown) !important;
+  box-shadow: inset 0 0 0 2px rgba(54, 37, 35, .32), 0 2px 0 rgba(54, 37, 35, .42) !important;
+}
+
+/* Layered, hardware-like edge construction for the journey controls. */
+#naturama-emulator #naturama-play,
+#naturama-emulator #naturama-reset {
+  border-width: 3px !important;
+  outline: 2px solid rgba(54, 37, 35, .88);
+  outline-offset: 2px;
+}
+#naturama-emulator #naturama-play {
+  border-color: #783730 !important;
+  box-shadow:
+    0 0 0 3px #2a211f,
+    0 3px 0 3px rgba(30, 22, 20, .65),
+    inset 0 0 0 1px rgba(255, 235, 218, .22),
+    inset 0 0 0 3px rgba(86, 37, 32, .32) !important;
+}
+#naturama-emulator #naturama-reset {
+  border-color: #8b795f !important;
+  box-shadow:
+    0 0 0 3px #2a211f,
+    0 3px 0 3px rgba(30, 22, 20, .65),
+    inset 0 0 0 1px rgba(255, 251, 235, .32),
+    inset 0 0 0 3px rgba(91, 74, 55, .24) !important;
+}
+
+/* Stereo-pair controls borrow the framed, analog selector treatment. */
+#naturama-emulator .naturama-pair-controls .naturama-pair {
+  min-height: 0;
+  padding: .72rem .9rem !important;
+  background: linear-gradient(135deg, rgba(255,255,255,.23), transparent 44%), linear-gradient(180deg, #ded4bf 0%, var(--site-sand) 100%) !important;
+  border: 3px solid #8b795f !important;
+  border-radius: 2px !important;
+  outline: 2px solid rgba(42, 33, 31, .88);
+  outline-offset: 2px;
+  box-shadow:
+    0 0 0 3px #2a211f,
+    0 3px 0 3px rgba(30, 22, 20, .62),
+    inset 0 0 0 1px rgba(255, 251, 235, .36),
+    inset 0 0 0 3px rgba(91, 74, 55, .24) !important;
+}
+#naturama-emulator .naturama-pair-controls .naturama-pair span {
+  color: var(--site-ink) !important;
+}
+#naturama-emulator .naturama-pair-controls .naturama-pair span + span {
+  color: var(--site-umber) !important;
+  opacity: .82;
+}
+
+/* Silver-grey, layered frame construction for the stereo-pair selectors. */
+#naturama-emulator .naturama-pair-controls .naturama-pair {
+  background: linear-gradient(135deg, rgba(255,255,255,.24), transparent 46%), linear-gradient(180deg, #d8d3c5 0%, #c5bdab 100%) !important;
+  border: 3px solid #74736d !important;
+  outline: 2px solid #252421;
+  outline-offset: 2px;
+  box-shadow:
+    0 0 0 2px #aaa89e,
+    0 0 0 4px #3a3934,
+    0 3px 0 4px rgba(24, 23, 21, .7),
+    inset 0 0 0 1px #eee9dc,
+    inset 0 0 0 3px rgba(111, 110, 103, .35) !important;
+}
+
+/* Keep the narrative close to its project image. */
+body:has(#project-breadcrumb) #project-generic-case-study,
+body:has(#project-breadcrumb) #game-case-study {
+  padding-top: clamp(2.5rem, 4vw, 4rem) !important;
+}
+@media (max-width: 700px) {
+  body:has(#project-breadcrumb) #project-generic-case-study,
+  body:has(#project-breadcrumb) #game-case-study {
+    padding-top: 2.5rem !important;
+  }
+}
+/* The Only You player keeps its project still visible as the media ground. */
+.only-you-video-viewport { position: relative; isolation: isolate; }
+.only-you-video-backdrop,
+.only-you-video-shade,
+.only-you-video { position: absolute; inset: 0; width: 100%; height: 100%; }
+.only-you-video-backdrop { z-index: 0; background-position: center; background-size: cover; filter: saturate(.7) brightness(.45); transform: scale(1.035); }
+.only-you-video-shade { z-index: 1; background: rgba(23, 25, 23, .45); }
+.only-you-video { z-index: 2; border: 0; }
+/* Embedded listening for What Is Mothland. */
+.mothland-bandcamp-player {
+  margin-bottom: clamp(3rem, 5vw, 5rem);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 4px solid var(--site-umber);
+  background: var(--site-ink);
+}
+.mothland-bandcamp-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.mothland-bandcamp-heading a:hover { color: var(--site-sand) !important; }
+.mothland-bandcamp-embed {
+  display: block;
+  width: 100%;
+  height: 470px;
+  border: 0;
+}
+@media (max-width: 640px) {
+  .mothland-bandcamp-heading { align-items: start; flex-direction: column; }
+  .mothland-bandcamp-embed { height: 420px; }
+}
+/* Embedded listening for Quiet Sonia. */
+.quiet-sonia-bandcamp-player {
+  margin-bottom: clamp(3rem, 5vw, 5rem);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 4px solid var(--site-umber);
+  background: var(--site-ink);
+}
+.quiet-sonia-bandcamp-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.quiet-sonia-bandcamp-heading a:hover { color: var(--site-sand) !important; }
+.quiet-sonia-bandcamp-embed { display: block; width: 100%; height: 470px; border: 0; }
+@media (max-width: 640px) {
+  .quiet-sonia-bandcamp-heading { align-items: start; flex-direction: column; }
+  .quiet-sonia-bandcamp-embed { height: 420px; }
+}
+/* Quiet Sonia’s album is listened to beside its artwork. */
+body:has(#project-breadcrumb) section.quiet-sonia-media-layout { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(320px, .82fr); align-items: stretch; gap: 1.5rem; }
+body:has(#project-breadcrumb) section.quiet-sonia-media-layout .quiet-sonia-main-media { height: 100%; margin: 0; }
+body:has(#project-breadcrumb) section.quiet-sonia-media-layout .quiet-sonia-main-media > div { height: 100%; min-height: 500px; aspect-ratio: auto; }
+.quiet-sonia-tracklist { min-height: 500px; padding: 1rem; border: 4px solid var(--site-umber); background: #0b0b0b; }
+.quiet-sonia-tracklist-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 0 0 .75rem; color: var(--site-sand); }
+.quiet-sonia-tracklist-heading a { color: var(--site-signal); font-family: var(--type-meta); font-size: .69rem; letter-spacing: .08em; text-transform: uppercase; }
+.quiet-sonia-tracklist iframe { display: block; width: 100%; height: 448px; border: 0; }
+@media (max-width: 900px) {
+  body:has(#project-breadcrumb) section.quiet-sonia-media-layout { display: block; }
+  body:has(#project-breadcrumb) section.quiet-sonia-media-layout .quiet-sonia-main-media > div { min-height: 0; aspect-ratio: 16 / 10; }
+  .quiet-sonia-tracklist { min-height: 0; margin-top: 1.5rem; }
+}
+/* Mothland’s album is listened to beside its artwork. */
+body:has(#project-breadcrumb) section.mothland-media-layout { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(320px, .82fr); align-items: stretch; gap: 1.5rem; }
+body:has(#project-breadcrumb) section.mothland-media-layout .mothland-main-media { height: 100%; margin: 0; }
+body:has(#project-breadcrumb) section.mothland-media-layout .mothland-main-media > div { height: 100%; min-height: 500px; aspect-ratio: auto; }
+.mothland-tracklist { min-height: 500px; padding: 1rem; border: 4px solid var(--site-umber); background: #0b0b0b; }
+.mothland-tracklist-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 0 0 .75rem; color: var(--site-sand); }
+.mothland-tracklist-heading a { color: var(--site-signal); font-family: var(--type-meta); font-size: .69rem; letter-spacing: .08em; text-transform: uppercase; }
+.mothland-tracklist iframe { display: block; width: 100%; height: 448px; border: 0; }
+@media (max-width: 900px) {
+  body:has(#project-breadcrumb) section.mothland-media-layout { display: block; }
+  body:has(#project-breadcrumb) section.mothland-media-layout .mothland-main-media > div { min-height: 0; aspect-ratio: 16 / 10; }
+  .mothland-tracklist { min-height: 0; margin-top: 1.5rem; }
+}
+/* Keep the project-wheel introduction on the same pale green card stock. */
+body:has([data-purpose="hero-container"]) .about-section {
+  background: var(--site-sage) !important;
+}
+
+/* About portrait: centred behind the opening statement. */
+.about-page .about-intro {
+  --about-intro-offset: clamp(1.5rem, 3vw, 3rem);
+  position: relative;
+  display: block;
+  min-height: clamp(28rem, 35vw, 32rem);
+}
+
+.about-page .about-main {
+  padding-top: 7rem;
+}
+
+.about-page .about-intro-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 56rem;
+  padding-top: var(--about-intro-offset);
+}
+
+.about-page .about-hero-portrait {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: var(--about-intro-offset);
+  bottom: auto;
+  width: min(27.8vw, 23.6rem);
+  margin: 0;
+  transform: translateX(-50%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 100px), transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 100px), transparent 100%);
+}
+
+@media (max-width: 700px) {
+  .about-page .about-intro {
+    display: grid;
+    min-height: 0;
+  }
+
+  .about-page .about-intro-copy {
+    padding-top: 0;
+  }
+
+  .about-page .about-hero-portrait {
+    position: relative;
+    left: auto;
+    top: auto;
+    bottom: auto;
+    width: 100%;
+    transform: none;
+  }
+}
+
+/* About page: keep the chapters connected without large empty intervals. */
+.about-page .about-statement,
+.about-page .about-disciplines,
+.about-page .about-statement-last,
+.about-page .about-contact {
+  margin-top: clamp(2.5rem, 4vw, 3.5rem);
+}
+/* Project-card subtitles need the red signal to stay legible on pale green. */
+body:has(.project-item) .project-item .pt-unit-md h2 + p {
+  color: var(--site-oxide) !important;
+}
+/* The line below each red project subtitle reads as technical metadata. */
+body:has(.project-item) .project-item .pt-unit-md > div > p.font-meta-technical {
+  color: var(--site-sand) !important;
+  font-family: var(--type-meta) !important;
+  font-size: .72rem !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase;
+}
+body:has(.project-item) .project-item .pt-unit-md > div > p.font-meta-technical {
+  color: var(--site-ink) !important;
+}
+/* The landing page opens directly into the work, without story playback controls. */
+body:has([data-purpose="hero-container"]) [data-purpose="timeline-scrubber"],
+body:has([data-purpose="hero-container"]) [data-purpose="play-story-trigger"] {
+  display: none !important;
+}
+body:has([data-purpose="hero-container"]) [data-purpose="interactive-footer-controls"] > div > div:first-child {
+  display: none !important;
+}
+/* A shorter global header keeps the existing type scale intact. */
+[data-purpose="site-navigation-header"] > div:first-child {
+  height: 4.5rem !important;
+}
+/* On the landing page, the navigation settles in as the page starts to move. */
+body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"] {
+  background: rgba(23, 25, 23, .52) !important;
+  backdrop-filter: blur(8px);
+  transition: background-color 650ms ease, background 650ms ease, backdrop-filter 650ms ease !important;
+}
+body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"].is-scrolled {
+  background: var(--site-ink) !important;
+  backdrop-filter: blur(14px);
+}
+/* The Arla jingle lives directly on its project still. */
+.arla-audio-viewport { position: relative; }
+.arla-image-player {
+  position: absolute;
+  z-index: 4;
+  right: clamp(.75rem, 2vw, 1.5rem);
+  bottom: clamp(.75rem, 2vw, 1.5rem);
+  left: clamp(.75rem, 2vw, 1.5rem);
+  display: grid;
+  grid-template-columns: auto auto minmax(80px, 1fr) auto;
+  align-items: center;
+  gap: .75rem;
+  padding: .5rem .7rem;
+  border: 3px solid var(--site-umber);
+  background: rgba(23, 25, 23, .92);
+  color: var(--site-sand);
+  backdrop-filter: blur(10px);
+}
+.arla-image-play {
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border: 2px solid var(--site-umber);
+  background: var(--site-oxide);
+  color: var(--site-ink);
+}
+.arla-image-play:hover { background: var(--site-signal); }
+.arla-image-time { font-family: var(--type-meta); font-size: .68rem; letter-spacing: .06em; }
+.arla-image-timeline { width: 100%; accent-color: var(--site-signal); cursor: pointer; }
+@media (max-width: 520px) {
+  .arla-image-player { gap: .45rem; padding: .4rem .5rem; }
+  .arla-image-time { font-size: .6rem; }
+  .arla-image-play { width: 2rem; height: 2rem; }
+}
+/* EchoWorks repeats beneath itself like a softly decaying tape echo. */
+.echoworks-echo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .06rem;
+  line-height: .9;
+  color: var(--site-sand) !important;
+}
+.echoworks-echo span:nth-child(1) { font-size: .75rem; opacity: .94; }
+.echoworks-echo span:nth-child(2) { font-size: .63rem; opacity: .53; }
+.echoworks-echo span:nth-child(3) { font-size: .52rem; opacity: .27; }
+.echoworks-echo:hover span { opacity: 1; }

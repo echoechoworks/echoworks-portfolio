@@ -1,0 +1,655 @@
+<!DOCTYPE html><html lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Manrope:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-tertiary": "#ffffff",
+          "on-background": "#1b1c19",
+          "on-secondary-container": "#651500",
+          "inverse-primary": "#cac6c4",
+          "on-secondary-fixed-variant": "#882000",
+          "on-primary-container": "#868381",
+          "on-primary": "#ffffff",
+          "on-secondary": "#ffffff",
+          "on-tertiary-fixed": "#1e1b16",
+          "secondary-fixed": "#ffdbd1",
+          "surface-container-low": "#f6f3ee",
+          "on-error-container": "#93000a",
+          "surface-container-highest": "#e4e2dd",
+          "primary-fixed-dim": "#cac6c4",
+          "surface-variant": "#e4e2dd",
+          "surface-dim": "#dcdad5",
+          "primary": "#000000",
+          "on-secondary-fixed": "#3b0900",
+          "on-error": "#ffffff",
+          "secondary": "#ad330f",
+          "on-surface-variant": "#4a4640",
+          "tertiary-fixed-dim": "#cdc5bc",
+          "background": "#fbf9f4",
+          "primary-fixed": "#e6e1df",
+          "surface": "#fbf9f4",
+          "on-primary-fixed-variant": "#484645",
+          "outline-variant": "#cdc5bd",
+          "on-tertiary-container": "#89837b",
+          "surface-bright": "#fbf9f4",
+          "tertiary": "#000000",
+          "inverse-on-surface": "#f3f0eb",
+          "surface-tint": "#605e5c",
+          "tertiary-fixed": "#e9e1d8",
+          "on-primary-fixed": "#1c1b1a",
+          "error": "#ba1a1a",
+          "outline": "#7c766f",
+          "surface-container-high": "#eae8e3",
+          "surface-container": "#f0eee9",
+          "on-surface": "#1b1c19",
+          "secondary-fixed-dim": "#ffb5a1",
+          "primary-container": "#1c1b1a",
+          "secondary-container": "#ff6e46",
+          "inverse-surface": "#30312d",
+          "on-tertiary-fixed-variant": "#4b463f",
+          "tertiary-container": "#1e1b16",
+          "surface-container-lowest": "#ffffff",
+          "error-container": "#ffdad6"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "margin-mobile": "1.25rem",
+          "unit-3xl": "10rem",
+          "unit-xl": "4rem",
+          "unit-2xs": "0.25rem",
+          "unit-lg": "2.5rem",
+          "unit-2xl": "6.5rem",
+          "unit-md": "1.5rem",
+          "gutter-desktop": "2rem",
+          "unit-xs": "0.5rem",
+          "margin-desktop": "4rem",
+          "unit-sm": "1rem",
+          "gutter-mobile": "1rem"
+        },
+        "fontFamily": {
+          "body-md": [
+            "Manrope"
+          ],
+          "display-hero-mobile": [
+            "Bodoni Moda"
+          ],
+          "label-caps": [
+            "Space Grotesk"
+          ],
+          "body-sm": [
+            "Manrope"
+          ],
+          "headline-md": [
+            "Bodoni Moda"
+          ],
+          "headline-sm": [
+            "Manrope"
+          ],
+          "headline-lg-mobile": [
+            "Bodoni Moda"
+          ],
+          "meta-technical": [
+            "Space Grotesk"
+          ],
+          "body-lg": [
+            "Manrope"
+          ],
+          "headline-lg": [
+            "Bodoni Moda"
+          ],
+          "display-hero": [
+            "Bodoni Moda"
+          ]
+        },
+        "fontSize": {
+          "body-md": [
+            "15px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "400"
+            }
+          ],
+          "display-hero-mobile": [
+            "44px",
+            {
+              "lineHeight": "50px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "400"
+            }
+          ],
+          "label-caps": [
+            "10px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.12em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-sm": [
+            "13px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-md": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-sm": [
+            "22px",
+            {
+              "lineHeight": "30px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "500"
+            }
+          ],
+          "headline-lg-mobile": [
+            "32px",
+            {
+              "lineHeight": "38px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "meta-technical": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.08em",
+              "fontWeight": "500"
+            }
+          ],
+          "body-lg": [
+            "18px",
+            {
+              "lineHeight": "28px",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg": [
+            "48px",
+            {
+              "lineHeight": "56px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "400"
+            }
+          ],
+          "display-hero": [
+            "84px",
+            {
+              "lineHeight": "92px",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-surface text-on-surface font-body-md text-body-md"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md"><div class="h-20 w-full px-margin-mobile md:px-margin-desktop flex items-center justify-between"><div class="flex items-center gap-unit-sm"><img alt="Brand logo. - Primary color: #161514
+- Font: bodoniModa
+- Mode: light
+- Roundness: rounded-lg
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VspNvsU3EYxb7UMYpuIT6KknQs7s0AxP_sYQmfnFPrbWHxh7V9QAR9WascvqcHSUJoTyGiFNFA4wBtfDN8SJFE2Kk6cbBarfT62u8gDSfMY_A7DGLNcp9yzCrDckoyk1cL2mCDgWuba5CghaQS22lvgA_vJy_-J72jvzOBdkLLX3hNuyrVz9GgPWRgfrhuZo97y91rPzgNFXmahfoTvrtNrgSx3cbBGi6trKasq5px2Ogl2EZnh_oPkP8"><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface hover:text-secondary transition-colors" data-path="projects" href="#">Valdemar Løv</a><span class="font-meta-technical text-meta-technical text-on-surface-variant hidden sm:inline-block pl-unit-xs">// CPH</span></div><div class="flex items-center gap-unit-lg"><nav class="flex items-center gap-unit-md md:gap-unit-lg" data-active-classes="text-on-surface font-semibold underline underline-offset-8 decoration-secondary"><a aria-current="page" class="uppercase tracking-widest transition-colors text-on-surface font-semibold underline underline-offset-8 decoration-secondary" data-path="projects" href="#">Projects</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors" data-path="about-me" href="#">About Me</a><a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="#">Contact</a></nav><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-screen"><div class="flex flex-col w-full bg-primary text-surface selection:bg-secondary selection:text-on-secondary">
+<!-- GALLERY CURATORIAL HEADER -->
+<section class="w-full px-margin-mobile md:px-margin-desktop pt-unit-xl pb-unit-lg flex flex-col justify-start">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-unit-md pb-unit-lg">
+<div class="flex flex-col max-w-4xl">
+<div class="flex items-center gap-unit-xs mb-unit-sm">
+<span class="w-2 h-2 bg-secondary inline-block"></span>
+<span class="font-meta-technical text-meta-technical text-outline uppercase tracking-widest">
+            INDEX // 01 — ARCHIVE OF SELECTED WORKS
+          </span>
+</div>
+<h1 class="font-headline-lg md:font-display-hero text-headline-lg md:text-display-hero text-surface-container-lowest tracking-tight">
+          Selected Works &amp; Creations
+        </h1>
+<p class="font-body-lg text-body-lg text-outline-variant max-w-2xl mt-unit-sm">
+          An archive spanning spatial audio installations, commercial scores, interactive game environments, stage scenography, and performance direction.
+        </p>
+</div>
+<!-- Controls: View Toggle -->
+<div class="flex items-center gap-unit-xs self-start md:self-end bg-surface-container-highest/10 p-unit-2xs rounded">
+<button class="flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase" id="view-grid-btn" onclick="setViewMode('grid')">
+<span class="material-symbols-outlined text-[16px]">grid_view</span>
+<span class="">Grid</span>
+</button>
+<button class="flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase" id="view-list-btn" onclick="setViewMode('list')">
+<span class="material-symbols-outlined text-[16px]">view_agenda</span>
+<span class="">List</span>
+</button>
+</div>
+</div>
+<!-- Discipline Filter Tabs -->
+<div class="w-full flex items-center justify-between overflow-x-auto no-scrollbar pt-unit-md gap-unit-sm pb-unit-2xs">
+<div class="flex items-center gap-unit-xs flex-wrap" id="filter-container">
+<button class="filter-btn active-filter px-unit-sm py-unit-xs font-label-caps text-label-caps uppercase tracking-wider bg-surface text-primary rounded transition-colors" data-filter="all" onclick="filterWorks('all')">All (8)</button>
+<button class="filter-btn px-unit-sm py-unit-xs font-label-caps text-label-caps uppercase tracking-wider bg-surface-container-highest/10 text-outline-variant hover:text-surface rounded transition-colors" data-filter="spatial" onclick="filterWorks('spatial')">
+          Spatial Audio
+        </button>
+<button class="filter-btn px-unit-sm py-unit-xs font-label-caps text-label-caps uppercase tracking-wider bg-surface-container-highest/10 text-outline-variant hover:text-surface rounded transition-colors" data-filter="music" onclick="filterWorks('music')">
+          Music Composition
+        </button>
+<button class="filter-btn px-unit-sm py-unit-xs font-label-caps text-label-caps uppercase tracking-wider bg-surface-container-highest/10 text-outline-variant hover:text-surface rounded transition-colors" data-filter="game" onclick="filterWorks('game')">
+          Game Worlds
+        </button>
+<button class="filter-btn px-unit-sm py-unit-xs font-label-caps text-label-caps uppercase tracking-wider bg-surface-container-highest/10 text-outline-variant hover:text-surface rounded transition-colors" data-filter="stage" onclick="filterWorks('stage')">
+          Stage &amp; Theater
+        </button>
+<button class="filter-btn px-unit-sm py-unit-xs font-label-caps text-label-caps uppercase tracking-wider bg-surface-container-highest/10 text-outline-variant hover:text-surface rounded transition-colors" data-filter="film" onclick="filterWorks('film')">
+          Film &amp; Direction
+        </button>
+</div>
+<div class="hidden lg:flex items-center gap-unit-xs text-outline font-meta-technical text-meta-technical whitespace-nowrap">
+<span class="">LOC: 55.6761°N / COPENHAGEN</span>
+</div>
+</div>
+</section>
+<!-- GALLERY REPOSITORY -->
+<section class="w-full px-margin-mobile md:px-margin-desktop pb-unit-3xl">
+<!-- GRID CONTAINER -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter-desktop transition-opacity duration-300" id="projects-grid">
+<!-- PROJECT 01 -->
+<article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="spatial">
+<div class="flex items-center justify-between pb-unit-sm">
+<span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">01 // TRANSDUCER SPHERE</span>
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Spatial Audio</span>
+</div>
+<div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs">
+<img class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" data-alt="Dark dramatic interior of Naturama underground acoustic concrete dome with visitors seated in a wide circle beneath an overhead suspended ring of audio transducers and focused warm amber spotlights casting geometric beams through atmospheric haze." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLGUjBfxXG1zG84bF-4Ajv64yTC6RTlNp7dQx8Cxji-8R8s3dyKLpG-VhPtC1jXk1KGTjimgIRRStvogwIpxmPEO_-_UrVHfdhmow9eXG959rIF5Ux8mw9-PJrxawWbfQLDqMs-eI9aOf0sVz7y9MHGP-e1dtyT8j8W7dQKExLoULeVQjHatIfjuklHfaqRkaf5jeDnsPGkmVRqQ_yayQb-uDMCzEXAWkYzsGi9Z6QYHZ-liFVyYssObjeh_7rRR_iXQ">
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+<div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">
+            64-CH AMBISONIC
+          </div>
+</div>
+<div class="pt-unit-md flex flex-col flex-grow justify-between">
+<div>
+<div class="flex flex-col mb-unit-xs">
+<h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">
+                Naturama 360° Sound Experience
+              </h2>
+<p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">
+                The Taste of Sound
+              </p>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">
+              2024 / Naturama Zoological Museum
+            </p>
+<p class="font-body-sm text-body-sm text-outline-variant max-w-xl">
+              64-transducer spatial acoustic chamber built into the subterranean dome of Svendborg's Naturama.
+            </p>
+</div>
+<div class="pt-unit-md flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Acoustic Architecture</span>
+<span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">
+              View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</article>
+<!-- PROJECT 02 -->
+<article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="music">
+<div class="flex items-center justify-between pb-unit-sm">
+<span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">02 // ORCHESTRAL SUITE</span>
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Music Composition</span>
+</div>
+<div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs">
+<img alt="Arla Commercial Music Composition" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvcmULTdz3Q1tAyFOzat4vclTWEbqkabPZQc0lBW8npCKEoAEpWg35zFAheJl8tiYFMyf_GcrbOeXdfTvpwSTTydpOXPJGXevDr1BVpaItWli5CABpiRKAcZN3l-Z5CwWc-85-6YD1S6VYfMZ0vqUzHDijNwSuYo-9k1fsWzDUi8tbvyieStwuPAThtOen3_IDdgTtKX8iyZOWjkUNqAWw7i5lmHrpd__WD8lFxqiwI1iHwRBSOopLYn4lPNUmhT0uPg">
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+<div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">
+            35MM // SCORE
+          </div>
+</div>
+<div class="pt-unit-md flex flex-col flex-grow justify-between">
+<div>
+<div class="flex flex-col mb-unit-xs">
+<h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">
+                Arla Commercial Music Composition
+              </h2>
+<p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">
+                Morgenstund — Dawn Pastoral
+              </p>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">
+              2024 / Arla Foods Nordic Campaign
+            </p>
+<p class="font-body-sm text-body-sm text-outline-variant max-w-xl">
+              Original organic orchestral composition and acoustic field recordings for dawn pastoral commercial campaign.
+            </p>
+</div>
+<div class="pt-unit-md flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Commercial Score</span>
+<span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">
+              View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</article>
+<!-- PROJECT 03 -->
+<article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="game">
+<div class="flex items-center justify-between pb-unit-sm">
+<span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">03 // VIDEO GAME PRODUCTION</span>
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Game Worlds</span>
+</div>
+<div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs">
+<img alt="Screenshot of Copenhell interactive game production" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeQSYKbhWjL1O_4KggJssGJNeRnzvCw5xo9lZAqPxb_wBUagafW25mMU3TRcabl635w2SsJlYv_kIQnyknym-O5_6sVdqx_u211HzT-ctghhv4IOdb7e43a_wBkEdb5zh0-VEwJmXjd2_p65sASVbrRmYwFKmGY1vPkNLIvOs1Cklv-NIm_ghyV5wkxUIwA9TdAb03HorcHTV4cmK3fpGKqf9jUDTrGomcTCX0vq6WzEcyqJolBOe3Vo3iK1WZK2obbw">
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+<div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">SOLO DEV // UNREAL</div>
+</div>
+<div class="pt-unit-md flex flex-col flex-grow justify-between">
+<div>
+<div class="flex flex-col mb-unit-xs">
+<h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">Video Game Production</h2>
+<p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">New Blood — Copenhell 105</p>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">2024 / Solo Auteur Direction</p>
+<p class="font-body-sm text-body-sm text-outline-variant max-w-xl">Complete solo game design, direction, coding, visual art, and interactive sound design.</p>
+</div>
+<div class="pt-unit-md flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Interactive Game</span>
+<span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
+</div>
+</div>
+</article>
+<!-- PROJECT 04 -->
+<article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="stage">
+<div class="flex items-center justify-between pb-unit-sm">
+<span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">04 // THEATER DIRECTING</span>
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Stage &amp; Theater</span>
+</div>
+<div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs">
+<img alt="Dramatic contemporary stage performance directed with atmospheric blue lighting" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt5tKjbNNpqeSZ32Si8nPlauYonzyEFJObbuT453zWjjpqMp5QBR_I57Imh5CDvlEWOskhKB1ot16XjeytOknkK50dcoS0bqnDATtwbnNCsLQvzQUkkB5bp8FZ4K-C5K35j64Fy8qf9V7nStDIXNIwgSFFF_rwYOAxJyBfTVC66kbkLn6YnDZ-k3e2Y98EshpYo5e44wVlx1EHUc0fa2Md_6A88EEoQkcGUnI7gge3VTsd3KVs_aCrThquFS3GpP6j5g">
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+<div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">STAGE // SCENOGRAPHY</div>
+</div>
+<div class="pt-unit-md flex flex-col flex-grow justify-between">
+<div>
+<div class="flex flex-col mb-unit-xs">
+<h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">Theater Directing</h2>
+<p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">Illumination in Fog — Scenography</p>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">2024 / Contemporary Stage Direction</p>
+<p class="font-body-sm text-body-sm text-outline-variant max-w-xl">Avant-garde contemporary stage directing, dramatic lighting composition, spatial choreography, and physical performance direction.</p>
+</div>
+<div class="pt-unit-md flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Stage &amp; Theater</span>
+<span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
+</div>
+</div>
+</article>
+<!-- PROJECT 05 -->
+<article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="film">
+<div class="flex items-center justify-between pb-unit-sm">
+<span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">05 // MUSIC VIDEO PRODUCTION</span>
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Film &amp; Direction</span>
+</div>
+<div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs">
+<img alt="Music Video Production auteur direction" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgjWTPMUrpK9bbZ6v0ViqgZZcoe3wpDir2-oTlDm5o8swiT_jNkHBeHY7Xa2_oOjphocndVZk9yCtBCE7fvF2tSwN9fYL8PuTsPS_ih6xaF1izEpFYnuZCWXc0dHTtQ0OkWV2KVrgNkaJhNGjCHjGRPVxw9IgdcebTwfKO6xH6d-yAXgiirsKlWde-Q-0pFGevXXBYzeqsexp5l8mfSoPLJnZG-H_bhKsJKapqKJ10AZHN_gyoPPfXrYxxboPi0Mfl2Q">
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+<div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">CINEMATIC // DIRECTION</div>
+</div>
+<div class="pt-unit-md flex flex-col flex-grow justify-between">
+<div>
+<div class="flex flex-col mb-unit-xs">
+<h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">Music Video Production</h2>
+<p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">Transit Frequencies — Official Video</p>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">2024 / Auteur Direction &amp; Visual Concept</p>
+<p class="font-body-sm text-body-sm text-outline-variant max-w-xl">Cinematic music video direction, conceptual narrative styling, and atmospheric photography.</p>
+</div>
+<div class="pt-unit-md flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Music Video &amp; Direction</span>
+<span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
+</div>
+</div>
+</article>
+<article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="film">
+<div class="flex items-center justify-between pb-unit-sm">
+<span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">06 // DOCUMENTARY SOUND DESIGN</span>
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Documentary / Sound</span>
+</div>
+<div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs">
+<img alt="Designed to be Kept — Documentary Sound Design" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGs4nGPnzrUEkhkOLqyrjCzwtyKsm6rMqZXZjM7xMImPgg2HMBZFqCSwYWeeISseQHVQPIRFT-woB2G_f3n1AZc2q5KPyI39haoHsY5-apo54ShKg1Uf3-QZYziimwWjrIFKvsXtDFSaK9DK4i5jOyvMlkFvMxIpulIUOcZJ8ezB2bsnfqB0EzsiHMRbOdug81OqgkPsg7jr2H8lf2rTMBwIiTKJKDInvPvdIjnTJfc4ZaDZ0t29yrk736sJPkeoah2w">
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div>
+<div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">
+FEATURE DOC // SOUND
+</div>
+</div>
+<div class="pt-unit-md flex flex-col flex-grow justify-between">
+<div>
+<div class="flex flex-col mb-unit-xs">
+<h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">
+Documentary Sound Design
+</h2>
+<p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">
+Designed to be Kept
+</p>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">
+2024 / Feature Film &amp; Auteur Sound Architecture
+</p>
+<p class="font-body-sm text-body-sm text-outline-variant max-w-xl">
+Spatial audio design, immersive soundscapes, and location recording capturing memory, identity, and intimate human narratives.
+</p>
+</div>
+<div class="pt-unit-md flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Documentary Sound</span>
+<span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">
+View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</article><article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="music"><div class="flex items-center justify-between pb-unit-sm"><span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">07 // ORIGINAL MUSIC COMPOSITION</span><span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Music Composition</span></div><div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs"><img alt="MOTHLAND - The Copenhagen Windowsills" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArdLG-aFMCMa3D8ecZb-ymVUft7njabgpQbiub-3mz6Q3yab2D4XWBgKiZzH1vxKe2pEILOHyQT3j2hV2kcdMhUR4FBM-XGXzdiQJmM6PsFybiBS9-OyjeB7i8wYwCg1Fq-r3MVJjz3GLgWaGWKTSBdJlgLoyzoKahPgqFuX8xQ7MWjB0SRxWXHMLIofXSEbJjoabKF5OGMx-8kM13IzvNpC9PATeaq5prbjdmVwuHrajBFp3kmxV0sKBCN9WfG0hF9g"><div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div><div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">ALBUM // COMPOSITION</div></div><div class="pt-unit-md flex flex-col flex-grow justify-between"><div><div class="flex flex-col mb-unit-xs"><h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">Original Music Composition</h2><p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">Mothland — The Copenhagen Windowsills</p></div><p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">2024 / Solo Album &amp; Acoustic Architecture</p><p class="font-body-sm text-body-sm text-outline-variant max-w-xl">Original instrumental album composition, acoustic orchestration, and atmospheric sonic painting exploring spatial texture and Nordic melancholia.</p></div><div class="pt-unit-md flex items-center justify-between"><span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Original Score</span><span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span></div></div></article><article class="project-item group flex flex-col bg-surface-container-highest/5 hover:bg-surface-container-highest/10 transition-colors p-unit-md" data-category="film"><div class="flex items-center justify-between pb-unit-sm"><span class="font-meta-technical text-meta-technical text-secondary tracking-widest font-semibold">08 // MUSIC VIDEO PRODUCTION</span><span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">Film &amp; Direction</span></div><div class="relative overflow-hidden aspect-[16/10] w-full bg-surface-container-highest/20 mt-unit-2xs"><img alt="Night Reflections — Music Video Production" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrmVC9zJskyJpz-DufZI4VFYxb6b4U8T97YmC4mmXol_ZIR_n3YSLTIzDW0SNvVzL_ZQFAaY_-huBuR0Gfie-0bjXxo7U4GbxfN3QrHmlsY0Tnkx6tHCABL6cXnBYeDtHKjCrndiWOui3XSaxAYMFISvFFJhyE9Ntt6GkNkJ4lTw4PsMgVYgQPnRcfeUAYXlDKxoWwoFVXyPtd9wlK3plwunuSPO39AdrM_jyL0qyFBMebkEVHRvqQRdvGfY2kL8N5rQ"><div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity"></div><div class="absolute top-unit-sm right-unit-sm px-unit-xs py-unit-2xs bg-primary/80 backdrop-blur font-meta-technical text-meta-technical text-surface tracking-wider">35MM // MUSIC VIDEO</div></div><div class="pt-unit-md flex flex-col flex-grow justify-between"><div><div class="flex flex-col mb-unit-xs"><h2 class="font-headline-md text-headline-md text-surface-container-lowest font-light tracking-tight group-hover:text-secondary-fixed transition-colors">Music Video Production</h2><p class="font-headline-md italic text-lg md:text-xl text-secondary tracking-wide mt-1">Night Reflections — Dual Frequencies</p></div><p class="font-meta-technical text-meta-technical text-outline mb-unit-xs">2024 / Cinematic Music Video Direction &amp; Color Grading</p><p class="font-body-sm text-body-sm text-outline-variant max-w-xl">Direction, visual narrative, and atmospheric cinematography exploring duality, intimate performance, and saturated neon noir aesthetics.</p></div><div class="pt-unit-md flex items-center justify-between"><span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">Music Video &amp; Direction</span><span class="inline-flex items-center gap-unit-2xs font-label-caps text-label-caps uppercase text-surface group-hover:text-secondary transition-colors">View Project <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span></div></div></article></div>
+<!-- LIST CONTAINER (HIDDEN INITIALLY) -->
+<div class="hidden flex-col gap-unit-xs w-full transition-opacity duration-300" id="projects-list">
+<!-- List Item 01 -->
+<div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="spatial">
+<div class="flex items-center gap-unit-md">
+<span class="font-meta-technical text-meta-technical text-secondary font-semibold">01</span>
+<div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs">
+<h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">Naturama 360° Sound Experience</h3>
+<span class="font-headline-sm italic text-secondary text-base">// The Taste of Sound</span>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline">2024 / Naturama Zoological Museum</p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0">
+<span class="font-label-caps text-label-caps uppercase text-outline-variant">Spatial Audio &amp; Architecture</span>
+<span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span>
+</div>
+</div>
+<!-- List Item 02 -->
+<div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="music">
+<div class="flex items-center gap-unit-md">
+<span class="font-meta-technical text-meta-technical text-secondary font-semibold">02</span>
+<div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs">
+<h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">Arla Commercial Music Composition</h3>
+<span class="font-headline-sm italic text-secondary text-base">// Morgenstund — Dawn Pastoral</span>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline">2024 / Arla Foods Nordic Campaign</p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0">
+<span class="font-label-caps text-label-caps uppercase text-outline-variant">Music Composition &amp; Commercial Score</span>
+<span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span>
+</div>
+</div>
+<!-- List Item 03 -->
+<div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="game">
+<div class="flex items-center gap-unit-md">
+<span class="font-meta-technical text-meta-technical text-secondary font-semibold">03</span>
+<div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs">
+<h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">Video Game Production</h3>
+<span class="font-headline-sm italic text-secondary text-base">// New Blood — Copenhell 105</span>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline">2024 / Solo Auteur Direction</p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0">
+<span class="font-label-caps text-label-caps uppercase text-outline-variant">Game Worlds &amp; Solo Direction</span>
+<span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span>
+</div>
+</div>
+<!-- List Item 04 -->
+<div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="stage">
+<div class="flex items-center gap-unit-md">
+<span class="font-meta-technical text-meta-technical text-secondary font-semibold">04</span>
+<div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs">
+<h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">Theater Directing</h3>
+<span class="font-headline-sm italic text-secondary text-base">// Illumination in Fog — Scenography</span>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline">2024 / Contemporary Stage Direction</p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0">
+<span class="font-label-caps text-label-caps uppercase text-outline-variant">Stage Direction &amp; Choreography</span>
+<span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span>
+</div>
+</div>
+<!-- List Item 05 -->
+<div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="film">
+<div class="flex items-center gap-unit-md">
+<span class="font-meta-technical text-meta-technical text-secondary font-semibold">05</span>
+<div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs">
+<h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">Music Video Production</h3>
+<span class="font-headline-sm italic text-secondary text-base">// Transit Frequencies — Official Video</span>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline">2024 / Auteur Direction &amp; Visual Concept</p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0">
+<span class="font-label-caps text-label-caps uppercase text-outline-variant">Music Video &amp; Direction</span>
+<span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span>
+</div>
+</div>
+<div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="film">
+<div class="flex items-center gap-unit-md">
+<span class="font-meta-technical text-meta-technical text-secondary font-semibold">06</span>
+<div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs">
+<h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">Documentary Sound Design</h3>
+<span class="font-headline-sm italic text-secondary text-base">// Designed to be Kept</span>
+</div>
+<p class="font-meta-technical text-meta-technical text-outline">2024 / Feature Film &amp; Auteur Sound Architecture</p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0">
+<span class="font-label-caps text-label-caps uppercase text-outline-variant">Documentary Sound &amp; Direction</span>
+<span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span>
+</div>
+</div><div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="music"><div class="flex items-center gap-unit-md"><span class="font-meta-technical text-meta-technical text-secondary font-semibold">07</span><div><div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs"><h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">Original Music Composition</h3><span class="font-headline-sm italic text-secondary text-base">// Mothland — The Copenhagen Windowsills</span></div><p class="font-meta-technical text-meta-technical text-outline">2024 / Solo Album &amp; Acoustic Architecture</p></div></div><div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0"><span class="font-label-caps text-label-caps uppercase text-outline-variant">Music Composition &amp; Original Score</span><span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span></div></div><div class="list-item group flex flex-col md:flex-row md:items-center justify-between p-unit-md bg-surface-container-highest/5 hover:bg-surface-container-highest/15 transition-all" data-category="film"><div class="flex items-center gap-unit-md"><span class="font-meta-technical text-meta-technical text-secondary font-semibold">08</span><div><div class="flex flex-col sm:flex-row sm:items-baseline gap-x-unit-xs"><h3 class="font-headline-sm text-headline-sm text-surface group-hover:text-secondary-fixed transition-colors">Music Video Production</h3><span class="font-headline-sm italic text-secondary text-base">// Night Reflections — Dual Frequencies</span></div><p class="font-meta-technical text-meta-technical text-outline">2024 / Cinematic Music Video Direction &amp; Color Grading</p></div></div><div class="flex items-center justify-between md:justify-end gap-unit-lg mt-unit-sm md:mt-0"><span class="font-label-caps text-label-caps uppercase text-outline-variant">Music Video &amp; Direction</span><span class="font-meta-technical text-meta-technical text-surface group-hover:text-secondary inline-flex items-center gap-unit-2xs">View Archive →</span></div></div></div>
+</section>
+<!-- REFINED TECHNICAL METRICS / ARCHIVE LEDGER STRIP -->
+<section class="w-full bg-surface-container-highest/5 py-unit-xl px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter-desktop">
+<div class="flex flex-col">
+<span class="font-meta-technical text-meta-technical text-secondary uppercase tracking-widest mb-unit-2xs">Acoustic Standards</span>
+<span class="font-headline-sm text-headline-sm text-surface">64 Ambisonics</span>
+<span class="font-body-sm text-body-sm text-outline mt-unit-2xs">Subterranean &amp; Dome Integration</span>
+</div>
+<div class="flex flex-col">
+<span class="font-meta-technical text-meta-technical text-secondary uppercase tracking-widest mb-unit-2xs">Scenography Scale</span>
+<span class="font-headline-sm text-headline-sm text-surface">1,400 m²</span>
+<span class="font-body-sm text-body-sm text-outline mt-unit-2xs">Modular Volumetric Rigging</span>
+</div>
+<div class="flex flex-col">
+<span class="font-meta-technical text-meta-technical text-secondary uppercase tracking-widest mb-unit-2xs">Commission Index</span>
+<span class="font-headline-sm text-headline-sm text-surface">Nordic Biennial</span>
+<span class="font-body-sm text-body-sm text-outline mt-unit-2xs">Institutional &amp; Private Staging</span>
+</div>
+<div class="flex flex-col">
+<span class="font-meta-technical text-meta-technical text-secondary uppercase tracking-widest mb-unit-2xs">Auteur Mediums</span>
+<span class="font-headline-sm text-headline-sm text-surface">Spatial &amp; 35mm</span>
+<span class="font-body-sm text-body-sm text-outline mt-unit-2xs">Acoustic, Kinetic, Theatrical</span>
+</div>
+</div>
+</section>
+<!-- MINIMALIST STUDIO DIALOGUE BANNER -->
+<section class="w-full px-margin-mobile md:px-margin-desktop py-unit-3xl flex flex-col items-center justify-center text-center relative overflow-hidden">
+<div class="max-w-3xl flex flex-col items-center">
+<div class="flex items-center gap-unit-xs mb-unit-sm">
+<span class="w-2 h-2 bg-secondary inline-block"></span>
+<span class="font-label-caps text-label-caps uppercase text-outline tracking-widest">COMMISSIONS // 2025-2026</span>
+</div>
+<h2 class="font-headline-lg md:font-display-hero text-headline-lg md:text-display-hero text-surface tracking-tight mb-unit-md">
+        Have a project or biennial staging in mind?
+      </h2>
+<p class="font-body-lg text-body-lg text-outline-variant max-w-xl mb-unit-xl">
+        Valdemar Løv accepts select auteur spatial commissions, acoustic dome consultations, and scenographic direction worldwide.
+      </p>
+<a class="inline-flex items-center gap-unit-sm px-unit-lg py-unit-md bg-secondary hover:bg-secondary-container text-on-secondary font-label-caps text-label-caps uppercase tracking-widest transition-colors" data-path="contact" href="#">
+<span class="">Inquire About Collaboration</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- CLIENT-SIDE INTERACTIVITY FOR FILTERING AND VIEW TOGGLE -->
+<script>
+    function setViewMode(mode) {
+      const gridContainer = document.getElementById('projects-grid');
+      const listContainer = document.getElementById('projects-list');
+      const gridBtn = document.getElementById('view-grid-btn');
+      const listBtn = document.getElementById('view-list-btn');
+
+      if (mode === 'grid') {
+        gridContainer.classList.remove('hidden');
+        listContainer.classList.add('hidden');
+        gridBtn.className = 'flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase';
+        listBtn.className = 'flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase';
+      } else {
+        gridContainer.classList.add('hidden');
+        listContainer.classList.remove('hidden');
+        listBtn.className = 'flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase';
+        gridBtn.className = 'flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase';
+      }
+    }
+
+    function filterWorks(category) {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      filterButtons.forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.className = 'filter-btn active-filter px-unit-sm py-unit-xs font-label-caps text-label-caps uppercase tracking-wider bg-surface text-primary rounded transition-colors';
+        } else {
+          btn.className = 'filter-btn px-unit-sm py-unit-xs font-label-caps text-label-caps uppercase tracking-wider bg-surface-container-highest/10 text-outline-variant hover:text-surface rounded transition-colors';
+        }
+      });
+
+      const gridItems = document.querySelectorAll('.project-item');
+      const listItems = document.querySelectorAll('.list-item');
+
+      gridItems.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      listItems.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low"><div class="w-full px-margin-mobile md:px-margin-desktop py-unit-xl"><div class="grid grid-cols-1 md:grid-cols-12 gap-gutter-desktop"><div class="md:col-span-4 flex flex-col gap-unit-xs"><span class="font-headline-sm text-headline-sm text-on-surface">Valdemar Løv</span><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Auteur spatial narratives, biennial scenography, and immersive architectural worlds based in Copenhagen.</p></div><div class="md:col-span-3 flex flex-col gap-unit-2xs"><span class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest mb-unit-xs">Coordinates</span><span class="font-meta-technical text-meta-technical text-on-surface-variant">55.6761° N, 12.5683° E</span><span class="font-meta-technical text-meta-technical text-on-surface-variant">Bredgade 34, 1260 København K</span><span class="font-meta-technical text-meta-technical text-on-surface-variant">Danmark</span></div><div class="md:col-span-3 flex flex-col gap-unit-2xs"><span class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest mb-unit-xs">Commissions &amp; Inquiries</span><span class="font-meta-technical text-meta-technical text-on-surface-variant">atelier@valdemarlov.dk</span><span class="font-meta-technical text-meta-technical text-on-surface-variant">+45 31 88 02 40</span><span class="font-meta-technical text-meta-technical text-secondary">Accepting 2025/2026 Installations</span></div><div class="md:col-span-2 flex flex-col gap-unit-2xs"><span class="font-label-caps text-label-caps text-on-surface uppercase tracking-widest mb-unit-xs">Index</span><a class="font-meta-technical text-meta-technical text-on-surface-variant hover:text-on-surface transition-colors" data-path="projects" href="#">01 // Projects</a><a class="font-meta-technical text-meta-technical text-on-surface-variant hover:text-on-surface transition-colors" data-path="about-me" href="#">02 // About</a><a class="font-meta-technical text-meta-technical text-on-surface-variant hover:text-on-surface transition-colors" data-path="contact" href="#">03 // Contact</a></div></div><div class="mt-unit-lg pt-unit-md flex flex-col sm:flex-row items-center justify-between gap-unit-xs"><span class="font-meta-technical text-meta-technical text-on-surface-variant">© 2024 Valdemar Løv Studio. All rights reserved.</span><span class="font-meta-technical text-meta-technical text-on-surface-variant">Nordic Curation &amp; Spatial Architecture</span></div></div></footer>
+
+
+</body></html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>RASMUS JON — Creating Worlds</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="/tailwind.js"></script>
+<!-- Google Fonts for Editorial Serif & Modern Clean Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&amp;family=Instrument+Serif:ital@1&amp;family=Inter:wght@300;400;500;700;800&amp;family=Manrope:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+            bodoni: ['"Bodoni Moda"', 'Georgia', 'serif'],
+            manrope: ['"Manrope"', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace'],
+          },
+          letterSpacing: {
+            widest: '0.22em',
+            ultra: '0.28em',
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="typography">
+    .font-hero-serif {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 0.95;
+    }
+    .font-hero-sans {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      line-height: 0.95;
+    }
+  </style>
+<style data-purpose="cinematic-overlay">
+    /* Subtle moody gradient to mirror the atmospheric Nordic haze and ensure maximum contrast */
+    .cinematic-vignette {
+      background: radial-gradient(circle at 55% 45%, rgba(18, 14, 10, 0.25) 0%, rgba(5, 7, 12, 0.65) 80%, rgba(3, 4, 8, 0.88) 100%),
+                  linear-gradient(180deg, rgba(8, 10, 15, 0.65) 0%, rgba(0, 0, 0, 0.1) 35%, rgba(0, 0, 0, 0.2) 65%, rgba(5, 7, 10, 0.85) 100%);
+    }
+
+    /* 3D Carousel Stage styling */
+    .carousel-perspective-container {
+      perspective: 1200px;
+      transform-style: preserve-3d;
+    }
+    .carousel-card {
+      transition: transform 1.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.25s ease-in-out, filter 1.25s ease-in-out, box-shadow 1.25s ease-in-out;
+      will-change: transform, opacity;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+    }
+    .carousel-card.active {
+      transform: translateX(0%) scale(1.06) translateZ(50px) rotateY(0deg);
+      opacity: 1;
+      z-index: 20;
+      filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.85));
+      cursor: default;
+    }
+    .carousel-card.front-card {
+      z-index: 30;
+    }
+    .carousel-card.carousel-left-1 {
+      transform: translateX(-88%) scale(0.88) translateZ(-40px) rotateY(24deg);
+      opacity: 0.55;
+      z-index: 20;
+      filter: brightness(0.75);
+      cursor: pointer;
+    }
+    .carousel-card.carousel-left-2 {
+      transform: translateX(-160%) scale(0.74) translateZ(-120px) rotateY(38deg);
+      opacity: 0.2;
+      z-index: 10;
+      filter: brightness(0.5);
+      cursor: pointer;
+      pointer-events: none;
+    }
+    .carousel-card.carousel-right-1 {
+      transform: translateX(88%) scale(0.88) translateZ(-40px) rotateY(-24deg);
+      opacity: 0.55;
+      z-index: 20;
+      filter: brightness(0.75);
+      cursor: pointer;
+    }
+    .carousel-card.carousel-right-2 {
+      transform: translateX(160%) scale(0.74) translateZ(-120px) rotateY(-38deg);
+      opacity: 0.2;
+      z-index: 10;
+      filter: brightness(0.5);
+      cursor: pointer;
+      pointer-events: none;
+    }
+    .carousel-card.hidden-card {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.6) translateZ(-200px);
+      z-index: 0;
+    }
+
+    @media (max-width: 768px) {
+      .carousel-card.carousel-left-1 {
+        transform: translateX(-65%) scale(0.84) rotateY(16deg);
+        opacity: 0.4;
+      }
+      .carousel-card.carousel-right-1 {
+        transform: translateX(65%) scale(0.84) rotateY(-16deg);
+        opacity: 0.4;
+      }
+    }
+  </style>
+<!-- END: Custom Styles -->
+<link rel="stylesheet" href="/styles.css"><script type="module" src="/app.js"></script></head>
+<body class="bg-black text-white font-sans antialiased selection:bg-white selection:text-black">
+<!-- BEGIN: FullbleedHeroSection -->
+<main class="relative w-full min-h-screen flex flex-col justify-between" data-purpose="hero-container">
+<!-- Background Image Layer -->
+<div class="fixed inset-0 z-0 pointer-events-none" data-purpose="hero-media-background">
+<video aria-label="Atmospheric background film" autoplay class="w-full h-full object-cover object-center scale-105" loop muted playsinline preload="auto">
+  <source src="/assets/website-baggrund-3.mp4" type="video/mp4">
+</video>
+<!-- Atmospheric & Contrast Enhancement Overlays -->
+<div class="absolute inset-0 cinematic-vignette"></div>
+<div class="absolute inset-0 bg-amber-950/15 mix-blend-color-burn"></div>
+</div>
+<!-- BEGIN: TopNavigation -->
+<header class="fixed top-0 left-0 right-0 z-50 w-full" data-purpose="site-navigation-header">
+<div class="relative w-full max-w-[1720px] mx-auto px-8 md:px-14 lg:px-20 h-24 flex items-center justify-between">
+<!-- Brand Identity / Logo -->
+<a class="group flex items-center space-x-3.5 tracking-ultra text-[13px] md:text-[14px] uppercase font-medium text-white/95 hover:text-white transition-opacity duration-300" data-purpose="brand-logo" href="#">
+<span class="font-normal">RASMUS JON</span>
+</a>
+<a class="echoworks-echo absolute left-1/2 -translate-x-1/2 font-mono uppercase tracking-ultra hover:text-white transition-colors" href="/" aria-label="EchoWorks"><span>EchoWorks</span><span>EchoWorks</span><span>EchoWorks</span></a>
+<!-- Main Navigation Links -->
+<nav aria-label="Main Navigation" class="flex items-center space-x-8 md:space-x-12" data-purpose="nav-links">
+<a class="text-[13px] md:text-[14px] font-normal tracking-wide text-white/80 hover:text-white transition-colors duration-200" href="#projects-carousel">
+            Projects
+          </a>
+<a class="text-[13px] md:text-[14px] font-normal tracking-wide text-white/80 hover:text-white transition-colors duration-200" href="#">
+            About Me
+          </a>
+<a class="text-[13px] md:text-[14px] font-normal tracking-wide text-white/80 hover:text-white transition-colors duration-200" href="#">
+            Contact
+          </a>
+</nav>
+</div>
+<!-- Razor-thin hairline divider line -->
+<div class="w-full h-[1px] bg-white/15 backdrop-blur-sm" data-purpose="header-hairline-separator"></div>
+</header>
+<!-- END: TopNavigation -->
+<!-- BEGIN: MonumentalCenterStatement -->
+<section class="relative z-10 w-full px-6 flex flex-col items-center justify-center text-center my-auto pt-16 pb-12" data-purpose="statement-display">
+<!-- Primary Title -->
+<h1 class="flex flex-wrap items-baseline justify-center tracking-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.6)]">
+<!-- Delicate Flowing Italic Serif -->
+<span class="font-hero-serif text-5xl sm:text-6xl md:text-7xl lg:text-[8rem] text-white pr-4 sm:pr-6 md:pr-8 tracking-normal inline-block">
+          Creating
+        </span>
+<!-- Bold Clean Geometric Sans -->
+<span class="font-hero-sans text-5xl sm:text-6xl md:text-7xl lg:text-[8rem] text-white tracking-tight inline-block">
+          Worlds
+        </span>
+</h1>
+<!-- Cinematic Subtitle -->
+<p class="mt-4 sm:mt-6 md:mt-7 text-lg sm:text-xl md:text-2xl lg:text-[26px] font-light text-white/95 tracking-wide drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]" data-purpose="statement-subheading">
+        Across story, sound, performance and space
+      </p>
+</section>
+<!-- END: MonumentalCenterStatement -->
+<!-- BEGIN: BottomControls -->
+<footer class="relative z-20 w-full pb-10 md:pb-14 px-8 md:px-14 lg:px-20" data-purpose="interactive-footer-controls">
+<div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
+<div class="flex flex-col items-start space-y-4 max-w-xs">
+<!-- Video Scrubber / Timeline Bar -->
+<div class="w-48 sm:w-56 h-[3px] bg-white/25 rounded-full overflow-hidden backdrop-blur-sm cursor-pointer relative group" data-purpose="timeline-scrubber" title="Media progress">
+<!-- Active Progress Pill -->
+<div class="h-full w-10 sm:w-12 bg-white rounded-full transition-all duration-300 group-hover:w-16"></div>
+</div>
+<!-- Play Trigger Button -->
+<button aria-label="Watch the full story" class="group flex items-center space-x-2.5 text-white/90 hover:text-white transition-opacity duration-200 cursor-pointer focus:outline-none" data-purpose="play-story-trigger" type="button">
+<!-- Outline Play Triangle -->
+<span class="flex items-center justify-center">
+<svg class="w-3.5 h-3.5 fill-transparent stroke-white stroke-[1.75] transform group-hover:scale-110 transition-transform duration-200" viewBox="0 0 24 24">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg>
+</span>
+<span class="text-[13px] md:text-[14px] font-normal tracking-wide text-white/90 group-hover:text-white">
+        Watch the full story
+      </span>
+</button>
+</div>
+<!-- Smooth Scroll Indicator Down to Carousel -->
+<a class="hidden sm:flex items-center space-x-2 text-white/60 hover:text-white text-xs tracking-widest uppercase transition-colors duration-200 group" href="#projects-carousel">
+<span class="">Explore Works</span>
+<svg class="w-4 h-4 transform group-hover:translate-y-0.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</a>
+</div>
+</footer>
+<!-- END: BottomControls -->
+</main>
+<!-- END: FullbleedHeroSection -->
+<!-- BEGIN: 3D Perspective Carousel Section -->
+<section class="relative z-20 w-full min-h-screen py-24 px-4 sm:px-8 md:px-14 lg:px-20 flex flex-col justify-center items-center bg-gradient-to-b from-black/60 via-black/85 to-black overflow-hidden" data-purpose="project-carousel-section" id="projects-carousel">
+<!-- Section Header -->
+<div class="w-full max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 border-b border-white/10 pb-6">
+<div>
+<h2 class="font-bodoni text-3xl sm:text-4xl md:text-5xl text-white font-normal tracking-tight">Portfolio Selected Works</h2>
+</div>
+<!-- Carousel Desktop Nav Controls -->
+<div class="flex items-center space-x-3 mt-6 sm:mt-0">
+<button aria-label="Previous project" class="w-10 h-10 rounded-full border border-white/20 hover:border-white text-white/80 hover:text-white flex items-center justify-center backdrop-blur-md bg-white/5 hover:bg-white/15 transition-all duration-200" id="carousel-prev">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</button>
+<button aria-label="Next project" class="w-10 h-10 rounded-full border border-white/20 hover:border-white text-white/80 hover:text-white flex items-center justify-center backdrop-blur-md bg-white/5 hover:bg-white/15 transition-all duration-200" id="carousel-next">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- 3D Perspective Stage Container -->
+<div class="carousel-perspective-container relative w-full max-w-6xl h-[460px] sm:h-[500px] md:h-[540px] flex items-center justify-center">
+<!-- Card 0: Naturama 360 Sound Experience -->
+<div class="carousel-card absolute w-[86%] sm:w-[580px] md:w-[640px] h-[380px] sm:h-[430px] rounded-xl overflow-hidden border border-white/20 bg-[#0e0f12] shadow-2xl group select-none active" data-index="0">
+<div class="relative w-full h-[68%] overflow-hidden">
+<img alt="Naturama 360° Sound Experience" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AEtjO1WP16YYMVCDMYoy78I2iIxLt4O_iEK4FCWCP1y56-4qEAgVQfVtFRE07PQw0hIbGT2gAkuFhEq4SYD3r-POlbQ3K115nM7v7wMsaBt1VDp9chyD1gs2fTMXFvQmmWtRpvau1pqphxZhglrG5t75rl1fTFDOeko3Lf7xi4d9ZZi3UtzuWyemgDUzfWIGyeuAvfFl72fDjUuR-YuACmFajpKCWiJ-wlXOXY_Xlwz1-ESbggbuVGo59mqpg9Q">
+<div class="absolute inset-0 bg-gradient-to-t from-[#0e0f12] via-transparent to-transparent"></div>
+<div class="absolute top-4 left-4">
+<span class="font-mono text-[10px] uppercase tracking-widest px-2.5 py-1 rounded bg-black/70 backdrop-blur-md text-white/90 border border-white/15">
+            01 / Spatial Audio
+          </span>
+</div>
+</div>
+<div class="p-5 sm:p-6 flex flex-col justify-between h-[32%] bg-[#0e0f12]">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-mono text-[11px] text-white/45 tracking-widest uppercase block">Scenography &amp; Acoustical Immersion — 2024</span>
+<h3 class="font-bodoni text-xl sm:text-2xl text-white font-normal mt-1 tracking-tight">Naturama 360° Sound Experience</h3>
+</div>
+<span class="text-xs font-mono text-white/60 tracking-wider hidden sm:inline-block border border-white/15 px-3 py-1 rounded-full group-hover:border-white/40 transition-colors">View Case</span>
+</div>
+</div>
+</div>
+<!-- Card 1: The Drift of Silence -->
+<div class="carousel-card absolute w-[86%] sm:w-[580px] md:w-[640px] h-[380px] sm:h-[430px] rounded-xl overflow-hidden border border-white/20 bg-[#0e0f12] shadow-2xl group select-none carousel-right-1" data-index="1">
+<div class="relative w-full h-[68%] overflow-hidden">
+<img alt="The Drift of Silence" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AEtjO1W67nq7_LgZyTLuerPjpJD4pgXkztpy_NXqtCCxTLkl6Qw8-VvACydjx68XA4fN1WK0mqq4u4ywV6YL20znVunt4cuHgGnY-t33ke_yIioBzDW0FUNPqIDIEtfT0axjbwai8HfeEj1cpEbkbOdHFTtkrjCCO-gPTV2z67EqPnLoAXK-6jPuIjXQYgaRvXuCcy-3EvlTRO_Cw_xl1d7WKRTGGXErukA218BBIBgkcqDdtTC8P5qUGb4UTQ">
+<div class="absolute inset-0 bg-gradient-to-t from-[#0e0f12] via-transparent to-transparent"></div>
+<div class="absolute top-4 left-4">
+<span class="font-mono text-[10px] uppercase tracking-widest px-2.5 py-1 rounded bg-black/70 backdrop-blur-md text-white/90 border border-white/15">
+            02 / Film &amp; Sound
+          </span>
+</div>
+</div>
+<div class="p-5 sm:p-6 flex flex-col justify-between h-[32%] bg-[#0e0f12]">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-mono text-[11px] text-white/45 tracking-widest uppercase block">Arthouse Film &amp; Anamorphic Soundscape — 2023</span>
+<h3 class="font-bodoni text-xl sm:text-2xl text-white font-normal mt-1 tracking-tight">The Drift of Silence</h3>
+</div>
+<span class="text-xs font-mono text-white/60 tracking-wider hidden sm:inline-block border border-white/15 px-3 py-1 rounded-full group-hover:border-white/40 transition-colors">View Case</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Spatial Sound Studio & Worldbuilding -->
+<div class="carousel-card absolute w-[86%] sm:w-[580px] md:w-[640px] h-[380px] sm:h-[430px] rounded-xl overflow-hidden border border-white/20 bg-[#0e0f12] shadow-2xl group select-none carousel-right-2" data-index="2">
+<div class="relative w-full h-[68%] overflow-hidden">
+<img alt="Spatial Sound Studio &amp; Worldbuilding" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AEtjO1UZy9KslD6b_uPxweB8HC75cL91Hi94fiaVSyo4su4zN436N2p2ykoKJ5SHpeSiBtNpMXEvLyCwDaxaCLZYHESAGPSZeCeAyPzmuadOUJYlqJ78zgMduXjKiJwG1HjDjK99ib1P6etjhVSeu5cSjmTKGyxjTK1zVtEjgxQxTYlWXXOlitb4-Ytus9BVfGFDQWkmWPtXxDscl2Bi-orkIl8TDh0NB63gHC_M6uWdA5fj4dwJXEjkM0FSI6c">
+<div class="absolute inset-0 bg-gradient-to-t from-[#0e0f12] via-transparent to-transparent"></div>
+<div class="absolute top-4 left-4">
+<span class="font-mono text-[10px] uppercase tracking-widest px-2.5 py-1 rounded bg-black/70 backdrop-blur-md text-white/90 border border-white/15">
+            03 / Direction
+          </span>
+</div>
+</div>
+<div class="p-5 sm:p-6 flex flex-col justify-between h-[32%] bg-[#0e0f12]">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-mono text-[11px] text-white/45 tracking-widest uppercase block">Copenhagen Studio &amp; Curated Worldbuilding — 2024</span>
+<h3 class="font-bodoni text-xl sm:text-2xl text-white font-normal mt-1 tracking-tight">Spatial Sound Studio &amp; Worldbuilding</h3>
+</div>
+<span class="text-xs font-mono text-white/60 tracking-wider hidden sm:inline-block border border-white/15 px-3 py-1 rounded-full group-hover:border-white/40 transition-colors">View Case</span>
+</div>
+</div>
+</div>
+<!-- Card 3: SV Electrostatic Acoustic Architecture -->
+<div class="carousel-card absolute w-[86%] sm:w-[580px] md:w-[640px] h-[380px] sm:h-[430px] rounded-xl overflow-hidden border border-white/20 bg-[#0e0f12] shadow-2xl group select-none carousel-left-2" data-index="3">
+<div class="relative w-full h-[68%] overflow-hidden">
+<img alt="SV Electrostatic Acoustic Architecture" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AEtjO1XiL0WPXIEzOCsVG8M4pe7CdrJMxAButLlvjCjBnP-Iq7jyX_JmCzDeKhiZcWa5oO0ugkLlaPlc2xoSEZXG8Y3o_AL_jrDpmnCZHoXI0IuXIz05Sj6Y9XCP_lhc1SWfH-HKFAPWb7111z3yF5k6GVvD0hhLXsJ-3alrxX3HaP12jI9Os2qIoo4d8X2SD96WPqhZOL9GIKgIggRVyE3XWpjz3ERwuCv2ipJ_3-sIGC2eDxXKRzH2ri4ZMIE">
+<div class="absolute inset-0 bg-gradient-to-t from-[#0e0f12] via-transparent to-transparent"></div>
+<div class="absolute top-4 left-4">
+<span class="font-mono text-[10px] uppercase tracking-widest px-2.5 py-1 rounded bg-black/70 backdrop-blur-md text-white/90 border border-white/15">
+            04 / Automotive
+          </span>
+</div>
+</div>
+<div class="p-5 sm:p-6 flex flex-col justify-between h-[32%] bg-[#0e0f12]">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-mono text-[11px] text-white/45 tracking-widest uppercase block">Integrated Electrostatic Panels &amp; Interior Sound — 2023</span>
+<h3 class="font-bodoni text-xl sm:text-2xl text-white font-normal mt-1 tracking-tight">SV Electrostatic Acoustic Architecture</h3>
+</div>
+<span class="text-xs font-mono text-white/60 tracking-wider hidden sm:inline-block border border-white/15 px-3 py-1 rounded-full group-hover:border-white/40 transition-colors">View Case</span>
+</div>
+</div>
+</div>
+<!-- Card 4: Warwick Reference Transducers -->
+<div class="carousel-card absolute w-[86%] sm:w-[580px] md:w-[640px] h-[380px] sm:h-[430px] rounded-xl overflow-hidden border border-white/20 bg-[#0e0f12] shadow-2xl group select-none carousel-left-1" data-index="4">
+<div class="relative w-full h-[68%] overflow-hidden">
+<img alt="Warwick Reference Transducers" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AEtjO1XwkO1NWL5F1cPiAMbobHSQNym30UYtOIdORERnpjdAAtEWk7Kh8g1REMIef4nM2rRc83fsykuLmns1lm3KvZ_GnPbsJW5gvgUZUJ4ikZEo7IfkK_DQ0tzyvqOVw48cxrgD4ERH-8ramk5lAOpTeE2uCmNxXejrhqVrnWiBsSCJThjy8_axeAQVfAeoniR4ZbJ8UoPMoRQCY6aQfG3BZNBpw_KizkYYv0bzr0gykllFuazXYS-_4Lf3uUM">
+<div class="absolute inset-0 bg-gradient-to-t from-[#0e0f12] via-transparent to-transparent"></div>
+<div class="absolute top-4 left-4">
+<span class="font-mono text-[10px] uppercase tracking-widest px-2.5 py-1 rounded bg-black/70 backdrop-blur-md text-white/90 border border-white/15">
+            05 / Acoustic Engineering
+          </span>
+</div>
+</div>
+<div class="p-5 sm:p-6 flex flex-col justify-between h-[32%] bg-[#0e0f12]">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-mono text-[11px] text-white/45 tracking-widest uppercase block">Ultra-Precision Handcrafted Transducers — 2022</span>
+<h3 class="font-bodoni text-xl sm:text-2xl text-white font-normal mt-1 tracking-tight">Warwick Reference Transducers</h3>
+</div>
+<span class="text-xs font-mono text-white/60 tracking-wider hidden sm:inline-block border border-white/15 px-3 py-1 rounded-full group-hover:border-white/40 transition-colors">View Case</span>
+</div>
+</div>
+</div>
+<!-- Visual navigation cues: the wheel is still controlled by hover and swipe. -->
+<div aria-hidden="true" class="carousel-visual-arrow carousel-visual-arrow-left">
+<svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+<div aria-hidden="true" class="carousel-visual-arrow carousel-visual-arrow-right">
+<svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+</div>
+<!-- Pagination Dot Indicators (Inspired by reference) -->
+<div class="flex items-center justify-center space-x-3 mt-8 z-30" data-purpose="carousel-dots" id="carousel-dots">
+<button aria-label="Slide 1" class="carousel-dot w-2.5 h-2.5 rounded-full bg-white transition-all duration-300 transform scale-125" data-index="0"></button>
+<button aria-label="Slide 2" class="carousel-dot w-2.5 h-2.5 rounded-full bg-white/35 hover:bg-white/70 transition-all duration-300" data-index="1"></button>
+<button aria-label="Slide 3" class="carousel-dot w-2.5 h-2.5 rounded-full bg-white/35 hover:bg-white/70 transition-all duration-300" data-index="2"></button>
+<button aria-label="Slide 4" class="carousel-dot w-2.5 h-2.5 rounded-full bg-white/35 hover:bg-white/70 transition-all duration-300" data-index="3"></button>
+<button aria-label="Slide 5" class="carousel-dot w-2.5 h-2.5 rounded-full bg-white/35 hover:bg-white/70 transition-all duration-300" data-index="4"></button>
+</div>
+</section>
+<!-- END: 3D Perspective Carousel Section -->
+<!-- BEGIN: InteractiveScripts -->
+
+<!-- END: InteractiveScripts -->
+
+
+<section id="about-me" class="mock-section about-section"><div class="about-copy"><h2>I create Worlds</h2><p>I’m a creator of structured experiences across mediums &amp; live experiences. From concept to final production, I turn ideas into immersive projects that spark collaboration, inspire artistic growth, and build meaningful community.</p><a href="/projects">Explore all projects ↗</a></div><figure class="about-portrait"><img src="/assets/profilcut.jpg" alt="Rasmus Jon"></figure></section><section id="contact" class="mock-section"><h2>Let’s make something<br>worth experiencing.</h2><p>Have a project in mind? Let's start a conversation.</p><a href="mailto:rasmus.jon@outlook.com">rasmus.jon@outlook.com ↗</a></section><!-- GLOBAL_FOOTER --></body></html>
