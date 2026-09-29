@@ -875,6 +875,10 @@ function makeNaturamaEmulator(): void {
   let subGain: GainNode | undefined;
   let speakerGains: GainNode[] = [];
   let speakerAnalysers: AnalyserNode[] = [];
+  // Keep a visual envelope for each channel. The sound itself may have fast
+  // transients, but the map should read as a calm indication of direction.
+  let visualSpeakerLevels = Array.from({ length: 8 }, () => 0);
+  let lastHeatmapUpdate = performance.now();
   let activeIsolation: number[] | undefined;
   let playing = false;
 
@@ -953,10 +957,15 @@ function makeNaturamaEmulator(): void {
     const ring = container.querySelector<HTMLElement>('.naturama-speaker-stage__circle > div:first-child');
     if (!ring) return;
     if (!playing) {
+      visualSpeakerLevels.fill(0);
+      lastHeatmapUpdate = performance.now();
       ring.style.setProperty('--naturama-heatmap', 'none');
       return;
     }
     const selected = new Set(activeIsolation || []);
+    const now = performance.now();
+    const elapsed = Math.min(100, now - lastHeatmapUpdate);
+    lastHeatmapUpdate = now;
     const levels = Array.from({ length: 8 }, (_, index) => {
       if (selected.size && !selected.has(index)) return 0;
       const analyser = speakerAnalysers[index];
@@ -964,9 +973,17 @@ function makeNaturamaEmulator(): void {
       const samples = new Uint8Array(analyser.fftSize);
       analyser.getByteTimeDomainData(samples);
       const rms = Math.sqrt(samples.reduce((sum, sample) => sum + Math.pow((sample - 128) / 128, 2), 0) / samples.length);
-      // Gate quiet material, then exaggerate the remaining dynamics so each
-      // direction reads as a clear, pulsing volume signal.
-      return Math.min(1, Math.pow(Math.max(0, (rms - .02) / .21), .92));
+      // Make quiet details readable, while keeping the full-scale response
+      // controlled enough that only the loudest sounds reach red.
+      return Math.min(1, Math.pow(Math.max(0, (rms - .008) / .18), .72));
+    });
+    levels.forEach((target, index) => {
+      const current = visualSpeakerLevels[index];
+      // Rise in a quarter-second, then fade more slowly. This removes flicker
+      // while retaining the sense of live movement around the listener.
+      const duration = target > current ? 240 : 520;
+      const blend = 1 - Math.exp(-elapsed / duration);
+      visualSpeakerLevels[index] = current + (target - current) * blend;
     });
     const colourFor = (level: number) => {
       const visible = Math.max(0, Math.min(1, (level - .16) / .84));
@@ -982,7 +999,7 @@ function makeNaturamaEmulator(): void {
       const after = (before + 1) % 8;
       const blend = point - Math.floor(point);
       const smoothBlend = blend * blend * (3 - 2 * blend);
-      const level = levels[before] + (levels[after] - levels[before]) * smoothBlend;
+      const level = visualSpeakerLevels[before] + (visualSpeakerLevels[after] - visualSpeakerLevels[before]) * smoothBlend;
       return `${colourFor(level)} ${(sample / 64 * 360).toFixed(2)}deg`;
     });
     ring.style.setProperty('--naturama-heatmap', `conic-gradient(from 0deg, ${stops.join(', ')})`);
