@@ -188,13 +188,13 @@ function renderNaturamaCaseStudy(): void {
       <div class="naturama-intro-grid grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"><div class="naturama-intro-chapter lg:col-span-6 space-y-6"><div><span class="font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest block mb-2">Chapter 01</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">An Immersive Audio Journey</h3></div><p class="font-manrope text-white/70 leading-relaxed font-light text-base">Naturama 360° Sound Experience was a 20-minute audio journey for thirty people at a time, experienced together in darkness in Naturama’s large hall. Eight speakers formed a circle around the audience, placing sound in every direction — in front, behind, beside, above and below the listening position.</p><p class="font-manrope text-white/70 leading-relaxed font-light text-base">Spatial audio means I can compose not only with sound itself, but with where it is and how it moves. The journey begins inside a spacecraft preparing for launch, sends the audience into space, crashes them onto an unknown planet, carries them through a jungle and tropical rain, and ends with a radio message that their location has been found and help is coming.</p><div class="p-8 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10"><p class="font-serif italic text-2xl sm:text-3xl text-white/95 leading-snug">Have you noticed how the sound of an ambulance changes as it passes by?</p></div></div><div class="naturama-intro-chapter naturama-intro-chapter--two lg:col-span-6 space-y-6"><div><span class="font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest block mb-2">Chapter 02</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">Sound as a physical experience</h3></div><p class="font-manrope text-white/70 leading-relaxed font-light text-base">An experience like this is not simply a matter of choosing a spaceship beep or the sound of waves: it requires an understanding of how waves change through time, movement, space and atmosphere. The launch used low bass to make the room physically shake, while the water sequences used EQ and volume automation to move between the muffled pressure of being underwater and the open detail of waves breaking around the listener.</p><div class="p-6 rounded-xl bg-white/[0.02] border border-white/10 space-y-3"><span class="font-mono text-[11px] uppercase tracking-widest text-[#6f7f68] font-semibold block">Physical sound design</span><p class="font-manrope text-sm text-white/70 leading-relaxed font-light">Distance is not created by volume alone. Low frequencies travel farther than bright, high frequencies, so frequency content, pitch, timing, motion and reflections all change as a sound source moves. Our ears also receive sound differently when it comes from behind or above, because the shape of the head and outer ear filters the sound before it reaches us. Sound behaves differently through water than through air, and Doppler effects make a moving source change in pitch and perceived timing as it approaches, passes and recedes.</p><p class="font-manrope text-sm text-white/70 leading-relaxed font-light">I used these principles to make sounds feel close, distant, overhead, underwater and in motion. Alongside the sound, drinks with metallic, bitter flavours in space and sweet tropical flavours in the jungle added a second sensory layer to the journey.</p><div class="pt-2 flex flex-wrap items-center gap-4 font-mono text-[10px] text-brand-muted tracking-widest"><span>// 8-SPEAKER ARRAY</span><span>// PHYSICAL AUDIO</span><span class="text-[#6f7f68]">// 360° STORYTELLING</span></div></div></div></div>
       <section class="mt-2 pt-3 space-y-8" aria-labelledby="naturama-listen-title">
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5"><div><span class="font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest block mb-2">Interactive listening model</span><h3 id="naturama-listen-title" class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">Step inside the eight-speaker mix</h3></div><p class="font-manrope text-sm text-white/60 leading-relaxed font-light max-w-xl">This headphone experience maps the original eight speaker channels and sub material into a binaural approximation. Select a speaker or pair to isolate its contribution.</p></div>
-        <div id="naturama-emulator" class="rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-white/[0.01] px-5 py-4 sm:px-8 sm:py-5" data-ready="false">
+        <div id="naturama-emulator" class="w-full max-w-[1100px] mx-auto rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-white/[0.01] px-5 py-4 sm:px-8 sm:py-5" data-ready="false">
           <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_300px] gap-8 items-center">
             <div class="relative mx-auto w-full max-w-[520px] aspect-square" aria-label="Eight-speaker listening map">
               <div class="absolute inset-[17%] rounded-full border border-white/10 bg-black/20"></div><div class="absolute inset-[34%] rounded-full border border-[#6f7f68]/40 bg-[#6f7f68]/5 flex items-center justify-center"><span class="font-mono text-[10px] tracking-widest text-white/60 uppercase text-center">Listener<br>position</span></div>
               <button type="button" data-naturama-speaker="0" class="naturama-speaker absolute left-1/2 top-0 -translate-x-1/2 w-12 h-12 rounded-full border border-white/25 bg-[#15161b] text-white font-mono text-xs transition" aria-label="Isolate speaker 1">01</button><button type="button" data-naturama-speaker="1" class="naturama-speaker absolute right-[9%] top-[9%] w-12 h-12 rounded-full border border-white/25 bg-[#15161b] text-white font-mono text-xs transition" aria-label="Isolate speaker 2">02</button><button type="button" data-naturama-speaker="2" class="naturama-speaker absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/25 bg-[#15161b] text-white font-mono text-xs transition" aria-label="Isolate speaker 3">03</button><button type="button" data-naturama-speaker="3" class="naturama-speaker absolute right-[9%] bottom-[9%] w-12 h-12 rounded-full border border-white/25 bg-[#15161b] text-white font-mono text-xs transition" aria-label="Isolate speaker 4">04</button><button type="button" data-naturama-speaker="4" class="naturama-speaker absolute left-1/2 bottom-0 -translate-x-1/2 w-12 h-12 rounded-full border border-white/25 bg-[#15161b] text-white font-mono text-xs transition" aria-label="Isolate speaker 5">05</button><button type="button" data-naturama-speaker="5" class="naturama-speaker absolute left-[9%] bottom-[9%] w-12 h-12 rounded-full border border-white/25 bg-[#15161b] text-white font-mono text-xs transition" aria-label="Isolate speaker 6">06</button><button type="button" data-naturama-speaker="6" class="naturama-speaker absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/25 bg-[#15161b] text-white font-mono text-xs transition" aria-label="Isolate speaker 7">07</button><button type="button" data-naturama-speaker="7" class="naturama-speaker absolute left-[9%] top-[9%] w-12 h-12 rounded-full border border-white/25 bg-[#15161b] text-white font-mono text-xs transition" aria-label="Isolate speaker 8">08</button>
             </div>
-            <div class="space-y-5"><div class="flex gap-3"><button type="button" id="naturama-play" class="flex-1 px-4 py-3 rounded-lg bg-[#6f7f68] hover:bg-[#879580] text-white font-mono text-[11px] uppercase tracking-widest transition">Start Journey</button><button type="button" id="naturama-reset" class="px-4 py-3 rounded-lg border border-white/15 text-white/70 hover:text-white font-mono text-[11px] uppercase tracking-widest transition">Stop Journey</button></div><div class="space-y-2"><div id="naturama-chapters" class="flex w-full gap-px overflow-hidden rounded-md border border-white/10 bg-white/5" aria-label="Journey chapters"><button type="button" data-naturama-chapter="0" data-start="0" class="naturama-chapter min-w-0 bg-white/[0.03] px-1.5 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:111" title="Capsule · 0:00–1:50">Capsule</button><button type="button" data-naturama-chapter="1" data-start="111" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:60" title="Liftoff · 1:51–2:50">Liftoff</button><button type="button" data-naturama-chapter="2" data-start="171" class="naturama-chapter min-w-0 bg-white/[0.03] px-1.5 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:100" title="Space · 2:51–4:30">Space</button><button type="button" data-naturama-chapter="3" data-start="271" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:80" title="Crash · 4:31–5:50">Crash</button><button type="button" data-naturama-chapter="4" data-start="351" class="naturama-chapter min-w-0 bg-white/[0.03] px-1.5 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:120" title="Water · 5:51–7:50">Water</button><button type="button" data-naturama-chapter="5" data-start="471" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:80" title="Outside · 7:51–9:10">Outside</button><button type="button" data-naturama-chapter="6" data-start="551" class="naturama-chapter min-w-0 bg-white/[0.03] px-1.5 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:85" title="Jungle · 9:11–10:35">Jungle</button><button type="button" data-naturama-chapter="7" data-start="636" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:70" title="Monster · 10:36–11:45">Monster</button><button type="button" data-naturama-chapter="8" data-start="706" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:65" title="Cloudburst · 11:46–12:50">Cloudburst</button><button type="button" data-naturama-chapter="9" data-start="771" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:45" title="Rescue · 12:51–end">Rescue</button></div><input id="naturama-seek" class="w-full accent-[#6f7f68] cursor-pointer" type="range" min="0" max="1000" value="0" aria-label="Seek through the Naturama sound journey"><div class="flex justify-between font-mono text-[9px] text-brand-muted tracking-widest"><span id="naturama-current-time">00:00</span><span id="naturama-duration">LOADING DURATION</span></div></div><div class="space-y-3"><label class="block font-mono text-[10px] text-brand-muted uppercase tracking-widest">Master level <input id="naturama-master" class="w-full accent-[#6f7f68] mt-2" type="range" min="0" max="100" value="80"></label><label class="block font-mono text-[10px] text-brand-muted uppercase tracking-widest">Subwoofer material <input id="naturama-sub" class="w-full accent-[#6f7f68] mt-2" type="range" min="0" max="100" value="55"></label></div></div>
+            <div class="space-y-5"><div class="flex gap-3"><button type="button" id="naturama-play" class="flex-1 px-4 py-3 rounded-lg bg-[#6f7f68] hover:bg-[#879580] text-white font-mono text-[11px] uppercase tracking-widest transition">Start Journey</button><button type="button" id="naturama-reset" class="px-4 py-3 rounded-lg border border-white/15 text-white/70 hover:text-white font-mono text-[11px] uppercase tracking-widest transition">Stop Journey</button></div><div class="space-y-2"><div id="naturama-chapters" class="flex w-full gap-px overflow-hidden rounded-md border border-white/10 bg-white/5" aria-label="Journey chapters"><button type="button" data-naturama-chapter="0" data-start="0" class="naturama-chapter min-w-0 bg-white/[0.03] px-1.5 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:111" title="Capsule · 0:00–1:50">Capsule</button><button type="button" data-naturama-chapter="1" data-start="111" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:60" title="Liftoff · 1:51–2:50">Liftoff</button><button type="button" data-naturama-chapter="2" data-start="171" class="naturama-chapter min-w-0 bg-white/[0.03] px-1.5 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:100" title="Space · 2:51–4:30">Space</button><button type="button" data-naturama-chapter="3" data-start="271" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:80" title="Crash · 4:31–5:50">Crash</button><button type="button" data-naturama-chapter="4" data-start="351" class="naturama-chapter min-w-0 bg-white/[0.03] px-1.5 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:120" title="Water · 5:51–7:50">Water</button><button type="button" data-naturama-chapter="5" data-start="471" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:80" title="Outside · 7:51–9:10">Outside</button><button type="button" data-naturama-chapter="6" data-start="551" class="naturama-chapter min-w-0 bg-white/[0.03] px-1.5 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:85" title="Jungle · 9:11–10:35">Jungle</button><button type="button" data-naturama-chapter="7" data-start="636" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:70" title="Monster · 10:36–11:45">Monster</button><button type="button" data-naturama-chapter="8" data-start="706" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:65" title="Cloudburst · 11:46–12:50">Cloudburst</button><button type="button" data-naturama-chapter="9" data-start="771" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:45" title="Rescue · 12:51–end">Rescue</button></div><input id="naturama-seek" class="w-full accent-[#6f7f68] cursor-pointer" type="range" min="0" max="1000" value="0" aria-label="Seek through the Naturama sound journey"><div class="flex justify-between font-mono text-[9px] text-brand-muted tracking-widest"><span id="naturama-current-time">00:00</span><span id="naturama-duration">LOADING DURATION</span></div></div><div class="space-y-3"><label class="block font-mono text-[10px] text-brand-muted uppercase tracking-widest">Master level <input id="naturama-master" class="w-full accent-[#6f7f68] mt-2" type="range" min="0" max="100" value="80"></label><label class="block font-mono text-[10px] text-brand-muted uppercase tracking-widest">Sub level <input id="naturama-sub" class="w-full accent-[#6f7f68] mt-2" type="range" min="0" max="100" value="55"></label></div></div>
           </div>
           <div class="mt-7 pt-5 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-2"><button type="button" data-naturama-pair="0" class="naturama-pair rounded-lg border border-white/10 px-3 py-2 text-left hover:border-[#6f7f68]/70 transition"><span class="block font-mono text-[10px] text-white">01 / 02</span><span class="block font-mono text-[9px] text-brand-muted mt-1">STEREO PAIR</span></button><button type="button" data-naturama-pair="1" class="naturama-pair rounded-lg border border-white/10 px-3 py-2 text-left hover:border-[#6f7f68]/70 transition"><span class="block font-mono text-[10px] text-white">03 / 04</span><span class="block font-mono text-[9px] text-brand-muted mt-1">STEREO PAIR</span></button><button type="button" data-naturama-pair="2" class="naturama-pair rounded-lg border border-white/10 px-3 py-2 text-left hover:border-[#6f7f68]/70 transition"><span class="block font-mono text-[10px] text-white">05 / 06</span><span class="block font-mono text-[9px] text-brand-muted mt-1">STEREO PAIR</span></button><button type="button" data-naturama-pair="3" class="naturama-pair rounded-lg border border-white/10 px-3 py-2 text-left hover:border-[#6f7f68]/70 transition"><span class="block font-mono text-[10px] text-white">07 / 08</span><span class="block font-mono text-[9px] text-brand-muted mt-1">STEREO PAIR</span></button></div>
         </div>
@@ -740,31 +740,33 @@ function makeNaturamaEmulator(): void {
     const levelControls = masterControl?.parentElement?.parentElement as HTMLElement | null;
     if (actionRow && timeline && levelControls) {
       const transport = document.createElement('div');
-      transport.className = 'naturama-transport relative w-full min-h-[120px] flex items-center justify-center';
+      transport.className = 'naturama-transport relative w-full min-h-[96px] flex items-center justify-center';
       actionRow.className = 'naturama-transport-actions absolute left-0 top-0 flex flex-col gap-2 shrink-0 z-10';
+      actionRow.style.setProperty('left', '0.5rem', 'important');
       actionRow.querySelector('button')?.classList.remove('flex-1');
       timeline.className = 'naturama-timeline absolute left-1/2 top-0 -translate-x-1/2 w-[calc(100%-18rem)] max-w-none space-y-2';
       resetButton?.classList.add('naturama-stop-journey', 'absolute', 'right-0', 'top-0');
+      resetButton?.style.setProperty('right', '0.5rem', 'important');
       transport.append(actionRow, timeline);
       if (resetButton) transport.append(resetButton);
       const leftColumn = document.createElement('div');
       leftColumn.className = 'w-full flex flex-col gap-4';
       leftColumn.append(transport);
-      levelControls.className = 'naturama-level-controls absolute right-0 top-1/2 -translate-y-1/2 w-48 h-[244px] grid grid-cols-2 gap-2 rounded-lg border border-white/10 bg-[#121318]/95 p-2 z-10';
+      levelControls.className = 'naturama-level-controls absolute right-0 top-1/2 -translate-y-1/2 w-[114px] h-[208px] grid grid-cols-2 gap-1 rounded-lg border border-white/10 bg-[#121318]/95 p-1.5 z-10';
       [masterControl, subControl].forEach(control => {
         if (!control) return;
         const label = control.parentElement as HTMLLabelElement | null;
-        const labelText = control === masterControl ? `Master\nlevel` : `Subwoofer\nmaterial`;
+        const labelText = control === masterControl ? `Master\nlevel` : `Sub\nlevel`;
         if (label) {
           const caption = document.createElement('span');
           caption.textContent = labelText;
-          caption.className = 'font-mono text-[9px] text-brand-muted uppercase tracking-[0.08em] leading-tight text-center whitespace-pre-line';
+          caption.className = 'font-mono text-[9px] text-brand-muted uppercase tracking-[0.06em] leading-tight text-center whitespace-pre-line';
           label.textContent = '';
-          label.className = 'w-20 flex flex-col items-center gap-4';
+          label.className = 'w-full min-w-0 flex flex-col items-center justify-center gap-2';
           label.append(caption, control);
         }
         control.classList.remove('w-full', 'mt-2');
-        control.classList.add('h-44', 'w-5', 'accent-[#6f7f68]', 'cursor-pointer');
+        control.classList.add('h-[143px]', 'w-[14px]', 'accent-[#6f7f68]', 'cursor-pointer');
         control.style.writingMode = 'vertical-lr';
         control.style.direction = 'rtl';
         control.style.setProperty('-webkit-appearance', 'slider-vertical');
@@ -775,25 +777,48 @@ function makeNaturamaEmulator(): void {
       listeningVisual.append(levelControls);
       const pairControls = pairButtons[0]?.parentElement as HTMLElement | null;
       if (pairControls) {
-        pairControls.className = 'naturama-pair-controls absolute left-0 top-1/2 -translate-y-1/2 w-48 h-[244px] flex flex-col gap-2 z-10';
+        pairControls.className = 'naturama-pair-controls absolute left-0 top-1/2 -translate-y-1/2 w-[114px] h-[208px] flex flex-col gap-1.5 z-10';
+        pairControls.style.setProperty('left', '4.625rem', 'important');
         pairButtons.forEach(button => {
-          button.className = 'naturama-pair flex-1 w-full rounded-lg border border-white/10 bg-[#121318]/95 px-5 py-3 text-left hover:border-[#6f7f68]/70 transition';
+          button.className = 'naturama-pair flex-1 w-full rounded-lg border border-white/10 bg-[#121318]/95 px-3 py-2 text-left hover:border-[#6f7f68]/70 transition';
         });
         listeningVisual.append(pairControls);
       }
-      const speakerStage = document.createElement('div');
-      speakerStage.className = 'naturama-speaker-stage relative w-full max-w-[1100px] mx-auto';
-      const updateSpeakerStageSpacing = () => {
-        const compact = container.getBoundingClientRect().width < 1200;
-        speakerStage.style.setProperty('margin-top', compact ? '-14rem' : '-2rem', 'important');
-        listeningVisual.style.setProperty('transform', 'none', 'important');
-      };
-      updateSpeakerStageSpacing();
-      new ResizeObserver(updateSpeakerStageSpacing).observe(container);
-
       listeningVisual.style.marginTop = '0';
-      listeningVisual.style.maxWidth = '380px';
+      listeningVisual.style.maxWidth = '240px';
+      listeningVisual.style.width = '100%';
       listeningVisual.classList.add('naturama-speaker-stage__circle');
+      const speakerStage = document.createElement('div');
+      speakerStage.className = 'naturama-speaker-stage relative w-full min-h-[280px] mx-auto';
+      const arrangeSpeakerStage = () => {
+        const compact = container.getBoundingClientRect().width < 760;
+        speakerStage.style.setProperty('margin-top', '0', 'important');
+        if (compact) {
+          listeningVisual.style.setProperty('transform', 'none', 'important');
+          listeningVisual.style.removeProperty('top');
+          speakerStage.className = 'naturama-speaker-stage w-full mx-auto flex flex-col items-center gap-4';
+          pairControls?.classList.remove('absolute', 'left-0', 'top-1/2', '-translate-y-1/2', 'h-[208px]', 'h-[260px]', 'h-[186px]', 'h-[232px]', 'h-[244px]', 'h-[280px]');
+          pairControls?.classList.add('w-full', 'grid', 'grid-cols-1', 'sm:grid-cols-2', 'gap-2');
+          levelControls.classList.remove('absolute', 'right-0', 'top-1/2', '-translate-y-1/2', 'h-[208px]', 'h-[260px]', 'h-[186px]', 'h-[232px]', 'h-[244px]', 'h-[280px]');
+          levelControls.classList.add('w-full', 'max-w-[240px]', 'h-auto', 'flex', 'justify-center');
+          levelControls.style.removeProperty('transform');
+          return;
+        }
+        // Use an offset instead of transform so speakers can sit above the
+        // transport while the background vignette remains underneath it.
+        listeningVisual.style.setProperty('transform', 'none', 'important');
+        listeningVisual.style.setProperty('top', '-2rem', 'important');
+        speakerStage.className = 'naturama-speaker-stage relative w-full min-h-[280px] mx-auto';
+        if (pairControls) {
+          pairControls.className = 'naturama-pair-controls absolute left-0 top-1/2 -translate-y-1/2 w-[114px] h-[208px] flex flex-col gap-1.5 z-10';
+          pairControls.style.setProperty('left', '4.625rem', 'important');
+        }
+        levelControls.className = 'naturama-level-controls absolute right-0 top-1/2 -translate-y-1/2 w-[114px] h-[208px] grid grid-cols-2 gap-1 rounded-lg border border-white/10 bg-[#121318]/95 p-1.5 z-10';
+        levelControls.style.setProperty('right', '0.5rem', 'important');
+        levelControls.style.setProperty('transform', 'none', 'important');
+      };
+      arrangeSpeakerStage();
+      new ResizeObserver(arrangeSpeakerStage).observe(container);
       listeningLayout.replaceChild(speakerStage, listeningVisual);
       const atmosphere = document.createElement('div');
       const nextAtmosphere = document.createElement('div');
@@ -804,7 +829,10 @@ function makeNaturamaEmulator(): void {
       atmosphere.setAttribute('aria-hidden', 'true');
       nextAtmosphere.setAttribute('aria-hidden', 'true');
       container.prepend(atmosphere, nextAtmosphere);
-      speakerStage.append(listeningVisual, levelControls);
+      const floorMapVignette = document.createElement('div');
+      floorMapVignette.className = 'naturama-floor-map-vignette';
+      floorMapVignette.setAttribute('aria-hidden', 'true');
+      speakerStage.append(floorMapVignette, listeningVisual, levelControls);
       let visibleAtmosphere = atmosphere;
       crossfadeAtmosphere = (chapterIndex: number) => {
         const chapter = String(chapterIndex);
@@ -827,10 +855,10 @@ function makeNaturamaEmulator(): void {
           }
           const stageBounds = speakerStage.getBoundingClientRect();
           const pairBounds = pairControls.getBoundingClientRect();
-          levelControls.style.setProperty('top', 'auto', 'important');
-          levelControls.style.setProperty('bottom', (stageBounds.bottom - pairBounds.bottom) + 'px', 'important');
+          levelControls.style.setProperty('top', (pairBounds.top - stageBounds.top) + 'px', 'important');
+          levelControls.style.setProperty('bottom', 'auto', 'important');
           levelControls.style.setProperty('height', pairBounds.height + 'px', 'important');
-          levelControls.style.setProperty('transform', 'translate(4rem, 0)', 'important');
+          levelControls.style.setProperty('transform', 'none', 'important');
         };
         requestAnimationFrame(alignVolumePanelBottom);
         new ResizeObserver(alignVolumePanelBottom).observe(speakerStage);
@@ -846,6 +874,7 @@ function makeNaturamaEmulator(): void {
   let master: GainNode | undefined;
   let subGain: GainNode | undefined;
   let speakerGains: GainNode[] = [];
+  let speakerAnalysers: AnalyserNode[] = [];
   let activeIsolation: number[] | undefined;
   let playing = false;
 
@@ -908,6 +937,7 @@ function makeNaturamaEmulator(): void {
       button.classList.toggle('bg-[#6f7f68]/25', selected);
       button.classList.toggle('text-white', true);
       button.classList.toggle('shadow-[0_0_24px_rgba(111,127,104,0.35)]', selected);
+      button.classList.toggle('is-selected', selected);
     });
     pairButtons.forEach((button, index) => {
       const channels = [index * 2, index * 2 + 1];
@@ -915,7 +945,51 @@ function makeNaturamaEmulator(): void {
       button.classList.toggle('border-[#6f7f68]/70', selected);
       button.classList.toggle('bg-[#6f7f68]/10', selected);
       button.classList.toggle('shadow-[0_0_20px_rgba(111,127,104,0.18)]', selected);
+      button.classList.toggle('is-selected', selected);
     });
+    paintActivityHeatmap();
+  };
+  const paintActivityHeatmap = () => {
+    const ring = container.querySelector<HTMLElement>('.naturama-speaker-stage__circle > div:first-child');
+    if (!ring) return;
+    if (!playing) {
+      ring.style.setProperty('--naturama-heatmap', 'none');
+      return;
+    }
+    const selected = new Set(activeIsolation || []);
+    const levels = Array.from({ length: 8 }, (_, index) => {
+      if (selected.size && !selected.has(index)) return 0;
+      const analyser = speakerAnalysers[index];
+      if (!analyser) return 0;
+      const samples = new Uint8Array(analyser.fftSize);
+      analyser.getByteTimeDomainData(samples);
+      const rms = Math.sqrt(samples.reduce((sum, sample) => sum + Math.pow((sample - 128) / 128, 2), 0) / samples.length);
+      // Gate quiet material, then exaggerate the remaining dynamics so each
+      // direction reads as a clear, pulsing volume signal.
+      return Math.min(1, Math.pow(Math.max(0, (rms - .02) / .21), .92));
+    });
+    const colourFor = (level: number) => {
+      const visible = Math.max(0, Math.min(1, (level - .16) / .84));
+      const redMix = Math.max(0, Math.min(1, (level - .70) / .30));
+      const red = Math.round(232 - (15 * (1 - redMix)));
+      const green = Math.round(193 - (128 * redMix));
+      const blue = Math.round(47 - (11 * redMix));
+      return `rgba(${red}, ${green}, ${blue}, ${(visible * .94).toFixed(2)})`;
+    };
+    const stops = Array.from({ length: 65 }, (_, sample) => {
+      const point = (sample / 64) * 8;
+      const before = Math.floor(point) % 8;
+      const after = (before + 1) % 8;
+      const blend = point - Math.floor(point);
+      const smoothBlend = blend * blend * (3 - 2 * blend);
+      const level = levels[before] + (levels[after] - levels[before]) * smoothBlend;
+      return `${colourFor(level)} ${(sample / 64 * 360).toFixed(2)}deg`;
+    });
+    ring.style.setProperty('--naturama-heatmap', `conic-gradient(from 0deg, ${stops.join(', ')})`);
+  };
+  const animateActivityHeatmap = () => {
+    paintActivityHeatmap();
+    if (playing) requestAnimationFrame(animateActivityHeatmap);
   };
   const applyLevels = () => {
     speakerGains.forEach((gain, index) => { gain.gain.value = activeIsolation && !activeIsolation.includes(index) ? 0 : 1; });
@@ -934,6 +1008,8 @@ function makeNaturamaEmulator(): void {
       source.connect(splitter);
       [0, 1].forEach(channel => {
         const gain = context!.createGain();
+        const analyser = context!.createAnalyser();
+        analyser.fftSize = 64;
         const panner = context!.createPanner();
         const speaker = pair * 2 + channel;
         const angle = (speaker / 8) * Math.PI * 2 - Math.PI / 2;
@@ -943,9 +1019,11 @@ function makeNaturamaEmulator(): void {
         panner.positionY.value = 0;
         panner.positionZ.value = Math.sin(angle);
         splitter.connect(gain, channel);
-        gain.connect(panner);
+        gain.connect(analyser);
+        analyser.connect(panner);
         panner.connect(master!);
         speakerGains.push(gain);
+        speakerAnalysers.push(analyser);
       });
     });
     const subSource = context.createMediaElementSource(audio[4]);
@@ -962,6 +1040,7 @@ function makeNaturamaEmulator(): void {
       if (seek) seek.value = String(Math.round(ratio * 1000));
       if (currentTime) currentTime.textContent = formatTime(audio[0].currentTime);
       paintActiveChapter(audio[0].currentTime);
+      paintActivityHeatmap();
       if (playing) audio.slice(1).forEach(element => {
         if (Math.abs(element.currentTime - audio[0].currentTime) > 0.025) element.currentTime = audio[0].currentTime;
       });
@@ -972,7 +1051,7 @@ function makeNaturamaEmulator(): void {
       audio.forEach(element => { element.currentTime = time; });
       if (currentTime) currentTime.textContent = formatTime(time);
       if (progress) progress.style.width = `${Number(seek.value) / 10}%`;
-    });    audio[0].addEventListener('ended', () => { playing = false; if (playButton) playButton.textContent = 'Start Journey'; setStatus('The 360° journey has ended.'); });
+    });    audio[0].addEventListener('ended', () => { playing = false; paintActivityHeatmap(); if (playButton) { playButton.classList.remove('is-playing'); playButton.textContent = 'Start Journey'; } setStatus('The 360° journey has ended.'); });
   };
 
   paintActiveChapter(0);
@@ -983,6 +1062,7 @@ function makeNaturamaEmulator(): void {
     if (playing) {
       audio.forEach(element => element.pause());
       playing = false;
+      paintActivityHeatmap();
       playButton.textContent = 'Resume Journey';
       setStatus('Mix paused.');
       return;
@@ -997,6 +1077,8 @@ function makeNaturamaEmulator(): void {
       audio.forEach(element => { element.currentTime = startAt; });
       await Promise.all(audio.map(element => element.play()));
       playing = true;
+      paintActivityHeatmap();
+      requestAnimationFrame(animateActivityHeatmap);
       playButton.textContent = 'Pause Journey';
       setStatus(activeIsolation ? 'Playing isolated speaker material.' : 'Playing the full eight-speaker mix.');
     } catch {
@@ -1004,13 +1086,19 @@ function makeNaturamaEmulator(): void {
       playButton.textContent = 'Start Journey';
     } finally { playButton.disabled = false; }
   });
-  resetButton?.addEventListener('click', () => { audio.forEach(element => { element.pause(); element.currentTime = 0; }); playing = false; if (progress) progress.style.width = '0%'; if (seek) seek.value = '0'; if (currentTime) currentTime.textContent = '00:00'; if (playButton) playButton.textContent = 'Start Journey'; setIsolation(); });
+  resetButton?.addEventListener('click', () => { audio.forEach(element => { element.pause(); element.currentTime = 0; }); playing = false; if (progress) progress.style.width = '0%'; if (seek) seek.value = '0'; if (currentTime) currentTime.textContent = '00:00'; if (playButton) { playButton.classList.remove('is-playing'); playButton.textContent = 'Start Journey'; } setIsolation(); });
   clearButton?.addEventListener('click', () => setIsolation());
-  speakerButtons.forEach((button, index) => button.addEventListener('click', () => {
+  // Handle speaker selection from the stage itself. This keeps the top speaker
+  // responsive even when its position overlaps another visual layer.
+  container.addEventListener('click', event => {
+    const speakerButton = (event.target as Element | null)?.closest<HTMLButtonElement>('[data-naturama-speaker]');
+    if (!speakerButton || !container.contains(speakerButton)) return;
+    const index = Number(speakerButton.dataset.naturamaSpeaker);
+    if (!Number.isInteger(index)) return;
     const selected = new Set(activeIsolation || []);
     selected.has(index) ? selected.delete(index) : selected.add(index);
     setIsolation(selected.size ? [...selected].sort((a, b) => a - b) : undefined);
-  }));
+  });
   pairButtons.forEach((button, index) => button.addEventListener('click', () => {
     const channels = [index * 2, index * 2 + 1];
     const selected = new Set(activeIsolation || []);
