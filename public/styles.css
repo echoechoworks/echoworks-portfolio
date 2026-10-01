@@ -3575,6 +3575,7 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
     width: 100% !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: .5rem !important;
+    margin-top: 5mm !important;
     transform: none !important;
   }
 
