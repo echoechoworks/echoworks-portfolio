@@ -3584,6 +3584,7 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
     width: 100% !important;
     max-width: none !important;
     min-height: 0 !important;
+    margin-top: 5mm !important;
     transform: none !important;
   }
 }
