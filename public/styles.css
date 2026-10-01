@@ -3556,7 +3556,35 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
   }
 
   #naturama-emulator .naturama-speaker-stage {
-    margin-top: -.35rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    margin-top: 0 !important;
+    min-height: 0 !important;
+  }
+
+  #naturama-emulator .naturama-speaker-stage__circle {
+    width: min(100%, 15rem) !important;
+    flex: 0 0 auto;
+  }
+
+  #naturama-emulator .naturama-pair-controls {
+    position: static !important;
+    display: grid !important;
+    width: 100% !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: .5rem !important;
+    transform: none !important;
+  }
+
+  #naturama-emulator .naturama-level-controls {
+    position: static !important;
+    display: flex !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    transform: none !important;
   }
 }
 
