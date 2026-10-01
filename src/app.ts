@@ -886,6 +886,10 @@ async function makeLandingCarousel(): Promise<void> {
   const stage = document.querySelector<HTMLElement>('.carousel-perspective-container');
   let current = 0;
   let dragStartX: number | undefined;
+  let dragOffsetX = 0;
+  let dragLastX = 0;
+  let dragLastTime = 0;
+  let dragVelocity = 0;
   let ignoreClickUntil = 0;
   let hoverDirection = 0;
   let hoverDelay: number | undefined;
@@ -912,21 +916,45 @@ async function makeLandingCarousel(): Promise<void> {
   previous?.addEventListener('click', () => goTo(current - 1));
   next?.addEventListener('click', () => goTo(current + 1));
   dots.forEach((dot, index) => dot.addEventListener('click', () => goTo(index)));
+  const isMobileCarousel = () => window.matchMedia('(max-width: 767px)').matches;
+  const setDragOffset = (offset: number) => {
+    cards.forEach(card => { card.style.translate = `${offset}px 0`; });
+  };
   stage?.addEventListener('pointerdown', event => {
-    if (event.pointerType === 'mouse') return;
+    if (event.pointerType === 'mouse' || !isMobileCarousel()) return;
     dragStartX = event.clientX;
+    dragLastX = event.clientX;
+    dragLastTime = event.timeStamp;
+    dragVelocity = 0;
+    dragOffsetX = 0;
+    stage.classList.add('is-dragging');
     stage.setPointerCapture(event.pointerId);
   });
   stage?.addEventListener('pointermove', event => {
-    if (event.pointerType === 'mouse') return;
+    if (event.pointerType === 'mouse' || dragStartX === undefined) return;
     if (dragStartX === undefined) return;
-    const distance = event.clientX - dragStartX;
-    if (Math.abs(distance) < 70) return;
-    goTo(current + (distance < 0 ? 1 : -1));
-    dragStartX = event.clientX;
-    ignoreClickUntil = performance.now() + 250;
+    const elapsed = Math.max(1, event.timeStamp - dragLastTime);
+    dragVelocity = (event.clientX - dragLastX) / elapsed;
+    dragLastX = event.clientX;
+    dragLastTime = event.timeStamp;
+    dragOffsetX = event.clientX - dragStartX;
+    if (Math.abs(dragOffsetX) > 6) {
+      event.preventDefault();
+      ignoreClickUntil = performance.now() + 350;
+    }
+    setDragOffset(dragOffsetX);
   });
-  const endDrag = () => { dragStartX = undefined; };
+  const endDrag = () => {
+    if (dragStartX === undefined) return;
+    const threshold = Math.max(72, (stage?.getBoundingClientRect().width || 320) * .23);
+    let turns = Math.round(-dragOffsetX / threshold);
+    if (!turns && Math.abs(dragVelocity) > .45) turns = dragVelocity < 0 ? 1 : -1;
+    turns = Math.max(-2, Math.min(2, turns));
+    dragStartX = undefined;
+    stage?.classList.remove('is-dragging');
+    setDragOffset(0);
+    if (turns) goTo(current + turns);
+  };
   stage?.addEventListener('pointerup', endDrag);
   stage?.addEventListener('pointercancel', endDrag);
   const stopHoverRotation = () => {
