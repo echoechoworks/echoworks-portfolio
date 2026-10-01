@@ -886,26 +886,74 @@ async function makeLandingCarousel(): Promise<void> {
   const stage = document.querySelector<HTMLElement>('.carousel-perspective-container');
   let current = 0;
   let dragStartX: number | undefined;
-  let dragOffsetX = 0;
+  let dragStartPosition = 0;
   let dragLastX = 0;
   let dragLastTime = 0;
   let dragVelocity = 0;
+  let wheelPosition = 0;
+  let inertiaFrame: number | undefined;
   let ignoreClickUntil = 0;
   let hoverDirection = 0;
   let hoverDelay: number | undefined;
   let hoverInterval: number | undefined;
   let frontCardTimer: number | undefined;
+  const normaliseIndex = (index: number) => (index % cards.length + cards.length) % cards.length;
+  const circularDistance = (index: number, position: number) => {
+    let distance = index - position;
+    while (distance > cards.length / 2) distance -= cards.length;
+    while (distance < -cards.length / 2) distance += cards.length;
+    return distance;
+  };
+  const updateDots = () => {
+    dots.forEach((dot, index) => {
+      const isCurrent = index === current;
+      dot.classList.toggle('bg-white', isCurrent);
+      dot.classList.toggle('bg-white/35', !isCurrent);
+      dot.classList.toggle('scale-125', isCurrent);
+      dot.setAttribute('aria-pressed', String(isCurrent));
+    });
+  };
+  const isMobileCarousel = () => window.matchMedia('(max-width: 767px)').matches;
+  const renderMobileWheel = () => {
+    cards.forEach((card, index) => {
+      const distance = circularDistance(index, wheelPosition);
+      const magnitude = Math.abs(distance);
+      const visibility = Math.max(0, 1 - Math.max(0, magnitude - .25) * .72);
+      const scale = Math.max(.66, 1.06 - magnitude * .2);
+      card.style.transform = `translateX(${distance * 65}%) scale(${scale}) rotateY(${-distance * 16}deg)`;
+      card.style.opacity = String(visibility);
+      card.style.filter = magnitude < .1 ? 'drop-shadow(0 25px 35px rgba(0, 0, 0, 0.85))' : `brightness(${Math.max(.45, 1 - magnitude * .2)})`;
+      card.style.zIndex = String(Math.max(0, 30 - Math.round(magnitude * 10)));
+      card.style.pointerEvents = magnitude < 1.3 ? 'auto' : 'none';
+    });
+    current = normaliseIndex(Math.round(wheelPosition));
+    updateDots();
+  };
+  const clearMobileWheelStyles = () => cards.forEach(card => {
+    card.style.removeProperty('transform');
+    card.style.removeProperty('opacity');
+    card.style.removeProperty('filter');
+    card.style.removeProperty('z-index');
+    card.style.removeProperty('pointer-events');
+    card.style.removeProperty('translate');
+  });
   const update = () => {
+    if (isMobileCarousel()) {
+      renderMobileWheel();
+      return;
+    }
+    clearMobileWheelStyles();
     cards.forEach((card, index) => {
       let difference = (index - current + cards.length) % cards.length;
       if (difference > cards.length / 2) difference -= cards.length;
       card.classList.remove('active', 'carousel-left-1', 'carousel-left-2', 'carousel-right-1', 'carousel-right-2', 'hidden-card');
       card.classList.add(difference === 0 ? 'active' : Math.abs(difference) <= 2 ? `carousel-${difference < 0 ? 'left' : 'right'}-${Math.abs(difference)}` : 'hidden-card');
     });
-    dots.forEach((dot, index) => { const isCurrent = index === current; dot.classList.toggle('bg-white', isCurrent); dot.classList.toggle('bg-white/35', !isCurrent); dot.classList.toggle('scale-125', isCurrent); dot.setAttribute('aria-pressed', String(isCurrent)); });
+    updateDots();
   };
   const goTo = (index: number) => {
-    current = (index + cards.length) % cards.length;
+    current = normaliseIndex(index);
+    wheelPosition = current;
     update();
     if (frontCardTimer) window.clearTimeout(frontCardTimer);
     frontCardTimer = window.setTimeout(() => {
@@ -916,44 +964,70 @@ async function makeLandingCarousel(): Promise<void> {
   previous?.addEventListener('click', () => goTo(current - 1));
   next?.addEventListener('click', () => goTo(current + 1));
   dots.forEach((dot, index) => dot.addEventListener('click', () => goTo(index)));
-  const isMobileCarousel = () => window.matchMedia('(max-width: 767px)').matches;
-  const setDragOffset = (offset: number) => {
-    cards.forEach(card => { card.style.translate = `${offset}px 0`; });
+  const stopInertia = () => {
+    if (inertiaFrame) window.cancelAnimationFrame(inertiaFrame);
+    inertiaFrame = undefined;
+    stage?.classList.remove('is-spinning');
+  };
+  const settleWheel = () => {
+    wheelPosition = Math.round(wheelPosition);
+    current = normaliseIndex(wheelPosition);
+    stage?.classList.remove('is-spinning');
+    renderMobileWheel();
+  };
+  const spinWheel = () => {
+    stage?.classList.add('is-spinning');
+    let velocity = dragVelocity;
+    let previousTime = performance.now();
+    const spin = (now: number) => {
+      const elapsed = Math.min(32, now - previousTime);
+      previousTime = now;
+      wheelPosition += velocity * elapsed;
+      velocity *= Math.pow(.91, elapsed / 16.67);
+      renderMobileWheel();
+      if (Math.abs(velocity) > .0005) {
+        inertiaFrame = window.requestAnimationFrame(spin);
+      } else {
+        inertiaFrame = undefined;
+        settleWheel();
+      }
+    };
+    inertiaFrame = window.requestAnimationFrame(spin);
   };
   stage?.addEventListener('pointerdown', event => {
     if (event.pointerType === 'mouse' || !isMobileCarousel()) return;
+    stopInertia();
     dragStartX = event.clientX;
+    dragStartPosition = wheelPosition;
     dragLastX = event.clientX;
     dragLastTime = event.timeStamp;
     dragVelocity = 0;
-    dragOffsetX = 0;
     stage.classList.add('is-dragging');
     stage.setPointerCapture(event.pointerId);
   });
   stage?.addEventListener('pointermove', event => {
     if (event.pointerType === 'mouse' || dragStartX === undefined) return;
-    if (dragStartX === undefined) return;
     const elapsed = Math.max(1, event.timeStamp - dragLastTime);
-    dragVelocity = (event.clientX - dragLastX) / elapsed;
+    const slideWidth = Math.max(96, stage.getBoundingClientRect().width * .23);
+    dragVelocity = -((event.clientX - dragLastX) / elapsed) / slideWidth;
     dragLastX = event.clientX;
     dragLastTime = event.timeStamp;
-    dragOffsetX = event.clientX - dragStartX;
-    if (Math.abs(dragOffsetX) > 6) {
+    const distance = event.clientX - dragStartX;
+    if (Math.abs(distance) > 6) {
       event.preventDefault();
       ignoreClickUntil = performance.now() + 350;
     }
-    setDragOffset(dragOffsetX);
+    wheelPosition = dragStartPosition - distance / slideWidth;
+    renderMobileWheel();
   });
   const endDrag = () => {
     if (dragStartX === undefined) return;
-    const threshold = Math.max(72, (stage?.getBoundingClientRect().width || 320) * .23);
-    let turns = Math.round(-dragOffsetX / threshold);
-    if (!turns && Math.abs(dragVelocity) > .45) turns = dragVelocity < 0 ? 1 : -1;
-    turns = Math.max(-2, Math.min(2, turns));
+    const moved = Math.abs(dragLastX - dragStartX) > 6;
     dragStartX = undefined;
     stage?.classList.remove('is-dragging');
-    setDragOffset(0);
-    if (turns) goTo(current + turns);
+    if (!moved) return;
+    if (Math.abs(dragVelocity) > .0014) spinWheel();
+    else settleWheel();
   };
   stage?.addEventListener('pointerup', endDrag);
   stage?.addEventListener('pointercancel', endDrag);

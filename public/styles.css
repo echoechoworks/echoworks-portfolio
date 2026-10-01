@@ -3477,12 +3477,13 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
   }
 
   .carousel-card {
-    transition-property: transform, translate, opacity, filter, box-shadow !important;
-  }
-
-  .carousel-perspective-container.is-dragging .carousel-card {
     transition: none !important;
   }
+
+.carousel-perspective-container.is-dragging .carousel-card,
+.carousel-perspective-container.is-spinning .carousel-card {
+  transition: none !important;
+}
 }
 
 /* Mobile project details: the work leads, with specifications immediately after it. */
