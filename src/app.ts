@@ -14,6 +14,7 @@ const rolesByProject = [
 
 type Project = { index: number; title: string; subtitle: string; description: string; meta: string; category: string; image: string };
 const selectAll = <T extends Element>(selector: string): T[] => [...document.querySelectorAll<T>(selector)];
+let naturamaListenNowCleanup: (() => void) | undefined;
 
 function navigateToProject(index: number): void { window.location.href = `/projects/${slugs[index]}`; }
 
@@ -185,7 +186,7 @@ function renderNaturamaCaseStudy(): void {
     caseStudy.classList.replace('py-20', 'pt-4');
     caseStudy.classList.add('pb-20');
     caseStudy.innerHTML = `
-      <div class="naturama-intro-grid grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"><div class="naturama-intro-chapter lg:col-span-6 space-y-6"><div><span class="font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest block mb-2">Chapter 01</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">An Immersive Audio Journey</h3></div><p class="font-manrope text-white/70 leading-relaxed font-light text-base">Naturama 360° Sound Experience was a 20-minute audio journey for thirty people at a time, experienced together in darkness in Naturama’s large hall. Eight speakers formed a circle around the audience, placing sound in every direction — in front, behind, beside, above and below the listening position.</p><p class="font-manrope text-white/70 leading-relaxed font-light text-base">Spatial audio means I can compose not only with sound itself, but with where it is and how it moves. The journey begins inside a spacecraft preparing for launch, sends the audience into space, crashes them onto an unknown planet, carries them through a jungle and tropical rain, and ends with a radio message that their location has been found and help is coming.</p><div class="p-8 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10"><p class="font-serif italic text-2xl sm:text-3xl text-white/95 leading-snug">Have you noticed how the sound of an ambulance changes as it passes by?</p></div></div><div class="naturama-intro-chapter naturama-intro-chapter--two lg:col-span-6 space-y-6"><div><span class="font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest block mb-2">Chapter 02</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">Sound as a physical experience</h3></div><p class="font-manrope text-white/70 leading-relaxed font-light text-base">An experience like this is not simply a matter of choosing a spaceship beep or the sound of waves: it requires an understanding of how waves change through time, movement, space and atmosphere. The launch used low bass to make the room physically shake, while the water sequences used EQ and volume automation to move between the muffled pressure of being underwater and the open detail of waves breaking around the listener.</p><div class="p-6 rounded-xl bg-white/[0.02] border border-white/10 space-y-3"><span class="font-mono text-[11px] uppercase tracking-widest text-[#6f7f68] font-semibold block">Physical sound design</span><p class="font-manrope text-sm text-white/70 leading-relaxed font-light">Distance is not created by volume alone. Low frequencies travel farther than bright, high frequencies, so frequency content, pitch, timing, motion and reflections all change as a sound source moves. Our ears also receive sound differently when it comes from behind or above, because the shape of the head and outer ear filters the sound before it reaches us. Sound behaves differently through water than through air, and Doppler effects make a moving source change in pitch and perceived timing as it approaches, passes and recedes.</p><p class="font-manrope text-sm text-white/70 leading-relaxed font-light">I used these principles to make sounds feel close, distant, overhead, underwater and in motion. Alongside the sound, drinks with metallic, bitter flavours in space and sweet tropical flavours in the jungle added a second sensory layer to the journey.</p><div class="pt-2 flex flex-wrap items-center gap-4 font-mono text-[10px] text-brand-muted tracking-widest"><span>// 8-SPEAKER ARRAY</span><span>// PHYSICAL AUDIO</span><span class="text-[#6f7f68]">// 360° STORYTELLING</span></div></div></div></div>
+      <div class="naturama-intro-grid naturama-read-content grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"><div class="naturama-intro-chapter lg:col-span-6 space-y-6"><div><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">An Immersive Audio Journey</h3></div><p class="font-manrope text-white/70 leading-relaxed font-light text-base">Naturama 360° Sound Experience was staged in Naturama’s darkened hall, with eight speakers placing sound above, below and around the listener.</p><p class="font-manrope text-white/70 leading-relaxed font-light text-base">I composed movement as well as sound: a spacecraft launch moves through space, crash, jungle and rain before a final radio message brings help.</p><div class="naturama-intro-quote project-detail-drawer p-8 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10"><p class="font-serif italic text-2xl sm:text-3xl text-white/95 leading-snug">Have you noticed how the sound of an ambulance changes as it passes by?</p><button type="button" class="naturama-read-more" aria-expanded="false"><span class="naturama-read-more-copy"><span class="naturama-read-more-title">Open detailed description</span><span class="naturama-read-more-hint">Project &amp; workflow</span></span><span class="naturama-read-more-arrow" aria-hidden="true">↓</span></button></div></div><div class="naturama-intro-chapter naturama-intro-chapter--two lg:col-span-6 space-y-6"><div><span class="font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest block mb-2">Chapter 01</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">Sound as a physical experience</h3></div><p class="font-manrope text-white/70 leading-relaxed font-light text-base">An experience like this is not simply a matter of choosing a spaceship beep or the sound of waves: it requires an understanding of how waves change through time, movement, space and atmosphere. The launch used low bass to make the room physically shake, while the water sequences used EQ and volume automation to move between the muffled pressure of being underwater and the open detail of waves breaking around the listener.</p><div class="p-6 rounded-xl bg-white/[0.02] border border-white/10 space-y-3"><span class="font-mono text-[11px] uppercase tracking-widest text-[#6f7f68] font-semibold block">Physical sound design</span><p class="font-manrope text-sm text-white/70 leading-relaxed font-light">Distance is not created by volume alone. Low frequencies travel farther than bright, high frequencies, so frequency content, pitch, timing, motion and reflections all change as a sound source moves. Our ears also receive sound differently when it comes from behind or above, because the shape of the head and outer ear filters the sound before it reaches us. Sound behaves differently through water than through air, and Doppler effects make a moving source change in pitch and perceived timing as it approaches, passes and recedes.</p><p class="font-manrope text-sm text-white/70 leading-relaxed font-light">I used these principles to make sounds feel close, distant, overhead, underwater and in motion. Alongside the sound, drinks with metallic, bitter flavours in space and sweet tropical flavours in the jungle added a second sensory layer to the journey.</p><div class="pt-2 flex flex-wrap items-center gap-4 font-mono text-[10px] text-brand-muted tracking-widest"><span>// 8-SPEAKER ARRAY</span><span>// PHYSICAL AUDIO</span><span class="text-[#6f7f68]">// 360° STORYTELLING</span></div></div></div></div>
       <section class="mt-2 pt-3 space-y-8" aria-labelledby="naturama-listen-title">
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5"><div><span class="font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest block mb-2">Interactive listening model</span><h3 id="naturama-listen-title" class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">Step inside the eight-speaker mix</h3></div><p class="font-manrope text-sm text-white/60 leading-relaxed font-light max-w-xl">This headphone experience maps the original eight speaker channels and sub material into a binaural approximation. Select a speaker or pair to isolate its contribution.</p></div>
         <div id="naturama-emulator" class="w-full max-w-[1100px] mx-auto rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.04] to-white/[0.01] px-5 py-4 sm:px-8 sm:py-5" data-ready="false">
@@ -194,16 +195,19 @@ function renderNaturamaCaseStudy(): void {
               <div class="absolute inset-[17%] rounded-full border border-white/10 bg-black/20"></div><div class="absolute inset-[34%] rounded-full border border-[#6f7f68]/40 bg-[#6f7f68]/5 flex items-center justify-center"><span class="font-mono text-[10px] tracking-widest text-white/60 uppercase text-center">Listener<br>position</span></div>
               <button type="button" data-naturama-speaker="0" class="naturama-speaker absolute left-1/2 top-0 -translate-x-1/2 w-12 h-12 rounded-full border border-white/25 bg-[#15161b] text-white font-mono text-xs transition" aria-label="Isolate speaker 1">01</button><button type="button" data-naturama-speaker="1" class="naturama-speaker absolute right-[9%] top-[9%] w-12 h-12 rounded-full border border-white/25 bg-[#15161b] text-white font-mono text-xs transition" aria-label="Isolate speaker 2">02</button><button type="button" data-naturama-speaker="2" class="naturama-speaker absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/25 bg-[#15161b] text-white font-mono text-xs transition" aria-label="Isolate speaker 3">03</button><button type="button" data-naturama-speaker="3" class="naturama-speaker absolute right-[9%] bottom-[9%] w-12 h-12 rounded-full border border-white/25 bg-[#15161b] text-white font-mono text-xs transition" aria-label="Isolate speaker 4">04</button><button type="button" data-naturama-speaker="4" class="naturama-speaker absolute left-1/2 bottom-0 -translate-x-1/2 w-12 h-12 rounded-full border border-white/25 bg-[#15161b] text-white font-mono text-xs transition" aria-label="Isolate speaker 5">05</button><button type="button" data-naturama-speaker="5" class="naturama-speaker absolute left-[9%] bottom-[9%] w-12 h-12 rounded-full border border-white/25 bg-[#15161b] text-white font-mono text-xs transition" aria-label="Isolate speaker 6">06</button><button type="button" data-naturama-speaker="6" class="naturama-speaker absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/25 bg-[#15161b] text-white font-mono text-xs transition" aria-label="Isolate speaker 7">07</button><button type="button" data-naturama-speaker="7" class="naturama-speaker absolute left-[9%] top-[9%] w-12 h-12 rounded-full border border-white/25 bg-[#15161b] text-white font-mono text-xs transition" aria-label="Isolate speaker 8">08</button>
             </div>
-            <div class="space-y-5"><div class="flex gap-3"><button type="button" id="naturama-play" class="flex-1 px-4 py-3 rounded-lg bg-[#6f7f68] hover:bg-[#879580] text-white font-mono text-[11px] uppercase tracking-widest transition">Start Journey</button><button type="button" id="naturama-reset" class="px-4 py-3 rounded-lg border border-white/15 text-white/70 hover:text-white font-mono text-[11px] uppercase tracking-widest transition">Stop Journey</button></div><div class="space-y-2"><div id="naturama-chapters" class="flex w-full gap-px overflow-hidden rounded-md border border-white/10 bg-white/5" aria-label="Journey chapters"><button type="button" data-naturama-chapter="0" data-start="0" class="naturama-chapter min-w-0 bg-white/[0.03] px-1.5 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:111" title="Capsule · 0:00–1:50">Capsule</button><button type="button" data-naturama-chapter="1" data-start="111" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:60" title="Liftoff · 1:51–2:50">Liftoff</button><button type="button" data-naturama-chapter="2" data-start="171" class="naturama-chapter min-w-0 bg-white/[0.03] px-1.5 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:100" title="Space · 2:51–4:30">Space</button><button type="button" data-naturama-chapter="3" data-start="271" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:80" title="Crash · 4:31–5:50">Crash</button><button type="button" data-naturama-chapter="4" data-start="351" class="naturama-chapter min-w-0 bg-white/[0.03] px-1.5 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:120" title="Water · 5:51–7:50">Water</button><button type="button" data-naturama-chapter="5" data-start="471" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:80" title="Outside · 7:51–9:10">Outside</button><button type="button" data-naturama-chapter="6" data-start="551" class="naturama-chapter min-w-0 bg-white/[0.03] px-1.5 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:85" title="Jungle · 9:11–10:35">Jungle</button><button type="button" data-naturama-chapter="7" data-start="636" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:70" title="Monster · 10:36–11:45">Monster</button><button type="button" data-naturama-chapter="8" data-start="706" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:65" title="Cloudburst · 11:46–12:50">Cloudburst</button><button type="button" data-naturama-chapter="9" data-start="771" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:45" title="Rescue · 12:51–end">Rescue</button></div><input id="naturama-seek" class="w-full accent-[#6f7f68] cursor-pointer" type="range" min="0" max="1000" value="0" aria-label="Seek through the Naturama sound journey"><div class="flex justify-between font-mono text-[9px] text-brand-muted tracking-widest"><span id="naturama-current-time">00:00</span><span id="naturama-duration">LOADING DURATION</span></div></div><div class="space-y-3"><label class="block font-mono text-[10px] text-brand-muted uppercase tracking-widest">Master level <input id="naturama-master" class="w-full accent-[#6f7f68] mt-2" type="range" min="0" max="100" value="80"></label><label class="block font-mono text-[10px] text-brand-muted uppercase tracking-widest">Sub level <input id="naturama-sub" class="w-full accent-[#6f7f68] mt-2" type="range" min="0" max="100" value="55"></label></div></div>
+            <div class="space-y-5"><div class="flex gap-3"><button type="button" id="naturama-play" class="flex-1 px-4 py-3 rounded-lg bg-[#6f7f68] hover:bg-[#879580] text-white font-mono text-[11px] uppercase tracking-widest transition">Start Journey</button><button type="button" id="naturama-reset" class="px-4 py-3 rounded-lg border border-white/15 text-white/70 hover:text-white font-mono text-[11px] uppercase tracking-widest transition">Stop Journey</button></div><div class="space-y-2"><div id="naturama-chapters" class="flex w-full gap-px overflow-hidden rounded-md border border-white/10 bg-white/5" aria-label="Journey chapters"><button type="button" data-naturama-chapter="0" data-start="0" class="naturama-chapter min-w-0 bg-white/[0.03] px-1.5 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:111" title="Capsule · 0:00–1:50">Capsule</button><button type="button" data-naturama-chapter="1" data-start="111" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:60" title="Liftoff · 1:51–2:50">Liftoff</button><button type="button" data-naturama-chapter="2" data-start="171" class="naturama-chapter min-w-0 bg-white/[0.03] px-1.5 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:100" title="Space · 2:51–4:30">Space</button><button type="button" data-naturama-chapter="3" data-start="271" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:80" title="Crash · 4:31–5:50">Crash</button><button type="button" data-naturama-chapter="4" data-start="351" class="naturama-chapter min-w-0 bg-white/[0.03] px-1.5 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:120" title="Water · 5:51–7:50">Water</button><button type="button" data-naturama-chapter="5" data-start="471" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:80" title="Outside · 7:51–9:10">Outside</button><button type="button" data-naturama-chapter="6" data-start="551" class="naturama-chapter min-w-0 bg-white/[0.03] px-1.5 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:85" title="Jungle · 9:11–10:35">Jungle</button><button type="button" data-naturama-chapter="7" data-start="643" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:63" title="Monster · 10:43–11:45">Monster</button><button type="button" data-naturama-chapter="8" data-start="706" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:65" title="Rain · 11:46–12:50">Rain</button><button type="button" data-naturama-chapter="9" data-start="771" class="naturama-chapter min-w-0 bg-white/[0.03] px-1 py-2 font-mono text-[10px] leading-tight tracking-[0.06em] text-white/70 hover:bg-[#6f7f68]/25 hover:text-white transition" style="flex-grow:45" title="Rescue · 12:51–end">Rescue</button></div><input id="naturama-seek" class="w-full accent-[#6f7f68] cursor-pointer" type="range" min="0" max="1000" value="0" aria-label="Seek through the Naturama sound journey"><div class="flex justify-between font-mono text-[9px] text-brand-muted tracking-widest"><span id="naturama-current-time">00:00</span><span id="naturama-duration">LOADING DURATION</span></div></div><div class="space-y-3"><label class="block font-mono text-[10px] text-brand-muted uppercase tracking-widest">Master level <input id="naturama-master" class="w-full accent-[#6f7f68] mt-2" type="range" min="0" max="100" value="80"></label><label class="block font-mono text-[10px] text-brand-muted uppercase tracking-widest">Sub level <input id="naturama-sub" class="w-full accent-[#6f7f68] mt-2" type="range" min="0" max="100" value="55"></label></div></div>
           </div>
           <div class="mt-7 pt-5 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-2"><button type="button" data-naturama-pair="0" class="naturama-pair rounded-lg border border-white/10 px-3 py-2 text-left hover:border-[#6f7f68]/70 transition"><span class="block font-mono text-[10px] text-white">01 / 02</span><span class="block font-mono text-[9px] text-brand-muted mt-1">STEREO PAIR</span></button><button type="button" data-naturama-pair="1" class="naturama-pair rounded-lg border border-white/10 px-3 py-2 text-left hover:border-[#6f7f68]/70 transition"><span class="block font-mono text-[10px] text-white">03 / 04</span><span class="block font-mono text-[9px] text-brand-muted mt-1">STEREO PAIR</span></button><button type="button" data-naturama-pair="2" class="naturama-pair rounded-lg border border-white/10 px-3 py-2 text-left hover:border-[#6f7f68]/70 transition"><span class="block font-mono text-[10px] text-white">05 / 06</span><span class="block font-mono text-[9px] text-brand-muted mt-1">STEREO PAIR</span></button><button type="button" data-naturama-pair="3" class="naturama-pair rounded-lg border border-white/10 px-3 py-2 text-left hover:border-[#6f7f68]/70 transition"><span class="block font-mono text-[10px] text-white">07 / 08</span><span class="block font-mono text-[9px] text-brand-muted mt-1">STEREO PAIR</span></button></div>
         </div>
-      </section>      <div class="naturama-chapter-three mt-16 pt-12 border-t border-white/10 grid grid-cols-1 lg:grid-cols-12 gap-12"><div class="lg:col-span-4"><span class="font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest block mb-2">Chapter 03</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">Mixing a world in 360 degrees</h3></div><div class="lg:col-span-8 space-y-5"><p class="font-manrope text-white/70 leading-relaxed font-light text-base">Mixing for a circle of speakers is very different from mixing a normal stereo track. I designed each sound’s position, distance and movement so wind, water and creatures could travel around the room. Music enters at key moments — launch, crash, jungle and rainfall — to make the dramatic shifts felt as well as heard.</p><p class="font-manrope text-white/70 leading-relaxed font-light text-base">I used automation to continuously move sounds between the eight speakers and shape their level and tone. The result lets a sound orbit the audience, approach from behind or disappear into the distance — turning the room itself into part of the composition.</p><p class="font-manrope text-white/70 leading-relaxed font-light text-base">This required a specialised workflow across Ableton Live 12, Envelop for Live (E4L Source Panner, E4L Master Bus and Octagon/Octo mapping), Dante Virtual Soundcard, Dante Controller, binaural 3rd-order monitoring and Naturama’s Dante-based playback system. I automated azimuth, elevation and spread while testing and routing the spatial mix on site.</p></div></div>
-      <div class="mt-16 pt-12 border-t border-white/10 grid grid-cols-1 lg:grid-cols-12 gap-12"><div class="lg:col-span-4"><span class="font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest block mb-2">Credits</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">An experience for ear, body and taste</h3></div><div class="lg:col-span-8"><div class="p-6 rounded-xl bg-white/[0.02] border border-white/10"><div class="space-y-3 font-manrope text-sm text-white/75 leading-relaxed"><p><span class="text-white font-medium">Rasmus Jon</span><br>Sound Designer, Composer &amp; Spatial Audio Mixer.</p><p><span class="text-white font-medium">Naturama</span><br>Exhibition venue and experience hall.</p></div></div></div></div>`;
+      </section>      <div class="naturama-chapter-three mt-16 pt-12 border-t border-white/10 grid grid-cols-1 lg:grid-cols-12 gap-12"><div class="lg:col-span-4"><span class="font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest block mb-2">Chapter 02</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">Mixing a world in 360 degrees</h3></div><div class="lg:col-span-8 space-y-5"><p class="font-manrope text-white/70 leading-relaxed font-light text-base">Mixing for a circle of speakers is very different from mixing a normal stereo track. I designed each sound’s position, distance and movement so wind, water and creatures could travel around the room. Music enters at key moments — launch, crash, jungle and rainfall — to make the dramatic shifts felt as well as heard.</p><p class="font-manrope text-white/70 leading-relaxed font-light text-base">I used automation to continuously move sounds between the eight speakers and shape their level and tone. The result lets a sound orbit the audience, approach from behind or disappear into the distance — turning the room itself into part of the composition.</p><p class="font-manrope text-white/70 leading-relaxed font-light text-base">This required a specialised workflow across Ableton Live 12, Envelop for Live (E4L Source Panner, E4L Master Bus and Octagon/Octo mapping), Dante Virtual Soundcard, Dante Controller, binaural 3rd-order monitoring and Naturama’s Dante-based playback system. I automated azimuth, elevation and spread while testing and routing the spatial mix on site.</p></div></div>
+      <div class="mt-16 pt-12 border-t border-white/10 grid grid-cols-1 lg:grid-cols-12 gap-12"><div class="lg:col-span-4"><span class="font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest block mb-2">Credits</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">An experience for ear, body and taste</h3></div><div class="lg:col-span-8"><div class="p-6 rounded-xl bg-white/[0.02] border border-white/10"><div class="space-y-3 font-manrope text-sm text-white/75 leading-relaxed"><p><span class="text-white font-medium">Rasmus Jon</span><br>Sound Designer, Composer &amp; Spatial Audio Mixer.</p><p><span class="text-white font-medium">Peter Philipsen<br>Peter Kirsten Schultz<br>Barbara Collitz Boesen<br>Emil G. Mogensen</span><br>Project Initiation, Curatorial &amp; Concept.</p><p><span class="text-white font-medium">Jeppe Sohn Jensen</span><br>Sound Technician.</p><p><span class="text-white font-medium">Naturama</span><br>Exhibition venue and experience hall.</p></div></div></div></div>`;
   }
   const naturamaIntroGrid = caseStudy?.querySelector<HTMLElement>('.naturama-intro-grid');
   const naturamaChapterThree = caseStudy?.querySelector<HTMLElement>('.naturama-chapter-three');
-  if (naturamaIntroGrid && naturamaChapterThree) naturamaIntroGrid.append(naturamaChapterThree);
+if (naturamaIntroGrid && naturamaChapterThree) naturamaIntroGrid.append(naturamaChapterThree);
+  const naturamaQuote = caseStudy?.querySelector<HTMLElement>('.naturama-intro-quote');
+  const naturamaListeningModel = caseStudy?.querySelector<HTMLElement>('section[aria-labelledby="naturama-listen-title"]');
+  if (naturamaQuote && naturamaListeningModel) naturamaListeningModel.after(naturamaQuote);
   if (commission) commission.innerHTML = `<div class="w-full rounded-2xl bg-gradient-to-r from-[#12141a] via-[#101217] to-[#181513] border border-white/15 p-8 sm:p-14 relative overflow-hidden shadow-2xl"><div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-[#6f7f68]/10 blur-3xl pointer-events-none"></div><div class="relative z-10 max-w-3xl space-y-6"><div class="inline-flex items-center gap-2 font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest"><span class="w-1.5 h-1.5 bg-[#6f7f68]"></span><span>Spatial sound experiences</span></div><h3 class="font-bodoni text-3xl sm:text-4xl md:text-5xl text-white font-normal leading-tight">Looking for sound that changes the way a room feels?</h3><p class="font-manrope text-white/70 text-base leading-relaxed font-light">I design spatial sound and music experiences that make audiences listen with their whole body.</p><div class="pt-4"><a class="px-7 py-3.5 rounded-lg bg-[#6f7f68] hover:bg-[#879580] text-white font-mono text-xs uppercase tracking-widest transition-colors inline-flex items-center gap-2 font-semibold shadow-[0_0_25px_rgba(111,127,104,0.35)]" href="mailto:rasmus.jon@outlook.com?subject=Spatial%20Audio%20Inquiry"><span>Start a conversation</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span></a></div></div></div>`;
 }
 
@@ -217,11 +221,13 @@ function renderArlaCaseStudy(): void {
     caseStudy.innerHTML = `
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         <div class="lg:col-span-5 space-y-5"><div><span class="font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest block mb-2">Chapter 01</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">One motif, a whole journey</h3></div><p class="font-manrope text-white/70 leading-relaxed font-light text-base"><em>From Farm To Fridge</em> is an Arla brand film made by GotFat Productions. Its story moves from cows in open farmland, through the people and processes behind production, to a family table at home. I composed and produced an original stereo score to give that journey a clear, affectionate musical identity.</p><p class="font-manrope text-white/70 leading-relaxed font-light text-base">The composition begins with three horn notes drawn from a major chord: middle, down, then up. This melodic cell becomes the film’s signature motif, transformed across horn, cello, guitar and strings while remaining recognisable.</p><div class="p-8 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10"><p class="font-serif italic text-2xl sm:text-3xl text-white/95 leading-snug">I wanted the melody to work like a familiar memory: always present in its shape, even as its sound and setting change.</p></div></div>
-        <div class="lg:col-span-7"><div class="p-8 sm:p-12 rounded-2xl bg-gradient-to-br from-white/[0.05] to-white/[0.01] border border-white/15 relative overflow-hidden"><div class="absolute -right-12 -bottom-16 w-64 h-64 bg-[#6f7f68]/10 rounded-full blur-3xl pointer-events-none"></div><div class="relative z-10 space-y-5"><span class="font-mono text-[11px] uppercase tracking-widest text-[#6f7f68] font-semibold block">Chapter 02</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">I let the film’s storytelling lead the music.</h3><p class="font-manrope text-white/75 text-lg leading-relaxed font-light">I studied GotFat Productions’ visual storytelling closely and worked with them to shape the score around their vision for the film. The images defined the musical purpose and pacing: the horn’s natural reverb meets the scale of the farmland; as the story moves closer to people and food, cello and acoustic guitar bring intimacy, warmth and care.</p><p class="font-manrope text-white/75 text-lg leading-relaxed font-light">When the film enters production, metallic bowls, industrial percussion and a ticking rhythmic layer bring machinery, conveyor belts and steady work into the score. As the story returns to tasting, ageing and the people behind the products, the acoustic guitar restores a calm pulse. Strings then gather the score’s earlier materials into a climax before the original three horn notes return with the Arla logo. Each decision responds to what the audience sees, allowing the score and film to develop as one story.</p><div class="pt-2 flex flex-wrap items-center gap-4 font-mono text-[10px] text-brand-muted tracking-widest"><span>// STEREO SCORE</span><span>// SCORE TO PICTURE</span><span class="text-[#6f7f68]">// CREATIVE COLLABORATION</span></div></div></div></div>
+        <div class="lg:col-span-7"><div class="arla-storytelling-panel p-8 sm:p-12 rounded-2xl bg-gradient-to-br from-white/[0.05] to-white/[0.01] border border-white/15 relative overflow-hidden"><div class="absolute -right-12 -bottom-16 w-64 h-64 bg-[#6f7f68]/10 rounded-full blur-3xl pointer-events-none"></div><div class="relative z-10 space-y-5"><span class="font-mono text-[11px] uppercase tracking-widest text-[#6f7f68] font-semibold block">Chapter 02</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">I let the film’s storytelling lead the music.</h3><p class="font-manrope text-white/75 text-lg leading-relaxed font-light">I studied GotFat Productions’ visual storytelling closely and worked with them to shape the score around their vision for the film. The images defined the musical purpose and pacing: the horn’s natural reverb meets the scale of the farmland; as the story moves closer to people and food, cello and acoustic guitar bring intimacy, warmth and care.</p><p class="font-manrope text-white/75 text-lg leading-relaxed font-light">When the film enters production, metallic bowls, industrial percussion and a ticking rhythmic layer bring machinery, conveyor belts and steady work into the score. As the story returns to tasting, ageing and the people behind the products, the acoustic guitar restores a calm pulse. Strings then gather the score’s earlier materials into a climax before the original three horn notes return with the Arla logo. Each decision responds to what the audience sees, allowing the score and film to develop as one story.</p><div class="pt-2 flex flex-wrap items-center gap-4 font-mono text-[10px] text-brand-muted tracking-widest"><span>// STEREO SCORE</span><span>// SCORE TO PICTURE</span><span class="text-[#6f7f68]">// CREATIVE COLLABORATION</span></div></div></div></div>
       </div>      <div class="mt-16 pt-12 border-t border-white/10 grid grid-cols-1 lg:grid-cols-12 gap-12"><div class="lg:col-span-4"><span class="font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest block mb-2">Chapter 03</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">Giving Arla a musical identity</h3></div><div class="lg:col-span-8 space-y-5"><p class="font-manrope text-white/70 leading-relaxed font-light text-base">My role was not only to support the film with music, but to make its values audible. Arla’s story is built on familiarity, care, Danish food culture and the people whose work turns a simple beginning on the farm into something shared at home. I translated those qualities into a melodic identity that could feel warm, immediate and memorable.</p><div class="p-6 rounded-xl bg-white/[0.02] border border-white/10 space-y-3"><span class="font-mono text-[11px] uppercase tracking-widest text-[#6f7f68] font-semibold block">Musical identity</span><p class="font-manrope text-sm text-white/70 leading-relaxed font-light">The three-note motif works as a musical signature: concise enough to recognise at first hearing, but rich enough to carry the entire composition. By returning in transformed forms across different instruments and ending in its most minimal form with the Arla logo, it gives Arla a coherent sonic identity that points both to heritage and to what comes next.</p><div class="pt-2 flex flex-wrap items-center gap-4 font-mono text-[10px] text-brand-muted tracking-widest"><span>// MELODIC SIGNATURE</span><span>// WARMTH &amp; FAMILIARITY</span><span class="text-[#6f7f68]">// ARLA IDENTITY</span></div></div></div></div>
       <div class="mt-16 pt-12 border-t border-white/10 grid grid-cols-1 lg:grid-cols-12 gap-12"><div class="lg:col-span-4"><span class="font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest block mb-2">Credits</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">Brand identity in sound</h3></div><div class="lg:col-span-8"><div class="p-6 rounded-xl bg-white/[0.02] border border-white/10"><div class="space-y-3 font-manrope text-sm text-white/75 leading-relaxed"><p><span class="text-white font-medium">Rasmus Jon</span><br>Composer &amp; Producer.</p><p><span class="text-white font-medium">GotFat Productions</span><br>Film production.</p></div></div></div></div>`;
   }
-  if (commission) commission.innerHTML = `<div class="w-full rounded-2xl bg-gradient-to-r from-[#12141a] via-[#101217] to-[#181513] border border-white/15 p-8 sm:p-14 relative overflow-hidden shadow-2xl"><div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-[#6f7f68]/10 blur-3xl pointer-events-none"></div><div class="relative z-10 max-w-3xl space-y-6"><div class="inline-flex items-center gap-2 font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest"><span class="w-1.5 h-1.5 bg-[#6f7f68]"></span><span>Music for film &amp; brands</span></div><h3 class="font-bodoni text-3xl sm:text-4xl md:text-5xl text-white font-normal leading-tight">Looking for a musical identity your audience can recognise?</h3><p class="font-manrope text-white/70 text-base leading-relaxed font-light">I compose and produce music that gives films and brands a memorable emotional shape.</p><div class="pt-4"><a class="px-7 py-3.5 rounded-lg bg-[#6f7f68] hover:bg-[#879580] text-white font-mono text-xs uppercase tracking-widest transition-colors inline-flex items-center gap-2 font-semibold shadow-[0_0_25px_rgba(111,127,104,0.35)]" href="mailto:rasmus.jon@outlook.com?subject=Music%20Composition%20Inquiry"><span>Start a conversation</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span></a></div></div></div>`;
+  caseStudy?.querySelectorAll<HTMLElement>('.arla-storytelling-panel h3, .arla-storytelling-panel p').forEach((element) => {
+    element.style.setProperty('color', 'var(--site-ink)', 'important');
+  });  if (commission) commission.innerHTML = `<div class="w-full rounded-2xl bg-gradient-to-r from-[#12141a] via-[#101217] to-[#181513] border border-white/15 p-8 sm:p-14 relative overflow-hidden shadow-2xl"><div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-[#6f7f68]/10 blur-3xl pointer-events-none"></div><div class="relative z-10 max-w-3xl space-y-6"><div class="inline-flex items-center gap-2 font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest"><span class="w-1.5 h-1.5 bg-[#6f7f68]"></span><span>Music for film &amp; brands</span></div><h3 class="font-bodoni text-3xl sm:text-4xl md:text-5xl text-white font-normal leading-tight">Looking for a musical identity your audience can recognise?</h3><p class="font-manrope text-white/70 text-base leading-relaxed font-light">I compose and produce music that gives films and brands a memorable emotional shape.</p><div class="pt-4"><a class="px-7 py-3.5 rounded-lg bg-[#6f7f68] hover:bg-[#879580] text-white font-mono text-xs uppercase tracking-widest transition-colors inline-flex items-center gap-2 font-semibold shadow-[0_0_25px_rgba(111,127,104,0.35)]" href="mailto:rasmus.jon@outlook.com?subject=Music%20Composition%20Inquiry"><span>Start a conversation</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span></a></div></div></div>`;
 }
 
 function makeArlaImagePlayer(viewport: HTMLElement): void {
@@ -336,7 +342,103 @@ function renderQuietSoniaCaseStudy(): void {
   }
   if (commission) commission.innerHTML = `<div class="w-full rounded-2xl bg-gradient-to-r from-[#12141a] via-[#101217] to-[#181513] border border-white/15 p-8 sm:p-14 relative overflow-hidden shadow-2xl"><div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-[#364d4f]/20 blur-3xl pointer-events-none"></div><div class="relative z-10 max-w-3xl space-y-6"><div class="inline-flex items-center gap-2 font-mono text-[11px] text-[#dbcb26] uppercase tracking-widest"><span class="w-1.5 h-1.5 bg-[#dbcb26]"></span><span>Independent music</span></div><h3 class="font-bodoni text-3xl sm:text-4xl md:text-5xl text-white font-normal leading-tight">Looking for music with its own world?</h3><p class="font-manrope text-white/70 text-base leading-relaxed font-light">I write, produce and shape independent music projects from the first sound to the final record.</p><div class="pt-4"><a class="px-7 py-3.5 rounded-lg bg-[#dbcb26] hover:bg-[#e6d743] text-[#171917] font-mono text-xs uppercase tracking-widest transition-colors inline-flex items-center gap-2 font-semibold" href="mailto:rasmus.jon@outlook.com?subject=Independent%20Music%20Inquiry"><span>Start a conversation</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span></a></div></div></div>`;
 }
+const projectDrawerQuotes: Record<string, string> = {
+  'new-blood-copenhell-105': 'Each new section should feel like the next movement in the song — not a level pasted onto it.',
+  'arla-commercial-music-composition': 'A melody can feel like a familiar memory, even as its sound and setting change.',
+  'uskyldig': 'A performance stays alive when there is room for people to listen, respond and surprise one another.',
+  'deirdre-only-you': 'Sometimes the smallest gestures carry the whole emotional story.',
+  'late-runner-im-a-dinosaur': 'The strongest takes begin when a performer can stop watching themselves and start to play.',
+  'mothland-copenhagen-windowsills': 'A private act of listening can slowly become a world you are ready to share.',
+  'quiet-sonia-qs': 'The record works because seven people are listening into the same moment.',
+  'designed-to-be-kept': 'The sound needed to feel like a memory in motion: familiar enough to recognise, open enough to become something new.',
+};
+
+function makeProjectDetailDrawer(caseStudy: HTMLElement | null, quoteText: string): void {
+  if (!caseStudy || caseStudy.querySelector('.project-detail-drawer')) return;
+  const firstGrid = caseStudy.firstElementChild as HTMLElement | null;
+  const intro = firstGrid?.firstElementChild as HTMLElement | null;
+  if (!firstGrid || !intro) return;
+
+  const existingQuote = intro.querySelector<HTMLElement>('blockquote, .font-serif.italic')?.closest<HTMLElement>('.rounded-2xl');
+  const drawer = existingQuote || document.createElement('div');
+  if (!existingQuote) {
+    drawer.className = 'project-detail-drawer p-8 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10';
+    drawer.innerHTML = `<blockquote class="font-serif italic text-2xl sm:text-3xl text-white/95 leading-snug">${quoteText}</blockquote>`;
+  }
+  drawer.classList.add('project-detail-drawer');
+  drawer.querySelector('blockquote')?.classList.add('project-detail-drawer-quote');
+  drawer.remove();
+
+  const embeddedCredits = [...intro.querySelectorAll<HTMLElement>('.rounded-xl, .rounded-2xl')]
+    .filter(card => /collaborators\s*&\s*credits/i.test(card.textContent || ''));
+  embeddedCredits.forEach(card => card.remove());
+
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'project-detail-drawer-button';
+  button.setAttribute('aria-expanded', 'false');
+  button.innerHTML = '<span class="project-detail-drawer-copy"><span class="project-detail-drawer-title">Open detailed description</span><span class="project-detail-drawer-hint">Project &amp; workflow</span></span><span class="project-detail-drawer-arrow" aria-hidden="true">↓</span>';
+
+  const content = document.createElement('div');
+  content.className = 'project-detail-drawer-content';
+  content.hidden = true;
+  [...firstGrid.children].forEach(child => content.append(child));
+  [...caseStudy.children].forEach(child => {
+    if (child !== firstGrid && child !== drawer && /Chapter|Co-direction|Deep listening|The ensemble/.test(child.textContent || '')) content.append(child);
+  });
+  [...caseStudy.children].forEach(child => {
+    if (child !== firstGrid && child !== drawer && /Credits/.test(child.textContent || '')) content.append(child);
+  });
+
+  embeddedCredits.forEach(card => {
+    card.classList.add('project-detail-credits-card');
+    content.append(card);
+  });
+
+  [...content.querySelectorAll<HTMLElement>('.font-mono')]
+    .filter(label => label.textContent?.trim() === 'Credits')
+    .forEach(label => {
+      const credits = label.closest<HTMLElement>('.grid');
+      credits?.classList.add('project-detail-credits');
+      credits?.querySelector<HTMLElement>('.rounded-xl')?.classList.add('project-detail-credits-card');
+    });
+
+  embeddedCredits.forEach(card => {
+    card.classList.add('project-detail-credits-card');
+    content.append(card);
+  });
+
+  [...content.querySelectorAll<HTMLElement>('.font-mono')]
+    .filter(label => label.textContent?.trim() === 'Credits')
+    .forEach(label => {
+      const credits = label.closest<HTMLElement>('.grid');
+      credits?.classList.add('project-detail-credits');
+      credits?.querySelector<HTMLElement>('.rounded-xl')?.classList.add('project-detail-credits-card');
+    });
+
+  firstGrid.remove();
+  caseStudy.prepend(drawer);
+  drawer.append(button, content);
+
+  const title = button.querySelector<HTMLElement>('.project-detail-drawer-title');
+  const hint = button.querySelector<HTMLElement>('.project-detail-drawer-hint');
+  button.addEventListener('click', () => {
+    const isOpen = content.classList.contains('is-open');
+    content.classList.toggle('is-open', !isOpen);
+    content.hidden = isOpen;
+    button.classList.toggle('is-expanded', !isOpen);
+    button.setAttribute('aria-expanded', String(!isOpen));
+    if (title) title.textContent = isOpen ? 'Open detailed description' : 'Close detailed description';
+    if (hint) hint.textContent = isOpen ? 'Project & workflow' : 'Hide project & workflow';
+    requestAnimationFrame(() => {
+      const target = isOpen ? drawer : content;
+      window.scrollTo({ top: Math.max(0, target.getBoundingClientRect().top + window.scrollY - 68), behavior: 'smooth' });
+    });
+  });
+}
 async function renderProjectDetail(): Promise<void> {
+  naturamaListenNowCleanup?.();
+  naturamaListenNowCleanup = undefined;
   const slug = window.location.pathname.split('/').filter(Boolean).at(-1) || slugs[0];
   const index = Math.max(0, slugs.indexOf(slug));
   const project = await projectFromGallery(index);
@@ -345,7 +447,7 @@ async function renderProjectDetail(): Promise<void> {
   updateText('h1', project.title);
   updateText('h1 + h2', project.subtitle);
   updateText('h1 + h2 + p', project.description);
-  updateText('#project-role-meta', project.meta);
+  updateText('#project-role-meta', project.meta.split(/\s*\/\s*/).slice(0, 2).join(' / '));
   updateText('#project-breadcrumb', `${String(project.index + 1).padStart(2, '0')} // ${project.title}`);
   updateText('#project-kicker', `${project.category} // selected work`);
   const image = document.querySelector<HTMLImageElement>('#main-viewport-image');
@@ -357,11 +459,12 @@ async function renderProjectDetail(): Promise<void> {
     updateText('#detail-spec-value-1', 'Sound Designer, Composer & Spatial Audio Mixer');
     updateText('#detail-spec-label-2', 'Format');
     updateText('#detail-spec-value-2', '20-minute 360° audio journey');
-    updateText('#detail-spec-label-3', 'Audience');
-    updateText('#detail-spec-value-3', '30 listeners at a time');
+    updateText('#detail-spec-label-3', 'Client');
+    updateText('#detail-spec-value-3', 'Naturama');
     updateText('#detail-spec-label-4', 'System');
     updateText('#detail-spec-value-4', '8-speaker circular array');
     document.getElementById('detail-spec-row-4')?.classList.remove('hidden');
+
     renderNaturamaCaseStudy();
     const naturamaCaseStudy = document.getElementById('game-case-study');
     const naturamaChapterGrid = naturamaCaseStudy?.firstElementChild;
@@ -377,6 +480,82 @@ async function renderProjectDetail(): Promise<void> {
       naturamaMediaSection.append(heroChapter);
     }
     makeNaturamaEmulator();
+    // This move happens after the hero has been lifted out of the case study,
+    // ensuring the quotation follows the listening model directly.
+    const naturamaQuote = naturamaCaseStudy?.querySelector<HTMLElement>('.naturama-intro-quote');
+    const naturamaListeningModel = naturamaCaseStudy?.querySelector<HTMLElement>('section[aria-labelledby="naturama-listen-title"]');
+    if (naturamaQuote && naturamaListeningModel) naturamaListeningModel.after(naturamaQuote);
+
+    const naturamaReadMore = naturamaQuote?.querySelector<HTMLButtonElement>('.naturama-read-more');
+    const naturamaReadMoreTitle = naturamaReadMore?.querySelector<HTMLElement>('.naturama-read-more-title');
+    const naturamaReadMoreHint = naturamaReadMore?.querySelector<HTMLElement>('.naturama-read-more-hint');
+    const naturamaReadContent = naturamaCaseStudy?.querySelector<HTMLElement>('.naturama-intro-grid');
+    const naturamaCredits = [...(naturamaCaseStudy?.children || [])].find(child => /Credits/.test(child.textContent || '')) as HTMLElement | undefined;
+    if (naturamaReadContent && naturamaCredits) {
+      naturamaCredits.classList.add('project-detail-credits');
+      naturamaCredits.querySelector<HTMLElement>('.rounded-xl')?.classList.add('project-detail-credits-card');
+      naturamaReadContent.append(naturamaCredits);
+    }
+    if (naturamaQuote && naturamaReadContent) naturamaQuote.append(naturamaReadContent);
+    if (naturamaReadMore && naturamaReadContent) {
+      naturamaReadContent.hidden = true;
+      naturamaReadMore.addEventListener('click', () => {
+        const isOpen = naturamaReadContent.classList.contains('is-open');
+        if (isOpen) {
+          naturamaReadContent.classList.remove('is-open');
+          naturamaReadContent.hidden = true;
+          naturamaReadMore.classList.remove('is-expanded');
+          naturamaReadMore.setAttribute('aria-expanded', 'false');
+          if (naturamaReadMoreTitle) naturamaReadMoreTitle.textContent = 'Open detailed description';
+          if (naturamaReadMoreHint) naturamaReadMoreHint.textContent = 'Project & workflow';
+          requestAnimationFrame(() => {
+            window.scrollTo({ top: Math.max(0, naturamaQuote.getBoundingClientRect().top + window.scrollY - 68), behavior: 'smooth' });
+          });
+          return;
+        }
+
+        naturamaReadContent.hidden = false;
+        naturamaReadContent.classList.add('is-open');
+        naturamaReadMore.classList.add('is-expanded');
+        naturamaReadMore.setAttribute('aria-expanded', 'true');
+        if (naturamaReadMoreTitle) naturamaReadMoreTitle.textContent = 'Close detailed description';
+        if (naturamaReadMoreHint) naturamaReadMoreHint.textContent = 'Hide project & workflow';
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: Math.max(0, naturamaReadContent.getBoundingClientRect().top + window.scrollY - 68), behavior: 'smooth' });
+        });
+      });
+    }
+
+    const listenNow = document.createElement('button');
+    listenNow.type = 'button';
+    listenNow.className = 'naturama-listen-now';
+    listenNow.setAttribute('aria-label', 'Scroll to the interactive listening model');
+    listenNow.innerHTML = '<span>Listen now</span><span aria-hidden="true">↓</span>';
+    document.body.append(listenNow);
+
+    const updateListenNow = () => {
+      const target = naturamaCaseStudy?.querySelector<HTMLElement>('section[aria-labelledby="naturama-listen-title"]');
+      if (!target) return;
+      const distance = target.getBoundingClientRect().top - window.innerHeight * .64;
+      const visibility = Math.max(0, Math.min(1, distance / (window.innerHeight * .48)));
+      listenNow.style.opacity = String(visibility);
+      listenNow.style.transform = `translateY(${(1 - visibility) * 10}px)`;
+      listenNow.style.pointerEvents = visibility < .08 ? 'none' : 'auto';
+    };
+    const scrollToListeningModel = () => {
+      const target = naturamaCaseStudy?.querySelector<HTMLElement>('section[aria-labelledby="naturama-listen-title"]');
+      if (!target) return;
+      window.scrollTo({ top: Math.max(0, target.getBoundingClientRect().top + window.scrollY - 68), behavior: 'smooth' });
+    };
+    listenNow.addEventListener('click', scrollToListeningModel);
+    window.addEventListener('scroll', updateListenNow, { passive: true });
+    window.addEventListener('resize', updateListenNow);
+    updateListenNow();
+    naturamaListenNowCleanup = () => {
+      window.removeEventListener('scroll', updateListenNow);
+      window.removeEventListener('resize', updateListenNow);
+      listenNow.remove();
+    };
   } else if (index === 2 && mediaViewport) {
     updateText('#project-kicker', 'Interactive Music Game // Copenhell 2026');
     updateText('#detail-spec-label-1', 'Role');
@@ -463,14 +642,15 @@ async function renderProjectDetail(): Promise<void> {
   } else if (index === 4) {
     updateText('#project-kicker', 'Music Video // Deirdre — Only You');
     updateText('#detail-spec-label-1', 'Role');
-    updateText('#detail-spec-value-1', 'Co-director');
-    updateText('#detail-spec-label-2', 'Co-director');
+    updateText('#detail-spec-value-1', 'Co-Director & Editor');
+    updateText('#detail-spec-label-2', 'Client');
     const onlyYouCoDirectorValue = document.getElementById('detail-spec-value-2');
-    if (onlyYouCoDirectorValue) onlyYouCoDirectorValue.innerHTML = '<a href="https://www.line21.dk/da" target="_blank" rel="noreferrer">Line21 ↗</a> (Brian Raaby)';
-    updateText('#detail-spec-label-3', 'Artist');
-    updateText('#detail-spec-value-3', 'Deirdre');
-    updateText('#detail-spec-label-4', 'Focus');
-    updateText('#detail-spec-value-4', 'Emergent performance & storytelling');
+    if (onlyYouCoDirectorValue) onlyYouCoDirectorValue.innerHTML = '<a href="https://www.line21.dk/da" target="_blank" rel="noreferrer">Line21 ↗</a>';
+    updateText('#detail-spec-label-3', 'End Client');
+    const onlyYouEndClientValue = document.getElementById('detail-spec-value-3');
+    if (onlyYouEndClientValue) onlyYouEndClientValue.innerHTML = '<a href="https://www.pinkcottoncandyrecords.com/" target="_blank" rel="noreferrer">Pink Cotton Candy ↗</a>';
+    updateText('#detail-spec-label-4', 'Format');
+    updateText('#detail-spec-value-4', 'Music Video');
     document.getElementById('detail-spec-row-4')?.classList.remove('hidden');
     renderOnlyYouCaseStudy();
     if (mediaViewport && project.image) {
@@ -481,16 +661,20 @@ async function renderProjectDetail(): Promise<void> {
     updateText('#project-kicker', 'Music Video // Late Runner — I’m a Dinosaur');
     updateText('#detail-spec-label-1', 'Role');
     updateText('#detail-spec-value-1', 'Co-director & Editor');
-    updateText('#detail-spec-label-2', 'Co-director');
+    updateText('#detail-spec-label-2', 'Client');
     const dinosaurCoDirectorValue = document.getElementById('detail-spec-value-2');
-    if (dinosaurCoDirectorValue) dinosaurCoDirectorValue.innerHTML = '<a href="https://www.line21.dk/da" target="_blank" rel="noreferrer">Line21 ↗</a> (Brian Raaby)';
-    updateText('#detail-spec-label-3', 'Artist');
-    updateText('#detail-spec-value-3', 'Late Runner');
-    updateText('#detail-spec-label-4', 'Focus');
-    updateText('#detail-spec-value-4', 'Performance development');
+    if (dinosaurCoDirectorValue) dinosaurCoDirectorValue.innerHTML = '<a href="https://www.line21.dk/da" target="_blank" rel="noreferrer">Line21 ↗</a>';
+    updateText('#detail-spec-label-3', 'End Client');
+    const dinosaurEndClientValue = document.getElementById('detail-spec-value-3');
+    if (dinosaurEndClientValue) dinosaurEndClientValue.innerHTML = '<a href="https://crunchy.dk/?srsltid=AU7gw4XRmEomLzFlnA2KP-wM1rdOQqNDpjpSctW3x6Idb7vLzi8AuDET" target="_blank" rel="noreferrer">Crunchy Frog ↗</a>';
+    updateText('#detail-spec-label-4', 'Format');
+    updateText('#detail-spec-value-4', 'Music Video');
     document.getElementById('detail-spec-row-4')?.classList.remove('hidden');
     renderDinosaurCaseStudy();
-    if (image && project.image) { image.src = project.image; image.alt = project.title; }
+    if (mediaViewport && project.image) {
+      mediaViewport.classList.add('only-you-video-viewport');
+      mediaViewport.innerHTML = `<div class="only-you-video-backdrop" style="background-image: url('${project.image}')" aria-hidden="true"></div><div class="only-you-video-shade" aria-hidden="true"></div><iframe class="only-you-video" src="https://www.youtube-nocookie.com/embed/RPDuShYBjcA?rel=0" title="Late Runner — I’m a Dinosaur" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+    }
   } else if (index === 7) {
     updateText('#project-kicker', 'Independent Music Project // What Is Mothland');
     updateText('#detail-spec-label-1', 'Role');
@@ -574,6 +758,7 @@ async function renderProjectDetail(): Promise<void> {
     image.classList.toggle('full-artwork', index >= 7);
     image.parentElement?.parentElement?.classList.toggle('full-artwork-frame', index >= 7);
   }
+  if (index !== 0) makeProjectDetailDrawer(document.getElementById('game-case-study'), projectDrawerQuotes[slug] || 'Open the project notes and workflow.');
   selectAll<HTMLAnchorElement>('[data-path]').forEach(link => { link.href = link.dataset.path === 'projects' ? '/projects' : `/#${link.dataset.path}`; });
   const backLink = document.querySelector<HTMLAnchorElement>('a.group.inline-flex');
   if (backLink) backLink.href = '/projects';
@@ -592,12 +777,39 @@ function makeHeaderReactToScroll(): void {
   window.addEventListener('scroll', update, { passive: true });
 }
 
+function makeLandingExploreScroll(): void {
+  const trigger = document.querySelector<HTMLAnchorElement>('[data-purpose="explore-works"]');
+  if (!trigger) return;
+  trigger.addEventListener('click', event => {
+    event.preventDefault();
+    const activeCard = document.querySelector<HTMLElement>('.carousel-card.active');
+    if (!activeCard) return;
+    const cardBounds = activeCard.getBoundingClientRect();
+    const cardCenter = cardBounds.top + window.scrollY + cardBounds.height / 2;
+    window.scrollTo({ top: Math.max(0, cardCenter - (window.innerHeight / 2 + 28)), behavior: 'smooth' });
+    history.replaceState(null, '', '#projects-carousel');
+  });
+}
 async function makeLandingCarousel(): Promise<void> {
-  const cards = selectAll<HTMLElement>('.carousel-card');
+  let cards = selectAll<HTMLElement>('.carousel-card');
   if (!cards.length) return;
+  if (cards.length === 5) {
+    const onlyYouCard = cards[0].cloneNode(true) as HTMLElement;
+    onlyYouCard.dataset.index = '5';
+    cards[0].parentElement?.append(onlyYouCard);
+    cards = selectAll<HTMLElement>('.carousel-card');
+  }
   const gallery = new DOMParser().parseFromString(await (await fetch('/projects')).text(), 'text/html');
   const galleryCards = [...gallery.querySelectorAll<HTMLElement>('.project-item')];
-  const featuredIndexes = [0, 1, 3, 2, 6];
+  const featuredIndexes = [0, 1, 3, 2, 6, 4];
+  const carouselWorkTypes: Record<number, string> = {
+    0: 'SPATIAL AUDIO EXPERIENCE',
+    1: 'COMMERCIAL MUSIC SCORE',
+    2: 'VIDEO GAME',
+    3: 'THEATER',
+    4: 'MUSIC VIDEO',
+    6: 'DOCUMENTARY',
+  };
 
   cards.forEach((card, position) => {
     const projectIndex = featuredIndexes[position];
@@ -611,14 +823,22 @@ async function makeLandingCarousel(): Promise<void> {
     const subtitle = source.querySelector('h2 + p')?.textContent?.trim() || '';
     const metadata = source.querySelector('p.font-meta-technical')?.textContent?.trim() || '';
     const badge = card.querySelector('.relative .font-mono');
-    if (badge) badge.textContent = `${String(projectIndex + 1).padStart(2, '0')} / Selected Work`;
+    if (badge) badge.textContent = `${String(projectIndex + 1).padStart(2, '0')} / ${carouselWorkTypes[projectIndex] || 'SELECTED WORK'}`;
     const heading = card.querySelector('h3');
     if (heading) heading.textContent = title;
     const meta = heading?.previousElementSibling;
     if (meta) meta.textContent = subtitle ? `${subtitle} — ${metadata}` : metadata;
   });
 
-  const dots = selectAll<HTMLElement>('.carousel-dot');
+  let dots = selectAll<HTMLElement>('.carousel-dot');
+  if (dots.length === 5) {
+    const onlyYouDot = dots[0].cloneNode(true) as HTMLElement;
+    onlyYouDot.dataset.index = '5';
+    onlyYouDot.setAttribute('aria-label', 'Slide 6');
+    onlyYouDot.className = 'carousel-dot w-2.5 h-2.5 rounded-full bg-white/35 hover:bg-white/70 transition-all duration-300';
+    dots[0].parentElement?.append(onlyYouDot);
+    dots = selectAll<HTMLElement>('.carousel-dot');
+  }
   const previous = document.getElementById('carousel-prev');
   const next = document.getElementById('carousel-next');
   const stage = document.querySelector<HTMLElement>('.carousel-perspective-container');
@@ -636,7 +856,7 @@ async function makeLandingCarousel(): Promise<void> {
       card.classList.remove('active', 'carousel-left-1', 'carousel-left-2', 'carousel-right-1', 'carousel-right-2', 'hidden-card');
       card.classList.add(difference === 0 ? 'active' : Math.abs(difference) <= 2 ? `carousel-${difference < 0 ? 'left' : 'right'}-${Math.abs(difference)}` : 'hidden-card');
     });
-    dots.forEach((dot, index) => { dot.classList.toggle('bg-white', index === current); dot.classList.toggle('bg-white/35', index !== current); dot.setAttribute('aria-pressed', String(index === current)); });
+    dots.forEach((dot, index) => { const isCurrent = index === current; dot.classList.toggle('bg-white', isCurrent); dot.classList.toggle('bg-white/35', !isCurrent); dot.classList.toggle('scale-125', isCurrent); dot.setAttribute('aria-pressed', String(isCurrent)); });
   };
   const goTo = (index: number) => {
     current = (index + cards.length) % cards.length;
@@ -936,7 +1156,10 @@ function makeNaturamaEmulator(): void {
   subControl?.addEventListener('change', updateSubLevel);
   const paintSelection = () => {
     speakerButtons.forEach((button, index) => {
-      const selected = activeIsolation?.includes(index) ?? false;
+      // Starting the journey plays the complete eight-speaker mix. Reflect
+      // that in the hardware controls by lighting every channel, while an
+      // isolated mix only lights the channels that are actually selected.
+      const selected = playing && (activeIsolation ? activeIsolation.includes(index) : true);
       button.classList.toggle('border-[#6f7f68]', selected);
       button.classList.toggle('bg-[#6f7f68]/25', selected);
       button.classList.toggle('text-white', true);
@@ -945,7 +1168,9 @@ function makeNaturamaEmulator(): void {
     });
     pairButtons.forEach((button, index) => {
       const channels = [index * 2, index * 2 + 1];
-      const selected = channels.every(channel => activeIsolation?.includes(channel));
+      const selected = playing && (activeIsolation
+        ? channels.every(channel => activeIsolation.includes(channel))
+        : true);
       button.classList.toggle('border-[#6f7f68]/70', selected);
       button.classList.toggle('bg-[#6f7f68]/10', selected);
       button.classList.toggle('shadow-[0_0_20px_rgba(111,127,104,0.18)]', selected);
@@ -973,9 +1198,9 @@ function makeNaturamaEmulator(): void {
       const samples = new Uint8Array(analyser.fftSize);
       analyser.getByteTimeDomainData(samples);
       const rms = Math.sqrt(samples.reduce((sum, sample) => sum + Math.pow((sample - 128) / 128, 2), 0) / samples.length);
-      // Make quiet details readable, while keeping the full-scale response
-      // controlled enough that only the loudest sounds reach red.
-      return Math.min(1, Math.pow(Math.max(0, (rms - .008) / .18), .72));
+      // Lift the quiet details enough to remain legible in the map. The
+      // compression still leaves room for genuinely loud moments to peak.
+      return Math.min(1, Math.pow(Math.max(0, (rms - .004) / .13), .68));
     });
     levels.forEach((target, index) => {
       const current = visualSpeakerLevels[index];
@@ -985,9 +1210,15 @@ function makeNaturamaEmulator(): void {
       const blend = 1 - Math.exp(-elapsed / duration);
       visualSpeakerLevels[index] = current + (target - current) * blend;
     });
+    // The recordings contain energy in more than one channel at a time. Make
+    // the map directional by showing only the channels that are notably louder
+    // than the current overall field, rather than painting every quiet bleed.
+    const peakLevel = Math.max(...visualSpeakerLevels, 0);
     const colourFor = (level: number) => {
-      const visible = Math.max(0, Math.min(1, (level - .16) / .84));
-      const redMix = Math.max(0, Math.min(1, (level - .70) / .30));
+      // A low visibility gate makes ambient activity appear. Bring red in for
+      // strong passages, while retaining a yellow transition beneath it.
+      const visible = Math.max(0, Math.min(1, (level - .04) / .14));
+      const redMix = Math.max(0, Math.min(1, (level - .44) / .20));
       const red = Math.round(232 - (15 * (1 - redMix)));
       const green = Math.round(193 - (128 * redMix));
       const blue = Math.round(47 - (11 * redMix));
@@ -1000,9 +1231,13 @@ function makeNaturamaEmulator(): void {
       const blend = point - Math.floor(point);
       const smoothBlend = blend * blend * (3 - 2 * blend);
       const level = visualSpeakerLevels[before] + (visualSpeakerLevels[after] - visualSpeakerLevels[before]) * smoothBlend;
-      return `${colourFor(level)} ${(sample / 64 * 360).toFixed(2)}deg`;
+      const directionalLevel = peakLevel > .035
+        ? Math.max(0, (level - peakLevel * .48) / Math.max(.001, peakLevel * .52))
+        : 0;
+      const heatLevel = directionalLevel * Math.min(1, peakLevel / .50);
+      return `${colourFor(heatLevel)} ${(sample / 64 * 360).toFixed(2)}deg`;
     });
-    ring.style.setProperty('--naturama-heatmap', `conic-gradient(from 0deg, ${stops.join(', ')})`);
+    ring.style.setProperty('--naturama-heatmap', `conic-gradient(from -22.5deg, ${stops.join(', ')})`);
   };
   const animateActivityHeatmap = () => {
     paintActivityHeatmap();
@@ -1029,7 +1264,7 @@ function makeNaturamaEmulator(): void {
         analyser.fftSize = 64;
         const panner = context!.createPanner();
         const speaker = pair * 2 + channel;
-        const angle = (speaker / 8) * Math.PI * 2 - Math.PI / 2;
+        const angle = (speaker / 8) * Math.PI * 2 - Math.PI / 2 - Math.PI / 8;
         panner.panningModel = 'HRTF';
         panner.distanceModel = 'inverse';
         panner.positionX.value = Math.cos(angle);
@@ -1068,7 +1303,7 @@ function makeNaturamaEmulator(): void {
       audio.forEach(element => { element.currentTime = time; });
       if (currentTime) currentTime.textContent = formatTime(time);
       if (progress) progress.style.width = `${Number(seek.value) / 10}%`;
-    });    audio[0].addEventListener('ended', () => { playing = false; paintActivityHeatmap(); if (playButton) { playButton.classList.remove('is-playing'); playButton.textContent = 'Start Journey'; } setStatus('The 360° journey has ended.'); });
+    });    audio[0].addEventListener('ended', () => { playing = false; paintSelection(); if (playButton) { playButton.classList.remove('is-playing'); playButton.textContent = 'Start Journey'; } setStatus('The 360° journey has ended.'); });
   };
 
   paintActiveChapter(0);
@@ -1079,8 +1314,9 @@ function makeNaturamaEmulator(): void {
     if (playing) {
       audio.forEach(element => element.pause());
       playing = false;
-      paintActivityHeatmap();
-      playButton.textContent = 'Resume Journey';
+      paintSelection();
+      playButton.classList.remove('is-playing');
+      playButton.textContent = 'Start Journey';
       setStatus('Mix paused.');
       return;
     }
@@ -1094,12 +1330,16 @@ function makeNaturamaEmulator(): void {
       audio.forEach(element => { element.currentTime = startAt; });
       await Promise.all(audio.map(element => element.play()));
       playing = true;
-      paintActivityHeatmap();
+      container.classList.add('has-started-journey');
+      paintSelection();
       requestAnimationFrame(animateActivityHeatmap);
-      playButton.textContent = 'Pause Journey';
+      playButton.classList.add('is-playing');
+      playButton.textContent = 'Start Journey';
       setStatus(activeIsolation ? 'Playing isolated speaker material.' : 'Playing the full eight-speaker mix.');
     } catch {
       setStatus('The mix could not start. Please try again.');
+      playButton.classList.remove('is-playing');
+      paintSelection();
       playButton.textContent = 'Start Journey';
     } finally { playButton.disabled = false; }
   });
@@ -1131,4 +1371,5 @@ if (document.querySelector('.project-item')) {
 if (window.location.pathname.startsWith('/projects/')) void renderProjectDetail();
 makeLandingNavigationWork();
 makeHeaderReactToScroll();
+makeLandingExploreScroll();
 void makeLandingCarousel();

@@ -481,6 +481,67 @@ body:has(.project-item) .bg-secondary { background-color: var(--echoworks-brass)
     padding-top: clamp(.25rem, 2vw, 2.5rem);
   }
 }
+
+/* A fixed invitation into the interactive mix. Its opacity is driven by the
+   distance to the model, so it disappears once the model has been reached. */
+.naturama-listen-now {
+  position: fixed;
+  right: clamp(1rem, 3vw, 3rem);
+  bottom: clamp(1rem, 3vw, 2.5rem);
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  padding: .8rem 1rem .8rem 1.15rem;
+  border: 1px solid rgba(209, 203, 188, .55);
+  border-radius: 999px;
+  background: rgba(23, 25, 23, .92);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, .3), inset 0 0 0 1px rgba(255, 255, 255, .06);
+  color: #d1cbbc;
+  font-family: var(--type-meta);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  transition: opacity .28s ease, transform .28s ease, background .2s ease, border-color .2s ease;
+}
+.naturama-listen-now span:last-child {
+  font-size: 1.15rem;
+  line-height: .7;
+}
+.naturama-listen-now:hover {
+  background: rgba(49, 51, 47, .96);
+  border-color: #d1cbbc;
+}
+@media (max-width: 640px) {
+  .naturama-listen-now { right: 1rem; bottom: 1rem; }
+}
+
+/* The quotation is now a sibling of the listening model, so restore the
+   restrained dark card treatment it had while it lived in the hero chapter. */
+body:has(#project-breadcrumb) #game-case-study .naturama-intro-quote {
+  margin-top: clamp(2.75rem, 5vw, 5rem);
+  padding: clamp(1.75rem, 3vw, 2.5rem) !important;
+  border: 1px solid rgba(242, 233, 216, .2) !important;
+  border-radius: 1.5rem !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .045), rgba(255, 255, 255, .012)) !important;
+  box-shadow: 0 16px 46px rgba(0, 0, 0, .18) !important;
+}
+body:has(#project-breadcrumb) #game-case-study .naturama-intro-quote p {
+  color: rgba(242, 233, 216, .95) !important;
+}
+
+/* Raise the landing-page carousel wheel slightly within its stage. */
+body:has([data-purpose="hero-container"]) .carousel-perspective-container {
+  top: -1.75rem;
+  scale: .92;
+}
+
+/* Keep the pagination visible directly beneath the reduced carousel wheel. */
+body:has([data-purpose="hero-container"]) #carousel-dots {
+  position: relative;
+  margin-top: -4rem !important;
+}
 @media (max-width: 1023px) {
   .naturama-hero-section { display: block; }
   .naturama-hero-chapter { margin-top: 2rem; }
@@ -2509,8 +2570,10 @@ body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"
 #naturama-emulator .naturama-transport-actions button:hover:not(:disabled),
 #naturama-emulator .naturama-stop-journey:hover:not(:disabled) {
   border-color: #f0c77e !important;
-  filter: brightness(1.12) saturate(1.1) drop-shadow(0 0 4px rgba(255, 213, 132, .92)) drop-shadow(0 0 15px rgba(239, 165, 77, .72));
-  box-shadow: inset 0 0 15px rgba(255, 234, 176, .48), 0 0 8px rgba(255, 203, 112, .78), 0 0 24px rgba(229, 145, 58, .46) !important;
+  /* Hover is contained inside the hardware face. The stronger lamp halo is
+     reserved for controls that have actually been switched on. */
+  filter: brightness(1.07) saturate(1.06);
+  box-shadow: inset 0 0 15px rgba(255, 234, 176, .48) !important;
 }
 #naturama-emulator .naturama-pair:hover:not(:disabled),
 #naturama-emulator .naturama-speaker:hover:not(:disabled) {
@@ -2603,8 +2666,8 @@ body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"
 #naturama-emulator .naturama-speaker.is-selected,
 #naturama-emulator .naturama-transport-actions button.is-playing {
   border-color: #f0c77e !important;
-  filter: brightness(1.12) saturate(1.1) drop-shadow(0 0 4px rgba(255, 213, 132, .92)) drop-shadow(0 0 15px rgba(239, 165, 77, .72)) !important;
-  box-shadow: inset 0 0 15px rgba(255, 234, 176, .48), 0 0 8px rgba(255, 203, 112, .78), 0 0 24px rgba(229, 145, 58, .46) !important;
+  filter: brightness(1.09) saturate(1.06) drop-shadow(0 0 3px rgba(255, 213, 132, .68)) drop-shadow(0 0 10px rgba(239, 165, 77, .42)) !important;
+  box-shadow: inset 0 0 12px rgba(255, 234, 176, .38), 0 0 5px rgba(255, 203, 112, .54), 0 0 14px rgba(229, 145, 58, .30) !important;
 }
 #naturama-emulator .naturama-pair.is-selected,
 #naturama-emulator .naturama-speaker.is-selected {
@@ -2634,4 +2697,772 @@ body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"
 /* The live meter reacts quickly enough to read as a volume pulse. */
 #naturama-emulator .naturama-speaker-stage__circle > div:first-child {
   transition: background .08s linear !important;
+}
+
+/* Listener Position is the wooden centre of the floor map; its label uses
+   the same Warm Sand marking colour as the rest of the tape-machine system. */
+#naturama-emulator .naturama-speaker-stage__circle > div:nth-child(2) {
+  background:
+    repeating-linear-gradient(12deg, rgba(255, 229, 184, .055) 0 2px, transparent 2px 7px),
+    linear-gradient(135deg, #805343 0%, #5a372c 48%, #3d251f 100%) !important;
+  border-color: #2f1b17 !important;
+  color: var(--tape-sand) !important;
+  box-shadow: inset 0 0 0 1px rgba(238, 203, 150, .2), inset 0 10px 18px rgba(255, 229, 184, .08), 0 2px 6px rgba(20, 10, 8, .45) !important;
+}
+#naturama-emulator .naturama-speaker-stage__circle > div:nth-child(2) span {
+  color: var(--tape-sand) !important;
+}
+
+/* Carry the Listener Position's wood grain out to the player enclosure. */
+#naturama-emulator {
+  border: 7px solid transparent !important;
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    repeating-linear-gradient(12deg, rgba(255, 229, 184, .055) 0 2px, transparent 2px 7px),
+    linear-gradient(135deg, #805343 0%, #5a372c 48%, #3d251f 100%) border-box !important;
+  background-clip: padding-box, border-box, border-box !important;
+  box-shadow: inset 0 0 0 1px rgba(238, 203, 150, .16), 0 2px 8px rgba(20, 10, 8, .32) !important;
+}
+
+/* Use the supplied oak grain for the actual material surfaces. */
+#naturama-emulator .naturama-speaker-stage__circle > div:nth-child(2) {
+  background: url('/assets/textures/wood.jpg') center / cover no-repeat !important;
+  border-color: rgba(57, 35, 25, .82) !important;
+  color: #191c17 !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 235, 200, .34), inset 0 0 20px rgba(67, 38, 23, .18), 0 2px 6px rgba(20, 10, 8, .45) !important;
+}
+#naturama-emulator .naturama-speaker-stage__circle > div:nth-child(2) span {
+  color: #191c17 !important;
+}
+#naturama-emulator {
+  border: 8px solid transparent !important;
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    url('/assets/textures/wood.jpg') center / cover border-box !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 235, 200, .3), 0 2px 8px rgba(20, 10, 8, .34) !important;
+}
+
+/* The visible enclosure is a real image border, so its full width always
+   carries the supplied grain instead of falling back to the old brown line. */
+#naturama-emulator {
+  border: 10px solid transparent !important;
+  border-image: url('/assets/textures/wood.jpg') 36 round !important;
+}
+
+/* Rotate the physical eight-speaker layout by 22.5° counter-clockwise.
+   This puts the 01 / 02 stereo pair across the top and 05 / 06 across the bottom. */
+#naturama-emulator .naturama-speaker[data-naturama-speaker] {
+  right: auto !important;
+  bottom: auto !important;
+  transform: translate(-50%, -50%) !important;
+}
+#naturama-emulator .naturama-speaker[data-naturama-speaker="0"] { left: 32.01% !important; top: 6.58% !important; }
+#naturama-emulator .naturama-speaker[data-naturama-speaker="1"] { left: 67.99% !important; top: 6.58% !important; }
+#naturama-emulator .naturama-speaker[data-naturama-speaker="2"] { left: 93.42% !important; top: 32.01% !important; }
+#naturama-emulator .naturama-speaker[data-naturama-speaker="3"] { left: 93.42% !important; top: 67.99% !important; }
+#naturama-emulator .naturama-speaker[data-naturama-speaker="4"] { left: 67.99% !important; top: 93.42% !important; }
+#naturama-emulator .naturama-speaker[data-naturama-speaker="5"] { left: 32.01% !important; top: 93.42% !important; }
+#naturama-emulator .naturama-speaker[data-naturama-speaker="6"] { left: 6.58% !important; top: 67.99% !important; }
+#naturama-emulator .naturama-speaker[data-naturama-speaker="7"] { left: 6.58% !important; top: 32.01% !important; }
+
+/* Speaker and stereo tiles stay visually quiet until they are switched on. */
+#naturama-emulator .naturama-pair:hover:not(:disabled):not(.is-selected) {
+  background: linear-gradient(135deg, rgba(255,255,255,.24), transparent 46%), linear-gradient(180deg, #d8d3c5 0%, #c5bdab 100%) !important;
+  border-color: #74736d !important;
+  filter: brightness(1.07) saturate(1.06) !important;
+  box-shadow:
+    0 0 0 2px #aaa89e,
+    0 0 0 4px #3a3934,
+    0 3px 0 4px rgba(24, 23, 21, .7),
+    inset 0 0 0 1px #eee9dc,
+    inset 0 0 0 3px rgba(111, 110, 103, .35) !important;
+}
+
+/* Make the two wooden instrument frames easier to read at a glance. */
+#naturama-emulator .naturama-level-controls,
+#naturama-emulator .naturama-speaker-stage__circle > div:nth-child(2) {
+  border-width: 4px !important;
+}
+
+/* Keep the wooden listener disc fully above the masked heatmap ring so the
+   ring cannot darken its top or bottom edge. */
+#naturama-emulator .naturama-speaker-stage__circle {
+  isolation: isolate !important;
+}
+#naturama-emulator .naturama-speaker-stage__circle > div:first-child {
+  z-index: 1 !important;
+}
+#naturama-emulator .naturama-speaker-stage__circle > div:nth-child(2) {
+  z-index: 5 !important;
+  overflow: hidden;
+}
+#naturama-emulator .naturama-speaker:hover:not(:disabled):not(.is-selected) {
+  background: linear-gradient(135deg, rgba(255,255,255,.24), transparent 46%), linear-gradient(180deg, #d8d3c5 0%, #c5bdab 100%) !important;
+  border-color: #74736d !important;
+  filter: brightness(1.07) saturate(1.06) !important;
+  box-shadow:
+    0 0 0 2px #aaa89e,
+    0 0 0 4px #3a3934,
+    0 3px 0 4px rgba(24, 23, 21, .7),
+    inset 0 0 0 1px #eee9dc,
+    inset 0 0 0 3px rgba(111, 110, 103, .35) !important;
+}
+
+/* Activated speaker lamps have a tighter pool of light in their centre. */
+#naturama-emulator .naturama-speaker.is-selected {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 239, 188, .74), rgba(255, 202, 107, .23) 26%, transparent 47%),
+    linear-gradient(135deg, rgba(255,255,255,.24), transparent 46%),
+    linear-gradient(180deg, #d8d3c5 0%, #c5bdab 100%) !important;
+  filter: brightness(1.07) saturate(1.04) drop-shadow(0 0 2px rgba(255, 213, 132, .45)) drop-shadow(0 0 7px rgba(239, 165, 77, .24)) !important;
+  box-shadow: inset 0 0 12px rgba(255, 234, 176, .38), 0 0 3px rgba(255, 203, 112, .32), 0 0 8px rgba(229, 145, 58, .18) !important;
+}
+
+/* The level module uses the same oak surface as Listener Position. */
+#naturama-emulator .naturama-level-controls {
+  background: url('/assets/textures/wood.jpg') center / cover no-repeat !important;
+  border-color: rgba(57, 35, 25, .82) !important;
+  /* Keep the oak face evenly lit.  The former inset shadow made the top and
+     bottom look like a separate dark layer over the wood. */
+  box-shadow: inset 0 0 0 1px rgba(255, 235, 200, .3), 0 2px 6px rgba(20, 10, 8, .28) !important;
+}
+
+/* The Listener Position uses the same clean, uninterrupted oak surface. */
+#naturama-emulator .naturama-speaker-stage__circle > div:nth-child(2) {
+  box-shadow: inset 0 0 0 1px rgba(255, 235, 200, .34), 0 2px 6px rgba(20, 10, 8, .32) !important;
+}
+
+/* The supplied wood image has noticeably darker bands along its own upper
+   and lower edges. Scale it just past the surface so those image edges are
+   cropped, while preserving the same oak grain in both modules. */
+#naturama-emulator .naturama-speaker-stage__circle > div:nth-child(2),
+#naturama-emulator .naturama-level-controls {
+  background-position: center center !important;
+  background-size: auto 132% !important;
+}
+
+/* The enclosure itself is a thin dark-metal edge, separate from the wooden
+   instrument surfaces within it. */
+#naturama-emulator {
+  border: 7px solid #3b3c38 !important;
+  border-image: none !important;
+  box-shadow: inset 0 0 0 1px rgba(151, 154, 145, .18), 0 2px 8px rgba(12, 13, 12, .38) !important;
+}
+
+/* Override the broader project-card rule that was repainting this one frame
+   in dark umber after the listening-model styles had run. */
+body:has(#project-breadcrumb) #game-case-study #naturama-emulator {
+  border: 3px solid #74736d !important;
+  border-image: none !important;
+  background: transparent !important;
+  outline: 2px solid #252421 !important;
+  outline-offset: 2px;
+  box-shadow:
+    0 0 0 2px #aaa89e,
+    0 0 0 4px #3a3934,
+    0 3px 0 4px rgba(24, 23, 21, .7),
+    inset 0 0 0 1px #eee9dc,
+    inset 0 0 0 3px rgba(111, 110, 103, .35) !important;
+}
+
+/* Stop Journey is a dark plastic transport key with the former sand surface
+   carried through to its label. */
+#naturama-emulator #naturama-reset {
+  background: linear-gradient(145deg, #171815 0%, #070807 100%) !important;
+  border: 3px solid #74736d !important;
+  outline: 2px solid #252421 !important;
+  outline-offset: 2px;
+  color: #d1cbbc !important;
+  box-shadow:
+    0 0 0 2px #aaa89e,
+    0 0 0 4px #3a3934,
+    0 3px 0 4px rgba(24, 23, 21, .7),
+    inset 0 0 0 1px #eee9dc,
+    inset 0 0 0 3px rgba(111, 110, 103, .35) !important;
+}
+
+/* Start Journey uses the same centred lamp within its face as an engaged
+   stereo tile, while retaining its red transport-control material. */
+#naturama-emulator #naturama-play.is-playing {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 239, 188, .74), rgba(255, 202, 107, .23) 47%, transparent 73%),
+    var(--tape-red) !important;
+}
+
+/* Keep Naturama's opening chapter compact: the image now supports the
+   introduction instead of matching its full width. */
+@media (min-width: 1024px) {
+  .naturama-hero-section {
+    grid-template-columns: minmax(0, .98fr) minmax(0, 1.02fr) !important;
+    gap: clamp(2rem, 3vw, 4rem) !important;
+  }
+  .naturama-hero-section .naturama-hero-media {
+    max-width: 54.6rem;
+  }
+}
+
+/* Naturama quotation: retain its dark editorial card after moving below the player. */
+body:has(#project-breadcrumb) #game-case-study .naturama-intro-quote {
+  margin-top: clamp(2.75rem, 5vw, 5rem) !important;
+  padding: clamp(1.75rem, 3vw, 2.5rem) !important;
+  border: 1px solid rgba(242, 233, 216, .2) !important;
+  border-radius: 1.5rem !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .045), rgba(255, 255, 255, .012)) !important;
+  box-shadow: 0 16px 46px rgba(0, 0, 0, .18) !important;
+}
+body:has(#project-breadcrumb) #game-case-study .naturama-intro-quote p {
+  color: rgba(242, 233, 216, .95) !important;
+}
+
+/* A calm once-per-second invitation pulse while the journey is idle. */
+@keyframes naturama-start-idle-pulse {
+  0%, 100% {
+    filter: brightness(1);
+    box-shadow:
+      0 0 0 3px #2a211f,
+      0 3px 0 3px rgba(30, 22, 20, .65),
+      inset 0 0 0 1px rgba(255, 235, 218, .22),
+      inset 0 0 0 3px rgba(86, 37, 32, .32) !important;
+  }
+  50% {
+    filter: brightness(1.16);
+    box-shadow:
+      0 0 0 3px #2a211f,
+      0 3px 0 3px rgba(30, 22, 20, .65),
+      inset 0 0 16px rgba(255, 222, 176, .42),
+      inset 0 0 0 3px rgba(86, 37, 32, .32),
+      0 0 18px rgba(243, 165, 83, .46) !important;
+  }
+}
+#naturama-emulator:not(.has-started-journey) #naturama-play:not(.is-playing):not(:disabled) {
+  animation: naturama-start-idle-pulse 1s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  #naturama-emulator:not(.has-started-journey) #naturama-play:not(.is-playing):not(:disabled) {
+    animation: none;
+  }
+}
+
+/* The idle pulse uses the exact same warm lamp face as active playback, but
+   lets the light breathe rather than leaving it permanently engaged. */
+#naturama-emulator:not(.has-started-journey) #naturama-play:not(.is-playing):not(:disabled) {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 239, 188, .74), rgba(255, 202, 107, .23) 47%, transparent 73%),
+    var(--tape-red) !important;
+}
+@keyframes naturama-start-idle-pulse {
+  0%, 100% {
+    border-color: #783730;
+    filter: brightness(.92) saturate(.96);
+    box-shadow:
+      0 0 0 3px #2a211f,
+      0 3px 0 3px rgba(30, 22, 20, .65),
+      inset 0 0 0 1px rgba(255, 235, 218, .22),
+      inset 0 0 0 3px rgba(86, 37, 32, .32) !important;
+  }
+  50% {
+    border-color: #f0c77e;
+    filter: brightness(1.09) saturate(1.06) drop-shadow(0 0 3px rgba(255, 213, 132, .68)) drop-shadow(0 0 10px rgba(239, 165, 77, .42));
+    box-shadow: inset 0 0 12px rgba(255, 234, 176, .38), 0 0 5px rgba(255, 203, 112, .54), 0 0 14px rgba(229, 145, 58, .30) !important;
+  }
+}
+
+/* Fade the lamp inside the idle Start Journey key in lockstep with its halo. */
+#naturama-emulator:not(.has-started-journey) #naturama-play:not(.is-playing):not(:disabled) {
+  position: relative;
+  isolation: isolate;
+  background: var(--tape-red) !important;
+}
+#naturama-emulator:not(.has-started-journey) #naturama-play:not(.is-playing):not(:disabled)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 42%, rgba(255, 239, 188, .74), rgba(255, 202, 107, .23) 47%, transparent 73%);
+  opacity: 0;
+  animation: naturama-start-idle-lamp 1s ease-in-out infinite;
+}
+@keyframes naturama-start-idle-lamp {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #naturama-emulator:not(.has-started-journey) #naturama-play:not(.is-playing):not(:disabled)::before {
+    animation: none;
+  }
+}
+
+/* Compact Naturama's opening so the listening model arrives sooner. */
+body:has(#naturama-emulator) main > section:has(#project-kicker) {
+  padding-top: 2rem !important;
+  padding-bottom: 1.5rem !important;
+}
+body:has(#naturama-emulator) main > section:has(#project-kicker) > div {
+  gap: 1.5rem !important;
+}
+body:has(#naturama-emulator) main > section:has(#project-kicker) h1 {
+  font-size: clamp(2.7rem, 3vw, 3.5rem) !important;
+  line-height: .98 !important;
+}
+body:has(#naturama-emulator) main > section:has(#project-kicker) h2 {
+  font-size: clamp(1.45rem, 1.8vw, 2rem) !important;
+  line-height: 1.05 !important;
+}
+body:has(#naturama-emulator) main > section:has(#project-kicker) p:not(#project-role-meta) {
+  margin-top: 0 !important;
+  padding-top: .25rem !important;
+  font-size: clamp(1rem, 1.2vw, 1.15rem) !important;
+  line-height: 1.45 !important;
+}
+body:has(#naturama-emulator) div:has(> #detail-spec-label-1):has(#detail-spec-label-3) {
+  transform: scale(.9);
+  transform-origin: right bottom;
+}
+@media (min-width: 1024px) {
+  body:has(#naturama-emulator) .naturama-hero-section {
+    gap: clamp(1.5rem, 2.25vw, 2.75rem) !important;
+    padding-bottom: 0 !important;
+  }
+  body:has(#naturama-emulator) .naturama-hero-section .naturama-hero-media {
+    max-width: 48rem !important;
+    width: min(100%, 48rem) !important;
+  }
+  body:has(#naturama-emulator) .naturama-hero-section .naturama-hero-media > div {
+    height: auto !important;
+    max-height: none !important;
+    aspect-ratio: 1200 / 628 !important;
+  }
+  body:has(#naturama-emulator) .naturama-hero-chapter {
+    padding-top: 0 !important;
+  }
+  body:has(#naturama-emulator) .naturama-hero-chapter h3 {
+    font-size: clamp(1.8rem, 2.2vw, 2.4rem) !important;
+    line-height: 1.02 !important;
+  }
+  body:has(#naturama-emulator) .naturama-hero-chapter p {
+    margin-top: .65rem !important;
+    font-size: clamp(.95rem, 1.1vw, 1.08rem) !important;
+    line-height: 1.45 !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Align Naturama's technical card with its small project label. */
+  body:has(#naturama-emulator) main > section:has(#project-kicker) > div {
+    align-items: start !important;
+  }
+  body:has(#naturama-emulator) div:has(> #detail-spec-label-1):has(#detail-spec-label-3) {
+    transform-origin: right top;
+  }
+}
+
+/* Naturama: expandable case-study chapters */
+body:has(#naturama-emulator) .naturama-intro-quote {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.1rem;
+}
+
+body:has(#naturama-emulator) .naturama-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .55rem .85rem;
+  border: 1px solid rgba(231, 221, 196, .42);
+  border-radius: 999px;
+  background: rgba(20, 23, 21, .72);
+  color: #e7ddc4;
+  font-family: var(--type-meta), ui-monospace, monospace;
+  font-size: .69rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+
+body:has(#naturama-emulator) .naturama-read-more:hover {
+  background: rgba(231, 221, 196, .13);
+  border-color: rgba(231, 221, 196, .75);
+}
+
+body:has(#naturama-emulator) .naturama-read-more [aria-hidden="true"] {
+  font-size: 1rem;
+  line-height: .7;
+  transition: transform .2s ease;
+}
+
+
+body:has(#naturama-emulator) .naturama-read-content[hidden] {
+  display: none !important;
+}
+
+/* The expanded Naturama chapters are closed by default, before any script runs. */
+body:has(#naturama-emulator) .naturama-read-content {
+  display: none !important;
+}
+
+body:has(#naturama-emulator) .naturama-read-content.is-open {
+  display: grid !important;
+}
+
+/* Centre and enlarge the Naturama read-more control. */
+body:has(#naturama-emulator) .naturama-read-more {
+  align-self: center;
+  gap: .7rem;
+  padding: .78rem 1.35rem;
+  font-size: .8rem;
+  letter-spacing: .14em;
+}
+
+body:has(#naturama-emulator) .naturama-read-more [aria-hidden="true"] {
+  font-size: 1.2rem;
+}
+
+body:has(#naturama-emulator) .naturama-read-more.is-expanded [aria-hidden="true"] {
+  transform: rotate(180deg);
+}
+
+/* Give the Naturama opening copy more presence beside the image. */
+@media (min-width: 1024px) {
+  body:has(#naturama-emulator) .naturama-hero-chapter h3 {
+    font-size: clamp(2.2rem, 2.85vw, 3.05rem) !important;
+    line-height: 1.03 !important;
+  }
+
+  body:has(#naturama-emulator) .naturama-hero-chapter p {
+    font-size: clamp(1.08rem, 1.3vw, 1.28rem) !important;
+    line-height: 1.48 !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Match the Naturama metadata card to the project title, rather than its kicker. */
+  body:has(#naturama-emulator) main > section:has(#project-kicker) > div > div:has(> div > #detail-spec-label-1) {
+    padding-top: 1.9rem;
+  }
+
+  body:has(#naturama-emulator) .naturama-hero-chapter h3 {
+    font-size: clamp(2.55rem, 3.35vw, 3.6rem) !important;
+  }
+
+  body:has(#naturama-emulator) .naturama-hero-chapter p {
+    font-size: clamp(1.18rem, 1.45vw, 1.42rem) !important;
+    line-height: 1.5 !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Align the visible top of the scaled metadata card with the project title. */
+  body:has(#naturama-emulator) div:has(> #detail-spec-label-1):has(#detail-spec-label-3) {
+    position: relative;
+    top: 3.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* The card contains row divs; target that card, rather than an individual row. */
+  body:has(#naturama-emulator) div:has(> div > #detail-spec-label-1):has(> div > #detail-spec-label-3) {
+    position: relative;
+    top: 3.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Optical alignment: use the title's letter top, not its line-box centre. */
+  body:has(#naturama-emulator) div:has(> div > #detail-spec-label-1):has(> div > #detail-spec-label-3) {
+    top: 1.1rem;
+  }
+}
+
+/* Restore Naturama's project header to the shared detail-page layout. */
+body:has(#naturama-emulator) main > section:has(#project-kicker) {
+  padding-top: 3rem !important;
+  padding-bottom: 2.5rem !important;
+}
+
+body:has(#naturama-emulator) main > section:has(#project-kicker) > div {
+  gap: 2rem !important;
+}
+
+body:has(#naturama-emulator) main > section:has(#project-kicker) h1 {
+  font-size: 3.75rem !important;
+  line-height: 1.08 !important;
+}
+
+body:has(#naturama-emulator) main > section:has(#project-kicker) h2 {
+  font-size: 1.875rem !important;
+  line-height: 1.2 !important;
+}
+
+body:has(#naturama-emulator) main > section:has(#project-kicker) p:not(#project-role-meta) {
+  padding-top: .5rem !important;
+  font-size: 1.125rem !important;
+  line-height: 1.625 !important;
+}
+
+body:has(#naturama-emulator) div:has(> div > #detail-spec-label-1):has(> div > #detail-spec-label-3) {
+  position: static !important;
+  top: auto !important;
+  transform: none !important;
+}
+
+@media (min-width: 1024px) {
+  body:has(#naturama-emulator) main > section:has(#project-kicker) > div {
+    align-items: end !important;
+  }
+}
+
+/* Keep the shared project-header type scale responsive. */
+body:has(#naturama-emulator) main > section:has(#project-kicker) h1 { font-size: 2.25rem !important; }
+body:has(#naturama-emulator) main > section:has(#project-kicker) h2 { font-size: 1.5rem !important; }
+body:has(#naturama-emulator) main > section:has(#project-kicker) p:not(#project-role-meta) { font-size: 1rem !important; }
+
+@media (min-width: 640px) {
+  body:has(#naturama-emulator) main > section:has(#project-kicker) h1 { font-size: 3rem !important; }
+  body:has(#naturama-emulator) main > section:has(#project-kicker) h2 { font-size: 1.875rem !important; }
+  body:has(#naturama-emulator) main > section:has(#project-kicker) p:not(#project-role-meta) { font-size: 1.125rem !important; }
+}
+
+@media (min-width: 768px) {
+  body:has(#naturama-emulator) main > section:has(#project-kicker) h1 { font-size: 3.75rem !important; }
+}
+
+/* A clear drawer handle for the extended Naturama case study. */
+body:has(#naturama-emulator) .naturama-read-more {
+  min-width: min(100%, 21rem);
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 1.4rem;
+  border-radius: .85rem;
+  border-color: rgba(231, 221, 196, .58);
+  background: linear-gradient(135deg, rgba(231, 221, 196, .15), rgba(20, 23, 21, .92));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 .5rem 1.25rem rgba(0, 0, 0, .2);
+}
+
+body:has(#naturama-emulator) .naturama-read-more-copy {
+  display: grid;
+  gap: .22rem;
+  text-align: left;
+}
+
+body:has(#naturama-emulator) .naturama-read-more-title {
+  font-size: .88rem;
+  letter-spacing: .12em;
+}
+
+body:has(#naturama-emulator) .naturama-read-more-hint {
+  color: rgba(231, 221, 196, .68);
+  font-size: .64rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+}
+
+body:has(#naturama-emulator) .naturama-read-more-arrow {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid rgba(231, 221, 196, .34);
+  border-radius: 999px;
+  font-size: 1.3rem !important;
+  line-height: 1;
+}
+
+body:has(#naturama-emulator) .naturama-read-more:hover {
+  background: linear-gradient(135deg, rgba(231, 221, 196, .25), rgba(41, 45, 40, .96));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18), 0 .65rem 1.5rem rgba(0, 0, 0, .28);
+}
+
+/* The detailed project notes unfold inside the quotation card itself. */
+body:has(#naturama-emulator) .naturama-intro-quote .naturama-read-content.is-open {
+  width: 100%;
+  margin-top: .35rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid rgba(231, 221, 196, .2);
+}
+
+body:has(#naturama-emulator) .naturama-intro-quote .naturama-read-content .naturama-intro-chapter,
+body:has(#naturama-emulator) .naturama-intro-quote .naturama-read-content .naturama-chapter-three {
+  min-width: 0;
+}
+
+/* Match Naturama's chapter markers to the main sand-coloured titles. */
+body:has(#naturama-emulator) .naturama-read-content .naturama-intro-chapter > div > span,
+body:has(#naturama-emulator) .naturama-read-content .naturama-chapter-three > div > span {
+  color: var(--site-sand) !important;
+}
+
+/* Keep small chapter numbers as markers; give chapter names the title colour. */
+body:has(#naturama-emulator) .naturama-read-content .naturama-intro-chapter > div > span,
+body:has(#naturama-emulator) .naturama-read-content .naturama-chapter-three > div > span {
+  color: var(--site-oxide) !important;
+}
+
+body:has(#naturama-emulator) .naturama-read-content .naturama-intro-chapter h3,
+body:has(#naturama-emulator) .naturama-read-content .naturama-chapter-three h3 {
+  color: var(--site-sand) !important;
+}
+
+/* Override the generic rounded-card heading colour inside Naturama's expanded drawer. */
+body:has(#project-breadcrumb) #game-case-study .naturama-intro-quote .naturama-read-content h3 {
+  color: var(--site-sand) !important;
+}
+
+/* Shared expandable case-study drawer for every non-Naturama project. */
+body:has(#project-breadcrumb) .project-detail-drawer { display: flex; flex-direction: column; align-items: flex-start; gap: 1.1rem; margin-top: 2.5rem; }
+body:has(#project-breadcrumb) .project-detail-drawer-button { align-self: center; display: inline-flex; min-width: min(100%, 21rem); justify-content: center; align-items: center; gap: 1rem; padding: 1rem 1.4rem; border: 1px solid rgba(231, 221, 196, .58); border-radius: .85rem; background: linear-gradient(135deg, rgba(231, 221, 196, .15), rgba(20, 23, 21, .92)); color: var(--site-sand); font-family: var(--type-meta), ui-monospace, monospace; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 .5rem 1.25rem rgba(0, 0, 0, .2); transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease; }
+body:has(#project-breadcrumb) .project-detail-drawer-button:hover { background: linear-gradient(135deg, rgba(231, 221, 196, .25), rgba(41, 45, 40, .96)); border-color: rgba(231, 221, 196, .82); }
+body:has(#project-breadcrumb) .project-detail-drawer-copy { display: grid; gap: .22rem; text-align: left; }
+body:has(#project-breadcrumb) .project-detail-drawer-title { font-size: .88rem; letter-spacing: .12em; }
+body:has(#project-breadcrumb) .project-detail-drawer-hint { color: rgba(231, 221, 196, .68); font-size: .64rem; font-weight: 500; letter-spacing: .16em; }
+body:has(#project-breadcrumb) .project-detail-drawer-arrow { display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid rgba(231, 221, 196, .34); border-radius: 999px; font-size: 1.3rem; line-height: 1; transition: transform .2s ease; }
+body:has(#project-breadcrumb) .project-detail-drawer-button.is-expanded .project-detail-drawer-arrow { transform: rotate(180deg); }
+body:has(#project-breadcrumb) .project-detail-drawer-content[hidden] { display: none !important; }
+body:has(#project-breadcrumb) .project-detail-drawer-content.is-open { display: block !important; width: 100%; margin-top: .35rem; padding-top: 1.8rem; border-top: 1px solid rgba(231, 221, 196, .2); }
+body:has(#project-breadcrumb) .project-detail-drawer-content > * + * { margin-top: 3rem; }
+body:has(#project-breadcrumb) .project-detail-drawer-content h3 { color: var(--site-sand) !important; }
+
+/* Preserve the existing project quote wording inside the shared drawer. */
+body:has(#project-breadcrumb) #game-case-study .project-detail-drawer .project-detail-drawer-content h3 {
+  color: var(--site-sand) !important;
+}
+
+/* Use Naturama's dark translucent drawer surface on every project page. */
+body:has(#project-breadcrumb) #game-case-study .project-detail-drawer {
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, .04), rgba(255, 255, 255, .01)) !important;
+  border: 1px solid rgba(255, 255, 255, .1) !important;
+  border-radius: 1rem !important;
+}
+
+body:has(#project-breadcrumb) #game-case-study .project-detail-drawer-content > :first-child {
+  margin-top: 0;
+}
+
+/* Match every shared drawer's typography colours to Naturama's palette. */
+body:has(#project-breadcrumb) #game-case-study .project-detail-drawer blockquote,
+body:has(#project-breadcrumb) #game-case-study .project-detail-drawer .font-serif.italic,
+body:has(#project-breadcrumb) #game-case-study .project-detail-drawer-content p {
+  color: rgba(242, 233, 216, .95) !important;
+}
+
+body:has(#project-breadcrumb) #game-case-study .project-detail-drawer-title {
+  color: #e7ddc4 !important;
+}
+
+body:has(#project-breadcrumb) #game-case-study .project-detail-drawer-hint {
+  color: rgba(231, 221, 196, .68) !important;
+}
+
+body:has(#project-breadcrumb) #game-case-study .project-detail-drawer-content h3 {
+  color: var(--site-sand) !important;
+}
+
+body:has(#project-breadcrumb) #game-case-study .project-detail-drawer-content .font-mono {
+  color: var(--site-oxide) !important;
+}
+
+/* Credits use the portfolio's dark ink surface with a clear name/role hierarchy. */
+body:has(#project-breadcrumb) .project-detail-credits-card {
+  background: #171917 !important;
+  border-color: rgba(231, 221, 196, .2) !important;
+}
+
+body:has(#project-breadcrumb) .project-detail-credits-card p,
+body:has(#project-breadcrumb) .project-detail-credits-card .font-manrope {
+  color: var(--site-sand) !important;
+}
+
+body:has(#project-breadcrumb) .project-detail-credits-card .text-white,
+body:has(#project-breadcrumb) .project-detail-credits-card strong {
+  color: #ffffff !important;
+}
+
+/* Override the older rounded-card surface specifically for credits. */
+body:has(#project-breadcrumb) #game-case-study .project-detail-credits-card.rounded-xl {
+  background-color: #171917 !important;
+  background-image: none !important;
+}
+
+/* Light sage project cards use ink body copy; oxide markers remain untouched. */
+body:has(#project-breadcrumb) #project-generic-case-study .rounded-xl:not(.project-detail-credits-card) p,
+body:has(#project-breadcrumb) #project-generic-case-study .rounded-2xl:not(.project-detail-drawer) p,
+body:has(#project-breadcrumb) #game-case-study .rounded-xl:not(.project-detail-credits-card) p,
+body:has(#project-breadcrumb) #game-case-study .rounded-2xl:not(.project-detail-drawer) p {
+  color: var(--site-ink) !important;
+}
+
+/* Restrict ink body copy to the actual pale panel components only. */
+body:has(#project-breadcrumb) #project-generic-case-study .project-detail-drawer-content .rounded-xl:not(.project-detail-credits-card) p,
+body:has(#project-breadcrumb) #project-generic-case-study .project-detail-drawer-content .rounded-2xl:not(.project-detail-drawer) p,
+body:has(#project-breadcrumb) #game-case-study .project-detail-drawer-content .rounded-xl:not(.project-detail-credits-card) p,
+body:has(#project-breadcrumb) #game-case-study .project-detail-drawer-content .rounded-2xl:not(.project-detail-drawer) p {
+  color: rgba(242, 233, 216, .95) !important;
+}
+
+body:has(#project-breadcrumb) #project-generic-case-study .project-detail-drawer-content [class*="bg-white"]:not(.project-detail-credits-card) p,
+body:has(#project-breadcrumb) #game-case-study .project-detail-drawer-content [class*="bg-white"]:not(.project-detail-credits-card) p {
+  color: var(--site-ink) !important;
+}
+
+/* Make Naturama's drawer use the same shared case-study drawer geometry. */
+body:has(#naturama-emulator) #game-case-study .naturama-intro-quote {
+  margin-top: 2.5rem !important;
+  padding: 2rem !important;
+  border: 1px solid rgba(255, 255, 255, .1) !important;
+  border-radius: 1rem !important;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, .04), rgba(255, 255, 255, .01)) !important;
+}
+
+body:has(#naturama-emulator) #game-case-study .naturama-intro-quote .naturama-read-content.is-open {
+  display: block !important;
+  width: 100%;
+  margin-top: .35rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid rgba(231, 221, 196, .2);
+}
+
+body:has(#naturama-emulator) #game-case-study .naturama-intro-quote .naturama-read-content > * + * {
+  margin-top: 3rem;
+}
+
+/* Naturama: ordinary drawer copy and the quote stay warm; only pale panels use ink. */
+body:has(#naturama-emulator) #game-case-study .naturama-intro-quote > p,
+body:has(#naturama-emulator) #game-case-study .naturama-intro-quote .naturama-read-content p {
+  color: rgba(242, 233, 216, .95) !important;
+}
+
+body:has(#naturama-emulator) #game-case-study .naturama-intro-quote .naturama-read-content [class*="bg-white"]:not(.project-detail-credits-card) p {
+  color: var(--site-ink) !important;
+}
+
+body:has(#naturama-emulator) #game-case-study .naturama-intro-quote .project-detail-credits-card p {
+  color: var(--site-sand) !important;
+}
+
+@media (min-width: 1024px) {
+  body:has(#naturama-emulator) #main-viewport-image {
+    object-fit: contain !important;
+  }
+}
+
+/* Project detail names use a clean white for stronger contrast. */
+body:has(#project-breadcrumb) main > section:has(#project-kicker) h1 {
+  color: #ffffff !important;
+}
+
+/* Arla's pale storytelling panel follows the shared light-panel ink treatment. */
+body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel h3,
+body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
+  color: var(--site-ink) !important;
+}
+
+/* Every carousel image is an obvious interactive target. */
+.carousel-card,
+.carousel-card img {
+  cursor: pointer !important;
 }
