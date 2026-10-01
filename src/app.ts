@@ -1036,7 +1036,6 @@ function makeNaturamaEmulator(): void {
       });
       listeningControls.className = 'w-full max-w-[1100px] mx-auto flex flex-col gap-5 items-center';
       listeningControls.append(leftColumn);
-      listeningVisual.append(levelControls);
       const pairControls = pairButtons[0]?.parentElement as HTMLElement | null;
       if (pairControls) {
         pairControls.className = 'naturama-pair-controls absolute left-0 top-1/2 -translate-y-1/2 w-[114px] h-[208px] flex flex-col gap-1.5 z-10';
@@ -1044,7 +1043,6 @@ function makeNaturamaEmulator(): void {
         pairButtons.forEach(button => {
           button.className = 'naturama-pair flex-1 w-full rounded-lg border border-white/10 bg-[#121318]/95 px-3 py-2 text-left hover:border-[#6f7f68]/70 transition';
         });
-        listeningVisual.append(pairControls);
       }
       listeningVisual.style.marginTop = '0';
       listeningVisual.style.maxWidth = '240px';
@@ -1079,8 +1077,6 @@ function makeNaturamaEmulator(): void {
         levelControls.style.setProperty('right', '0.5rem', 'important');
         levelControls.style.setProperty('transform', 'none', 'important');
       };
-      arrangeSpeakerStage();
-      new ResizeObserver(arrangeSpeakerStage).observe(container);
       listeningLayout.replaceChild(speakerStage, listeningVisual);
       const atmosphere = document.createElement('div');
       const nextAtmosphere = document.createElement('div');
@@ -1094,7 +1090,11 @@ function makeNaturamaEmulator(): void {
       const floorMapVignette = document.createElement('div');
       floorMapVignette.className = 'naturama-floor-map-vignette';
       floorMapVignette.setAttribute('aria-hidden', 'true');
-      speakerStage.append(floorMapVignette, listeningVisual, levelControls);
+      speakerStage.append(floorMapVignette, listeningVisual);
+      if (pairControls) speakerStage.append(pairControls);
+      speakerStage.append(levelControls);
+      arrangeSpeakerStage();
+      new ResizeObserver(arrangeSpeakerStage).observe(container);
       let visibleAtmosphere = atmosphere;
       crossfadeAtmosphere = (chapterIndex: number) => {
         const chapter = String(chapterIndex);
@@ -1109,6 +1109,9 @@ function makeNaturamaEmulator(): void {
         speakerStage.append(pairControls);
         const alignVolumePanelBottom = () => {
           if (getComputedStyle(pairControls).position !== 'absolute') {
+            // On a phone, the controls form a readable vertical sequence:
+            // floor map, stereo pairs, then the volume panel.
+            speakerStage.insertBefore(pairControls, levelControls);
             levelControls.style.removeProperty('top');
             levelControls.style.removeProperty('bottom');
             levelControls.style.removeProperty('height');
