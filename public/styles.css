@@ -3507,14 +3507,56 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
     width: 100%;
   }
 
-  /* The timeline and floor map are consecutive controls on a phone. */
+  /* Naturama keeps the shared dark metadata card when it moves below the model. */
+  body:has(#naturama-emulator) #game-case-study .project-mobile-metadata-slot > div > div.p-4 {
+    background: rgba(255, 255, 255, .03) !important;
+    border-color: rgba(255, 255, 255, .1) !important;
+    border-width: 1px !important;
+    border-radius: .75rem !important;
+    color: var(--site-sand) !important;
+  }
+
+  /* The transport is a tidy two-button row followed directly by the timeline. */
   #naturama-emulator .naturama-transport {
-    min-height: 0 !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: .7rem !important;
     margin-bottom: 0 !important;
+    min-height: 0 !important;
+  }
+
+  #naturama-emulator .naturama-transport-actions {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  #naturama-emulator .naturama-transport-actions button,
+  #naturama-emulator .naturama-stop-journey {
+    width: 100% !important;
+    min-height: 2.55rem;
+  }
+
+  #naturama-emulator .naturama-stop-journey {
+    position: static !important;
+    inset: auto !important;
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  #naturama-emulator .naturama-timeline {
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    grid-column: 1 / -1;
+    grid-row: 2;
   }
 
   #naturama-emulator .naturama-speaker-stage {
-    margin-top: -.65rem !important;
+    margin-top: -.35rem !important;
   }
 }
 
