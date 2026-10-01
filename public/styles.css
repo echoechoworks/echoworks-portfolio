@@ -3470,3 +3470,51 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
 /* Project index cards navigate to their detail pages. */
 #projects-grid .project-item { cursor: pointer; }
 
+/* Mobile project details: the work leads, with specifications immediately after it. */
+@media (max-width: 767px) {
+  [data-purpose="site-navigation-header"] [data-purpose="brand-logo"] {
+    display: none !important;
+  }
+
+  [data-purpose="site-navigation-header"] .echoworks-echo {
+    left: 1.125rem !important;
+    transform: none !important;
+    font-size: .62rem !important;
+    letter-spacing: .1em !important;
+  }
+
+  [data-purpose="site-navigation-header"] [data-purpose="nav-links"] {
+    gap: .72rem !important;
+    margin-left: auto !important;
+  }
+
+  [data-purpose="site-navigation-header"] [data-purpose="nav-links"] a {
+    font-size: .62rem !important;
+  }
+
+  .project-mobile-metadata-slot {
+    width: 100%;
+    max-width: 1720px;
+    margin: 0 auto;
+    padding: .75rem 1.5rem 1.75rem;
+  }
+
+  #game-case-study .project-mobile-metadata-slot {
+    padding: 1.25rem 0 0;
+  }
+
+  .project-mobile-metadata-slot > div {
+    width: 100%;
+  }
+
+  /* The timeline and floor map are consecutive controls on a phone. */
+  #naturama-emulator .naturama-transport {
+    min-height: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  #naturama-emulator .naturama-speaker-stage {
+    margin-top: -.65rem !important;
+  }
+}
+

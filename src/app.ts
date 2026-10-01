@@ -15,6 +15,7 @@ const rolesByProject = [
 type Project = { index: number; title: string; subtitle: string; description: string; meta: string; category: string; image: string };
 const selectAll = <T extends Element>(selector: string): T[] => [...document.querySelectorAll<T>(selector)];
 let naturamaListenNowCleanup: (() => void) | undefined;
+let projectDetailMetadataCleanup: (() => void) | undefined;
 
 function navigateToProject(index: number): void { window.location.href = `/projects/${slugs[index]}`; }
 
@@ -99,6 +100,46 @@ async function projectFromGallery(index: number): Promise<Project | undefined> {
 }
 
 function updateText(selector: string, value: string): void { const element = document.querySelector<HTMLElement>(selector); if (element && value) element.textContent = value; }
+
+function arrangeProjectDetailMetadata(projectIndex: number): void {
+  projectDetailMetadataCleanup?.();
+  projectDetailMetadataCleanup = undefined;
+
+  const metadataPanel = document.getElementById('detail-spec-label-1')?.closest<HTMLElement>('div.p-4');
+  const metadataColumn = metadataPanel?.parentElement as HTMLElement | null;
+  const originalParent = metadataColumn?.parentElement;
+  const mediaSection = document.getElementById('main-viewport-image')?.closest<HTMLElement>('section');
+  if (!metadataColumn || !originalParent || !mediaSection) return;
+
+  const anchor = document.createComment('project-detail-metadata-position');
+  originalParent.insertBefore(anchor, metadataColumn);
+  const mobileSlot = document.createElement('div');
+  mobileSlot.className = 'project-mobile-metadata-slot';
+  const mobileQuery = window.matchMedia('(max-width: 767px)');
+
+  const positionMetadata = () => {
+    if (mobileQuery.matches) {
+      const target = projectIndex === 0
+        ? document.getElementById('naturama-emulator')
+        : mediaSection;
+      if (!target) return;
+      target.after(mobileSlot);
+      mobileSlot.append(metadataColumn);
+      return;
+    }
+    anchor.after(metadataColumn);
+    mobileSlot.remove();
+  };
+
+  positionMetadata();
+  mobileQuery.addEventListener('change', positionMetadata);
+  projectDetailMetadataCleanup = () => {
+    mobileQuery.removeEventListener('change', positionMetadata);
+    anchor.after(metadataColumn);
+    mobileSlot.remove();
+    anchor.remove();
+  };
+}
 
 function renderGameCaseStudy(): void {
   const genericCaseStudy = document.getElementById('project-generic-case-study');
@@ -758,6 +799,7 @@ async function renderProjectDetail(): Promise<void> {
     image.classList.toggle('full-artwork', index >= 7);
     image.parentElement?.parentElement?.classList.toggle('full-artwork-frame', index >= 7);
   }
+  arrangeProjectDetailMetadata(index);
   if (index !== 0) makeProjectDetailDrawer(document.getElementById('game-case-study'), projectDrawerQuotes[slug] || 'Open the project notes and workflow.');
   selectAll<HTMLAnchorElement>('[data-path]').forEach(link => { link.href = link.dataset.path === 'projects' ? '/projects' : `/#${link.dataset.path}`; });
   const backLink = document.querySelector<HTMLAnchorElement>('a.group.inline-flex');
