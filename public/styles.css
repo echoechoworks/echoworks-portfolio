@@ -3588,5 +3588,34 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
     margin-top: 5mm !important;
     transform: none !important;
   }
+
+  /* One vertical rhythm for every project detail page. */
+  body:has(#project-breadcrumb) main > section:has(#project-kicker) {
+    padding-top: 2.25rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  body:has(#project-breadcrumb) main > section:has(#main-viewport-image) {
+    padding-bottom: 1.5rem !important;
+  }
+
+  body:has(#project-breadcrumb) .project-mobile-metadata-slot {
+    padding-top: 0;
+    padding-bottom: 2.5rem;
+  }
+
+  body:has(#project-breadcrumb) #project-generic-case-study,
+  body:has(#project-breadcrumb) #game-case-study {
+    padding-top: 0 !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  body:has(#naturama-emulator) #game-case-study {
+    padding-top: 2.25rem !important;
+  }
+
+  body:has(#project-breadcrumb) #project-commission-section {
+    padding-bottom: 3.5rem !important;
+  }
 }
 
