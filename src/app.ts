@@ -922,7 +922,7 @@ async function makeLandingCarousel(): Promise<void> {
       const scale = Math.max(.66, 1.06 - magnitude * .2);
       card.style.transform = `translateX(${distance * 65}%) scale(${scale}) rotateY(${-distance * 16}deg)`;
       card.style.opacity = String(visibility);
-      card.style.filter = magnitude < .1 ? 'drop-shadow(0 25px 35px rgba(0, 0, 0, 0.85))' : `brightness(${Math.max(.45, 1 - magnitude * .2)})`;
+      card.style.filter = `brightness(${Math.max(.45, 1 - magnitude * .2)}) drop-shadow(0 25px 35px rgba(0, 0, 0, .72))`;
       card.style.zIndex = String(Math.max(0, 30 - Math.round(magnitude * 10)));
       card.style.pointerEvents = magnitude < 1.3 ? 'auto' : 'none';
     });
