@@ -1024,10 +1024,10 @@ async function makeLandingCarousel(): Promise<void> {
   stage?.addEventListener('pointermove', event => {
     if (event.pointerType === 'mouse' || dragStartX === undefined) return;
     const elapsed = Math.max(1, event.timeStamp - dragLastTime);
-    const slideWidth = Math.max(96, stage.getBoundingClientRect().width * .23);
+    // A wheel step equals the exact visible travel of one card. This keeps
+    // the visual card edge locked to the finger throughout a drag.
+    const slideWidth = Math.max(96, (cards[0]?.getBoundingClientRect().width || stage.getBoundingClientRect().width) * .65);
     const instantaneousVelocity = -((event.clientX - dragLastX) / elapsed) / slideWidth;
-    // Preserve the release gesture's real speed, while filtering only small
-    // frame-to-frame noise and keeping pathological swipes within range.
     dragVelocity = Math.max(-.005, Math.min(.005, dragVelocity * .35 + instantaneousVelocity * .65));
     dragLastX = event.clientX;
     dragLastTime = event.timeStamp;
