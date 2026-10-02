@@ -1072,6 +1072,10 @@ async function makeLandingCarousel(): Promise<void> {
     }), 16);
   };
   stage?.addEventListener('mousemove', event => {
+    if (isMobileCarousel()) {
+      stopHoverRotation();
+      return;
+    }
     const bounds = stage.getBoundingClientRect();
     const edgeWidth = bounds.width * 0.2;
     const direction = event.clientX < bounds.left + edgeWidth ? -1 : event.clientX > bounds.right - edgeWidth ? 1 : 0;
