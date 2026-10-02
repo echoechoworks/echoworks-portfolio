@@ -3470,6 +3470,22 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
 /* Project index cards navigate to their detail pages. */
 #projects-grid .project-item { cursor: pointer; }
 
+/* Selected detail pages place their project specifications directly after the work. */
+.project-detail-metadata-slot {
+  width: 100%;
+  max-width: 1720px;
+  margin: 0 auto;
+  padding: 0 1.5rem 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .project-detail-metadata-slot { padding-left: 2.5rem; padding-right: 2.5rem; }
+}
+
+@media (min-width: 1024px) {
+  .project-detail-metadata-slot { padding-left: 4rem; padding-right: 4rem; }
+}
+
 /* On phones the carousel tracks the finger before it settles into its next card. */
 @media (max-width: 767px) {
   .carousel-perspective-container {
