@@ -888,8 +888,6 @@ async function makeLandingCarousel(): Promise<void> {
   let dragStartX: number | undefined;
   let dragStartPosition = 0;
   let dragLastX = 0;
-  let dragLastTime = 0;
-  let dragVelocity = 0;
   let wheelPosition = 0;
   let inertiaFrame: number | undefined;
   let ignoreClickUntil = 0;
@@ -969,15 +967,14 @@ async function makeLandingCarousel(): Promise<void> {
     inertiaFrame = undefined;
     stage?.classList.remove('is-spinning');
   };
-  const settleWheel = () => {
-    const target = Math.round(wheelPosition);
+  const settleWheel = (target = Math.round(wheelPosition)) => {
     let previousTime = performance.now();
     stage?.classList.add('is-spinning');
     const settle = (now: number) => {
       const elapsed = Math.min(32, now - previousTime);
       previousTime = now;
       const remaining = target - wheelPosition;
-      wheelPosition += remaining * Math.min(.34, elapsed / 70);
+      wheelPosition += remaining * Math.min(.48, elapsed / 42);
       renderMobileWheel();
       if (Math.abs(target - wheelPosition) > .002) {
         inertiaFrame = window.requestAnimationFrame(settle);
@@ -991,46 +988,21 @@ async function makeLandingCarousel(): Promise<void> {
     };
     inertiaFrame = window.requestAnimationFrame(settle);
   };
-  const spinWheel = () => {
-    stage?.classList.add('is-spinning');
-    let velocity = dragVelocity;
-    let previousTime = performance.now();
-    const spin = (now: number) => {
-      const elapsed = Math.min(32, now - previousTime);
-      previousTime = now;
-      wheelPosition += velocity * elapsed;
-      velocity *= Math.pow(.976, elapsed / 16.67);
-      renderMobileWheel();
-      if (Math.abs(velocity) > .0005) {
-        inertiaFrame = window.requestAnimationFrame(spin);
-      } else {
-        inertiaFrame = undefined;
-        settleWheel();
-      }
-    };
-    inertiaFrame = window.requestAnimationFrame(spin);
-  };
   stage?.addEventListener('pointerdown', event => {
     if (event.pointerType === 'mouse' || !isMobileCarousel()) return;
     stopInertia();
     dragStartX = event.clientX;
     dragStartPosition = wheelPosition;
     dragLastX = event.clientX;
-    dragLastTime = event.timeStamp;
-    dragVelocity = 0;
     stage.classList.add('is-dragging');
     stage.setPointerCapture(event.pointerId);
   });
   stage?.addEventListener('pointermove', event => {
     if (event.pointerType === 'mouse' || dragStartX === undefined) return;
-    const elapsed = Math.max(1, event.timeStamp - dragLastTime);
     // A wheel step equals the exact visible travel of one card. This keeps
     // the visual card edge locked to the finger throughout a drag.
     const slideWidth = Math.max(96, (cards[0]?.getBoundingClientRect().width || stage.getBoundingClientRect().width) * .65);
-    const instantaneousVelocity = -((event.clientX - dragLastX) / elapsed) / slideWidth;
-    dragVelocity = Math.max(-.005, Math.min(.005, dragVelocity * .35 + instantaneousVelocity * .65));
     dragLastX = event.clientX;
-    dragLastTime = event.timeStamp;
     const distance = event.clientX - dragStartX;
     if (Math.abs(distance) > 6) {
       event.preventDefault();
@@ -1039,20 +1011,22 @@ async function makeLandingCarousel(): Promise<void> {
     wheelPosition = dragStartPosition - distance / slideWidth;
     renderMobileWheel();
   });
-  const endDrag = () => {
+  const endDrag = (cancelled = false) => {
     if (dragStartX === undefined) return;
     const moved = Math.abs(dragLastX - dragStartX) > 6;
+    const swipeDirection = dragLastX < dragStartX ? 1 : -1;
     dragStartX = undefined;
     stage?.classList.remove('is-dragging');
-    if (!moved) {
+    if (!moved || cancelled) {
       settleWheel();
       return;
     }
-    if (Math.abs(dragVelocity) > .00045) spinWheel();
-    else settleWheel();
+    // A release advances a single card in the swipe direction. There is no
+    // momentum, so each gesture ends in a predictable, tidy snap.
+    settleWheel(Math.round(dragStartPosition) + swipeDirection);
   };
   stage?.addEventListener('pointerup', endDrag);
-  stage?.addEventListener('pointercancel', endDrag);
+  stage?.addEventListener('pointercancel', () => endDrag(true));
   const stopHoverRotation = () => {
     hoverDirection = 0;
     if (hoverDelay) window.clearTimeout(hoverDelay);
