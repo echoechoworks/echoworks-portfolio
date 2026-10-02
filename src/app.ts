@@ -1004,28 +1004,30 @@ async function makeLandingCarousel(): Promise<void> {
     const slideWidth = Math.max(96, (cards[0]?.getBoundingClientRect().width || stage.getBoundingClientRect().width) * .65);
     dragLastX = event.clientX;
     const distance = event.clientX - dragStartX;
-    if (Math.abs(distance) > 6) {
+    if (Math.abs(distance) > 3) {
       event.preventDefault();
       ignoreClickUntil = performance.now() + 350;
     }
     wheelPosition = dragStartPosition - distance / slideWidth;
     renderMobileWheel();
   });
-  const endDrag = (cancelled = false) => {
+  const endDrag = (cancelled = false, endX?: number) => {
     if (dragStartX === undefined) return;
-    const moved = Math.abs(dragLastX - dragStartX) > 6;
-    const swipeDirection = dragLastX < dragStartX ? 1 : -1;
+    const finalX = endX ?? dragLastX;
+    const moved = Math.abs(finalX - dragStartX) > 3;
+    const swipeDirection = finalX < dragStartX ? 1 : -1;
     dragStartX = undefined;
     stage?.classList.remove('is-dragging');
     if (!moved || cancelled) {
       settleWheel();
       return;
     }
+    ignoreClickUntil = performance.now() + 350;
     // A release advances a single card in the swipe direction. There is no
     // momentum, so each gesture ends in a predictable, tidy snap.
     settleWheel(Math.round(dragStartPosition) + swipeDirection);
   };
-  stage?.addEventListener('pointerup', endDrag);
+  stage?.addEventListener('pointerup', event => endDrag(false, event.clientX));
   stage?.addEventListener('pointercancel', () => endDrag(true));
   const stopHoverRotation = () => {
     hoverDirection = 0;
