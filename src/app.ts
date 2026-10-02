@@ -108,7 +108,13 @@ function arrangeProjectDetailMetadata(projectIndex: number): void {
   const metadataPanel = document.getElementById('detail-spec-label-1')?.closest<HTMLElement>('div.p-4');
   const metadataColumn = metadataPanel?.parentElement as HTMLElement | null;
   const originalParent = metadataColumn?.parentElement;
-  const mediaSection = document.getElementById('main-viewport-image')?.closest<HTMLElement>('section');
+  const headerSection = metadataColumn?.closest<HTMLElement>('section');
+  // Video and game projects replace the image element before this runs. Their
+  // media section is the section immediately after the project header.
+  const mediaSection = document.getElementById('main-viewport-image')?.closest<HTMLElement>('section')
+    || (headerSection?.nextElementSibling instanceof HTMLElement && headerSection.nextElementSibling.matches('section')
+      ? headerSection.nextElementSibling
+      : null);
   if (!metadataColumn || !originalParent || !mediaSection) return;
 
   const anchor = document.createComment('project-detail-metadata-position');
