@@ -999,7 +999,7 @@ async function makeLandingCarousel(): Promise<void> {
       const elapsed = Math.min(32, now - previousTime);
       previousTime = now;
       wheelPosition += velocity * elapsed;
-      velocity *= Math.pow(.945, elapsed / 16.67);
+      velocity *= Math.pow(.982, elapsed / 16.67);
       renderMobileWheel();
       if (Math.abs(velocity) > .0005) {
         inertiaFrame = window.requestAnimationFrame(spin);
@@ -1026,7 +1026,7 @@ async function makeLandingCarousel(): Promise<void> {
     const elapsed = Math.max(1, event.timeStamp - dragLastTime);
     const slideWidth = Math.max(96, stage.getBoundingClientRect().width * .23);
     const instantaneousVelocity = -((event.clientX - dragLastX) / elapsed) / slideWidth;
-    dragVelocity = Math.max(-.0028, Math.min(.0028, dragVelocity * .7 + instantaneousVelocity * .3));
+    dragVelocity = Math.max(-.0018, Math.min(.0018, dragVelocity * .7 + instantaneousVelocity * .3));
     dragLastX = event.clientX;
     dragLastTime = event.timeStamp;
     const distance = event.clientX - dragStartX;
@@ -1046,7 +1046,7 @@ async function makeLandingCarousel(): Promise<void> {
       settleWheel();
       return;
     }
-    if (Math.abs(dragVelocity) > .0014) spinWheel();
+    if (Math.abs(dragVelocity) > .0009) spinWheel();
     else settleWheel();
   };
   stage?.addEventListener('pointerup', endDrag);
