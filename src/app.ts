@@ -120,16 +120,10 @@ function arrangeProjectDetailMetadata(projectIndex: number): void {
   const anchor = document.createComment('project-detail-metadata-position');
   originalParent.insertBefore(anchor, metadataColumn);
   const mobileSlot = document.createElement('div');
-  mobileSlot.className = 'project-detail-metadata-slot project-mobile-metadata-slot';
+  mobileSlot.className = 'project-mobile-metadata-slot';
   const mobileQuery = window.matchMedia('(max-width: 767px)');
-  const placeAfterMedia = [2, 4, 5, 6].includes(projectIndex);
 
   const positionMetadata = () => {
-    if (placeAfterMedia) {
-      mediaSection.after(mobileSlot);
-      mobileSlot.append(metadataColumn);
-      return;
-    }
     if (mobileQuery.matches) {
       const target = projectIndex === 0
         ? document.getElementById('naturama-emulator')
