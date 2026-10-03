@@ -1789,13 +1789,6 @@ body:has([data-purpose="hero-container"]) .carousel-card > div:last-child > span
 }
 body:has([data-purpose="hero-container"]) .carousel-dot { background: var(--site-sand) !important; }
 body:has([data-purpose="hero-container"]) .carousel-dot.scale-125 { background: var(--site-oxide) !important; }
-body:has([data-purpose="hero-container"]) #carousel-prev,
-body:has([data-purpose="hero-container"]) #carousel-next {
-  background: var(--site-enamel) !important;
-  border-color: var(--site-umber) !important;
-  color: var(--site-sand) !important;
-}
-
 /* About: editorial text lives directly on the dark umber ground. */
 .about-page .about-kicker,
 .about-page .about-statement-label,

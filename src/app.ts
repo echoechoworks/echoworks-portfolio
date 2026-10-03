@@ -887,8 +887,6 @@ async function makeLandingCarousel(): Promise<void> {
     dots[0].parentElement?.append(onlyYouDot);
     dots = selectAll<HTMLElement>('.carousel-dot');
   }
-  const previous = document.getElementById('carousel-prev');
-  const next = document.getElementById('carousel-next');
   const stage = document.querySelector<HTMLElement>('.carousel-perspective-container');
   let current = 0;
   let dragStartX: number | undefined;
@@ -965,8 +963,6 @@ async function makeLandingCarousel(): Promise<void> {
       cards[current].classList.add('front-card');
     }, 900);
   };
-  previous?.addEventListener('click', () => goTo(current - 1));
-  next?.addEventListener('click', () => goTo(current + 1));
   dots.forEach((dot, index) => dot.addEventListener('click', () => goTo(index)));
   const stopInertia = () => {
     if (inertiaFrame) window.cancelAnimationFrame(inertiaFrame);
