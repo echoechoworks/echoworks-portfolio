@@ -2430,10 +2430,10 @@ body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"
   .arla-image-time { font-size: .6rem; }
   .arla-image-play { width: 2rem; height: 2rem; }
 }
-/* EchoWorks repeats beneath itself like a softly decaying tape echo. */
+/* The brand echoes rise above the primary mark, like a softly decaying tape echo. */
 .echoworks-echo {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
   gap: .06rem;
   line-height: .9;
