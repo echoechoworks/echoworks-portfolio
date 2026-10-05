@@ -3476,6 +3476,17 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
   transform: translateY(-1px);
 }
 
+/* Preserve the larger About portrait, anchored at its original lower-left corner. */
+@media (min-width: 701px) {
+  body.about-page .about-hero-portrait {
+    left: calc(50% - min(13.9vw, 11.8rem));
+    top: auto;
+    bottom: .8rem;
+    width: min(34vw, 29rem);
+    transform: none;
+  }
+}
+
 /* Naturama Chapter 02: keep the spatial-mixing workflow beside its copy. */
 @media (min-width: 1024px) {
   body:has(#naturama-emulator) #game-case-study .naturama-intro-quote .naturama-chapter-three {
