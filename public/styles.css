@@ -3478,7 +3478,7 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
 
 /* About: a light, editorial reading surface with quiet warm-brown typography. */
 body.about-page {
-  --about-paper: #fdfcfb;
+  --about-paper: #edf0e8;
   --about-heading: #80584c;
   --about-copy: #aaa096;
   --about-ink: #514c46;
@@ -3519,9 +3519,24 @@ body.about-page .about-intro-copy {
   padding-top: clamp(15rem, 23vw, 21rem);
 }
 
-body.about-page .about-kicker,
-body.about-page .about-hero-portrait {
+body.about-page .about-kicker {
   display: none;
+}
+
+body.about-page .about-hero-portrait {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  left: 50%;
+  top: var(--about-intro-offset);
+  bottom: auto;
+  width: min(27.8vw, 23.6rem);
+  margin: 0;
+  padding: 0 !important;
+  border: 0 !important;
+  transform: translateX(-50%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 100px), transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 100px), transparent 100%);
 }
 
 body.about-page .about-intro h1 {
@@ -3617,6 +3632,13 @@ body.about-page .global-footer small {
   body.about-page .about-intro-copy { padding-top: 11rem; }
   body.about-page .about-intro h1 { font-size: clamp(3.4rem, 16vw, 5.5rem); }
   body.about-page .about-lead { margin-top: 2.5rem; line-height: 1.55; }
+  body.about-page .about-hero-portrait {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    transform: none;
+  }
 }
 
 /* Naturama Chapter 02: keep the spatial-mixing workflow beside its copy. */
