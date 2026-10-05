@@ -1765,7 +1765,7 @@ main,
 [data-purpose="site-navigation-header"]::before {
   height: 4.15rem;
   background: url('/assets/brand/pine-treeline.svg') center bottom / 100% 100% no-repeat;
-  opacity: .28;
+  opacity: .34;
 }
 
 [data-purpose="site-navigation-header"]::after {
