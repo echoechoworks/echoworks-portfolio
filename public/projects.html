@@ -197,7 +197,7 @@
         }
       },
     },
-  }</script><link rel="stylesheet" href="/styles.css?v=20261002-mobile9"><script type="module" src="/app.js?v=20261005-mobile19"></script></head><body class="bg-surface text-on-surface font-body-md text-body-md"><!-- GLOBAL_HEADER --><main class="w-full pt-24 bg-primary min-h-screen"><div class="flex flex-col w-full bg-primary text-surface selection:bg-secondary selection:text-on-secondary">
+  }</script><link rel="stylesheet" href="/styles.css?v=20261005-toggle1"><script type="module" src="/app.js?v=20261005-mobile19"></script></head><body class="bg-surface text-on-surface font-body-md text-body-md"><!-- GLOBAL_HEADER --><main class="w-full pt-24 bg-primary min-h-screen"><div class="flex flex-col w-full bg-primary text-surface selection:bg-secondary selection:text-on-secondary">
 <!-- GALLERY CURATORIAL HEADER -->
 <section class="w-full px-margin-mobile md:px-margin-desktop pt-unit-xl pb-unit-lg flex flex-col justify-start">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-unit-md pb-unit-lg">
@@ -217,11 +217,11 @@
 </div>
 <!-- Controls: View Toggle -->
 <div class="flex items-center gap-unit-xs self-start md:self-end bg-surface-container-highest/10 p-unit-2xs rounded">
-<button class="flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase" id="view-grid-btn" onclick="setViewMode('grid')">
+<button class="project-view-toggle is-active flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase" id="view-grid-btn" onclick="setViewMode('grid')">
 <span class="material-symbols-outlined text-[16px]">grid_view</span>
 <span class="">Grid</span>
 </button>
-<button class="flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase" id="view-list-btn" onclick="setViewMode('list')">
+<button class="project-view-toggle flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase" id="view-list-btn" onclick="setViewMode('list')">
 <span class="material-symbols-outlined text-[16px]">view_agenda</span>
 <span class="">List</span>
 </button>
@@ -531,13 +531,13 @@
       if (mode === 'grid') {
         gridContainer.classList.remove('hidden');
         listContainer.classList.add('hidden');
-        gridBtn.className = 'flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase';
-        listBtn.className = 'flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase';
+        gridBtn.className = 'project-view-toggle is-active flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase';
+        listBtn.className = 'project-view-toggle flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase';
       } else {
         gridContainer.classList.add('hidden');
         listContainer.classList.remove('hidden');
-        listBtn.className = 'flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase';
-        gridBtn.className = 'flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase';
+        listBtn.className = 'project-view-toggle is-active flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase';
+        gridBtn.className = 'project-view-toggle flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase';
       }
     }
 

@@ -3463,6 +3463,19 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
 /* Project index cards navigate to their detail pages. */
 #projects-grid .project-item { cursor: pointer; }
 
+/* The active project-view control carries the same soft live-state glow as
+   the listening model, while the inactive option stays quiet. */
+.project-view-toggle {
+  border: 1px solid transparent;
+  transition: box-shadow 180ms ease, border-color 180ms ease, transform 180ms ease !important;
+}
+
+.project-view-toggle.is-active {
+  border-color: rgba(180, 87, 75, .9) !important;
+  box-shadow: 0 0 22px rgba(180, 87, 75, .56), 0 0 42px rgba(180, 87, 75, .22), inset 0 0 0 1px rgba(255, 210, 196, .6);
+  transform: translateY(-1px);
+}
+
 /* Naturama Chapter 02: keep the spatial-mixing workflow beside its copy. */
 @media (min-width: 1024px) {
   body:has(#naturama-emulator) #game-case-study .naturama-intro-quote .naturama-chapter-three {
