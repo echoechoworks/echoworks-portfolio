@@ -3463,6 +3463,25 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
 /* Project index cards navigate to their detail pages. */
 #projects-grid .project-item { cursor: pointer; }
 
+/* Naturama Chapter 02: keep the spatial-mixing workflow beside its copy. */
+@media (min-width: 1024px) {
+  body:has(#naturama-emulator) #game-case-study .naturama-intro-quote .naturama-chapter-three {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 3rem;
+  }
+
+  body:has(#naturama-emulator) #game-case-study .naturama-chapter-three > .space-y-5 {
+    margin-top: 0;
+  }
+
+  body:has(#naturama-emulator) #game-case-study .naturama-chapter-three > figure {
+    width: 100%;
+    margin: 0;
+  }
+}
+
 /* On phones the carousel tracks the finger before it settles into its next card. */
 @media (max-width: 767px) {
   .carousel-perspective-container {
