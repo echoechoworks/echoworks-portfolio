@@ -3487,6 +3487,33 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
   }
 }
 
+/* Long-form About copy keeps a clear editorial hierarchy. */
+.about-statement-copy h2,
+.about-statement-copy h3 {
+  margin: 0;
+  color: var(--site-pale-sage);
+  font-family: var(--type-editorial);
+  font-weight: 400;
+  letter-spacing: -.035em;
+}
+
+.about-statement-copy h2 {
+  margin-bottom: 1.6rem;
+  font-size: clamp(2.7rem, 4vw, 4.5rem);
+  line-height: .98;
+}
+
+.about-statement-copy h3 {
+  margin: clamp(3.5rem, 6vw, 5.5rem) 0 1.25rem;
+  color: var(--site-sand);
+  font-size: clamp(1.9rem, 2.8vw, 3rem);
+  line-height: 1;
+}
+
+.about-statement-copy h2 + p {
+  font-size: clamp(1.5rem, 2vw, 2.05rem);
+}
+
 /* Naturama Chapter 02: keep the spatial-mixing workflow beside its copy. */
 @media (min-width: 1024px) {
   body:has(#naturama-emulator) #game-case-study .naturama-intro-quote .naturama-chapter-three {
