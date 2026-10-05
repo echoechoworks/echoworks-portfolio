@@ -3476,6 +3476,44 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
   transform: translateY(-1px);
 }
 
+/* About: share the carousel cards' sage stock while preserving its signal-red
+   and signal-yellow editorial markers. */
+body.about-page,
+body.about-page .about-main {
+  background: var(--site-sage) !important;
+  color: var(--site-ink) !important;
+}
+
+body.about-page .about-intro h1,
+body.about-page .about-lead,
+body.about-page .about-statement-copy p,
+body.about-page .about-statement-copy p + p,
+body.about-page .about-disciplines span {
+  color: var(--site-ink) !important;
+}
+
+body.about-page .about-intro h1 em { color: var(--site-oxide) !important; }
+body.about-page .about-kicker,
+body.about-page .about-statement-label,
+body.about-page .about-contact p { color: var(--site-signal) !important; }
+
+body.about-page .about-statement,
+body.about-page .about-disciplines,
+body.about-page .about-contact,
+body.about-page .about-disciplines span + span { border-color: rgba(54, 37, 35, .28) !important; }
+
+/* Preserve the portrait's original lower-left corner while it grows upward
+   and to the right, like scaling from the opposite corner. */
+@media (min-width: 701px) {
+  body.about-page .about-hero-portrait {
+    left: calc(50% - min(13.9vw, 11.8rem));
+    top: auto;
+    bottom: .8rem;
+    width: min(34vw, 29rem);
+    transform: none;
+  }
+}
+
 /* Naturama Chapter 02: keep the spatial-mixing workflow beside its copy. */
 @media (min-width: 1024px) {
   body:has(#naturama-emulator) #game-case-study .naturama-intro-quote .naturama-chapter-three {
