@@ -3486,6 +3486,16 @@ body.about-page {
   color: var(--about-ink) !important;
 }
 
+body.about-page [data-purpose="site-navigation-header"] {
+  background: var(--about-paper) !important;
+  border-color: rgba(128, 88, 76, .16) !important;
+}
+
+body.about-page [data-purpose="site-navigation-header"] a,
+body.about-page [data-purpose="site-navigation-header"] .font-mono {
+  color: var(--about-ink) !important;
+}
+
 body.about-page .about-main {
   max-width: none;
   padding: 4.5rem clamp(2rem, 8vw, 7.1rem) clamp(6rem, 11vw, 10rem);
