@@ -3477,6 +3477,7 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
   }
 
   body:has(#naturama-emulator) #game-case-study .naturama-chapter-three > figure {
+    position: static !important;
     width: 100%;
     margin: 0;
   }
