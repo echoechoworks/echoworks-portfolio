@@ -174,6 +174,10 @@ function renderGameCaseStudy(): void {
           </div>
           <p class="font-manrope text-white/70 leading-relaxed font-light text-base">The opening creates room to listen and move. When the first intense hit arrives, frogs rush in from the horizon; later, dynamic visuals and fireworks lift the choruses into a high-speed release. The changing audiovisual language makes the music’s structure felt through the player’s body.</p>
         </div>
+        <figure class="lg:col-span-12 overflow-hidden border border-white/10 bg-black/30 shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+          <img src="/assets/chopper/unity-development-workflow.png" alt="Unity development workspace showing the Chopper Runs To Hell game world and player setup" class="block aspect-[16/7] w-full object-cover object-center" loading="lazy" decoding="async">
+          <figcaption class="border-t border-white/10 px-4 py-3 font-mono text-[10px] uppercase tracking-[0.14em] text-white/50">Building the game world in Unity</figcaption>
+        </figure>
         <div class="lg:col-span-6 space-y-6">
           <div>
             <span class="font-mono text-[11px] text-[#6f7f68] uppercase tracking-widest block mb-2">Chapter 02</span>
