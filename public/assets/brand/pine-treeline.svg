@@ -1,31 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 170" preserveAspectRatio="none">
   <defs>
     <g id="pine">
-      <path d="M39 0 53 27 47 27 63 52 55 52 72 79 61 79 80 109 57 109 57 139H21v-30H-2l19-30H6l17-27H15l16-25h-6Z"/>
+      <path d="M39 0 53 27 47 27 63 52 55 52 72 79 61 79 80 109 57 109 57 139 21 139 21 109-2 109 17 79 6 79 23 52 15 52 31 27 25 27Z"/>
       <path d="M34 104h10v35H34z"/>
     </g>
     <g id="spruce">
-      <path d="M32 0 46 35h-6l15 30h-8l17 33H53l17 34H-6l17-34H0l17-33H9l15-30h-6Z"/>
+      <path d="M32 0 46 35H40L55 65H47L64 98H53L70 132H-6l17-34H0l17-33H9l15-30h-6Z"/>
       <path d="M28 124h9v22h-9z"/>
     </g>
   </defs>
-  <g fill="#b8baaa">
-    <use href="#spruce" transform="translate(-14 0) scale(1.22)"/>
-    <use href="#pine" transform="translate(98 20) scale(1.04)"/>
-    <use href="#spruce" transform="translate(198 36) scale(.9)"/>
-    <use href="#pine" transform="translate(290 55) scale(.76)"/>
-    <use href="#spruce" transform="translate(370 72) scale(.62)"/>
-    <use href="#pine" transform="translate(442 91) scale(.48)"/>
-    <use href="#spruce" transform="translate(505 109) scale(.35)"/>
-    <use href="#pine" transform="translate(558 125) scale(.24)"/>
-    <use href="#pine" transform="translate(1548 0) scale(1.22)"/>
-    <use href="#spruce" transform="translate(1423 20) scale(1.04)"/>
-    <use href="#pine" transform="translate(1329 36) scale(.9)"/>
-    <use href="#spruce" transform="translate(1240 55) scale(.76)"/>
-    <use href="#pine" transform="translate(1168 72) scale(.62)"/>
-    <use href="#spruce" transform="translate(1102 91) scale(.48)"/>
-    <use href="#pine" transform="translate(1044 109) scale(.35)"/>
-    <use href="#spruce" transform="translate(994 125) scale(.24)"/>
+  <g fill="#b8baaa" opacity=".28">
+    <use href="#spruce" transform="translate(40 57) scale(.45)"/>
+    <use href="#pine" transform="translate(174 39) scale(.56)"/>
+    <use href="#spruce" transform="translate(330 50) scale(.5)"/>
+    <use href="#pine" transform="translate(516 31) scale(.62)"/>
+    <use href="#spruce" transform="translate(710 55) scale(.44)"/>
+    <use href="#pine" transform="translate(885 43) scale(.54)"/>
+    <use href="#spruce" transform="translate(1082 32) scale(.6)"/>
+    <use href="#pine" transform="translate(1293 55) scale(.45)"/>
+    <use href="#spruce" transform="translate(1457 39) scale(.54)"/>
   </g>
-  <path fill="#b8baaa" d="M0 164c140-4 275-3 402 1 69 2 126 4 181 5h434c55-1 112-3 181-5 127-4 262-5 402-1v6H0Z"/>
+  <g fill="#b8baaa">
+    <use href="#pine" transform="translate(0 25) scale(.92)"/>
+    <use href="#spruce" transform="translate(92 11) scale(1.08)"/>
+    <use href="#pine" transform="translate(225 43) scale(.76)"/>
+    <use href="#spruce" transform="translate(344 29) scale(.9)"/>
+    <use href="#pine" transform="translate(465 0) scale(1.18)"/>
+    <use href="#spruce" transform="translate(610 47) scale(.7)"/>
+    <use href="#pine" transform="translate(733 22) scale(.95)"/>
+    <use href="#spruce" transform="translate(860 6) scale(1.12)"/>
+    <use href="#pine" transform="translate(1007 42) scale(.73)"/>
+    <use href="#spruce" transform="translate(1125 28) scale(.9)"/>
+    <use href="#pine" transform="translate(1250 4) scale(1.12)"/>
+    <use href="#spruce" transform="translate(1394 46) scale(.7)"/>
+    <use href="#pine" transform="translate(1502 22) scale(.94)"/>
+  </g>
 </svg>
