@@ -979,7 +979,7 @@ async function makeLandingCarousel(): Promise<void> {
       const elapsed = Math.min(32, now - previousTime);
       previousTime = now;
       const remaining = target - wheelPosition;
-      wheelPosition += remaining * Math.min(.62, elapsed / 30);
+      wheelPosition += remaining * Math.min(.78, elapsed / 22);
       renderMobileWheel();
       if (Math.abs(target - wheelPosition) > .002) {
         inertiaFrame = window.requestAnimationFrame(settle);
