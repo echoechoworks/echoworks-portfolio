@@ -2477,16 +2477,8 @@ body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"
 }
 /* The header artwork preserves the reference typography exactly. */
 .echoworks-echo {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  width: max-content;
-  line-height: 0;
-}
-.header-moth-art {
   display: block;
-  width: auto;
-  height: 3rem;
+  line-height: 0;
 }
 .header-silhouette-art {
   display: block;
@@ -3619,10 +3611,6 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
 
   [data-purpose="site-navigation-header"] .header-silhouette-art {
     height: 2.45rem;
-  }
-
-  [data-purpose="site-navigation-header"] .header-moth-art {
-    height: 2rem;
   }
 
   [data-purpose="site-navigation-header"] [data-purpose="nav-links"] {
