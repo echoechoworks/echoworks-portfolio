@@ -3780,7 +3780,7 @@ div:has(> #view-grid-btn):has(> #view-list-btn):has(.project-view-toggle:hover) 
     align-items: stretch;
     justify-content: flex-start;
     gap: .8rem !important;
-    width: min(18rem, 82vw);
+    width: min(12rem, 68vw);
     min-height: 100dvh;
     padding: 6.9rem 1.4rem 1.5rem;
     border: 0;
