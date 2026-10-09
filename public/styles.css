@@ -99,10 +99,10 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 }
 
 [data-purpose="site-navigation-header"] [data-purpose="brand-logo"] {
-  font-family: 'Space Grotesk', sans-serif !important;
-  font-size: .72rem !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: .76rem !important;
   font-weight: 400 !important;
-  letter-spacing: .32em !important;
+  letter-spacing: .28em !important;
   color: #f5f4f0 !important;
 }
 
@@ -111,10 +111,10 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 }
 
 [data-purpose="site-navigation-header"] [data-purpose="nav-links"] a {
-  font-family: 'Space Grotesk', sans-serif !important;
-  font-size: .68rem !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: .7rem !important;
   font-weight: 400 !important;
-  letter-spacing: .2em !important;
+  letter-spacing: .17em !important;
   text-transform: uppercase;
   color: #f5f4f0 !important;
 }
@@ -2466,6 +2466,7 @@ body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"
   align-items: center;
   gap: .6rem;
   line-height: 1;
+  font-family: 'Inter', sans-serif !important;
   color: #f5f4f0 !important;
 }
 .brand-echo-copy {
@@ -2475,13 +2476,14 @@ body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"
   gap: .12rem;
 }
 .brand-echo-copy span {
-  font-size: .72rem;
-  letter-spacing: .28em;
+  font-size: .8rem;
+  font-weight: 400;
+  letter-spacing: .3em;
   white-space: nowrap;
 }
-.brand-echo-copy span:nth-child(1) { color: #f5f4f0; opacity: 1; }
-.brand-echo-copy span:nth-child(2) { color: #aaa9a6; opacity: .72; }
-.brand-echo-copy span:nth-child(3) { color: #777876; opacity: .42; }
+.brand-echo-copy span:nth-child(1) { color: #f7f6f3; opacity: 1; }
+.brand-echo-copy span:nth-child(2) { color: #a5a4a2; opacity: .72; }
+.brand-echo-copy span:nth-child(3) { color: #575856; opacity: .42; }
 .brand-moth-mark {
   display: block;
   width: 2.9rem;
@@ -3630,8 +3632,8 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
   }
 
   [data-purpose="site-navigation-header"] .brand-echo-copy span {
-    font-size: .52rem;
-    letter-spacing: .12em;
+    font-size: .54rem;
+    letter-spacing: .11em;
   }
 
   [data-purpose="site-navigation-header"] [data-purpose="nav-links"] {
