@@ -4037,3 +4037,15 @@ body:has(.project-item) #projects-list .list-item .font-headline-sm.italic {
   }
 }
 
+
+
+/* HOME retains the original label scale; the other navigation labels are intentionally smaller. */
+[data-purpose="site-navigation-header"] [data-purpose="nav-links"] a[aria-label="Home"] .header-nav-label {
+  font-size: .66rem;
+}
+
+@media (max-width: 767px) {
+  [data-purpose="site-navigation-header"] [data-purpose="nav-links"] a[aria-label="Home"] .header-nav-label {
+    font-size: .67rem;
+  }
+}
