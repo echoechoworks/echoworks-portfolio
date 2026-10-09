@@ -159,9 +159,10 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 }
 
 [data-purpose="site-navigation-header"] .header-nav-button--black {
-  border-color: #48504e;
+  /* Match the secondary controls' physical frame while keeping the black faceplate. */
+  border-color: #74736d;
   background: var(--tape-black);
-  box-shadow: 0 0 0 1px rgba(63, 70, 68, .82), 0 2px 0 2px rgba(13, 16, 16, .76), inset 0 0 0 1px rgba(78, 86, 84, .9), inset 0 0 0 2px rgba(8, 10, 10, .8);
+  box-shadow: 0 2px 0 2px rgba(30, 22, 20, .48), inset 0 0 0 1px rgba(255, 251, 235, .36), inset 0 0 0 2px rgba(91, 74, 55, .2);
 }
 
 [data-purpose="site-navigation-header"] .header-nav-button--black .header-nav-label {
