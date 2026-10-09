@@ -217,11 +217,11 @@
 </div>
 <!-- Controls: View Toggle -->
 <div class="flex items-center gap-unit-xs self-start md:self-end bg-surface-container-highest/10 p-unit-2xs rounded">
-<button class="project-view-toggle is-active flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase" id="view-grid-btn" onclick="setViewMode('grid')">
+<button class="project-view-toggle project-view-toggle--grid is-active flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase" id="view-grid-btn" onclick="setViewMode('grid')">
 <span class="material-symbols-outlined text-[16px]">grid_view</span>
 <span class="">Grid</span>
 </button>
-<button class="project-view-toggle flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase" id="view-list-btn" onclick="setViewMode('list')">
+<button class="project-view-toggle project-view-toggle--list flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase" id="view-list-btn" onclick="setViewMode('list')">
 <span class="material-symbols-outlined text-[16px]">view_agenda</span>
 <span class="">List</span>
 </button>
@@ -531,13 +531,13 @@
       if (mode === 'grid') {
         gridContainer.classList.remove('hidden');
         listContainer.classList.add('hidden');
-        gridBtn.className = 'project-view-toggle is-active flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase';
-        listBtn.className = 'project-view-toggle flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase';
+        gridBtn.className = 'project-view-toggle project-view-toggle--grid is-active flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase';
+        listBtn.className = 'project-view-toggle project-view-toggle--list flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase';
       } else {
         gridContainer.classList.add('hidden');
         listContainer.classList.remove('hidden');
-        listBtn.className = 'project-view-toggle is-active flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase';
-        gridBtn.className = 'project-view-toggle flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase';
+        listBtn.className = 'project-view-toggle project-view-toggle--list is-active flex items-center gap-unit-2xs px-unit-sm py-unit-xs bg-surface text-primary rounded transition-all font-label-caps text-label-caps uppercase';
+        gridBtn.className = 'project-view-toggle project-view-toggle--grid flex items-center gap-unit-2xs px-unit-sm py-unit-xs text-outline-variant hover:text-surface transition-all font-label-caps text-label-caps uppercase';
       }
     }
 

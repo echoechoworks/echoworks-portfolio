@@ -3560,27 +3560,51 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
 /* Project index cards navigate to their detail pages. */
 #projects-grid .project-item { cursor: pointer; }
 
-/* Grid and List use the listening model's contained lamp, without an outer halo. */
+/* Grid and List retain fixed transport materials; selection changes only the lamp. */
 .project-view-toggle {
   border: 1px solid transparent;
   transition: box-shadow 180ms ease, border-color 180ms ease, background-image 180ms ease, transform 180ms ease !important;
 }
 
+.project-view-toggle--grid {
+  color: var(--tape-black) !important;
+  border: 2px solid #783730 !important;
+  background-color: var(--tape-red) !important;
+  box-shadow: 0 0 0 1px rgba(42, 33, 31, .92), 0 2px 0 2px rgba(30, 22, 20, .52), inset 0 0 0 1px rgba(255, 235, 218, .22), inset 0 0 0 2px rgba(86, 37, 32, .3);
+}
+
+.project-view-toggle--list {
+  color: rgba(242, 233, 216, .95) !important;
+  border: 2px solid #332923 !important;
+  background-color: var(--tape-black) !important;
+  box-shadow: 0 0 0 1px rgba(42, 33, 31, .92), 0 2px 0 2px rgba(30, 22, 20, .52), inset 0 0 0 1px rgba(255, 251, 235, .12), inset 0 0 0 2px rgba(255, 229, 184, .08);
+}
+
+.project-view-toggle--grid > *,
+.project-view-toggle--list > * {
+  color: inherit !important;
+}
+
 .project-view-toggle.is-active,
 .project-view-toggle:hover,
 .project-view-toggle:focus-visible {
-  border-color: rgba(180, 87, 75, .9) !important;
   background-image: radial-gradient(circle at 50% 42%, rgba(255, 239, 188, .74), rgba(255, 202, 107, .23) 47%, transparent 73%) !important;
+  filter: brightness(1.06) saturate(1.04);
   box-shadow: inset 0 0 9px rgba(255, 234, 176, .3) !important;
-  transform: translateY(-1px);
 }
 
 /* Hovering the other choice temporarily silences the selected control. */
 div:has(> #view-grid-btn):has(> #view-list-btn):has(.project-view-toggle:hover) .project-view-toggle.is-active:not(:hover) {
-  border-color: transparent !important;
   background-image: none !important;
-  box-shadow: none !important;
-  transform: none;
+  filter: none;
+}
+
+div:has(> #view-grid-btn):has(> #view-list-btn):has(.project-view-toggle:hover) .project-view-toggle--grid.is-active:not(:hover) {
+  box-shadow: 0 0 0 1px rgba(42, 33, 31, .92), 0 2px 0 2px rgba(30, 22, 20, .52), inset 0 0 0 1px rgba(255, 235, 218, .22), inset 0 0 0 2px rgba(86, 37, 32, .3) !important;
+}
+
+div:has(> #view-grid-btn):has(> #view-list-btn):has(.project-view-toggle:hover) .project-view-toggle--list.is-active:not(:hover) {
+  box-shadow: 0 0 0 1px rgba(42, 33, 31, .92), 0 2px 0 2px rgba(30, 22, 20, .52), inset 0 0 0 1px rgba(255, 251, 235, .12), inset 0 0 0 2px rgba(255, 229, 184, .08) !important;
 }
 
 /* Preserve the larger About portrait, anchored at its original lower-left corner. */
