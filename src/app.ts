@@ -873,12 +873,15 @@ async function makeLandingCarousel(): Promise<void> {
     const title = source.querySelector('h2')?.textContent?.trim() || '';
     const subtitle = source.querySelector('h2 + p')?.textContent?.trim() || '';
     const metadata = source.querySelector('p.font-meta-technical')?.textContent?.trim() || '';
+    const carouselMetadata = projectIndex === 2
+      ? metadata.replace(' / Copenhell × Chopper', '')
+      : metadata;
     const badge = card.querySelector('.relative .font-mono');
     if (badge) badge.textContent = `${String(projectIndex + 1).padStart(2, '0')} / ${carouselWorkTypes[projectIndex] || 'SELECTED WORK'}`;
     const heading = card.querySelector('h3');
     if (heading) heading.textContent = title;
     const meta = heading?.previousElementSibling;
-    if (meta) meta.textContent = subtitle ? `${subtitle} — ${metadata}` : metadata;
+    if (meta) meta.textContent = subtitle ? `${subtitle} — ${carouselMetadata}` : carouselMetadata;
   });
 
   let dots = selectAll<HTMLElement>('.carousel-dot');
