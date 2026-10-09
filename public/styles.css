@@ -3664,6 +3664,11 @@ body:has(.project-item) #projects-list .list-item * {
   color: var(--tape-brown) !important;
 }
 
+/* Project-card subtitles carry the site's red editorial accent in Grid view. */
+body:has(.project-item) #projects-grid .project-item .font-headline-md.italic {
+  color: var(--tape-red) !important;
+}
+
 /* Preserve the larger About portrait, anchored at its original lower-left corner. */
 @media (min-width: 701px) {
   body.about-page .about-hero-portrait {
