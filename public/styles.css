@@ -3658,6 +3658,12 @@ body:has(.project-item) div:has(> #view-grid-btn):has(> #view-list-btn):has(.pro
   box-shadow: 0 0 0 1px rgba(42, 33, 31, .92), 0 2px 0 2px rgba(30, 22, 20, .52), inset 0 0 0 1px rgba(255, 251, 235, .12), inset 0 0 0 2px rgba(255, 229, 184, .08) !important;
 }
 
+/* List view uses the dark ink palette on its pale sage reading surface. */
+body:has(.project-item) #projects-list .list-item,
+body:has(.project-item) #projects-list .list-item * {
+  color: var(--tape-brown) !important;
+}
+
 /* Preserve the larger About portrait, anchored at its original lower-left corner. */
 @media (min-width: 701px) {
   body.about-page .about-hero-portrait {
