@@ -94,6 +94,31 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
   letter-spacing: 0.28em !important;
 }
 
+[data-purpose="site-navigation-header"] > div:first-child {
+  padding-inline: 1.7rem !important;
+}
+
+[data-purpose="site-navigation-header"] [data-purpose="brand-logo"] {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: .72rem !important;
+  font-weight: 400 !important;
+  letter-spacing: .32em !important;
+  color: #f5f4f0 !important;
+}
+
+[data-purpose="site-navigation-header"] [data-purpose="nav-links"] {
+  gap: 2.45rem !important;
+}
+
+[data-purpose="site-navigation-header"] [data-purpose="nav-links"] a {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: .68rem !important;
+  font-weight: 400 !important;
+  letter-spacing: .2em !important;
+  text-transform: uppercase;
+  color: #f5f4f0 !important;
+}
+
 /* The shared header gains contrast only after the page begins to scroll. */
 [data-purpose="site-navigation-header"] {
   background-color: transparent;
@@ -2438,16 +2463,39 @@ body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"
 /* The brand echoes rise above the primary mark, like a softly decaying tape echo. */
 .echoworks-echo {
   display: flex;
-  flex-direction: column-reverse;
   align-items: center;
-  gap: .06rem;
-  line-height: .9;
-  color: var(--site-sand) !important;
+  gap: .6rem;
+  line-height: 1;
+  color: #f5f4f0 !important;
 }
-.echoworks-echo span:nth-child(1) { font-size: .75rem; opacity: .94; }
-.echoworks-echo span:nth-child(2) { font-size: .63rem; opacity: .53; }
-.echoworks-echo span:nth-child(3) { font-size: .52rem; opacity: .27; }
-.echoworks-echo:hover span { opacity: 1; }
+.brand-echo-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .12rem;
+}
+.brand-echo-copy span {
+  font-size: .72rem;
+  letter-spacing: .28em;
+  white-space: nowrap;
+}
+.brand-echo-copy span:nth-child(1) { color: #f5f4f0; opacity: 1; }
+.brand-echo-copy span:nth-child(2) { color: #aaa9a6; opacity: .72; }
+.brand-echo-copy span:nth-child(3) { color: #777876; opacity: .42; }
+.brand-moth-mark {
+  display: block;
+  width: 2.9rem;
+  height: 2.9rem;
+  flex: 0 0 auto;
+  overflow: hidden;
+  background: #f5f4f0;
+}
+.brand-moth-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 /* Keep both stereo-pair labels contained and balanced in the compact control tiles. */
 #naturama-emulator .naturama-pair-controls .naturama-pair {
@@ -3570,6 +3618,20 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
     transform: none !important;
     font-size: .62rem !important;
     letter-spacing: .1em !important;
+  }
+
+  [data-purpose="site-navigation-header"] .brand-moth-mark {
+    width: 1.65rem;
+    height: 1.65rem;
+  }
+
+  [data-purpose="site-navigation-header"] .brand-echo-copy {
+    gap: .04rem;
+  }
+
+  [data-purpose="site-navigation-header"] .brand-echo-copy span {
+    font-size: .52rem;
+    letter-spacing: .12em;
   }
 
   [data-purpose="site-navigation-header"] [data-purpose="nav-links"] {
