@@ -112,22 +112,28 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 [data-purpose="site-navigation-header"] [data-purpose="nav-links"] {
   display: flex !important;
   align-items: center;
-  gap: 1.25rem !important;
+  gap: .72rem !important;
   width: auto;
   height: auto;
   flex: 0 0 auto;
 }
 
-[data-purpose="site-navigation-header"] .header-navigation-art {
-  display: block;
-  width: auto;
-  height: .65rem;
-  pointer-events: none;
+[data-purpose="site-navigation-header"] .header-nav-label {
+  color: #32231f;
+  font-family: var(--type-meta), "IBM Plex Mono", monospace;
+  font-size: .66rem;
+  font-weight: 600;
+  letter-spacing: .065em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 [data-purpose="site-navigation-header"] [data-purpose="nav-links"] a {
   position: static;
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex: 0 0 auto;
   margin: 0 !important;
   line-height: 0;
@@ -136,6 +142,51 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 
 .mobile-nav-trigger {
   display: none;
+}
+
+/* Header navigation uses the same tactile transport controls as the listening model. */
+[data-purpose="site-navigation-header"] .header-nav-button {
+  min-height: 1.9rem;
+  padding: .38rem .58rem;
+  border: 2px solid #74736d;
+  border-radius: 2px;
+  outline: 1px solid rgba(37, 36, 33, .86);
+  outline-offset: 2px;
+  background: linear-gradient(135deg, rgba(255,255,255,.24), transparent 46%), linear-gradient(180deg, #d8d3c5 0%, #c5bdab 100%);
+  box-shadow: 0 0 0 1px rgba(170, 168, 158, .8), 0 2px 0 2px rgba(30, 22, 20, .48), inset 0 0 0 1px rgba(255, 251, 235, .36), inset 0 0 0 2px rgba(91, 74, 55, .2);
+  transition: filter .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+}
+
+[data-purpose="site-navigation-header"] .header-nav-button--primary {
+  border-color: #783730;
+  background: var(--tape-red);
+  box-shadow: 0 0 0 1px rgba(42, 33, 31, .92), 0 2px 0 2px rgba(30, 22, 20, .52), inset 0 0 0 1px rgba(255, 235, 218, .22), inset 0 0 0 2px rgba(86, 37, 32, .3);
+}
+
+[data-purpose="site-navigation-header"] .header-nav-button--primary .header-nav-label {
+  color: #2a211f;
+}
+
+[data-purpose="site-navigation-header"] .header-nav-button:hover,
+[data-purpose="site-navigation-header"] .header-nav-button:focus-visible,
+[data-purpose="site-navigation-header"] .header-nav-button.is-current {
+  filter: brightness(1.06) saturate(1.04);
+  box-shadow: inset 0 0 9px rgba(255, 234, 176, .3);
+}
+
+/* The pale secondary keys share the Start Journey lamp, with a quieter outer halo. */
+[data-purpose="site-navigation-header"] .header-nav-button--secondary:hover,
+[data-purpose="site-navigation-header"] .header-nav-button--secondary:focus-visible,
+[data-purpose="site-navigation-header"] .header-nav-button--secondary.is-current {
+  background: radial-gradient(circle at 50% 42%, rgba(255, 239, 188, .74), rgba(255, 202, 107, .23) 47%, transparent 73%), linear-gradient(135deg, rgba(255,255,255,.24), transparent 46%), linear-gradient(180deg, #d8d3c5 0%, #c5bdab 100%);
+  filter: brightness(1.04) saturate(1.03);
+  box-shadow: inset 0 0 7px rgba(255, 234, 176, .22);
+}
+
+[data-purpose="site-navigation-header"] .header-nav-button--primary:hover,
+[data-purpose="site-navigation-header"] .header-nav-button--primary:focus-visible,
+[data-purpose="site-navigation-header"] .header-nav-button--primary.is-current {
+  background: radial-gradient(circle at 50% 42%, rgba(255, 239, 188, .74), rgba(255, 202, 107, .23) 47%, transparent 73%), var(--tape-red);
 }
 
 /* The shared header gains contrast only after the page begins to scroll. */
@@ -1814,7 +1865,6 @@ body:has([data-purpose="hero-container"]) [data-purpose="statement-display"] spa
 body:has([data-purpose="hero-container"]) [data-purpose="project-carousel-section"] h2 {
   color: var(--site-pale-sage) !important;
 }
-
 body:has([data-purpose="hero-container"]) .carousel-card {
   background: var(--site-sage) !important;
   border: 4px solid var(--site-umber) !important;
@@ -3724,8 +3774,18 @@ body:has(.project-item) #projects-list .list-item .font-headline-sm.italic {
     gap: .44rem !important;
   }
 
-  [data-purpose="site-navigation-header"] .header-navigation-art {
-    height: .54rem;
+  [data-purpose="site-navigation-header"] .header-nav-label {
+    font-size: .52rem;
+    letter-spacing: .045em;
+  }
+
+  [data-purpose="site-navigation-header"] .header-nav-button {
+    min-height: 1.55rem;
+    padding: .28rem .35rem;
+    border-width: 2px;
+    outline-width: 1px;
+    outline-offset: 1px;
+    box-shadow: 0 0 0 1px #aaa89e, 0 1px 0 1px rgba(30, 22, 20, .62), inset 0 0 0 1px rgba(255, 251, 235, .28);
   }
 
   /* Mobile navigation is a dark, right-hand drawer. */
@@ -3783,7 +3843,7 @@ body:has(.project-item) #projects-list .list-item .font-headline-sm.italic {
     left: auto;
     display: flex !important;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: flex-start;
     gap: .8rem !important;
     width: min(12rem, 68vw);
@@ -3808,13 +3868,15 @@ body:has(.project-item) #projects-list .list-item .font-headline-sm.italic {
     transition: transform .34s cubic-bezier(.22, .8, .28, 1);
   }
 
-  [data-purpose="site-navigation-header"] [data-purpose="nav-links"] a {
-    width: max-content;
-    padding: .28rem 0;
+  [data-purpose="site-navigation-header"] [data-purpose="nav-links"] .header-nav-button {
+    width: 100%;
+    min-height: 2.55rem;
+    padding: .6rem .75rem;
   }
 
-  [data-purpose="site-navigation-header"] [data-purpose="nav-links"] .header-navigation-art {
-    height: .76rem;
+  [data-purpose="site-navigation-header"] [data-purpose="nav-links"] .header-nav-label {
+    font-size: .67rem;
+    letter-spacing: .07em;
   }
 
   .project-mobile-metadata-slot {
@@ -3944,27 +4006,3 @@ body:has(.project-item) #projects-list .list-item .font-headline-sm.italic {
   }
 }
 
-
-
-/* Landing-page serif accent. */
-body:has([data-purpose="hero-container"]) [data-purpose="statement-display"] .font-hero-serif {
-  color: var(--tape-red) !important;
-}
-
-[data-purpose="site-navigation-header"] .header-navigation-home {
-  display: block;
-  color: var(--site-sand);
-  font-family: var(--type-meta), "IBM Plex Mono", monospace;
-  font-size: .65rem;
-  font-weight: 500;
-  letter-spacing: .14em;
-  line-height: 1;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-@media (max-width: 767px) {
-  [data-purpose="site-navigation-header"] .header-navigation-home {
-    font-size: .76rem;
-  }
-}

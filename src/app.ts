@@ -827,8 +827,7 @@ function makeLandingNavigationWork(): void {
     const path = window.location.pathname;
     links.forEach(link => {
       const label = link.getAttribute('aria-label') || link.textContent || '';
-      const isCurrent = (label.includes('Home') && path === '/' && window.location.hash !== '#contact')
-        || (label.includes('Projects') && (path === '/projects' || path.startsWith('/projects/')))
+      const isCurrent = (label.includes('Projects') && (path === '/projects' || path.startsWith('/projects/')))
         || (label.includes('About') && path === '/about')
         || (label.includes('Contact') && path === '/' && window.location.hash === '#contact');
       link.classList.toggle('is-current', isCurrent);
@@ -838,7 +837,7 @@ function makeLandingNavigationWork(): void {
   };
   links.forEach(link => {
     const label = link.getAttribute('aria-label') || link.textContent || '';
-    link.href = label.includes('Home') ? '/' : label.includes('Projects') ? '/projects' : label.includes('About') ? '/about' : '/#contact';
+    link.href = label.includes('Projects') ? '/projects' : label.includes('About') ? '/about' : '/#contact';
     link.addEventListener('click', closeMobileMenu);
   });
   menuTrigger?.addEventListener('click', () => {
