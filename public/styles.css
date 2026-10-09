@@ -112,7 +112,7 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 [data-purpose="site-navigation-header"] [data-purpose="nav-links"] {
   display: flex !important;
   align-items: center;
-  gap: .75rem !important;
+  gap: .72rem !important;
   width: auto;
   height: auto;
   flex: 0 0 auto;
@@ -121,7 +121,7 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 [data-purpose="site-navigation-header"] .header-nav-label {
   color: #32231f;
   font-family: var(--type-meta), "IBM Plex Mono", monospace;
-  font-size: .68rem;
+  font-size: .66rem;
   font-weight: 600;
   letter-spacing: .065em;
   line-height: 1;
@@ -142,8 +142,8 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 
 /* Header navigation uses the same tactile transport controls as the listening model. */
 [data-purpose="site-navigation-header"] .header-nav-button {
-  min-height: 1.98rem;
-  padding: .4rem .62rem;
+  min-height: 1.9rem;
+  padding: .38rem .58rem;
   border: 2px solid #74736d;
   border-radius: 2px;
   outline: 1px solid rgba(37, 36, 33, .86);
@@ -3666,17 +3666,17 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
   [data-purpose="site-navigation-header"] [data-purpose="nav-links"] {
     width: auto;
     height: auto;
-    gap: .46rem !important;
+    gap: .44rem !important;
   }
 
   [data-purpose="site-navigation-header"] .header-nav-label {
-    font-size: .54rem;
+    font-size: .52rem;
     letter-spacing: .045em;
   }
 
   [data-purpose="site-navigation-header"] .header-nav-button {
-    min-height: 1.6rem;
-    padding: .3rem .38rem;
+    min-height: 1.55rem;
+    padding: .28rem .35rem;
     border-width: 2px;
     outline-width: 1px;
     outline-offset: 1px;
