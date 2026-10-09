@@ -121,7 +121,7 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 [data-purpose="site-navigation-header"] .header-nav-label {
   color: #32231f;
   font-family: var(--type-meta), "IBM Plex Mono", monospace;
-  font-size: .66rem;
+  font-size: .58rem;
   font-weight: 600;
   letter-spacing: .065em;
   line-height: 1;
