@@ -167,6 +167,11 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
   color: rgba(242, 233, 216, .96);
 }
 
+[data-purpose="site-navigation-header"] .header-nav-button--secondary {
+  /* Remove the pale outer ring while retaining the button's inner framing. */
+  box-shadow: 0 2px 0 2px rgba(30, 22, 20, .48), inset 0 0 0 1px rgba(255, 251, 235, .36), inset 0 0 0 2px rgba(91, 74, 55, .2);
+}
+
 [data-purpose="site-navigation-header"] .header-nav-button--primary {
   border-color: #783730;
   background: var(--tape-red);
