@@ -2438,16 +2438,39 @@ body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"
 /* The brand echoes rise above the primary mark, like a softly decaying tape echo. */
 .echoworks-echo {
   display: flex;
-  flex-direction: column-reverse;
   align-items: center;
-  gap: .06rem;
+  gap: .52rem;
   line-height: .9;
   color: var(--site-sand) !important;
 }
-.echoworks-echo span:nth-child(1) { font-size: .75rem; opacity: .94; }
-.echoworks-echo span:nth-child(2) { font-size: .63rem; opacity: .53; }
-.echoworks-echo span:nth-child(3) { font-size: .52rem; opacity: .27; }
-.echoworks-echo:hover span { opacity: 1; }
+.brand-echo-copy {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: .06rem;
+}
+.brand-echo-copy span:nth-child(1) { font-size: .75rem; opacity: .94; }
+.brand-echo-copy span:nth-child(2) { font-size: .63rem; opacity: .53; }
+.brand-echo-copy span:nth-child(3) { font-size: .52rem; opacity: .27; }
+.brand-moth-mark {
+  display: grid;
+  width: 2rem;
+  height: 2.45rem;
+  flex: 0 0 auto;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(223, 211, 184, .55);
+  border-radius: 48% 52% 50% 50%;
+  background: #ded4bb;
+  box-shadow: 0 0 0 3px rgba(222, 212, 187, .07), 0 6px 18px rgba(0, 0, 0, .25);
+}
+.brand-moth-mark img {
+  display: block;
+  width: 118%;
+  height: 118%;
+  object-fit: contain;
+}
+.echoworks-echo:hover .brand-echo-copy span { opacity: 1; }
 
 /* Keep both stereo-pair labels contained and balanced in the compact control tiles. */
 #naturama-emulator .naturama-pair-controls .naturama-pair {
@@ -3570,6 +3593,11 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
     transform: none !important;
     font-size: .62rem !important;
     letter-spacing: .1em !important;
+  }
+
+  [data-purpose="site-navigation-header"] .brand-moth-mark {
+    width: 1.4rem;
+    height: 1.72rem;
   }
 
   [data-purpose="site-navigation-header"] [data-purpose="nav-links"] {
