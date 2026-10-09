@@ -135,6 +135,7 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
+  inline-size: 5.8rem;
   margin: 0 !important;
   line-height: 0;
   font-size: 0 !important;
