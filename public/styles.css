@@ -2445,7 +2445,7 @@ body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"
 }
 .brand-echo-copy {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
   gap: .06rem;
 }
@@ -2466,8 +2466,8 @@ body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"
 }
 .brand-moth-mark img {
   display: block;
-  width: 118%;
-  height: 118%;
+  width: 200%;
+  height: 200%;
   object-fit: contain;
 }
 .echoworks-echo:hover .brand-echo-copy span { opacity: 1; }
