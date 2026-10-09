@@ -3540,6 +3540,10 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
     touch-action: pan-y;
   }
 
+  .carousel-visual-arrow {
+    display: none;
+  }
+
   .carousel-card {
     transition: none !important;
   }
