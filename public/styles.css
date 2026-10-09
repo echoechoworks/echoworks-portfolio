@@ -132,9 +132,9 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
   font-size: 0 !important;
 }
 
-[data-purpose="site-navigation-header"] [data-purpose="nav-links"] a:nth-of-type(1) { left: 0; width: 31%; }
-[data-purpose="site-navigation-header"] [data-purpose="nav-links"] a:nth-of-type(2) { left: 34%; width: 33%; }
-[data-purpose="site-navigation-header"] [data-purpose="nav-links"] a:nth-of-type(3) { right: 0; width: 29%; }
+[data-purpose="site-navigation-header"] [data-purpose="nav-links"] a:nth-of-type(1) { left: .5%; width: 25.5%; }
+[data-purpose="site-navigation-header"] [data-purpose="nav-links"] a:nth-of-type(2) { left: 37%; width: 27%; }
+[data-purpose="site-navigation-header"] [data-purpose="nav-links"] a:nth-of-type(3) { left: 75%; width: 25%; }
 }
 
 /* The shared header gains contrast only after the page begins to scroll. */
@@ -2486,7 +2486,7 @@ body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"
 .header-silhouette-art {
   display: block;
   width: auto;
-  height: 3rem;
+  height: 3.25rem;
 }
 
 /* Keep both stereo-pair labels contained and balanced in the compact control tiles. */
