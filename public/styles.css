@@ -3722,8 +3722,7 @@ div:has(> #view-grid-btn):has(> #view-list-btn):has(.project-view-toggle:hover) 
     box-shadow: 0 0 0 1px #aaa89e, 0 1px 0 1px rgba(30, 22, 20, .62), inset 0 0 0 1px rgba(255, 251, 235, .28);
   }
 
-  /* Mobile gets a separate dropdown: it retains the tactile controls without
-     compressing the primary header mark. */
+  /* Mobile uses a compact navigation shelf that preserves the header's balance. */
   [data-purpose="site-navigation-header"] .mobile-nav-trigger {
     position: absolute;
     z-index: 30;
@@ -3770,47 +3769,50 @@ div:has(> #view-grid-btn):has(> #view-list-btn):has(.project-view-toggle:hover) 
   }
 
   [data-purpose="site-navigation-header"] [data-purpose="nav-links"] {
-    position: fixed;
+    position: absolute;
     z-index: 20;
-    top: 5.9rem;
-    right: .85rem;
+    top: calc(100% + .6rem);
+    left: 50%;
+    right: auto;
     bottom: auto;
     display: flex !important;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: .72rem !important;
-    width: min(14.5rem, calc(100vw - 1.7rem));
+    gap: .42rem !important;
+    width: min(21rem, calc(100vw - 2.25rem));
     min-height: 0;
-    padding: 1.05rem 1rem;
+    padding: .7rem .65rem;
     border: 2px solid #74736d;
     border-radius: 3px;
     outline: 1px solid rgba(37, 36, 33, .86);
     outline-offset: 2px;
     background: linear-gradient(135deg, rgba(255,255,255,.22), transparent 42%), var(--site-pale-sage);
-    box-shadow: 0 4px 0 rgba(30, 22, 20, .38), 0 12px 28px rgba(18, 17, 15, .2), inset 0 0 0 1px rgba(255, 251, 235, .42);
+    box-shadow: 0 3px 0 rgba(30, 22, 20, .38), 0 10px 22px rgba(18, 17, 15, .18), inset 0 0 0 1px rgba(255, 251, 235, .42);
     visibility: hidden;
     pointer-events: none;
-    transform: translateX(calc(100% + 1.2rem));
-    transition: transform .32s cubic-bezier(.22, .8, .28, 1), visibility .32s step-end;
+    transform: translate(-50%, -.45rem) scale(.98);
+    transition: opacity .18s ease, transform .22s cubic-bezier(.22, .8, .28, 1), visibility .22s step-end;
+    opacity: 0;
   }
 
   [data-purpose="site-navigation-header"].mobile-menu-open [data-purpose="nav-links"] {
     visibility: visible;
     pointer-events: auto;
-    transform: translateX(0);
-    transition: transform .32s cubic-bezier(.22, .8, .28, 1);
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+    transition: opacity .18s ease, transform .22s cubic-bezier(.22, .8, .28, 1);
   }
 
   [data-purpose="site-navigation-header"] [data-purpose="nav-links"] .header-nav-button {
     width: max-content;
-    min-height: 2.28rem;
-    padding: .52rem .68rem;
+    min-height: 2.12rem;
+    padding: .46rem .48rem;
   }
 
   [data-purpose="site-navigation-header"] [data-purpose="nav-links"] .header-nav-label {
-    font-size: .66rem;
-    letter-spacing: .075em;
+    font-size: .57rem;
+    letter-spacing: .055em;
   }
 
   .project-mobile-metadata-slot {
