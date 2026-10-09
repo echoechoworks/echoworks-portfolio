@@ -2454,15 +2454,15 @@ body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"
 .brand-echo-copy span:nth-child(3) { font-size: .52rem; opacity: .27; }
 .brand-moth-mark {
   display: grid;
-  width: 2rem;
-  height: 2.45rem;
+  width: 2.4rem;
+  height: 2.4rem;
   flex: 0 0 auto;
   place-items: center;
   overflow: hidden;
-  border: 1px solid rgba(223, 211, 184, .55);
-  border-radius: 48% 52% 50% 50%;
-  background: #ded4bb;
-  box-shadow: 0 0 0 3px rgba(222, 212, 187, .07), 0 6px 18px rgba(0, 0, 0, .25);
+  border: 1px solid rgba(8, 10, 9, .72);
+  border-radius: 0;
+  background: #f5f4f0;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, .28);
 }
 .brand-moth-mark img {
   display: block;
@@ -3596,8 +3596,8 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
   }
 
   [data-purpose="site-navigation-header"] .brand-moth-mark {
-    width: 1.4rem;
-    height: 1.72rem;
+    width: 1.65rem;
+    height: 1.65rem;
   }
 
   [data-purpose="site-navigation-header"] [data-purpose="nav-links"] {
