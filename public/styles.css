@@ -3607,6 +3607,57 @@ div:has(> #view-grid-btn):has(> #view-list-btn):has(.project-view-toggle:hover) 
   box-shadow: 0 0 0 1px rgba(42, 33, 31, .92), 0 2px 0 2px rgba(30, 22, 20, .52), inset 0 0 0 1px rgba(255, 251, 235, .12), inset 0 0 0 2px rgba(255, 229, 184, .08) !important;
 }
 
+/* These ID rules intentionally override the original view-toggle classes that
+   JavaScript swaps during view changes. The material never changes with state. */
+body:has(.project-item) #view-grid-btn,
+body:has(.project-item) #view-grid-btn.bg-surface {
+  color: var(--tape-black) !important;
+  border: 2px solid #783730 !important;
+  background: var(--tape-red) !important;
+  box-shadow: 0 0 0 1px rgba(42, 33, 31, .92), 0 2px 0 2px rgba(30, 22, 20, .52), inset 0 0 0 1px rgba(255, 235, 218, .22), inset 0 0 0 2px rgba(86, 37, 32, .3) !important;
+}
+
+body:has(.project-item) #view-list-btn,
+body:has(.project-item) #view-list-btn.bg-surface {
+  color: rgba(242, 233, 216, .95) !important;
+  border: 2px solid #332923 !important;
+  background: var(--tape-black) !important;
+  box-shadow: 0 0 0 1px rgba(42, 33, 31, .92), 0 2px 0 2px rgba(30, 22, 20, .52), inset 0 0 0 1px rgba(255, 251, 235, .12), inset 0 0 0 2px rgba(255, 229, 184, .08) !important;
+}
+
+body:has(.project-item) #view-grid-btn > *,
+body:has(.project-item) #view-list-btn > * {
+  color: inherit !important;
+}
+
+body:has(.project-item) #view-grid-btn.is-active,
+body:has(.project-item) #view-grid-btn:hover,
+body:has(.project-item) #view-grid-btn:focus-visible {
+  background: radial-gradient(circle at 50% 42%, rgba(255, 239, 188, .74), rgba(255, 202, 107, .23) 47%, transparent 73%), var(--tape-red) !important;
+  filter: brightness(1.06) saturate(1.04);
+  box-shadow: inset 0 0 9px rgba(255, 234, 176, .3) !important;
+}
+
+body:has(.project-item) #view-list-btn.is-active,
+body:has(.project-item) #view-list-btn:hover,
+body:has(.project-item) #view-list-btn:focus-visible {
+  background: radial-gradient(circle at 50% 42%, rgba(255, 239, 188, .74), rgba(255, 202, 107, .23) 47%, transparent 73%), var(--tape-black) !important;
+  filter: brightness(1.06) saturate(1.04);
+  box-shadow: inset 0 0 9px rgba(255, 234, 176, .3) !important;
+}
+
+body:has(.project-item) div:has(> #view-grid-btn):has(> #view-list-btn):has(.project-view-toggle:hover) #view-grid-btn.is-active:not(:hover) {
+  background: var(--tape-red) !important;
+  filter: none;
+  box-shadow: 0 0 0 1px rgba(42, 33, 31, .92), 0 2px 0 2px rgba(30, 22, 20, .52), inset 0 0 0 1px rgba(255, 235, 218, .22), inset 0 0 0 2px rgba(86, 37, 32, .3) !important;
+}
+
+body:has(.project-item) div:has(> #view-grid-btn):has(> #view-list-btn):has(.project-view-toggle:hover) #view-list-btn.is-active:not(:hover) {
+  background: var(--tape-black) !important;
+  filter: none;
+  box-shadow: 0 0 0 1px rgba(42, 33, 31, .92), 0 2px 0 2px rgba(30, 22, 20, .52), inset 0 0 0 1px rgba(255, 251, 235, .12), inset 0 0 0 2px rgba(255, 229, 184, .08) !important;
+}
+
 /* Preserve the larger About portrait, anchored at its original lower-left corner. */
 @media (min-width: 701px) {
   body.about-page .about-hero-portrait {
