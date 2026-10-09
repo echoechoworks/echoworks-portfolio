@@ -165,8 +165,8 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 
 [data-purpose="site-navigation-header"] .header-nav-button:hover,
 [data-purpose="site-navigation-header"] .header-nav-button:focus-visible {
-  filter: brightness(1.06) saturate(1.04) drop-shadow(0 0 2px rgba(255, 213, 132, .58)) drop-shadow(0 0 7px rgba(239, 165, 77, .3));
-  box-shadow: inset 0 0 9px rgba(255, 234, 176, .3), 0 0 4px rgba(255, 203, 112, .42), 0 0 10px rgba(229, 145, 58, .22);
+  filter: brightness(1.06) saturate(1.04) drop-shadow(0 0 1px rgba(255, 213, 132, .42)) drop-shadow(0 0 3px rgba(239, 165, 77, .16));
+  box-shadow: inset 0 0 9px rgba(255, 234, 176, .3), 0 0 2px rgba(255, 203, 112, .26), 0 0 4px rgba(229, 145, 58, .12);
 }
 
 /* The pale secondary keys share the Start Journey lamp, with a quieter outer halo. */
@@ -174,8 +174,8 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 [data-purpose="site-navigation-header"] .header-nav-button--secondary:focus-visible,
 [data-purpose="site-navigation-header"] .header-nav-button--secondary.is-current {
   background: radial-gradient(circle at 50% 42%, rgba(255, 239, 188, .74), rgba(255, 202, 107, .23) 47%, transparent 73%), linear-gradient(135deg, rgba(255,255,255,.24), transparent 46%), linear-gradient(180deg, #d8d3c5 0%, #c5bdab 100%);
-  filter: brightness(1.04) saturate(1.03) drop-shadow(0 0 1px rgba(255, 213, 132, .42)) drop-shadow(0 0 5px rgba(239, 165, 77, .2));
-  box-shadow: inset 0 0 7px rgba(255, 234, 176, .22), 0 0 3px rgba(255, 203, 112, .26), 0 0 7px rgba(229, 145, 58, .15);
+  filter: brightness(1.04) saturate(1.03) drop-shadow(0 0 1px rgba(255, 213, 132, .3)) drop-shadow(0 0 2px rgba(239, 165, 77, .12));
+  box-shadow: inset 0 0 7px rgba(255, 234, 176, .22), 0 0 1px rgba(255, 203, 112, .18), 0 0 3px rgba(229, 145, 58, .1);
 }
 
 [data-purpose="site-navigation-header"] .header-nav-button--primary:hover,
