@@ -135,7 +135,7 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  inline-size: 5.8rem;
+  inline-size: 5.2rem;
   margin: 0 !important;
   line-height: 0;
   font-size: 0 !important;
@@ -147,8 +147,8 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 
 /* Header navigation uses the same tactile transport controls as the listening model. */
 [data-purpose="site-navigation-header"] .header-nav-button {
-  min-height: 1.9rem;
-  padding: .38rem .58rem;
+  min-height: 1.76rem;
+  padding: .32rem .45rem;
   border: 2px solid #74736d;
   border-radius: 2px;
   outline: 1px solid rgba(37, 36, 33, .86);
