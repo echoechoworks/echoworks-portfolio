@@ -99,24 +99,42 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 }
 
 [data-purpose="site-navigation-header"] [data-purpose="brand-logo"] {
-  font-family: 'Inter', sans-serif !important;
-  font-size: .76rem !important;
-  font-weight: 400 !important;
-  letter-spacing: .28em !important;
-  color: #f5f4f0 !important;
+  display: block !important;
+  line-height: 0;
+}
+
+[data-purpose="site-navigation-header"] .header-rasmus-art {
+  display: block;
+  width: 10.8rem;
+  height: auto;
 }
 
 [data-purpose="site-navigation-header"] [data-purpose="nav-links"] {
-  gap: 2.45rem !important;
+  position: relative;
+  display: block !important;
+  width: 13rem;
+  height: 1rem;
+  flex: 0 0 auto;
+}
+
+[data-purpose="site-navigation-header"] .header-navigation-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
 }
 
 [data-purpose="site-navigation-header"] [data-purpose="nav-links"] a {
-  font-family: 'Inter', sans-serif !important;
-  font-size: .7rem !important;
-  font-weight: 400 !important;
-  letter-spacing: .17em !important;
-  text-transform: uppercase;
-  color: #f5f4f0 !important;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: block;
+  font-size: 0 !important;
+}
+
+[data-purpose="site-navigation-header"] [data-purpose="nav-links"] a:nth-of-type(1) { left: 0; width: 31%; }
+[data-purpose="site-navigation-header"] [data-purpose="nav-links"] a:nth-of-type(2) { left: 34%; width: 33%; }
+[data-purpose="site-navigation-header"] [data-purpose="nav-links"] a:nth-of-type(3) { right: 0; width: 29%; }
 }
 
 /* The shared header gains contrast only after the page begins to scroll. */
@@ -2460,43 +2478,15 @@ body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"
   .arla-image-time { font-size: .6rem; }
   .arla-image-play { width: 2rem; height: 2rem; }
 }
-/* The brand echoes rise above the primary mark, like a softly decaying tape echo. */
+/* The header artwork preserves the reference typography exactly. */
 .echoworks-echo {
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-  line-height: 1;
-  font-family: 'Inter', sans-serif !important;
-  color: #f5f4f0 !important;
-}
-.brand-echo-copy {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: .12rem;
-}
-.brand-echo-copy span {
-  font-size: .8rem;
-  font-weight: 400;
-  letter-spacing: .3em;
-  white-space: nowrap;
-}
-.brand-echo-copy span:nth-child(1) { color: #f7f6f3; opacity: 1; }
-.brand-echo-copy span:nth-child(2) { color: #a5a4a2; opacity: .72; }
-.brand-echo-copy span:nth-child(3) { color: #575856; opacity: .42; }
-.brand-moth-mark {
   display: block;
-  width: 2.9rem;
-  height: 2.9rem;
-  flex: 0 0 auto;
-  overflow: hidden;
-  background: #f5f4f0;
+  line-height: 0;
 }
-.brand-moth-mark img {
+.header-silhouette-art {
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: auto;
+  height: 3rem;
 }
 
 /* Keep both stereo-pair labels contained and balanced in the compact control tiles. */
@@ -3622,27 +3612,18 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
     letter-spacing: .1em !important;
   }
 
-  [data-purpose="site-navigation-header"] .brand-moth-mark {
-    width: 1.65rem;
-    height: 1.65rem;
-  }
-
-  [data-purpose="site-navigation-header"] .brand-echo-copy {
-    gap: .04rem;
-  }
-
-  [data-purpose="site-navigation-header"] .brand-echo-copy span {
-    font-size: .54rem;
-    letter-spacing: .11em;
+  [data-purpose="site-navigation-header"] .header-silhouette-art {
+    height: 2rem;
   }
 
   [data-purpose="site-navigation-header"] [data-purpose="nav-links"] {
-    gap: .72rem !important;
-    margin-left: auto !important;
+    width: 10.8rem;
+    height: .82rem;
+    gap: 0 !important;
   }
 
-  [data-purpose="site-navigation-header"] [data-purpose="nav-links"] a {
-    font-size: .62rem !important;
+  [data-purpose="site-navigation-header"] .header-navigation-art {
+    width: 100%;
   }
 
   .project-mobile-metadata-slot {

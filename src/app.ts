@@ -816,7 +816,10 @@ async function renderProjectDetail(): Promise<void> {
 }
 
 function makeLandingNavigationWork(): void {
-  selectAll<HTMLAnchorElement>('[data-purpose="nav-links"] a').forEach(link => { link.href = link.textContent?.includes('Projects') ? '/projects' : link.textContent?.includes('About') ? '/about' : '/#contact'; });
+  selectAll<HTMLAnchorElement>('[data-purpose="nav-links"] a').forEach(link => {
+    const label = link.getAttribute('aria-label') || link.textContent || '';
+    link.href = label.includes('Projects') ? '/projects' : label.includes('About') ? '/about' : '/#contact';
+  });
   document.querySelector<HTMLAnchorElement>('[data-purpose="brand-logo"]')?.setAttribute('href', '/');
 }
 
