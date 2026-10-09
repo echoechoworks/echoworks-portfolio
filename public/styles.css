@@ -3701,6 +3701,7 @@ div:has(> #view-grid-btn):has(> #view-list-btn):has(.project-view-toggle:hover) 
      compressing the primary header mark. */
   [data-purpose="site-navigation-header"] .mobile-nav-trigger {
     position: absolute;
+    z-index: 30;
     right: 1.125rem;
     display: inline-flex;
     align-items: center;
@@ -3744,41 +3745,42 @@ div:has(> #view-grid-btn):has(> #view-list-btn):has(.project-view-toggle:hover) 
   }
 
   [data-purpose="site-navigation-header"] [data-purpose="nav-links"] {
-    position: absolute;
+    position: fixed;
     z-index: 20;
-    top: calc(100% + .55rem);
-    right: 1.125rem;
+    top: 0;
+    right: 0;
+    bottom: 0;
     display: flex !important;
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-end;
+    justify-content: flex-start;
     gap: .85rem !important;
-    width: min(16rem, calc(100vw - 2.25rem));
-    padding: 1rem;
-    border: 2px solid #74736d;
-    border-radius: 3px;
-    outline: 1px solid rgba(37, 36, 33, .86);
-    outline-offset: 2px;
-    background: var(--site-pale-sage);
-    box-shadow: 0 5px 0 rgba(30, 22, 20, .42), inset 0 0 0 1px rgba(255, 251, 235, .34);
-    opacity: 0;
+    width: min(18rem, 86vw);
+    min-height: 100dvh;
+    padding: 7.3rem 1.5rem 1.5rem;
+    border: 0;
+    border-left: 2px solid rgba(68, 45, 40, .58);
+    border-radius: 0;
+    outline: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,.22), transparent 42%), var(--site-pale-sage);
+    box-shadow: -10px 0 28px rgba(18, 17, 15, .28), inset 1px 0 0 rgba(255, 251, 235, .42);
     visibility: hidden;
     pointer-events: none;
-    transform: translateY(-.65rem);
-    transition: opacity .18s ease, transform .18s ease, visibility .18s step-end;
+    transform: translateX(105%);
+    transition: transform .32s cubic-bezier(.22, .8, .28, 1), visibility .32s step-end;
   }
 
   [data-purpose="site-navigation-header"].mobile-menu-open [data-purpose="nav-links"] {
-    opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transform: translateY(0);
-    transition: opacity .18s ease, transform .18s ease;
+    transform: translateX(0);
+    transition: transform .32s cubic-bezier(.22, .8, .28, 1);
   }
 
   [data-purpose="site-navigation-header"] [data-purpose="nav-links"] .header-nav-button {
-    width: 100%;
-    min-height: 2.7rem;
-    padding: .72rem .8rem;
+    width: max-content;
+    min-height: 2.42rem;
+    padding: .58rem .72rem;
   }
 
   [data-purpose="site-navigation-header"] [data-purpose="nav-links"] .header-nav-label {
