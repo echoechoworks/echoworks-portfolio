@@ -162,10 +162,10 @@ function renderGameCaseStudy(): void {
             <h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">A game scored by the song</h3>
           </div>
           <p class="font-manrope text-white/70 leading-relaxed font-light text-base">Created as promotion for Copenhell and its 2026 closing act, Chopper, <em>Chopper Runs To Hell</em> turns the band’s track “New Blood” into a playable dramatic arc. The music is not a backdrop: its intro, verses and choruses determine the game’s pace, obstacle rhythm and visual scale.</p>
-          <p class="font-manrope text-white/70 leading-relaxed font-light text-base">I served as Creative Director, Lead Game Designer and Programmer. Brian Raaby of <a class="line21-link" href="https://www.line21.dk/da" target="_blank" rel="noreferrer">Line21</a> contributed Art Design under my creative direction, while Jonatan Magnussen — Chopper — worked with me to shape a visual identity that belongs in the band’s own universe.</p>
+          <p class="font-manrope text-white/70 leading-relaxed font-light text-base">I served as Creative Director, Game Designer and Programmer. Brian Raaby of <a class="line21-link" href="https://www.line21.dk/da" target="_blank" rel="noreferrer">Line21</a> contributed Art Design under my creative direction, while Jonatan Magnussen — Chopper — worked with me to shape a visual identity that belongs in the band’s own universe.</p>
           <div class="p-6 rounded-xl bg-white/[0.02] border border-white/10 space-y-4">
             <span class="font-mono text-[11px] uppercase tracking-widest text-[#6f7f68] font-semibold block">Collaborators &amp; credits</span>
-            <div class="space-y-3 font-manrope text-sm text-white/75 leading-relaxed"><p><span class="text-white font-medium">Rasmus Lundager</span><br>Creative Director, Lead Game Designer &amp; Programmer.</p><p><span class="text-white font-medium">Brian Raaby / <a class="line21-link" href="https://www.line21.dk/da" target="_blank" rel="noreferrer">Line21</a></span><br>Art Design.</p><p><span class="text-white font-medium">Jonatan Magnussen / Chopper</span><br>Visual identity collaboration, connecting the game to Chopper’s band universe.</p></div>
+            <div class="space-y-3 font-manrope text-sm text-white/75 leading-relaxed"><p><span class="text-white font-medium">Rasmus Lundager</span><br>Creative Director, Game Designer &amp; Programmer.</p><p><span class="text-white font-medium">Brian Raaby / <a class="line21-link" href="https://www.line21.dk/da" target="_blank" rel="noreferrer">Line21</a></span><br>Art Design.</p><p><span class="text-white font-medium">Jonatan Magnussen / Chopper</span><br>Visual identity collaboration, connecting the game to Chopper’s band universe.</p></div>
           </div>
           <div class="p-8 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10 relative overflow-hidden">
             <div class="absolute -right-8 -bottom-8 w-40 h-40 bg-[#6f7f68]/10 rounded-full blur-2xl pointer-events-none"></div>
@@ -609,7 +609,7 @@ async function renderProjectDetail(): Promise<void> {
   } else if (index === 2 && mediaViewport) {
     updateText('#project-kicker', 'Interactive Music Game // Copenhell 2026');
     updateText('#detail-spec-label-1', 'Role');
-    updateText('#detail-spec-value-1', 'Creative Director, Lead Game Designer & Programmer');
+    updateText('#detail-spec-value-1', 'Creative Director, Game Designer & Programmer');
     updateText('#detail-spec-label-2', 'Format');
     updateText('#detail-spec-value-2', 'Music-synchronised PC game');
     updateText('#detail-spec-label-3', 'Soundtrack');
