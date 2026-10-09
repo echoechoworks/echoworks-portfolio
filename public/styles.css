@@ -121,9 +121,9 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 [data-purpose="site-navigation-header"] .header-nav-label {
   color: #32231f;
   font-family: var(--type-meta), "IBM Plex Mono", monospace;
-  font-size: .44rem;
+  font-size: .66rem;
   font-weight: 600;
-  letter-spacing: .035em;
+  letter-spacing: .065em;
   line-height: 1;
   text-transform: uppercase;
   white-space: nowrap;
@@ -135,7 +135,7 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  inline-size: 3rem;
+  inline-size: 5.2rem;
   margin: 0 !important;
   line-height: 0;
   font-size: 0 !important;
@@ -147,8 +147,8 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 
 /* Header navigation uses the same tactile transport controls as the listening model. */
 [data-purpose="site-navigation-header"] .header-nav-button {
-  min-height: 3rem;
-  padding: .25rem;
+  min-height: 1.76rem;
+  padding: .32rem .45rem;
   border: 2px solid #74736d;
   border-radius: 2px;
   outline: 1px solid rgba(37, 36, 33, .86);
