@@ -817,6 +817,12 @@ async function renderProjectDetail(): Promise<void> {
 
 function makeLandingNavigationWork(): void {
   const links = selectAll<HTMLAnchorElement>('[data-purpose="nav-links"] a');
+  const header = document.querySelector<HTMLElement>('[data-purpose="site-navigation-header"]');
+  const menuTrigger = document.querySelector<HTMLButtonElement>('.mobile-nav-trigger');
+  const closeMobileMenu = () => {
+    header?.classList.remove('mobile-menu-open');
+    menuTrigger?.setAttribute('aria-expanded', 'false');
+  };
   const syncActiveNavigation = () => {
     const path = window.location.pathname;
     links.forEach(link => {
@@ -832,7 +838,17 @@ function makeLandingNavigationWork(): void {
   links.forEach(link => {
     const label = link.getAttribute('aria-label') || link.textContent || '';
     link.href = label.includes('Projects') ? '/projects' : label.includes('About') ? '/about' : '/#contact';
+    link.addEventListener('click', closeMobileMenu);
   });
+  menuTrigger?.addEventListener('click', () => {
+    const isOpen = header?.classList.toggle('mobile-menu-open') ?? false;
+    menuTrigger.setAttribute('aria-expanded', String(isOpen));
+  });
+  document.addEventListener('pointerdown', event => {
+    if (header?.classList.contains('mobile-menu-open') && !header.contains(event.target as Node)) closeMobileMenu();
+  });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMobileMenu(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 767) closeMobileMenu(); });
   syncActiveNavigation();
   window.addEventListener('hashchange', syncActiveNavigation);
   document.querySelector<HTMLAnchorElement>('[data-purpose="brand-logo"]')?.setAttribute('href', '/');
