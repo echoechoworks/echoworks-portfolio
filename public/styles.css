@@ -159,9 +159,9 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 }
 
 [data-purpose="site-navigation-header"] .header-nav-button--black {
-  border-color: #4a504f;
+  border-color: #66706e;
   background: var(--tape-black);
-  box-shadow: 0 0 0 1px rgba(18, 20, 20, .92), 0 2px 0 2px rgba(20, 23, 23, .62), inset 0 0 0 1px rgba(88, 92, 91, .92), inset 0 0 0 2px rgba(10, 11, 11, .7);
+  box-shadow: 0 0 0 1px rgba(113, 122, 120, .7), 0 2px 0 2px rgba(20, 23, 23, .72), inset 0 0 0 1px rgba(100, 108, 106, .96), inset 0 0 0 2px rgba(10, 11, 11, .76);
 }
 
 [data-purpose="site-navigation-header"] .header-nav-button--black .header-nav-label {
@@ -204,7 +204,7 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 [data-purpose="site-navigation-header"] .header-nav-button--black.is-current {
   /* The lamp sits behind the black faceplate: only a trace reaches the surface. */
   background: radial-gradient(circle at 50% 42%, rgba(255, 237, 184, .2), rgba(250, 198, 105, .055) 42%, transparent 65%), var(--tape-black);
-  box-shadow: inset 0 0 7px rgba(255, 216, 132, .11), inset 0 0 0 1px rgba(88, 92, 91, .92), inset 0 0 0 2px rgba(10, 11, 11, .7);
+  box-shadow: 0 0 0 1px rgba(113, 122, 120, .7), 0 2px 0 2px rgba(20, 23, 23, .72), inset 0 0 7px rgba(255, 216, 132, .11), inset 0 0 0 1px rgba(100, 108, 106, .96), inset 0 0 0 2px rgba(10, 11, 11, .76);
 }
 
 [data-purpose="site-navigation-header"] .header-nav-button--black:hover .header-nav-label,
