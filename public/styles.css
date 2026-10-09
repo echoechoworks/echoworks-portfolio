@@ -96,13 +96,13 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 
 /* The shared header gains contrast only after the page begins to scroll. */
 [data-purpose="site-navigation-header"] {
-  background-color: transparent;
+  background-color: #0b0d0c;
   transition: background-color 280ms ease, backdrop-filter 280ms ease;
 }
 
 [data-purpose="site-navigation-header"].is-scrolled {
-  background-color: rgba(6, 7, 9, 0.92);
-  backdrop-filter: blur(14px);
+  background-color: #0b0d0c;
+  backdrop-filter: none;
 }
 
 .carousel-perspective-container {
@@ -2386,19 +2386,19 @@ body:has([data-purpose="hero-container"]) [data-purpose="play-story-trigger"] {
 body:has([data-purpose="hero-container"]) [data-purpose="interactive-footer-controls"] > div > div:first-child {
   display: none !important;
 }
-/* A shorter global header keeps the existing type scale intact. */
+/* The shared header uses the generous, editorial lockup of the approved brand reference. */
 [data-purpose="site-navigation-header"] > div:first-child {
-  height: 4.5rem !important;
+  height: 6rem !important;
 }
-/* On the landing page, the navigation settles in as the page starts to move. */
+/* Keep the global header in the same deep charcoal field as the approved lockup. */
 body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"] {
-  background: rgba(23, 25, 23, .52) !important;
-  backdrop-filter: blur(8px);
+  background: #0b0d0c !important;
+  backdrop-filter: none;
   transition: background-color 650ms ease, background 650ms ease, backdrop-filter 650ms ease !important;
 }
 body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"].is-scrolled {
-  background: var(--site-ink) !important;
-  backdrop-filter: blur(14px);
+  background: #0b0d0c !important;
+  backdrop-filter: none;
 }
 /* The Arla jingle lives directly on its project still. */
 .arla-audio-viewport { position: relative; }
@@ -2439,9 +2439,9 @@ body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"
 .echoworks-echo {
   display: flex;
   align-items: center;
-  gap: .52rem;
+  gap: .8rem;
   line-height: .9;
-  color: var(--site-sand) !important;
+  color: #f5f4f0 !important;
 }
 .brand-echo-copy {
   display: flex;
@@ -2449,28 +2449,27 @@ body:has([data-purpose="hero-container"]) [data-purpose="site-navigation-header"
   align-items: center;
   gap: .06rem;
 }
-.brand-echo-copy span:nth-child(1) { font-size: .75rem; opacity: .94; }
-.brand-echo-copy span:nth-child(2) { font-size: .63rem; opacity: .53; }
-.brand-echo-copy span:nth-child(3) { font-size: .52rem; opacity: .27; }
+.brand-echo-copy span:nth-child(1) { font-size: .75rem; color: #f5f4f0; opacity: 1; }
+.brand-echo-copy span:nth-child(2) { font-size: .63rem; color: #aaa9a6; opacity: .72; }
+.brand-echo-copy span:nth-child(3) { font-size: .52rem; color: #777876; opacity: .45; }
 .brand-moth-mark {
   display: grid;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 4rem;
+  height: 4rem;
   flex: 0 0 auto;
   place-items: center;
   overflow: hidden;
-  border: 1px solid rgba(8, 10, 9, .72);
+  border: 0;
   border-radius: 0;
   background: #f5f4f0;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, .28);
+  box-shadow: none;
 }
 .brand-moth-mark img {
   display: block;
-  width: 200%;
-  height: 200%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.echoworks-echo:hover .brand-echo-copy span { opacity: 1; }
 
 /* Keep both stereo-pair labels contained and balanced in the compact control tiles. */
 #naturama-emulator .naturama-pair-controls .naturama-pair {
@@ -3596,8 +3595,8 @@ body:has(#project-breadcrumb) #game-case-study .arla-storytelling-panel p {
   }
 
   [data-purpose="site-navigation-header"] .brand-moth-mark {
-    width: 1.65rem;
-    height: 1.65rem;
+    width: 2.2rem;
+    height: 2.2rem;
   }
 
   [data-purpose="site-navigation-header"] [data-purpose="nav-links"] {
