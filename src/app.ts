@@ -816,10 +816,25 @@ async function renderProjectDetail(): Promise<void> {
 }
 
 function makeLandingNavigationWork(): void {
-  selectAll<HTMLAnchorElement>('[data-purpose="nav-links"] a').forEach(link => {
+  const links = selectAll<HTMLAnchorElement>('[data-purpose="nav-links"] a');
+  const syncActiveNavigation = () => {
+    const path = window.location.pathname;
+    links.forEach(link => {
+      const label = link.getAttribute('aria-label') || link.textContent || '';
+      const isCurrent = (label.includes('Projects') && (path === '/projects' || path.startsWith('/projects/')))
+        || (label.includes('About') && path === '/about')
+        || (label.includes('Contact') && path === '/' && window.location.hash === '#contact');
+      link.classList.toggle('is-current', isCurrent);
+      if (isCurrent) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+  };
+  links.forEach(link => {
     const label = link.getAttribute('aria-label') || link.textContent || '';
     link.href = label.includes('Projects') ? '/projects' : label.includes('About') ? '/about' : '/#contact';
   });
+  syncActiveNavigation();
+  window.addEventListener('hashchange', syncActiveNavigation);
   document.querySelector<HTMLAnchorElement>('[data-purpose="brand-logo"]')?.setAttribute('href', '/');
 }
 
