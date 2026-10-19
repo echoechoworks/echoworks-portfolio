@@ -948,11 +948,7 @@ async function makeLandingCarousel(): Promise<void> {
     card.dataset.project = slugs[projectIndex];
     const sourceImage = source.querySelector<HTMLImageElement>('img');
     const targetImage = card.querySelector<HTMLImageElement>('img');
-    if (sourceImage && targetImage) {
-      targetImage.src = sourceImage.src;
-      targetImage.alt = sourceImage.alt || source.querySelector('h2')?.textContent?.trim() || '';
-      targetImage.classList.toggle('pcc-carousel-image', projectIndex === 9);
-    }
+    if (sourceImage && targetImage) { targetImage.src = sourceImage.src; targetImage.alt = sourceImage.alt || source.querySelector('h2')?.textContent?.trim() || ''; }
     const title = source.querySelector('h2')?.textContent?.trim() || '';
     const subtitle = source.querySelector('h2 + p')?.textContent?.trim() || '';
     const metadata = source.querySelector('p.font-meta-technical')?.textContent?.trim() || '';
