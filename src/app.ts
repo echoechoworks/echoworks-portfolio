@@ -922,47 +922,7 @@ function makeLandingExploreScroll(): void {
 async function makeLandingCarousel(): Promise<void> {
   let cards = selectAll<HTMLElement>('.carousel-card');
   if (!cards.length) return;
-  if (cards.length === 6) {
-    const onlyYouCard = cards[0].cloneNode(true) as HTMLElement;
-    onlyYouCard.dataset.index = '6';
-    cards[0].parentElement?.append(onlyYouCard);
-    cards = selectAll<HTMLElement>('.carousel-card');
-  }
-  const gallery = new DOMParser().parseFromString(await (await fetch('/projects')).text(), 'text/html');
-  const galleryCards = [...gallery.querySelectorAll<HTMLElement>('.project-item')];
   const featuredIndexes = [0, 1, 3, 2, 6, 4, 9];
-  const carouselWorkTypes: Record<number, string> = {
-    0: 'SPATIAL AUDIO EXPERIENCE',
-    1: 'COMMERCIAL MUSIC SCORE',
-    2: 'VIDEO GAME',
-    3: 'THEATER',
-    4: 'MUSIC VIDEO',
-    6: 'DOCUMENTARY',
-    9: 'ARTIST-RUN RECORD LABEL',
-  };
-
-  cards.forEach((card, position) => {
-    const projectIndex = featuredIndexes[position];
-    const source = galleryCards[projectIndex];
-    if (!source) return;
-    card.dataset.project = slugs[projectIndex];
-    const sourceImage = source.querySelector<HTMLImageElement>('img');
-    const targetImage = card.querySelector<HTMLImageElement>('img');
-    if (sourceImage && targetImage) { targetImage.src = sourceImage.src; targetImage.alt = sourceImage.alt || source.querySelector('h2')?.textContent?.trim() || ''; }
-    const title = source.querySelector('h2')?.textContent?.trim() || '';
-    const subtitle = source.querySelector('h2 + p')?.textContent?.trim() || '';
-    const metadata = source.querySelector('p.font-meta-technical')?.textContent?.trim() || '';
-    const carouselMetadata = projectIndex === 2
-      ? metadata.replace(' / Copenhell × Chopper', '')
-      : metadata;
-    const badge = card.querySelector('.relative .font-mono');
-    if (badge) badge.textContent = `${String(projectIndex + 1).padStart(2, '0')} / ${carouselWorkTypes[projectIndex] || 'SELECTED WORK'}`;
-    const heading = card.querySelector('h3');
-    if (heading) heading.textContent = title;
-    const meta = heading?.previousElementSibling;
-    if (meta) meta.textContent = subtitle ? `${subtitle} — ${carouselMetadata}` : carouselMetadata;
-  });
-
   let dots = selectAll<HTMLElement>('.carousel-dot');
   if (dots.length === 6) {
     const onlyYouDot = dots[0].cloneNode(true) as HTMLElement;
@@ -1175,16 +1135,6 @@ async function makeLandingCarousel(): Promise<void> {
     startHoverRotation(direction);
   });
   stage?.addEventListener('mouseleave', stopHoverRotation);
-  let lastWheelGesture = -Infinity;
-  stage?.addEventListener('wheel', event => {
-    if (event.ctrlKey || Math.max(Math.abs(event.deltaX), Math.abs(event.deltaY)) < 8) return;
-    event.preventDefault();
-    if (secretOpening || performance.now() - lastWheelGesture < 240) return;
-    lastWheelGesture = performance.now();
-    stopHoverRotation();
-    const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
-    goTo(current + (delta > 0 ? 1 : -1));
-  }, { passive: false });
 
   cards.forEach((card, index) => {
     card.tabIndex = 0;
@@ -1196,8 +1146,10 @@ async function makeLandingCarousel(): Promise<void> {
     card.addEventListener('click', activate);
     card.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); activate(); } });
   });
+  stage?.classList.add('is-initializing');
   update();
   cards[current].classList.add('front-card');
+  requestAnimationFrame(() => requestAnimationFrame(() => stage?.classList.remove('is-initializing')));
 }
 
 function makeNaturamaEmulator(): void {

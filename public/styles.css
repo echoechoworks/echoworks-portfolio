@@ -4178,3 +4178,6 @@ body.secret-page, body.secret-page main.secret-room { background: #08090b !impor
 .secret-orbit i { position: absolute; width: .3rem; height: .3rem; background: #c1bb9a; border-radius: 50%; top: 15%; left: 14%; box-shadow: 0 0 18px #c1bb9a66; }
 @keyframes secret-arrive { from { opacity: 0; transform: translateY(12px); filter: blur(8px); } to { opacity: 1; transform: none; filter: none; } }
 @media (prefers-reduced-motion: reduce) { .secret-crossing, .secret-is-crossing > :not(.secret-crossing), .secret-room-copy { animation: none; } .secret-crossing-smoke, .secret-room-smoke, .secret-crossing-dust { animation: none; } .secret-crossing-signal { animation: none; opacity: .6; } }
+
+/* Initial positioning must never animate from placeholder positions. */
+.carousel-perspective-container.is-initializing .carousel-card { transition: none !important; }
