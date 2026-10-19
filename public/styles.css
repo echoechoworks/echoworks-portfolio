@@ -4092,3 +4092,29 @@ body:has(.project-item) #projects-list .list-item .font-headline-sm.italic {
   .pcc-intro-art img { min-height: 17rem; max-height: 26rem; }
   .pcc-intro-art::after { background: linear-gradient(180deg, rgba(20,12,18,.28), transparent 35%); }
 }
+
+/* Projects gallery: pale sage canvas with dark project cards in both views. */
+body:has(#projects-grid),
+body:has(#projects-grid) main.bg-primary,
+body:has(#projects-grid) main.bg-primary > div.bg-primary {
+  background: var(--gallery-card-surface) !important;
+  color: var(--site-backdrop) !important;
+}
+body:has(#projects-grid) main > div > section:first-child h1,
+body:has(#projects-grid) main > div > section:first-child p,
+body:has(#projects-grid) main > div > section:first-child .font-meta-technical {
+  color: var(--site-backdrop) !important;
+}
+#projects-grid .project-item,
+#projects-list .list-item {
+  background: var(--site-backdrop) !important;
+  color: var(--gallery-card-surface) !important;
+}
+body:has(.project-item) #projects-grid .project-item *,
+body:has(.project-item) #projects-list .list-item * {
+  color: var(--gallery-card-surface) !important;
+}
+body:has(.project-item) #projects-grid .project-item .font-headline-md.italic,
+body:has(.project-item) #projects-list .list-item .font-headline-sm.italic {
+  color: var(--tape-red) !important;
+}
