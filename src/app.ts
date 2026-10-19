@@ -1038,10 +1038,34 @@ async function makeLandingCarousel(): Promise<void> {
     });
     updateDots();
   };
-  const goTo = (index: number) => {
-    current = normaliseIndex(index);
+  const secretGestures: number[] = [];
+  let secretOpening = false;
+  const registerSecretGesture = () => {
+    if (secretOpening) return;
+    const now = performance.now();
+    while (secretGestures.length && now - secretGestures[0] > 6000) secretGestures.shift();
+    secretGestures.push(now);
+    if (secretGestures.length < 10) return;
+    secretOpening = true;
+    stopHoverRotation();
+    stopInertia();
+    const veil = document.createElement('div');
+    veil.className = 'secret-crossing';
+    veil.setAttribute('role', 'status');
+    veil.setAttribute('aria-label', 'Entering a hidden place');
+    veil.innerHTML = '<div class="secret-crossing-smoke"></div><div class="secret-crossing-dust"></div><div class="secret-crossing-signal" aria-hidden="true">THERE IS SOMETHING BETWEEN THE FRAMES</div>';
+    document.body.append(veil);
+    document.body.classList.add('secret-is-crossing');
+    window.setTimeout(() => { window.location.href = '/between-the-frames'; }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 450 : 2300);
+  };
+  const goTo = (index: number, countRotationStart = true) => {
+    if (secretOpening) return;
+    const next = normaliseIndex(index);
+    if (next === current) return;
+    current = next;
     wheelPosition = current;
     update();
+    if (countRotationStart) registerSecretGesture();
     if (frontCardTimer) window.clearTimeout(frontCardTimer);
     frontCardTimer = window.setTimeout(() => {
       cards.forEach(card => card.classList.remove('front-card'));
@@ -1055,6 +1079,7 @@ async function makeLandingCarousel(): Promise<void> {
     stage?.classList.remove('is-spinning');
   };
   const settleWheel = (target = Math.round(wheelPosition)) => {
+    if (secretOpening) return;
     let previousTime = performance.now();
     stage?.classList.add('is-spinning');
     const settle = (now: number) => {
@@ -1112,7 +1137,8 @@ async function makeLandingCarousel(): Promise<void> {
     ignoreClickUntil = performance.now() + 350;
     // A release advances a single card in the swipe direction. There is no
     // momentum, so each gesture ends in a predictable, tidy snap.
-    settleWheel(Math.round(dragStartPosition) + swipeDirection);
+    registerSecretGesture();
+    if (!secretOpening) settleWheel(Math.round(dragStartPosition) + swipeDirection);
   };
   stage?.addEventListener('pointerup', event => endDrag(false, event.clientX));
   stage?.addEventListener('pointercancel', () => endDrag(true));
@@ -1128,10 +1154,14 @@ async function makeLandingCarousel(): Promise<void> {
     stopHoverRotation();
     if (!direction) return;
     hoverDirection = direction;
+    // Count each new intent before scheduling its visual transition.
+    registerSecretGesture();
+    if (secretOpening) return;
     hoverDelay = window.setTimeout(() => requestAnimationFrame(() => {
       if (hoverDirection !== direction) return;
-      goTo(current + direction);
-      hoverInterval = window.setInterval(() => goTo(current + direction), 1650);
+      goTo(current + direction, false);
+      // Continued movement belongs to this same rotation; only its start counts.
+      hoverInterval = window.setInterval(() => goTo(current + direction, false), 1650);
     }), 16);
   };
   stage?.addEventListener('mousemove', event => {
@@ -1145,6 +1175,17 @@ async function makeLandingCarousel(): Promise<void> {
     startHoverRotation(direction);
   });
   stage?.addEventListener('mouseleave', stopHoverRotation);
+  let lastWheelGesture = -Infinity;
+  stage?.addEventListener('wheel', event => {
+    if (event.ctrlKey || Math.max(Math.abs(event.deltaX), Math.abs(event.deltaY)) < 8) return;
+    event.preventDefault();
+    if (secretOpening || performance.now() - lastWheelGesture < 240) return;
+    lastWheelGesture = performance.now();
+    stopHoverRotation();
+    const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+    goTo(current + (delta > 0 ? 1 : -1));
+  }, { passive: false });
+
   cards.forEach((card, index) => {
     card.tabIndex = 0;
     card.setAttribute('role', 'link');

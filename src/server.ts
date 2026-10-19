@@ -10,6 +10,7 @@ const routes: Record<string, string> = {
   '/': 'public/index.html',
   '/projects': 'public/projects.html',
   '/about': 'public/about.html',
+  '/between-the-frames': 'public/secret.html',
   '/app.js': 'src/app.ts',
   '/styles.css': 'public/styles.css',
   '/tailwind.js': 'public/tailwind.js',

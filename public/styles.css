@@ -1676,10 +1676,11 @@ body [class*="bg-[#a24e44]"] {
   background: var(--tape-yellow) !important;
 }
 
-/* Main site backdrop sampled from the supplied reference. */
+/* Soft dark canvas, separate from the shared header and footer ink. */
 :root {
+  --site-dark-surface: #2d2c2a;
   --site-backdrop: #2f2c27;
-  --echoworks-ink: var(--site-backdrop);
+  --echoworks-ink: var(--site-dark-surface);
 }
 
 body,
@@ -1690,7 +1691,7 @@ body:has(.project-item) main.bg-primary,
 body:has(.project-item) main.bg-primary > div.bg-primary,
 body:has(#project-breadcrumb) main,
 .about-page {
-  background: var(--site-backdrop) !important;
+  background: var(--site-dark-surface) !important;
 }
 
 /* Projects gallery: weathered pale-sage cards from the supplied reference. */
@@ -1865,9 +1866,8 @@ body:has(.project-item) .project-item .pt-unit-md > span:last-child {
 /* Shared shell */
 body,
 main,
-.about-page,
-.global-footer {
-  background-color: var(--site-backdrop) !important;
+.about-page {
+  background-color: var(--site-dark-surface) !important;
   color: var(--site-pale-sage) !important;
 }
 [data-purpose="site-navigation-header"],
@@ -1890,7 +1890,7 @@ main,
 
 /* Landing page: the carousel adopts the same framed project-object treatment. */
 body:has([data-purpose="hero-container"]) [data-purpose="project-carousel-section"] {
-  background: var(--site-backdrop) !important;
+  background: var(--site-dark-surface) !important;
 }
 body:has([data-purpose="hero-container"]) [data-purpose="statement-display"] h1,
 body:has([data-purpose="hero-container"]) [data-purpose="statement-display"] span,
@@ -4107,7 +4107,7 @@ body:has(#projects-grid) main > div > section:first-child .font-meta-technical {
 }
 #projects-grid .project-item,
 #projects-list .list-item {
-  background: var(--site-ink) !important;
+  background: var(--site-dark-surface) !important;
   color: var(--gallery-card-surface) !important;
 }
 body:has(.project-item) #projects-grid .project-item *,
@@ -4118,3 +4118,63 @@ body:has(.project-item) #projects-grid .project-item .font-headline-md.italic,
 body:has(.project-item) #projects-list .list-item .font-headline-sm.italic {
   color: var(--tape-red) !important;
 }
+
+/* Keep the global footer at its original dark depth. */
+.global-footer { background: var(--site-ink) !important; }
+
+/* Restore the original typographic navigation on desktop and in the mobile drawer. */
+[data-purpose="site-navigation-header"] [data-purpose="nav-links"] { gap: 1.25rem !important; }
+[data-purpose="site-navigation-header"] [data-purpose="nav-links"] a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  inline-size: auto;
+  width: max-content;
+  min-height: 0;
+  padding: .3rem 0;
+  line-height: 1;
+  transition: opacity .2s ease;
+}
+[data-purpose="site-navigation-header"] .header-navigation-art {
+  display: block;
+  width: auto;
+  height: .7rem;
+  pointer-events: none;
+}
+[data-purpose="site-navigation-header"] [data-purpose="nav-links"] a:hover { opacity: .7; }
+@media (max-width: 767px) {
+  [data-purpose="site-navigation-header"] [data-purpose="nav-links"] { align-items: flex-start; gap: 1.4rem !important; }
+  [data-purpose="site-navigation-header"] .header-navigation-art { height: .81rem; }
+  }
+
+/* Reading text uses the arrow; interactive controls keep their own cursors. */
+body { cursor: default; }
+a, button, [role="link"], [role="button"], summary { cursor: pointer; }
+input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]),
+textarea, [contenteditable="true"] { cursor: text; }
+
+/* A hidden passage, revealed through ten deliberate carousel gestures. */
+.secret-crossing { position: fixed; inset: 0; z-index: 99999; overflow: hidden; pointer-events: all; background: #050607; animation: secret-blackout 2.3s ease both; }
+.secret-crossing-smoke, .secret-room-smoke { position: absolute; inset: -35%; background: radial-gradient(ellipse at 28% 46%, #47504455, transparent 45%), radial-gradient(ellipse at 72% 56%, #55405755, transparent 43%), radial-gradient(ellipse at 50% 80%, #5d503e44, transparent 47%); filter: blur(55px); animation: secret-smoke 13s ease-in-out infinite alternate; }
+.secret-crossing-smoke { animation: secret-smoke 2.3s ease-in-out both; mix-blend-mode: screen; }
+.secret-crossing-dust { position: absolute; inset: -60%; opacity: .13; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23n)' opacity='.6' d='M0 0h180v180H0z'/%3E%3C/svg%3E"); animation: secret-dust 1.3s steps(3) infinite; }
+.secret-crossing-signal { position: absolute; top: 49%; left: 10%; right: 10%; text-align: center; color: #b8baaa; font: 400 clamp(.6rem, 1vw, .85rem)/1.5 monospace; letter-spacing: .32em; animation: secret-signal 2.3s ease both; }
+.secret-is-crossing > :not(.secret-crossing) { pointer-events: none; animation: secret-tear 1.8s ease both; }
+@keyframes secret-blackout { 0% { opacity: 0; } 16% { opacity: .24; } 30% { opacity: .7; } 44% { opacity: .55; } 66%, 100% { opacity: 1; } }
+@keyframes secret-tear { 0% { filter: none; } 12% { transform: translateX(-5px) skewX(.6deg); filter: hue-rotate(22deg) blur(1px); } 20% { transform: translateX(3px); } 34% { transform: translateX(-8px) skewX(-1deg); filter: hue-rotate(-28deg) blur(3px); } 55%, 100% { transform: scale(1.025); filter: brightness(.15) blur(6px); } }
+@keyframes secret-signal { 0%, 20% { opacity: 0; transform: translateX(-8px); } 40%, 60% { opacity: .65; transform: translateX(0); } 100% { opacity: 0; } }
+@keyframes secret-smoke { from { transform: translate(-5%, 3%) rotate(-9deg) scale(1); } to { transform: translate(7%, -4%) rotate(12deg) scale(1.15); } }
+@keyframes secret-dust { 0%, 100% { transform: translate(0, 0); } 33% { transform: translate(2%, -1%); } 66% { transform: translate(-1%, 2%); } }
+body.secret-page, body.secret-page main.secret-room { background: #08090b !important; color: #b8baaa !important; }
+.secret-room { position: relative; isolation: isolate; display: grid; place-items: center; min-height: 100svh; padding: 5rem 1.5rem; overflow: hidden; }
+.secret-room-copy { position: relative; z-index: 2; text-align: center; max-width: 50rem; animation: secret-arrive 2s ease both; }
+.secret-eyebrow { font: .65rem/1.5 monospace; letter-spacing: .25em; color: #908873; margin: 0 0 2.2rem; }
+.secret-room h1 { font: 400 clamp(3rem, 8vw, 7.5rem)/1.02 Georgia, serif; letter-spacing: -.045em; margin: 0 0 2rem; color: #c5c3b4; }
+.secret-whisper { color: #94958c; font: 300 clamp(.9rem, 2vw, 1.1rem)/1.8 sans-serif; }
+.secret-return { display: inline-flex; gap: 1.2rem; padding: .85rem 0; margin-top: 2.5rem; color: #b8baaa; border-bottom: 1px solid #b8baaa44; text-decoration: none; font: .65rem/1.5 monospace; letter-spacing: .15em; text-transform: uppercase; transition: color .25s, border-color .25s; }
+.secret-return:hover { color: #e1d5b4; border-color: #e1d5b4; }
+.secret-coordinate { position: absolute; bottom: 1.8rem; font: .55rem monospace; letter-spacing: .2em; color: #686b63; }
+.secret-orbit { position: absolute; width: min(75vw, 38rem); aspect-ratio: 1; border: 1px solid #a8aaa51a; border-radius: 50%; box-shadow: 0 0 120px #72577914, inset 0 0 120px #67715e0d; transform: rotate(-25deg) scaleY(.75); }
+.secret-orbit i { position: absolute; width: .3rem; height: .3rem; background: #c1bb9a; border-radius: 50%; top: 15%; left: 14%; box-shadow: 0 0 18px #c1bb9a66; }
+@keyframes secret-arrive { from { opacity: 0; transform: translateY(12px); filter: blur(8px); } to { opacity: 1; transform: none; filter: none; } }
+@media (prefers-reduced-motion: reduce) { .secret-crossing, .secret-is-crossing > :not(.secret-crossing), .secret-room-copy { animation: none; } .secret-crossing-smoke, .secret-room-smoke, .secret-crossing-dust { animation: none; } .secret-crossing-signal { animation: none; opacity: .6; } }
