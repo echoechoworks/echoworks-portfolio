@@ -1,4 +1,4 @@
-const slugs = ['naturama-360-sound-experience', 'arla-commercial-music-composition', 'new-blood-copenhell-105', 'uskyldig', 'deirdre-only-you', 'late-runner-im-a-dinosaur', 'designed-to-be-kept', 'mothland-copenhagen-windowsills', 'quiet-sonia-qs'];
+const slugs = ['naturama-360-sound-experience', 'arla-commercial-music-composition', 'new-blood-copenhell-105', 'uskyldig', 'deirdre-only-you', 'late-runner-im-a-dinosaur', 'designed-to-be-kept', 'mothland-copenhagen-windowsills', 'quiet-sonia-qs', 'pink-cotton-candy-records'];
 const mothlandArtwork = '/assets/album-cover-3000x3000.png';
 const rolesByProject = [
   ['audio-design', 'music-composition', 'creative-production'],
@@ -10,6 +10,7 @@ const rolesByProject = [
   ['audio-design'],
   ['music-composition'],
   ['music-composition'],
+  ['creative-production', 'music-composition'],
 ];
 
 type Project = { index: number; title: string; subtitle: string; description: string; meta: string; category: string; image: string };
@@ -392,6 +393,31 @@ function renderQuietSoniaCaseStudy(): void {
   }
   if (commission) commission.innerHTML = `<div class="w-full rounded-2xl bg-gradient-to-r from-[#12141a] via-[#101217] to-[#181513] border border-white/15 p-8 sm:p-14 relative overflow-hidden shadow-2xl"><div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-[#364d4f]/20 blur-3xl pointer-events-none"></div><div class="relative z-10 max-w-3xl space-y-6"><div class="inline-flex items-center gap-2 font-mono text-[11px] text-[#dbcb26] uppercase tracking-widest"><span class="w-1.5 h-1.5 bg-[#dbcb26]"></span><span>Independent music</span></div><h3 class="font-bodoni text-3xl sm:text-4xl md:text-5xl text-white font-normal leading-tight">Looking for music with its own world?</h3><p class="font-manrope text-white/70 text-base leading-relaxed font-light">I write, produce and shape independent music projects from the first sound to the final record.</p><div class="pt-4"><a class="px-7 py-3.5 rounded-lg bg-[#dbcb26] hover:bg-[#e6d743] text-[#171917] font-mono text-xs uppercase tracking-widest transition-colors inline-flex items-center gap-2 font-semibold" href="mailto:rasmus.jon@outlook.com?subject=Independent%20Music%20Inquiry"><span>Start a conversation</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span></a></div></div></div>`;
 }
+
+function renderPinkCottonCandyCaseStudy(): void {
+  const generic = document.getElementById('project-generic-case-study');
+  const caseStudy = document.getElementById('game-case-study');
+  const commission = document.getElementById('project-commission-section');
+  generic?.classList.add('hidden');
+  if (caseStudy) {
+    caseStudy.classList.remove('hidden');
+    caseStudy.innerHTML = `
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <div class="lg:col-span-5 space-y-5"><div><span class="font-mono text-[11px] text-[#dbcb26] uppercase tracking-widest block mb-2">Chapter 01 // A shared space</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">A label built around singular voices</h3></div><p class="font-manrope text-white/70 leading-relaxed font-light text-base">Pink Cotton Candy Records is an artist-run Copenhagen micro-label for alternative and experimental music. Rather than following one genre, the label gathers projects with their own aesthetic logic and gives them room to be heard on their own terms.</p><p class="font-manrope text-white/70 leading-relaxed font-light text-base">My work spans A&amp;R and finance: listening for the ideas worth developing, then helping build the practical foundation that lets each release reach its audience without losing what made it particular.</p></div>
+        <figure class="lg:col-span-7 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]"><img src="/assets/pink-cotton-candy/candy-floss-print.jpg" alt="Pink Cotton Candy print" class="w-full h-auto max-h-[620px] object-cover object-center"><figcaption class="px-5 py-4 font-mono text-[10px] uppercase tracking-widest text-white/45">Pink Cotton Candy print</figcaption></figure>
+      </div>
+      <div class="mt-14 pt-10 border-t border-white/10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <div class="lg:col-span-4"><span class="font-mono text-[11px] text-[#dbcb26] uppercase tracking-widest block mb-2">Chapter 02 // Release ecology</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">Care beyond the music</h3></div>
+        <div class="lg:col-span-8 space-y-5"><p class="font-manrope text-white/70 leading-relaxed font-light text-base">A release asks for more than a finished master. It needs clear agreements, realistic budgets, artwork, metadata, distribution, communication and a way of meeting listeners where they already are. Those details are the infrastructure that protects the music and the people making it.</p><p class="font-manrope text-white/70 leading-relaxed font-light text-base">Pink Cotton Candy works with physical editions and digital circulation side by side. The aim is a small but durable route from artist to listener, shaped with care rather than speed.</p></div>
+      </div>
+      <div class="mt-14 pt-10 border-t border-white/10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <div class="lg:col-span-4"><span class="font-mono text-[11px] text-[#dbcb26] uppercase tracking-widest block mb-2">Chapter 03 // Staying power</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">Duration over novelty</h3></div>
+        <div class="lg:col-span-8 space-y-5"><p class="font-manrope text-white/70 leading-relaxed font-light text-base">The label is part of a local musical ecology. It values artistic autonomy, generosity and a fairer culture around independent work: one where a record can keep finding people after release week, and where collaboration does not have to mean exhaustion.</p><p class="font-manrope text-white/70 leading-relaxed font-light text-base">That long view makes room for experimentation. It lets artists keep developing, listeners keep returning and a community grow around work that might otherwise remain at the edge of the map.</p></div>
+      </div>`;
+  }
+  if (commission) commission.innerHTML = `<div class="w-full rounded-2xl bg-gradient-to-r from-[#191016] via-[#121217] to-[#1d101a] border border-white/15 p-8 sm:p-14 relative overflow-hidden shadow-2xl"><div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-[#f062c6]/15 blur-3xl pointer-events-none"></div><div class="relative z-10 max-w-3xl space-y-6"><div class="inline-flex items-center gap-2 font-mono text-[11px] text-[#f29ad7] uppercase tracking-widest"><span class="w-1.5 h-1.5 bg-[#f29ad7]"></span><span>Pink Cotton Candy Records</span></div><h3 class="font-bodoni text-3xl sm:text-4xl md:text-5xl text-white font-normal leading-tight">Listen, support and stay in touch.</h3><p class="font-manrope text-white/70 text-base leading-relaxed font-light">Discover the artists, releases and upcoming activity through Pink Cotton Candy’s website and Bandcamp.</p><div class="pt-4 flex flex-wrap gap-3"><a class="px-6 py-3 rounded-lg bg-[#f29ad7] hover:bg-[#f6b4e0] text-[#21111e] font-mono text-xs uppercase tracking-widest transition-colors inline-flex items-center gap-2 font-semibold" href="https://www.pinkcottoncandyrecords.com/" target="_blank" rel="noreferrer">Website ↗</a><a class="px-6 py-3 rounded-lg border border-white/25 hover:border-[#f29ad7] text-white font-mono text-xs uppercase tracking-widest transition-colors inline-flex items-center gap-2" href="https://pinkcottoncandy.bandcamp.com/artists" target="_blank" rel="noreferrer">Bandcamp ↗</a></div></div></div>`;
+}
+
 const projectDrawerQuotes: Record<string, string> = {
   'new-blood-copenhell-105': 'Each new section should feel like the next movement in the song — not a level pasted onto it.',
   'arla-commercial-music-composition': 'A melody can feel like a familiar memory, even as its sound and setting change.',
@@ -401,6 +427,7 @@ const projectDrawerQuotes: Record<string, string> = {
   'mothland-copenhagen-windowsills': 'A private act of listening can slowly become a world you are ready to share.',
   'quiet-sonia-qs': 'The record works because seven people are listening into the same moment.',
   'designed-to-be-kept': 'The sound needed to feel like a memory in motion: familiar enough to recognise, open enough to become something new.',
+  'pink-cotton-candy-records': 'A small record label can be an infrastructure for attention, autonomy and shared risk.',
 };
 
 function makeProjectDetailDrawer(caseStudy: HTMLElement | null, quoteText: string): void {
@@ -802,6 +829,22 @@ async function renderProjectDetail(): Promise<void> {
     if (mediaViewport) {
       mediaViewport.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/Arur-S-nuKw?rel=0" title="Designed To Be Kept — Royal Danish Academy Graduation Documentary" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
     }
+  } else if (index === 9 && mediaViewport) {
+    updateText('#project-kicker', 'Independent Record Label // Copenhagen');
+    updateText('#detail-spec-label-1', 'Role');
+    updateText('#detail-spec-value-1', 'A&R & Finance');
+    updateText('#detail-spec-label-2', 'Format');
+    updateText('#detail-spec-value-2', 'Artist-run independent record label');
+    updateText('#detail-spec-label-3', 'Based in');
+    updateText('#detail-spec-value-3', 'Copenhagen, Denmark');
+    updateText('#detail-spec-label-4', 'Listen & support');
+    const pccLinks = document.getElementById('detail-spec-value-4');
+    if (pccLinks) pccLinks.innerHTML = '<a href="https://www.pinkcottoncandyrecords.com/" target="_blank" rel="noreferrer">Website ↗</a> <span class="text-white/30">/</span> <a href="https://pinkcottoncandy.bandcamp.com/artists" target="_blank" rel="noreferrer">Bandcamp ↗</a>';
+    document.getElementById('detail-spec-row-4')?.classList.remove('hidden');
+    renderPinkCottonCandyCaseStudy();
+    mediaViewport.classList.remove('aspect-[16/9]', 'lg:aspect-[21/9]');
+    mediaViewport.classList.add('pcc-intro-viewport');
+    mediaViewport.innerHTML = '<div class="pcc-intro-copy"><span class="font-mono text-[11px] uppercase tracking-widest text-[#f29ad7]">Pink Cotton Candy Records</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">A home for work with its own gravity.</h3><p class="font-manrope text-white/70 leading-relaxed font-light text-base">An artist-run label for adventurous records, built in close conversation with the people who make them.</p><div class="pcc-intro-links"><a href="https://www.pinkcottoncandyrecords.com/" target="_blank" rel="noreferrer">Visit the label ↗</a><a href="https://pinkcottoncandy.bandcamp.com/artists" target="_blank" rel="noreferrer">Bandcamp ↗</a></div></div><figure class="pcc-intro-art"><img src="/assets/pink-cotton-candy/pcc-intro-artwork.png" alt="Pink Cotton Candy artwork for Like a Leaf Opening to the Sky"></figure>';
   } else if (image && project.image) {
     image.src = index === 7 ? mothlandArtwork : project.image;
     image.alt = project.title;
@@ -879,15 +922,15 @@ function makeLandingExploreScroll(): void {
 async function makeLandingCarousel(): Promise<void> {
   let cards = selectAll<HTMLElement>('.carousel-card');
   if (!cards.length) return;
-  if (cards.length === 5) {
+  if (cards.length === 6) {
     const onlyYouCard = cards[0].cloneNode(true) as HTMLElement;
-    onlyYouCard.dataset.index = '5';
+    onlyYouCard.dataset.index = '6';
     cards[0].parentElement?.append(onlyYouCard);
     cards = selectAll<HTMLElement>('.carousel-card');
   }
   const gallery = new DOMParser().parseFromString(await (await fetch('/projects')).text(), 'text/html');
   const galleryCards = [...gallery.querySelectorAll<HTMLElement>('.project-item')];
-  const featuredIndexes = [0, 1, 3, 2, 6, 4];
+  const featuredIndexes = [0, 1, 3, 2, 6, 4, 9];
   const carouselWorkTypes: Record<number, string> = {
     0: 'SPATIAL AUDIO EXPERIENCE',
     1: 'COMMERCIAL MUSIC SCORE',
@@ -895,6 +938,7 @@ async function makeLandingCarousel(): Promise<void> {
     3: 'THEATER',
     4: 'MUSIC VIDEO',
     6: 'DOCUMENTARY',
+    9: 'ARTIST-RUN RECORD LABEL',
   };
 
   cards.forEach((card, position) => {
@@ -920,10 +964,10 @@ async function makeLandingCarousel(): Promise<void> {
   });
 
   let dots = selectAll<HTMLElement>('.carousel-dot');
-  if (dots.length === 5) {
+  if (dots.length === 6) {
     const onlyYouDot = dots[0].cloneNode(true) as HTMLElement;
-    onlyYouDot.dataset.index = '5';
-    onlyYouDot.setAttribute('aria-label', 'Slide 6');
+    onlyYouDot.dataset.index = '6';
+    onlyYouDot.setAttribute('aria-label', 'Slide 7');
     onlyYouDot.className = 'carousel-dot w-2.5 h-2.5 rounded-full bg-white/35 hover:bg-white/70 transition-all duration-300';
     dots[0].parentElement?.append(onlyYouDot);
     dots = selectAll<HTMLElement>('.carousel-dot');

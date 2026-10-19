@@ -4050,3 +4050,45 @@ body:has(.project-item) #projects-list .list-item .font-headline-sm.italic {
     font-size: .67rem;
   }
 }
+
+/* Pink Cotton Candy — project introduction */
+.pcc-intro-viewport {
+  min-height: min(34rem, 62vw);
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(18rem, .95fr);
+  align-items: stretch;
+  overflow: hidden;
+  background: linear-gradient(132deg, #171219 0%, #101115 56%, #241421 100%);
+}
+.pcc-intro-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.35rem;
+  padding: clamp(2rem, 5vw, 5rem);
+}
+.pcc-intro-copy h3 { margin: 0; }
+.pcc-intro-copy p { max-width: 31rem; margin: 0; }
+.pcc-intro-links { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .4rem; }
+.pcc-intro-links a {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(242,154,215,.52);
+  color: #f4addd;
+  padding: .72rem 1rem;
+  font-family: var(--font-mono, monospace);
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.pcc-intro-links a:hover { background: #f29ad7; border-color: #f29ad7; color: #21111e; }
+.pcc-intro-art { position: relative; min-height: 100%; margin: 0; overflow: hidden; background: #b997a6; }
+.pcc-intro-art::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,12,18,.38), transparent 35%); pointer-events: none; }
+.pcc-intro-art img { width: 100%; height: 100%; min-height: 22rem; object-fit: cover; object-position: center; display: block; }
+@media (max-width: 767px) {
+  .pcc-intro-viewport { grid-template-columns: 1fr; min-height: 0; }
+  .pcc-intro-copy { padding: 2.25rem 1.5rem 2rem; }
+  .pcc-intro-art img { min-height: 17rem; max-height: 26rem; }
+  .pcc-intro-art::after { background: linear-gradient(180deg, rgba(20,12,18,.28), transparent 35%); }
+}
