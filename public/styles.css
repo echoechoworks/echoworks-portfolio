@@ -4107,7 +4107,7 @@ body:has(#projects-grid) main > div > section:first-child .font-meta-technical {
 }
 #projects-grid .project-item,
 #projects-list .list-item {
-  background: var(--site-backdrop) !important;
+  background: var(--site-ink) !important;
   color: var(--gallery-card-surface) !important;
 }
 body:has(.project-item) #projects-grid .project-item *,
