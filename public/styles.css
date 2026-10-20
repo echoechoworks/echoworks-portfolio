@@ -52,12 +52,14 @@ dialog button { float: right; padding: 8px 12px; border: 1px solid #ffffff55; ma
 
 /* Square and portrait cover art should retain its full composition. */
 .project-item[data-project="mothland-copenhagen-windowsills"] img,
+.project-item[data-project="quiet-sonia-qs"] img,
 .project-item[data-project="o-and-s-solitary-resonance"] img,
 .full-artwork {
   object-fit: contain !important;
 }
 
 .project-item[data-project="mothland-copenhagen-windowsills"] .relative,
+.project-item[data-project="quiet-sonia-qs"] .relative,
 .project-item[data-project="o-and-s-solitary-resonance"] .relative {
   background-color: #000 !important;
 }
@@ -4181,3 +4183,226 @@ body.secret-page, body.secret-page main.secret-room { background: #08090b !impor
 
 /* Initial positioning must never animate from placeholder positions. */
 .carousel-perspective-container.is-initializing .carousel-card { transition: none !important; }
+
+/* A Sun in the Palm: preserve the photographic framing and printed poster. */
+.sun-palm-hero { aspect-ratio: 16 / 9 !important; }
+.sun-palm-poster, .sun-palm-still { margin: 0; }
+.sun-palm-poster img { display: block; width: min(100%, 24rem); max-height: 36rem; object-fit: contain; margin-inline: auto; }
+.sun-palm-still img { display: block; width: 100%; height: auto; border-radius: .75rem; }
+.sun-palm-poster figcaption, .sun-palm-still figcaption { margin-top: .8rem; font: .65rem/1.6 var(--type-meta), monospace; letter-spacing: .1em; text-transform: uppercase; }
+.sun-palm-source { display: inline-flex; padding: .65rem 0; border-bottom: 1px solid currentColor; font: .75rem/1.5 var(--type-meta), monospace; text-decoration: none; }
+.sun-palm-source:hover { opacity: .7; }
+
+/* Alternating editorial spreads, confined to A Sun in the Palm's drawer. */
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapters { display: grid; gap: clamp(2.75rem, 5vw, 5rem); }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(2rem, 5vw, 5rem); margin: 0; }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter + .project-editorial-chapter { border-top: 1px solid rgba(209,195,169,.18); padding-top: clamp(2.75rem, 5vw, 5rem); }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter-copy { min-width: 0; max-width: 38rem; }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter-copy p { margin-top: 1.25rem; }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter-copy h3 { margin-top: .6rem; }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .sun-palm-poster { width: 100%; margin: 0; padding: clamp(1rem, 3vw, 2rem); background: rgba(0,0,0,.12); border: 1px solid rgba(209,195,169,.15); }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .sun-palm-poster img { width: 100%; max-width: 20rem; height: auto; max-height: none; }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .sun-palm-poster figcaption { text-align: center; }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .sun-palm-still { width: 100%; }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .sun-palm-still img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: .35rem; }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter--credits { align-items: start; }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .sun-palm-credit-list > div { padding: 1.5rem; border: 1px solid rgba(209,195,169,.2); }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .sun-palm-credit-list > a { margin-top: 1.25rem; }
+@media (max-width: 767px) {
+  #game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+  #game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter--film .project-editorial-chapter-copy { grid-row: 1; }
+  #game-case-study:is(.sun-palm-case-study, .pcc-case-study) .sun-palm-poster img { max-width: 17rem; }
+}
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter > * { grid-column: auto !important; min-width: 0; }
+@media (max-width: 767px) {
+  #game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter--film .project-editorial-chapter-copy { grid-row: 1; }
+}
+
+/* PCC artwork shares the alternating project layout without cropping the prints. */
+#game-case-study.pcc-case-study .pcc-editorial-art { margin: 0; padding: clamp(1rem, 3vw, 2rem); background: rgba(0,0,0,.12); border: 1px solid rgba(209,195,169,.15); }
+#game-case-study.pcc-case-study .pcc-editorial-art img { display: block; width: 100%; height: auto; max-width: 23rem; max-height: 34rem; object-fit: contain; margin-inline: auto; }
+#game-case-study.pcc-case-study .pcc-editorial-art figcaption { margin-top: .85rem; padding: 0; text-align: center; font: .65rem/1.6 var(--type-meta), monospace; letter-spacing: .1em; text-transform: uppercase; }
+#game-case-study.pcc-case-study .pcc-editorial-art--pink img { max-width: 19rem; }
+@media (max-width: 767px) { #game-case-study.pcc-case-study .pcc-editorial-art img { max-height: 27rem; } }
+
+/* A small printed emblem accompanies the philosophy without competing with the portrait. */
+.about-moth-art { width: min(100%, 11rem); margin: 3rem 0 0; }
+.about-moth-art img { display: block; width: 100%; height: auto; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+.about-moth-art figcaption { margin-top: .9rem; font: 400 .65rem/1.5 var(--type-meta), monospace; letter-spacing: .2em; text-transform: uppercase; color: var(--site-sand); opacity: .7; }
+@media (max-width: 700px) {
+  .about-philosophy-aside { display: flex; justify-content: space-between; align-items: start; gap: 1.5rem; }
+  .about-moth-art { flex: 0 0 6rem; margin: 0; }
+  .about-moth-art figcaption { font-size: .55rem; }
+}
+
+.about-page .about-moth-feature { max-width: 50rem; margin: clamp(4rem, 8vw, 8rem) auto 0; }
+.about-page .about-moth-feature img { display: block; width: 100%; height: auto; }
+.about-page .about-moth-feature figcaption { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-top: 1.25rem; color: var(--site-sand); font: 400 .7rem/1.6 var(--type-meta), monospace; letter-spacing: .12em; text-transform: uppercase; }
+.about-page .about-moth-feature .about-moth-credit { margin: 0; text-align: right; }
+@media (max-width: 700px) {
+  .about-page .about-moth-feature { width: calc(100% + 2 * clamp(1.5rem, 6vw, 6rem)); max-width: none; margin-inline: calc(-1 * clamp(1.5rem, 6vw, 6rem)); }
+  .about-page .about-moth-feature img { width: 100%; height: 100svh; object-fit: contain; background: #deded5; }
+  .about-page .about-moth-feature figcaption { padding-inline: 1.5rem; }
+}
+
+/* About: a measured reading layout, with independent chapters and a quiet margin. */
+.about-page .about-main { padding-inline: clamp(1.5rem, 6vw, 6rem); padding-bottom: clamp(4rem, 8vw, 8rem); }
+.about-page .about-statement { max-width: 1120px; grid-template-columns: minmax(150px, 240px) minmax(0, 680px); justify-content: space-between; gap: clamp(2.5rem, 6vw, 6rem); margin-top: clamp(4rem, 7vw, 7rem); padding-top: 2.5rem; }
+.about-page .about-statement-copy { max-width: 680px; min-width: 0; }
+.about-page .about-statement-copy h2 { font-size: clamp(2.4rem, 4vw, 3.75rem); line-height: 1.08; margin: 0 0 2rem; letter-spacing: -.025em; }
+.about-page .about-statement-copy p,
+.about-page .about-statement-copy p + p { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.85; letter-spacing: 0; margin-bottom: 1.4rem; }
+.about-page .about-statement-copy h2 + p { font-size: clamp(1.15rem, 1.6vw, 1.4rem); line-height: 1.65; margin-bottom: 1.75rem; }
+.about-page .about-statement-copy p:last-child { margin-bottom: 0; }
+.about-page .about-subchapter { margin-top: clamp(3rem, 5vw, 5rem); border-top-color: rgba(184,186,170,.08); }
+.about-page .about-statement-label { padding-top: .5rem; font-size: .65rem; line-height: 1.6; }
+.about-page .about-moth-art { width: min(100%, 15rem); margin-top: 2.5rem; }
+.about-page .about-moth-credit { display: block; margin-top: .45rem; font-size: .65rem; line-height: 1.6; letter-spacing: .02em; text-transform: none; }
+.about-page .about-hero-portrait { translate: -.5cm 0; }
+.about-page .about-contact { max-width: 1120px; margin-top: clamp(4rem, 7vw, 7rem); padding: 2.5rem 0 0; }
+.about-page .about-contact a { display: inline-block; max-width: 100%; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.2; }
+@media (max-width: 700px) {
+  .about-page .about-statement { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; padding-top: 1.75rem; }
+  .about-page .about-moth-art { width: 8rem; flex-basis: 8rem; margin: 0; }
+  .about-page .about-statement-copy h2 { margin-bottom: 1.5rem; }
+}
+
+/* The original artwork belongs beside the opening philosophy. */
+.about-page .about-statement:has(.about-moth-feature) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: clamp(2rem, 5vw, 5rem); }
+.about-page .about-philosophy-aside { display: block; min-width: 0; }
+.about-page .about-philosophy-aside .about-moth-feature { width: 100%; max-width: none; margin: 2rem 0 0; }
+.about-page .about-philosophy-aside .about-moth-feature figcaption { display: block; }
+.about-page .about-philosophy-aside .about-moth-credit { margin-top: .5rem; text-align: left; }
+@media (max-width: 700px) {
+  .about-page .about-statement:has(.about-moth-feature) { grid-template-columns: minmax(0, 1fr); }
+  .about-page .about-philosophy-aside .about-moth-feature { width: calc(100% + 2 * clamp(1.5rem, 6vw, 6rem)); margin-inline: calc(-1 * clamp(1.5rem, 6vw, 6rem)); }
+}
+
+/* A denser reading scale for laptop screens, preserving the large-screen spread. */
+@media (min-width: 701px) and (max-width: 1599px) {
+  .about-page .about-statement,
+  .about-page .about-contact { max-width: 960px; }
+  .about-page .about-statement { grid-template-columns: minmax(130px, 200px) minmax(0, 600px); gap: 3rem; margin-top: 3.5rem; padding-top: 1.75rem; }
+  .about-page .about-statement:has(.about-moth-feature) { grid-template-columns: minmax(0, .8fr) minmax(0, 1.3fr); gap: 3rem; }
+  .about-page .about-statement-copy h2 { font-size: 2.65rem; margin-bottom: 1.4rem; }
+  .about-page .about-statement-copy p,
+  .about-page .about-statement-copy p + p { font-size: 1rem; line-height: 1.75; margin-bottom: 1.1rem; }
+  .about-page .about-statement-copy h2 + p { font-size: 1.18rem; line-height: 1.65; margin-bottom: 1.4rem; }
+  .about-page .about-philosophy-aside .about-moth-feature { margin-top: 1.5rem; }
+  .about-page .about-intro { max-width: 1120px; min-height: max(27rem, calc(min(34vw, 29rem) * 1.1 + 1.5rem)); }
+  body.about-page .about-hero-portrait { top: 1.5rem; bottom: auto; }
+  .about-page .about-intro h1 { font-size: clamp(3.5rem, 6.5vw, 6rem); }
+  .about-page .about-lead { font-size: 1.2rem; max-width: 27rem; }
+}
+
+/* About opening shares the chapter margins and gives the portrait its own space. */
+.about-page .about-main { padding-top: clamp(8rem, 11vw, 11rem); }
+.about-page .about-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center; gap: clamp(2rem, 5vw, 5rem); max-width: 1120px; min-height: 0; }
+.about-page .about-intro-copy { max-width: none; padding-top: 0; }
+.about-page .about-intro h1 { font-size: clamp(3.5rem, 6vw, 6.5rem); line-height: 1.02; }
+.about-page .about-lead { max-width: 29rem; margin-top: 2rem; font-size: clamp(1.05rem, 1.5vw, 1.3rem); line-height: 1.65; }
+body.about-page .about-intro .about-hero-portrait { position: relative; inset: auto; width: 100%; max-width: 29rem; justify-self: end; transform: none; translate: -.5cm 0; }
+.about-page .about-intro .about-hero-portrait img { width: 100%; height: auto; }
+@media (min-width: 701px) and (max-width: 1599px) {
+  .about-page .about-intro { max-width: 960px; gap: 3rem; }
+  .about-page .about-intro h1 { font-size: clamp(3.25rem, 5.3vw, 5rem); }
+}
+@media (max-width: 700px) {
+  .about-page .about-main { padding-top: 8rem; }
+  .about-page .about-intro { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .about-page .about-intro h1 { font-size: clamp(3rem, 10vw, 4.25rem); }
+  body.about-page .about-intro .about-hero-portrait { max-width: 24rem; justify-self: center; translate: 0; }
+}
+
+@media (min-width: 701px) {
+  .about-page .about-intro-copy { width: calc(100% + clamp(2rem, 5vw, 5rem) + .5cm); }
+  .about-page .about-intro-copy .about-lead { max-width: none; }
+}
+@media (min-width: 701px) and (max-width: 1599px) {
+  .about-page .about-intro-copy { width: calc(100% + 3rem + .5cm); }
+}
+
+.about-page .about-intro h1 { font-size: clamp(4rem, 7vw, 7.5rem); }
+.about-page .about-intro .about-lead { font-size: clamp(1.2rem, 1.7vw, 1.5rem); }
+@media (min-width: 701px) and (max-width: 1599px) {
+  .about-page .about-intro h1 { font-size: clamp(3.75rem, 6.2vw, 5.8rem); }
+}
+@media (max-width: 700px) {
+  .about-page .about-intro h1 { font-size: clamp(3.3rem, 11vw, 4.7rem); }
+}
+
+@media (min-width: 701px) {
+  body.about-page .about-intro .about-hero-portrait { transform: scale(1.1); transform-origin: bottom right; }
+}
+
+#about-me .landing-contact-copy { margin-top: clamp(2.5rem, 4vw, 4rem); padding-top: 2rem; border-top: 1px solid rgba(23,25,23,.18); scroll-margin-top: 6rem; }
+#about-me .about-copy h2 { font-size: clamp(32px, 4vw, 56px); }
+#about-me .landing-contact-copy h2 { font-size: clamp(32px, 4vw, 56px); line-height: 1.2; margin-bottom: 1.25rem; }
+#about-me .landing-contact-copy p { margin-bottom: 0; }
+#about-me .landing-contact-copy a { margin-top: 1rem; }
+
+.carousel-explore-link { position: relative; z-index: 45; display: inline-flex; align-items: center; gap: .85rem; padding: .8rem 1.3rem; margin: 0 auto 2rem; border: 1px solid rgba(184,186,170,.38); border-radius: 999px; color: var(--site-pale-sage); background: rgba(23,25,23,.25); font: 400 .7rem/1.4 var(--type-meta), monospace; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .55s ease, transform .55s ease, visibility .55s, border-color .2s, background .2s; }
+.carousel-explore-link { margin: 2rem auto 0; color: var(--site-signal) !important; }
+.carousel-explore-link.is-visible, .carousel-explore-link:focus-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.carousel-explore-link:hover { border-color: var(--site-pale-sage); background: rgba(184,186,170,.09); }
+@media (prefers-reduced-motion: reduce) { .carousel-explore-link { transition: none; transform: none; } }
+
+/* Anchor desktop header links to the viewport, independent of page width. */
+@media (min-width: 1024px) {
+  [data-purpose="site-navigation-header"] > div:first-child {
+    max-width: none;
+    padding-inline: clamp(2rem, 2.5vw, 4rem);
+  }
+}
+
+/* Keep the archive readable on wide desktop and ultrawide displays. */
+@media (min-width: 1800px) {
+  body:has([data-purpose="hero-container"]) .carousel-perspective-container { scale: 1.04; }
+  body:has([data-purpose="hero-container"]) #carousel-dots { margin-top: -1.75rem !important; }
+}
+@media (min-width: 2300px) {
+  body:has([data-purpose="hero-container"]) .carousel-perspective-container { scale: 1.12; }
+  body:has([data-purpose="hero-container"]) #carousel-dots { margin-top: -.5rem !important; }
+}
+
+/* Keep the archive readable on wide desktop and ultrawide displays. */
+body:has(#projects-grid) main > div > section {
+  max-width: 1520px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 3vw, 3rem);
+}
+#projects-grid { gap: clamp(1.25rem, 2vw, 2rem); }
+#projects-grid .project-item { min-width: 0; padding: clamp(1.25rem, 2vw, 1.75rem); }
+@media (min-width: 1180px) {
+  #projects-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #projects-grid .project-item { padding: 1.25rem; }
+  #projects-grid .project-item > .pt-unit-md { padding-top: 1.25rem; }
+  #projects-grid .project-item .pt-unit-md.flex.items-center { padding-top: 1.25rem; }
+}
+
+/* Composed editorial spreads with an artwork column and a reading column. */
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapters { max-width: 72rem; margin-inline: auto; gap: clamp(3rem, 5vw, 5rem); }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: clamp(2rem, 5vw, 5rem); }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter:nth-child(2) { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter-copy { max-width: 34rem; }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter-copy h3 { font-size: clamp(1.8rem, 2.5vw, 2.65rem); line-height: 1.12; margin-top: .85rem; margin-bottom: 1.5rem; text-wrap: balance; }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter-copy p { line-height: 1.8; }
+#game-case-study.sun-palm-case-study .sun-palm-poster,
+#game-case-study.pcc-case-study .pcc-editorial-art { width: 100%; margin: 0; padding: clamp(1.25rem, 2.5vw, 2rem); background: #242523; border: 1px solid rgba(184,186,170,.12); border-radius: 2px; }
+#game-case-study.sun-palm-case-study .sun-palm-poster img,
+#game-case-study.pcc-case-study .pcc-editorial-art img { display: block; width: 100%; height: auto; max-width: 100%; max-height: 30rem; object-fit: contain; margin: 0 auto; }
+#game-case-study.sun-palm-case-study .sun-palm-poster figcaption,
+#game-case-study.sun-palm-case-study .sun-palm-still figcaption,
+#game-case-study.pcc-case-study .pcc-editorial-art figcaption { color: #b8baaa !important; opacity: .8; text-align: left; font-size: .6rem; letter-spacing: .09em; line-height: 1.6; margin-top: 1rem; }
+#game-case-study.sun-palm-case-study .sun-palm-still img { aspect-ratio: 4 / 3; border-radius: 2px; }
+#game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter:last-child { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); align-items: start; }
+#game-case-study.sun-palm-case-study .sun-palm-credit-list > div { background: rgba(0,0,0,.08); border: 1px solid rgba(184,186,170,.12); padding: 1.75rem; }
+@media (max-width: 767px) {
+  #game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter,
+  #game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter:nth-child(2),
+  #game-case-study:is(.sun-palm-case-study, .pcc-case-study) .project-editorial-chapter:last-child { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+  #game-case-study.sun-palm-case-study .sun-palm-poster,
+  #game-case-study.pcc-case-study .pcc-editorial-art { max-width: 23rem; justify-self: center; }
+  #game-case-study.sun-palm-case-study .sun-palm-poster img,
+  #game-case-study.pcc-case-study .pcc-editorial-art img { max-height: 26rem; }
+}
