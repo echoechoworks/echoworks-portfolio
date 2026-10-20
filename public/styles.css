@@ -4340,12 +4340,19 @@ body.about-page .about-intro .about-hero-portrait { position: relative; inset: a
 #about-me .landing-contact-copy h2 { font-size: clamp(32px, 4vw, 56px); line-height: 1.2; margin-bottom: 1.25rem; }
 #about-me .landing-contact-copy p { margin-bottom: 0; }
 #about-me .landing-contact-copy a { margin-top: 1rem; }
+.contact-scroll-anchor { position: absolute; top: 2cm; left: 0; width: 1px; height: 1px; scroll-margin-top: 4.5rem; pointer-events: none; }
 
 .carousel-explore-link { position: relative; z-index: 45; display: inline-flex; align-items: center; gap: .85rem; padding: .8rem 1.3rem; margin: 0 auto 2rem; border: 1px solid rgba(184,186,170,.38); border-radius: 999px; color: var(--site-pale-sage); background: rgba(23,25,23,.25); font: 400 .7rem/1.4 var(--type-meta), monospace; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .55s ease, transform .55s ease, visibility .55s, border-color .2s, background .2s; }
 .carousel-explore-link { margin: 2rem auto 0; color: var(--site-signal) !important; }
 .carousel-explore-link.is-visible, .carousel-explore-link:focus-visible { opacity: 1; visibility: visible; transform: translateY(0); }
 .carousel-explore-link:hover { border-color: var(--site-pale-sage); background: rgba(184,186,170,.09); }
 @media (prefers-reduced-motion: reduce) { .carousel-explore-link { transition: none; transform: none; } }
+
+.project-back-overlay { position: fixed; top: calc(4.5rem + 1.25rem); left: clamp(1rem, 2.5vw, 3rem); z-index: 45; display: inline-flex; align-items: center; gap: .7rem; padding: .85rem 1.15rem; border: 1px solid rgba(184,186,170,.3); border-radius: 999px; background: rgba(23,25,23,.88); backdrop-filter: blur(12px); color: var(--site-signal); font: 400 .7rem/1.4 var(--type-meta), monospace; text-transform: uppercase; letter-spacing: .08em; text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,.14); opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-6px); transition: opacity .35s ease, transform .35s ease, visibility .35s, border-color .2s; }
+.project-back-overlay.is-visible { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
+.project-back-overlay:hover { border-color: var(--site-signal); }
+@media (max-width: 700px) { .project-back-overlay { top: calc(4.5rem + .75rem); padding: .7rem .95rem; font-size: .62rem; } }
+@media (prefers-reduced-motion: reduce) { .project-back-overlay { transition: none; transform: none; } }
 
 /* Anchor desktop header links to the viewport, independent of page width. */
 @media (min-width: 1024px) {

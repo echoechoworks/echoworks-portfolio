@@ -1700,6 +1700,19 @@ if (window.location.pathname.startsWith('/projects/')) void renderProjectDetail(
 makeLandingNavigationWork();
 makeHeaderReactToScroll();
 makeLandingExploreScroll();
+const projectBackOverlay = document.querySelector<HTMLAnchorElement>('.project-back-overlay');
+if (projectBackOverlay) {
+  const updateBackOverlay = () => {
+    const descriptionButton = document.querySelector<HTMLElement>('.project-detail-drawer-button, .naturama-read-more');
+    const visible = Boolean(descriptionButton && window.scrollY > 0 && descriptionButton.getBoundingClientRect().top <= window.innerHeight * .75);
+    projectBackOverlay.classList.toggle('is-visible', visible);
+    projectBackOverlay.tabIndex = visible ? 0 : -1;
+    projectBackOverlay.setAttribute('aria-hidden', String(!visible));
+  };
+  window.addEventListener('scroll', updateBackOverlay, { passive: true });
+  window.addEventListener('pageshow', updateBackOverlay);
+  updateBackOverlay();
+}
 void makeLandingCarousel();
 const carouselExploreLink = document.querySelector<HTMLAnchorElement>('.carousel-explore-link');
 const carouselExploreStage = document.querySelector('.carousel-perspective-container');
