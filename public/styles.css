@@ -4922,3 +4922,30 @@ main :is(h1, h2, h3, h4, h5, h6) :is(span, a, em, strong):not(.material-symbols-
 [data-purpose='statement-display'] h1 :is(.font-hero-serif, .font-hero-sans) {
   font-size: clamp(1.8rem, 6.5vw, 6.4rem) !important;
 }
+
+/* Keep the mobile explore cue within the visible browser viewport. */
+@media (max-width: 767px) {
+  [data-purpose='hero-container'] { min-height: 100svh !important; }
+  [data-purpose='hero-container'] [data-purpose='interactive-footer-controls'] {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Mobile philosophy: read the text first, then a smaller credited artwork. */
+@media (max-width: 700px) {
+  body.about-page .about-statement:has(.about-moth-feature) { display: flex; flex-direction: column; }
+  body.about-page .about-philosophy-aside { display: contents; }
+  body.about-page .about-philosophy-aside .about-statement-label { order: 0; }
+  body.about-page .about-statement:has(.about-moth-feature) > .about-statement-copy { order: 1; }
+  body.about-page .about-philosophy-aside .about-moth-feature {
+    order: 2; width: min(100%, 16rem); max-width: 16rem;
+    margin: .75rem auto 0; align-self: center;
+  }
+  body.about-page .about-philosophy-aside .about-moth-feature img {
+    width: 100%; height: auto; max-height: none; object-fit: contain;
+  }
+  body.about-page .about-philosophy-aside .about-moth-feature figcaption { padding-inline: 0; margin-top: .8rem; font-size: .6rem; }
+}
