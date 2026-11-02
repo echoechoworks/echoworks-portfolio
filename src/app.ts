@@ -323,13 +323,21 @@ function renderUskyldigCaseStudy(): void {
           <div><span class="font-mono text-[11px] text-[#dbcb26] uppercase tracking-widest block mb-2">Chapter 01</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">A musical that makes room for complexity</h3></div>
           <p class="font-manrope text-white/70 leading-relaxed font-light text-base"><em>Uskyldig?</em> is an autofictional sex musical staged at uKirke on Vesterbro. Starting from lived experience, it opens a space for desire, consent, shame and the cultural stories that shape how bodies are allowed to feel.</p>
           <p class="font-manrope text-white/70 leading-relaxed font-light text-base">The work grew from a DIY collaboration across generations. Twelve life-based scenes become a loose collage rather than a lesson: intimate stories, music and movement meet without prescribing a single way to understand sex or innocence.</p>
+          <figure class="uskyldig-chapter-film">
+            <video controls playsinline preload="none" poster="/assets/uskyldig/chapter-film-poster.jpg" aria-label="Uskyldig? performance video">
+              <source src="/assets/uskyldig/chapter-film.mp4" type="video/mp4">
+              Your browser does not support this video. <a href="/assets/uskyldig/chapter-film.mp4">Watch the video</a>.
+            </video>
+            <figcaption>Uskyldig? · Theatre &amp; performance</figcaption>
+          </figure>
         </div>
-        <div class="lg:col-span-6 space-y-6">
+        <div class="uskyldig-chapter-two lg:col-span-6"><div class="uskyldig-chapter-two-copy space-y-6">
           <div><span class="font-mono text-[11px] text-[#dbcb26] uppercase tracking-widest block mb-2">Chapter 02</span><h3 class="font-bodoni text-3xl sm:text-4xl text-white tracking-tight">Co-directing through process</h3></div>
           <p class="font-manrope text-white/70 leading-relaxed font-light text-base">As co-director and theatre process lead, I designed the rehearsal process that let the performers develop the material from inside the room. I used improvisation exercises and attention practices to build trust, sharpen shared awareness and turn personal material into playable situations.</p>
           <p class="font-manrope text-white/70 leading-relaxed font-light text-base">We shaped scenes through improvised dance and improvised acting rather than locking a fixed performance too early. The result is loose, responsive theatre: performance and story emerge through the performers’ bodies, timing and listening, allowing each scene to become newly alive in the moment it is played.</p>
           <div class="p-6 rounded-xl bg-white/[0.02] border border-white/10 space-y-3"><span class="font-mono text-[11px] uppercase tracking-widest text-[#dbcb26] font-semibold block">Process design</span><p class="font-manrope text-sm text-white/70 leading-relaxed font-light">Improvisation created a common language between performers with different experience levels. Attention exercises helped the ensemble notice space, rhythm and each other, so the work could remain open while retaining its dramaturgical direction.</p><div class="pt-2 flex flex-wrap items-center gap-4 font-mono text-[10px] text-brand-muted tracking-widest"><span>// IMPROVISED DANCE</span><span>// LIVE ACTING</span><span class="text-[#dbcb26]">// EMERGENCE IN PERFORMANCE</span></div></div>
         </div>
+          <figure class="uskyldig-chapter-two-image"><img src="/assets/uskyldig/chapter-two-performance.png" alt="Uskyldig? ensemble performance under red and blue stage lighting" loading="lazy" decoding="async"></figure></div>
       </div>`;
   }
   if (commission) commission.innerHTML = `<div class="w-full rounded-2xl bg-gradient-to-r from-[#12141a] via-[#101217] to-[#181513] border border-white/15 p-8 sm:p-14 relative overflow-hidden shadow-2xl"><div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-[#364d4f]/20 blur-3xl pointer-events-none"></div><div class="relative z-10 max-w-3xl space-y-6"><div class="inline-flex items-center gap-2 font-mono text-[11px] text-[#dbcb26] uppercase tracking-widest"><span class="w-1.5 h-1.5 bg-[#dbcb26]"></span><span>Theatre &amp; performance</span></div><h3 class="font-bodoni text-3xl sm:text-4xl md:text-5xl text-white font-normal leading-tight">Looking for a process that gives performers room to surprise you?</h3><p class="font-manrope text-white/70 text-base leading-relaxed font-light">I design collaborative processes for theatre and performance that keep the work attentive, embodied and alive.</p><div class="pt-4"><a class="px-7 py-3.5 rounded-lg bg-[#dbcb26] hover:bg-[#e6d743] text-[#171917] font-mono text-xs uppercase tracking-widest transition-colors inline-flex items-center gap-2 font-semibold" href="mailto:rasmus@natsvaermer.com?subject=Theatre%20Process%20Inquiry"><span>Start a conversation</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span></a></div></div></div>`;
@@ -1015,7 +1023,8 @@ function makeLandingExploreScroll(): void {
     if (!activeCard) return;
     const cardBounds = activeCard.getBoundingClientRect();
     const cardCenter = cardBounds.top + window.scrollY + cardBounds.height / 2;
-    window.scrollTo({ top: Math.max(0, cardCenter - (window.innerHeight / 2 + 28)), behavior: 'smooth' });
+    const mobileAdjustment = window.matchMedia('(max-width: 767px)').matches ? 3 * 96 / 25.4 : 0;
+    window.scrollTo({ top: Math.max(0, cardCenter - (window.innerHeight / 2 + 28) - mobileAdjustment), behavior: 'smooth' });
     history.replaceState(null, '', '#projects-carousel');
   });
 }

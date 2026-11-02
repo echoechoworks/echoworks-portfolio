@@ -4949,3 +4949,17 @@ main :is(h1, h2, h3, h4, h5, h6) :is(span, a, em, strong):not(.material-symbols-
   }
   body.about-page .about-philosophy-aside .about-moth-feature figcaption { padding-inline: 0; margin-top: .8rem; font-size: .6rem; }
 }
+
+/* An intimate screening beneath Uskyldig's opening chapter. */
+.uskyldig-chapter-film { margin: 2rem 0 0; }
+.uskyldig-chapter-film video { display: block; width: 100%; max-height: 70svh; background: #171917; border: 1px solid #b8baaa30; border-radius: 3px; }
+.uskyldig-chapter-film figcaption { margin-top: .8rem; color: var(--site-sand); font: .65rem/1.6 var(--type-meta), monospace; letter-spacing: .1em; text-transform: uppercase; }
+
+/* Chapter two pairs the process text with a stage image. */
+#game-case-study .uskyldig-chapter-two { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); align-items: center; gap: clamp(2rem,4vw,4rem); }
+.uskyldig-chapter-two-copy { min-width: 0; }
+.uskyldig-chapter-two-image { margin: 0; min-width: 0; }
+.uskyldig-chapter-two-image img { display: block; width: 100%; height: auto; border-radius: 3px; }
+@media (max-width: 767px) {
+  #game-case-study .uskyldig-chapter-two { grid-template-columns: minmax(0,1fr); gap: 1.75rem; }
+}
