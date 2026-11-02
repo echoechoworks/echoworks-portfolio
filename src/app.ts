@@ -293,7 +293,6 @@ function makeArlaImagePlayer(viewport: HTMLElement): void {
   viewport.append(player);
   const play = player.querySelector<HTMLButtonElement>('.arla-image-play');
   const icon = play?.querySelector<HTMLElement>('.material-symbols-outlined');
-  if (icon) { icon.className = 'arla-play-label'; icon.textContent = 'PLAY'; }
   play?.setAttribute('aria-pressed', 'false');
   const timeline = player.querySelector<HTMLInputElement>('.arla-image-timeline');
   const current = player.querySelector<HTMLElement>('.arla-image-current');
@@ -305,8 +304,8 @@ function makeArlaImagePlayer(viewport: HTMLElement): void {
   };
   audio.addEventListener('loadedmetadata', () => { if (duration) duration.textContent = formatTime(audio.duration); });
   audio.addEventListener('timeupdate', sync);
-  audio.addEventListener('play', () => { if (icon) icon.textContent = 'PAUSE'; play?.setAttribute('aria-label', 'Pause Arla jingle'); play?.setAttribute('aria-pressed', 'true'); });
-  audio.addEventListener('pause', () => { if (icon) icon.textContent = 'PLAY'; play?.setAttribute('aria-label', 'Play Arla jingle'); play?.setAttribute('aria-pressed', 'false'); });
+  audio.addEventListener('play', () => { if (icon) icon.textContent = 'play_arrow'; play?.setAttribute('aria-label', 'Pause Arla jingle'); play?.setAttribute('aria-pressed', 'true'); });
+  audio.addEventListener('pause', () => { if (icon) icon.textContent = 'play_arrow'; play?.setAttribute('aria-label', 'Play Arla jingle'); play?.setAttribute('aria-pressed', 'false'); });
   audio.addEventListener('ended', () => { audio.currentTime = 0; sync(); });
   play?.addEventListener('click', () => { if (audio.paused) void audio.play(); else audio.pause(); });
   timeline?.addEventListener('input', () => { if (Number.isFinite(audio.duration)) { audio.currentTime = (Number(timeline.value) / 1000) * audio.duration; sync(); } });
@@ -772,7 +771,7 @@ async function renderProjectDetail(): Promise<void> {
       if (data.event === 'error' && gameStatus) gameStatus.textContent = 'The game could not start. Please refresh the page.';
     });
   } else if (index === 1) {
-    updateText('#project-kicker', 'Music Composition // Arla 2024');
+    updateText('#project-kicker', 'Music Composition // Arla 2025');
     updateText('#detail-spec-label-1', 'Role');
     updateText('#detail-spec-value-1', 'Composer & Producer');
     updateText('#detail-spec-label-2', 'Format');
