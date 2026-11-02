@@ -4992,3 +4992,12 @@ body.about-page .about-main .about-flow-spread {
   .about-flow-text { grid-row: 1; }
   .about-flow-image { grid-row: 2; }
 }
+
+/* Flow: image and opening paragraph above a full-width second paragraph. */
+body.about-page .about-main .about-flow-spread { align-items: start; row-gap: 2rem; }
+body.about-page .about-flow-image { align-self: center; }
+body.about-page .about-flow-continuation { grid-column: 1 / -1; max-width: none; }
+body.about-page .about-flow-continuation p { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.85; }
+@media (max-width: 700px) {
+  body.about-page .about-flow-continuation { grid-row: 3; }
+}
