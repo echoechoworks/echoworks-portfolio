@@ -1323,7 +1323,7 @@ function makeNaturamaEmulator(): void {
       const pairControls = pairButtons[0]?.parentElement as HTMLElement | null;
       if (pairControls) {
         pairControls.className = 'naturama-pair-controls absolute left-0 top-1/2 -translate-y-1/2 w-[114px] h-[208px] flex flex-col gap-1.5 z-10';
-        pairControls.style.setProperty('left', '4.625rem', 'important');
+        pairControls.style.removeProperty('left');
         pairButtons.forEach(button => {
           button.className = 'naturama-pair flex-1 w-full rounded-lg border border-white/10 bg-[#121318]/95 px-3 py-2 text-left hover:border-[#6f7f68]/70 transition';
         });
@@ -1335,31 +1335,10 @@ function makeNaturamaEmulator(): void {
       const speakerStage = document.createElement('div');
       speakerStage.className = 'naturama-speaker-stage relative w-full min-h-[280px] mx-auto';
       const arrangeSpeakerStage = () => {
-        const compact = container.getBoundingClientRect().width < 760;
-        speakerStage.style.setProperty('margin-top', '0', 'important');
-        if (compact) {
-          listeningVisual.style.setProperty('transform', 'none', 'important');
-          listeningVisual.style.removeProperty('top');
-          speakerStage.className = 'naturama-speaker-stage w-full mx-auto flex flex-col items-center gap-4';
-          pairControls?.classList.remove('absolute', 'left-0', 'top-1/2', '-translate-y-1/2', 'h-[208px]', 'h-[260px]', 'h-[186px]', 'h-[232px]', 'h-[244px]', 'h-[280px]');
-          pairControls?.classList.add('w-full', 'grid', 'grid-cols-1', 'sm:grid-cols-2', 'gap-2');
-          levelControls.classList.remove('absolute', 'right-0', 'top-1/2', '-translate-y-1/2', 'h-[208px]', 'h-[260px]', 'h-[186px]', 'h-[232px]', 'h-[244px]', 'h-[280px]');
-          levelControls.classList.add('w-full', 'max-w-[240px]', 'h-auto', 'flex', 'justify-center');
-          levelControls.style.removeProperty('transform');
-          return;
-        }
-        // Use an offset instead of transform so speakers can sit above the
-        // transport while the background vignette remains underneath it.
+        // Grid owns positioning; the speaker circle never rises into the tuning dial.
         listeningVisual.style.setProperty('transform', 'none', 'important');
-        listeningVisual.style.setProperty('top', '-2rem', 'important');
-        speakerStage.className = 'naturama-speaker-stage relative w-full min-h-[280px] mx-auto';
-        if (pairControls) {
-          pairControls.className = 'naturama-pair-controls absolute left-0 top-1/2 -translate-y-1/2 w-[114px] h-[208px] flex flex-col gap-1.5 z-10';
-          pairControls.style.setProperty('left', '4.625rem', 'important');
-        }
-        levelControls.className = 'naturama-level-controls absolute right-0 top-1/2 -translate-y-1/2 w-[114px] h-[208px] grid grid-cols-2 gap-1 rounded-lg border border-white/10 bg-[#121318]/95 p-1.5 z-10';
-        levelControls.style.setProperty('right', '0.5rem', 'important');
-        levelControls.style.setProperty('transform', 'none', 'important');
+        listeningVisual.style.setProperty('top', '0', 'important');
+        speakerStage.style.setProperty('margin-top', '0', 'important');
       };
       listeningLayout.replaceChild(speakerStage, listeningVisual);
       const atmosphere = document.createElement('div');
@@ -1371,12 +1350,28 @@ function makeNaturamaEmulator(): void {
       atmosphere.setAttribute('aria-hidden', 'true');
       nextAtmosphere.setAttribute('aria-hidden', 'true');
       container.prepend(atmosphere, nextAtmosphere);
+      for (const side of ['left', 'right']) {
+        const rail = document.createElement('div');
+        rail.className = 'naturama-chassis-rail naturama-chassis-rail--' + side;
+        rail.setAttribute('aria-hidden', 'true');
+        container.prepend(rail);
+      }
       const floorMapVignette = document.createElement('div');
       floorMapVignette.className = 'naturama-floor-map-vignette';
       floorMapVignette.setAttribute('aria-hidden', 'true');
       speakerStage.append(floorMapVignette, listeningVisual);
       if (pairControls) speakerStage.append(pairControls);
       speakerStage.append(levelControls);
+      const speakerHint = document.createElement('div');
+      speakerHint.className = 'naturama-speaker-hint';
+      speakerHint.setAttribute('role', 'status');
+      speakerHint.innerHTML = '<span aria-hidden="true">←</span><span>Play around with the different speakers</span><span aria-hidden="true">→</span>';
+      speakerStage.append(speakerHint);
+      const chapterHint = document.createElement('div');
+      chapterHint.className = 'naturama-chapter-hint';
+      chapterHint.setAttribute('role', 'status');
+      chapterHint.innerHTML = '<span aria-hidden="true">↑</span><span>Jump to different chapters</span>';
+      speakerStage.append(chapterHint);
       arrangeSpeakerStage();
       new ResizeObserver(arrangeSpeakerStage).observe(container);
       let visibleAtmosphere = atmosphere;
@@ -1441,6 +1436,7 @@ function makeNaturamaEmulator(): void {
     crossfadeAtmosphere(activeIndex);
     chapterButtons.forEach((button, index) => {
       const active = index === activeIndex;
+      button.setAttribute('aria-current', active ? 'true' : 'false');
       button.classList.toggle('bg-[#6f7f68]/45', active);
       button.classList.toggle('text-white', active);
       button.classList.toggle('shadow-[inset_0_0_0_1px_rgba(111,127,104,0.65)]', active);
@@ -1483,6 +1479,53 @@ function makeNaturamaEmulator(): void {
   masterControl?.addEventListener('input', updateMasterLevel);
   subControl?.addEventListener('input', updateSubLevel);
   subControl?.addEventListener('change', updateSubLevel);
+  // A hardware fader moves only by dragging its cap, retaining the grab offset.
+  [masterControl, subControl].forEach(control => {
+    if (!control) return;
+    let drag: { pointerId: number; y: number; value: number; travel: number } | null = null;
+    control.style.touchAction = 'none';
+    control.addEventListener('pointerdown', event => {
+      if (event.button !== 0) return;
+      event.preventDefault();
+      const rect = control.getBoundingClientRect();
+      const min = Number(control.min), max = Number(control.max);
+      const capHeight = 36;
+      const travel = Math.max(1, rect.height - capHeight);
+      const capTop = rect.top + (1 - (Number(control.value) - min) / (max - min)) * travel;
+      const capCenterX = rect.left + rect.width / 2;
+      if (event.clientY < capTop || event.clientY > capTop + capHeight || Math.abs(event.clientX - capCenterX) > 15) return;
+      control.focus({ preventScroll: true });
+      drag = { pointerId: event.pointerId, y: event.clientY, value: Number(control.value), travel };
+      control.style.cursor = 'grabbing';
+      control.setPointerCapture(event.pointerId);
+    });
+    control.addEventListener('pointermove', event => {
+      if (!drag) {
+        const rect = control.getBoundingClientRect();
+        const fraction = (Number(control.value) - Number(control.min)) / (Number(control.max) - Number(control.min));
+        const capTop = rect.top + (1 - fraction) * Math.max(1, rect.height - 36);
+        control.style.cursor = event.clientY >= capTop && event.clientY <= capTop + 36 && Math.abs(event.clientX - rect.left - rect.width / 2) <= 15 ? 'grab' : 'default';
+        return;
+      }
+      if (drag.pointerId !== event.pointerId) return;
+      event.preventDefault();
+      const min = Number(control.min), max = Number(control.max), step = Number(control.step) || 1;
+      const value = drag.value - (event.clientY - drag.y) / drag.travel * (max - min);
+      control.value = String(Math.max(min, Math.min(max, min + Math.round((value - min) / step) * step)));
+      control.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    const endDrag = (event: PointerEvent) => {
+      if (!drag || drag.pointerId !== event.pointerId) return;
+      drag = null;
+      control.style.cursor = 'grab';
+      if (control.hasPointerCapture(event.pointerId)) control.releasePointerCapture(event.pointerId);
+      control.dispatchEvent(new Event('change', { bubbles: true }));
+    };
+    control.addEventListener('pointerup', endDrag);
+    control.addEventListener('pointercancel', endDrag);
+    control.addEventListener('lostpointercapture', () => { drag = null; control.style.cursor = 'default'; });
+    control.addEventListener('pointerleave', () => { if (!drag) control.style.cursor = 'default'; });
+  });
   const paintSelection = () => {
     speakerButtons.forEach((button, index) => {
       // Starting the journey plays the complete eight-speaker mix. Reflect
@@ -1637,7 +1680,23 @@ function makeNaturamaEmulator(): void {
 
   paintActiveChapter(0);
   chapterButtons.forEach(button => button.addEventListener('click', () => jumpTo(Number(button.dataset.start || 0))));
+  let journeyStarting = false;
+  let chapterHintDismissed = false;
+  const hideChapterHint = () => container.classList.remove('show-chapter-hint');
+  const dismissChapterHint = () => { chapterHintDismissed = true; hideChapterHint(); };
+  chapterButtons.forEach(button => button.addEventListener('click', dismissChapterHint));
+  seek?.addEventListener('input', dismissChapterHint);
+  resetButton?.addEventListener('click', hideChapterHint);
+  let speakerHintDismissed = false;
+  const hideSpeakerHint = () => container.classList.remove('show-speaker-hint');
+  container.addEventListener('click', event => {
+    if (!(event.target as Element | null)?.closest('[data-naturama-speaker], [data-naturama-pair]')) return;
+    speakerHintDismissed = true;
+    hideSpeakerHint();
+  });
+  resetButton?.addEventListener('click', hideSpeakerHint);
   playButton?.addEventListener('click', async () => {
+    if (journeyStarting) return;
     initialise();
     if (!context) return;
     if (playing) {
@@ -1647,10 +1706,11 @@ function makeNaturamaEmulator(): void {
       playButton.classList.remove('is-playing');
       playButton.textContent = 'Start Journey';
       setStatus('Mix paused.');
+      hideSpeakerHint();
+      hideChapterHint();
       return;
     }
-    playButton.disabled = true;
-    playButton.textContent = 'Loading journey…';
+    journeyStarting = true;
     setStatus('Loading the original eight speaker channels and sub material…');
     try {
       await context.resume();
@@ -1659,6 +1719,8 @@ function makeNaturamaEmulator(): void {
       audio.forEach(element => { element.currentTime = startAt; });
       await Promise.all(audio.map(element => element.play()));
       playing = true;
+      if (!speakerHintDismissed) container.classList.add('show-speaker-hint');
+      if (!chapterHintDismissed) container.classList.add('show-chapter-hint');
       container.classList.add('has-started-journey');
       paintSelection();
       requestAnimationFrame(animateActivityHeatmap);
@@ -1670,7 +1732,7 @@ function makeNaturamaEmulator(): void {
       playButton.classList.remove('is-playing');
       paintSelection();
       playButton.textContent = 'Start Journey';
-    } finally { playButton.disabled = false; }
+    } finally { journeyStarting = false; }
   });
   resetButton?.addEventListener('click', () => { audio.forEach(element => { element.pause(); element.currentTime = 0; }); playing = false; if (progress) progress.style.width = '0%'; if (seek) seek.value = '0'; if (currentTime) currentTime.textContent = '00:00'; if (playButton) { playButton.classList.remove('is-playing'); playButton.textContent = 'Start Journey'; } setIsolation(); });
   clearButton?.addEventListener('click', () => setIsolation());
