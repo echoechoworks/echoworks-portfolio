@@ -4858,3 +4858,67 @@ body:has(#projects-grid) main > div > section {
 #naturama-emulator :is(#naturama-master, #naturama-sub) {
   height: calc(143px + 1cm) !important;
 }
+
+/* About: the same pale sage canvas as the project gallery. */
+body.about-page,
+body.about-page .about-main {
+  background: var(--gallery-card-surface) !important;
+  color: var(--site-ink) !important;
+}
+body.about-page .about-main :is(h1, h2, h3, p, a, strong, figcaption, .about-statement-label, .about-moth-credit) {
+  color: var(--site-ink) !important;
+}
+body.about-page .about-main :is(.about-lead, .about-statement-copy p, .about-moth-feature figcaption, .about-moth-credit) {
+  color: #363b34 !important;
+}
+body.about-page .about-main .about-intro h1 em { color: var(--site-oxide) !important; }
+body.about-page .about-main :is(.about-kicker, .about-statement-label, .about-contact > p) { color: var(--site-enamel) !important; }
+body.about-page .about-main :is(.about-statement, .about-contact) { border-color: #17191733 !important; }
+body.about-page .about-main .about-contact a:hover { color: var(--site-oxide) !important; }
+
+/* About accents: red chapter markers and the yellow closing invitation. */
+body.about-page .about-main .about-statement-label {
+  color: var(--site-oxide) !important;
+}
+body.about-page .about-main .about-contact a,
+body.about-page .about-main .about-contact a:hover {
+  color: var(--site-signal) !important;
+}
+
+body.about-page .about-main .about-statement .about-statement-label {
+  color: var(--site-oxide) !important;
+}
+
+/* Cormorant Garamond headings, with the existing body and metadata typography. */
+main :is(h1, h2, h3, h4, h5, h6),
+.about-page .about-main :is(h1, h2, h3),
+.global-footer h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+}
+main :is(h1, h2, h3, h4, h5, h6) :is(em, .font-serif, .font-bodoni) {
+  font-family: inherit !important;
+}
+
+/* One editorial heading family across pages, cards and mixed-style hero titles. */
+:root { --type-editorial: 'Cormorant Garamond', Georgia, serif; }
+:is(h1, h2, h3, h4, h5, h6),
+.font-hero-serif,
+.font-display-hero,
+.font-display-hero-mobile,
+[class*='font-headline'] {
+  font-family: var(--type-editorial) !important;
+}
+main :is(h1, h2, h3, h4, h5, h6) :is(span, a, em, strong):not(.material-symbols-outlined) {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+}
+
+/* Spaced capitals for the second half of the landing statement. */
+[data-purpose='statement-display'] h1 .font-hero-sans {
+  text-transform: uppercase;
+  letter-spacing: .12em !important;
+}
+
+/* Reduce both parts of the landing headline together. */
+[data-purpose='statement-display'] h1 :is(.font-hero-serif, .font-hero-sans) {
+  font-size: clamp(1.8rem, 6.5vw, 6.4rem) !important;
+}
