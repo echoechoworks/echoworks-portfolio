@@ -4963,3 +4963,32 @@ main :is(h1, h2, h3, h4, h5, h6) :is(span, a, em, strong):not(.material-symbols-
 @media (max-width: 767px) {
   #game-case-study .uskyldig-chapter-two { grid-template-columns: minmax(0,1fr); gap: 1.75rem; }
 }
+
+/* Structure: chapter text and a rehearsal photograph share an editorial spread. */
+body.about-page .about-main .about-structure-spread {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+.about-structure-text { min-width: 0; }
+.about-structure-text .about-statement-label { margin-bottom: 1.25rem; }
+.about-structure-image { min-width: 0; margin: 0; }
+.about-structure-image img { display: block; width: 100%; height: auto; border-radius: 3px; }
+@media (max-width: 700px) {
+  body.about-page .about-main .about-structure-spread { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+}
+
+/* Flow reverses the Structure spread: image left, chapter text right. */
+body.about-page .about-main .about-flow-spread {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4rem); align-items: center;
+}
+.about-flow-text { min-width: 0; }
+.about-flow-text .about-statement-label { margin-bottom: 1.25rem; }
+.about-flow-image { min-width: 0; margin: 0; }
+.about-flow-image img { display: block; width: 100%; height: auto; border-radius: 3px; }
+@media (max-width: 700px) {
+  body.about-page .about-main .about-flow-spread { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+  .about-flow-text { grid-row: 1; }
+  .about-flow-image { grid-row: 2; }
+}
